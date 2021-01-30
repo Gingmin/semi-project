@@ -39,30 +39,22 @@
 /* 푸터 끝*/
 /* placeholder 색 지정 */
    .container{}
-   .container .info_area{box-shadow: 0 0 20px 0px black; height: 1500px; padding: 50px 330px;}
+   .container .info_area{box-shadow: 0 0 20px 0px black; height: 600px; padding: 50px 330px;}
    .container .info_area .info_text{text-align: center; font-size: 25px; font-weight: bold; padding: 50px;}
 
    .container .info_area .info .info_item1{}
    .container .info_area .info .info_item1 .info_text1{ font-size: 17px; font-weight: bold; }
     .container .info_area .info .info_item1 .info_text1 .info_detail{color: #ff3700;}
-   .container .info_area .info .info_item1 .box_detail{ width: 100%;  height: 47px;  line-height: 47px; padding: 10px; border: 1px solid;}
+   .container .info_area .info .info_item1 .box_detail{width: 100%;  height: 47px;  line-height: 47px; padding: 10px; border: 1px solid;}
    .container .info_area .info .info_item1 .box_detail:focus {box-shadow: 0px 0px 12px #a0a0a0; outline: none;}
-   .guide { font-size: 14px; font-weight: lighter; text-decoration: underline }
-	input[type=radio], input[type=radio]:checked { appearance: none; border: 1px solid black; width: 15px; heihgt: 15px; cursor: pointer; border-radius: 100%; vertical-align: sub;}
-	input[type=radio] { width: 15px; height: 15px; border: 1px solid black; background-color: #FFFFFF border-radius: 100%; cursor: pointer; vertical-align: sub;}
-	input[type=radio]:checked { background-color: #FF3700 }
-	
-	.male { font-size: 14px; }
-	.female { font-size: 14px; }
-	a { text-decoration: none; }
-	input[type=checkbox] + label { display: inline-block; width: 30px; height: 30px; border: 1px solid black; vertical-align: middle; cursor: pointer;}
-	input[type=checkbox]:checked + label { background: #FF3700 }
-	input[type=checkbox] { display: none; }
-	.terms { text-align: center; }
+	#confirm { width: 100%; height: 47px; background: #000000; border: 1px solid black; cursor: pointer; color: white;}
+	#confirm:hover { background: #252525; }
+	#cancel { width: 100%; height: 47px; background: #FFFFFF; border: 1px solid black; cursor: pointer; color: black;}
+	.submit_detail {}
 	.submit_reset { text-align: center; }
+	
 	input[type=submit] { width: 100px; height: 30px; background: #FF3700; color: white; border: 0; cursor: pointer; }
-	input[type=submit]:hover { background: #fe4917 }
-	input[type=button] { width: 100px; height: 30px; background: #FFFFFF; border: 1px solid black; cursor: pointer; }
+	
 	
 </style>
 <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
@@ -90,107 +82,21 @@
 <div class="container">
    <div class="info_area">
       <div class="info_text">
-         회원가입
+         계정 확인
       </div>
+      <br><br>
       <form class="info" action="" method="">
          <div class="info_item1">
-            <div class="info_text1">
-               이메일 주소 <span class="info_detail">*</span>
-            </div>
-            <input class="box_detail" type="text" name="email" placeholder="이메일주소를 입력해주세요" autofocus>
-         </div>
-         
-         <br>
-         
-          <div class="info_item1">
-            <div class="info_text1">
-               비밀번호 <span class="info_detail">*</span>
-            </div>
-            <input class="box_detail" type="password" name="password" placeholder="비밀번호를 입력하세요">
-         </div>
-         
-          <br>
-         
-          <div class="info_item1">
-            <div class="info_text1">
-               비밀번호 확인 <span class="info_detail">*</span>
-            </div>
-            <input class="box_detail" type="password" name="password" placeholder="비밀번호를 입력하세요">
-            <div class="guide">
             <br>
-       8글자 이상 / 영문 숫자 조합
-            </div>
+            <input class="box_detail" type="email" name="email" placeholder="이메일을 입력해주세요" autofocus>
          </div>
          
          <br><br>
          
-          <div class="info_item1">
-            <div class="info_text1">
-               이름 <span class="info_detail">*</span>
-            </div>
-            <input class="box_detail" type="password" name="password" placeholder="비밀번호를 입력하세요">
+          <div class="submit_reset">
+         	<input type="button" value="확인" id="confirm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         	<input type="button" value="취소" id="cancel" onclick="location.href='http://127.0.0.1:8001/semi/'">
          </div>
-         
-         <br>
-         
-         <div class="info_item1">
-            <div class="info_text1">
-               연락처 <span class="info_detail">*</span>
-            </div>
-            <input class="box_detail" type="password" name="password" placeholder="비밀번호를 입력하세요">
-         </div>
-         
-         <br><br>
-         
-          <div class="info_item1">
-            <div class="info_text1">
-               성별 <span class="info_detail">*</span>
-            </div>
-            <br><br>
-            <div class="radio_align">
-           	    
-			   <label for="male">남자</label>&nbsp;&nbsp;&nbsp;
-			   <input class="" type="radio" name="gender" id="male">
-		       &nbsp;&nbsp;&nbsp;    
-			   <label for="female">여자</label>&nbsp;&nbsp;&nbsp;
-			   <input class="" type="radio" name="gender" id="female">
-	            
-            </div>
-         </div>
-         
-         <br><br><br><br><br><br>
-         <div>
-         	<div class="terms">
-		         <input type="checkbox" name="terms_p" id="terms_p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label for="terms_p"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>개인정보 제공 동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <a href="http://kordzor.cafe24.com/semiproject/privacy_policy.html">[보기]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>[필수]</label>
-         	</div>
-         	<br><br><br>
-         	<div class="terms">
-		         <input type="checkbox" name="terms_t" id="terms_t">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label for="terms_t"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>이용 약관 동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <a href="http://kordzor.cafe24.com/semiproject/terms_service.html">[보기]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>[필수]</label>
-         	</div>
-         	<br><br><br>
-         	<div class="terms">
-		         <input type="checkbox" name="terms_m" id="terms_m">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label for="terms_m"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>마케팅 수신 정보 동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		         <label>[선택]</label>
-         	</div>
-         </div>
-         <br><br><br><br><br><br>
-         
-         <div class="submit_reset">
-         	<input type="submit" value="회원가입" id="regist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         	<input type="button" value="취소" onclick="location.href='http://127.0.0.1:8001/semi/'">
-         </div>
-        
          
       </form>
       
