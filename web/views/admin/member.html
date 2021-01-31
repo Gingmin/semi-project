@@ -41,7 +41,42 @@
 	.search_box {
 		margin-left: 50px;
 	}
-	
+	.nameDetails {
+		text-decoration: none;
+		color: #868886;
+	}
+	/* 팝업 만들기 */
+	/* .popup {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		margin-top: 30px;	
+	}
+	.popup .popup_info {
+		visibility: hidden;
+		width: 600px;
+		height: 600px;
+		background-color: #FFFFFF;
+		border: 1px solid #000000;
+		border-radius: 6px;
+		padding: 8px 0;
+		position: absolute;
+		z-index: 3;
+		bottom: 125%;
+		left: 50%;
+		margin-left: 120px;
+	}
+	.popup .show {
+		visibility: visible;
+		animation: fadein 1s;
+		color: #868886;
+	}
+	.memberPopup {
+		background: white;
+		border: 0;
+		color: #868886;
+	} */
+	/* 팝업 끝 */
 </style>
 </head>
 
@@ -149,11 +184,11 @@
                                 <i class="fa fa-id-card" aria-hidden="true"></i><span class="hide-menu">트레이너관리</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="profile.html" aria-expanded="false">
+                                href="report.html" aria-expanded="false">
                                 <i class="fa fa-bullhorn" aria-hidden="true"></i><span class="hide-menu">신고관리</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="profile.html" aria-expanded="false">
+                                href="blackList.html" aria-expanded="false">
                                 <i class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -161,10 +196,10 @@
                                 <span class="hide-menu">---------- 결제관리 ----------</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="basic-table.html" aria-expanded="false"><i class="fa fa-won-sign"
+                                href="memberPayment.html" aria-expanded="false"><i class="fa fa-won-sign"
                                     aria-hidden="true"></i><span class="hide-menu">회원 결제관리</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="fontawesome.html" aria-expanded="false"><i class="fa fa-hands-helping"
+                                href="ptPage.html" aria-expanded="false"><i class="fa fa-hands-helping"
                                     aria-hidden="true"></i><span class="hide-menu">PT관리</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="map-google.html" aria-expanded="false"><i class="fa fa-th-list"
@@ -310,7 +345,13 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>김민기</td>
+                                            <td>
+                                            	<!-- <div class="popup" onclick="myFunction()">
+		                                            <input type="button" class="memberPopup" value="김민기">
+		                                            <span class="popup_info" id="myPopup">팝업</span>
+                                          		</div> -->
+                                          		<a class="nameDetails" target="_blank" href="memberDetails.html">김민기</a>
+                                          	</td>
                                             <td>01071832721</td>
                                             <td>남</td>
                                             <td>mk@greedy.com</td>
@@ -320,7 +361,7 @@
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>임완규</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">임완규</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>kku@greedy.com</td>
@@ -330,7 +371,7 @@
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>정민서</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">정민서</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>ms@greedy.com</td>
@@ -340,7 +381,7 @@
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>최희상</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">최희상</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>hee@greedy.com</td>
@@ -350,7 +391,7 @@
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Nigam</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">Nigam</a></td>
                                             <td>01012344321</td>
                                             <td>여</td>
                                             <td>ng@greedy.com</td>
@@ -368,6 +409,13 @@
                                         <tr><td>&nbsp;</td></tr>  
                                     </tbody>
                                 </table>
+                                <!-- 팝업만들기  -->
+                                <!-- <script>
+                                    function myFunction() {
+                                        var popup = document.getElementById('myPopup');
+                                        popup.classList.toggle('show');
+                                    }
+                                </script> -->
                             </div>
                         </div>
                     </div>

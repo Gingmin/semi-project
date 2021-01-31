@@ -41,9 +41,42 @@
 	.search_box {
 		margin-left: 50px;
 	}
-	.cancel {
-		border: 1px solid black;
+	.nameDetails {
+		text-decoration: none;
+		color: #868886;
 	}
+	/* 팝업 만들기 */
+	/* .popup {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		margin-top: 30px;	
+	}
+	.popup .popup_info {
+		visibility: hidden;
+		width: 600px;
+		height: 600px;
+		background-color: #FFFFFF;
+		border: 1px solid #000000;
+		border-radius: 6px;
+		padding: 8px 0;
+		position: absolute;
+		z-index: 3;
+		bottom: 125%;
+		left: 50%;
+		margin-left: 120px;
+	}
+	.popup .show {
+		visibility: visible;
+		animation: fadein 1s;
+		color: #868886;
+	}
+	.memberPopup {
+		background: white;
+		border: 0;
+		color: #868886;
+	} */
+	/* 팝업 끝 */
 </style>
 </head>
 
@@ -155,7 +188,7 @@
                                 <i class="fa fa-bullhorn" aria-hidden="true"></i><span class="hide-menu">신고관리</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="trainer.html" aria-expanded="false">
+                                href="blackList.html" aria-expanded="false">
                                 <i class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -220,7 +253,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title text-uppercase font-medium font-14">트레이너 정보</h4>
+                        <h4 class="page-title text-uppercase font-medium font-14">블랙리스트</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -229,10 +262,6 @@
                             </ol>
                             <!-- ============================================================== -->
                             <!-- 검색 폼 시작 -->
-                            <form action="" method="">
-                            <button type="submit"
-                                class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                            	조회</button>
                         </div>
                     </div>
                 </div>
@@ -252,42 +281,23 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                         	<div class="search_box">
+                        		<form action="" method="">
                         		<table>
 	                            	<tr>
-	                            		<td class="box-title">트레이너명&nbsp;&nbsp;</td>
+	                            		<td class="box-title">회원명&nbsp;&nbsp;</td>
 	                            		<td>
 			    							<input type="text" class="search" name="name">
 		    							</td>
-		    							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		    							<td class="box-title">트레이너번호&nbsp;&nbsp;</td>
+		    							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    							<td class="box-title">회원번호&nbsp;&nbsp;</td>
 		    							<td>                     	
 			    							<input type="text" class="search" name="member_no">
 		    							</td>
-	    							</tr>
-	    							<tr><td>&nbsp;</td></tr>
-	    							<tr>
-	    								<td class="box-title">성별&nbsp;&nbsp;</td>  
-	    								<td>                    	
-			    							<select class="search selec" name="gender">
-			    								<option>전체</option>
-			    								<option>남</option>
-			    								<option>여</option>
-			    							</select>
-		    							</td>
-		    							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		    							<td class="box-title">승인 여부&nbsp;&nbsp;</td>
 		    							<td>
-			    							<select class="search selec" name="pt_yn">
-			    								<option>전체</option>
-			    								<option>Y</option>
-			    								<option>N</option>
-			    							</select>
+                            				<button type="submit"
+                                				class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                            				조회</button>
 		    							</td>
-	    							</tr>
-	    							<tr><td>&nbsp;</td></tr>
-	    							<tr>   	
-		    							<td class="box-title">전화번호&nbsp;&nbsp;</td>                     	
-		    							<td><input type="tel" class="search" name="phone"><td>
 	    							</tr>
     							</table>
     						</div>
@@ -304,94 +314,173 @@
                                             <th class="border-top-0">전화번호</th>
                                             <th class="border-top-0">성별</th>
                                             <th class="border-top-0">이메일</th>
-                                            <th class="border-top-0">구독자</th>
-                                            <th class="border-top-0">PT수</th>
-                                            <th class="border-top-0">트레이너번호</th>
-                                            <th class="border-top-0">승인여부</th>
-                                            <th class="border-top-0">승인</th>
+                                            <th class="border-top-0">상태</th>
+                                            <th class="border-top-0">사유</th>
+                                            <th class="border-top-0">회원번호</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>김민기</td>
+                                            <td>
+                                            	<!-- <div class="popup" onclick="myFunction()">
+		                                            <input type="button" class="memberPopup" value="김민기">
+		                                            <span class="popup_info" id="myPopup">팝업</span>
+                                          		</div> -->
+                                          		<a class="nameDetails" target="_blank" href="memberDetails.html">김민기</a>
+                                          	</td>
                                             <td>01071832721</td>
                                             <td>남</td>
                                             <td>mk@greedy.com</td>
-                                            <td>1000</td>
-                                            <td>80</td>
-                                            <td>H1234</td>
-                                            <td>N</td>
-                                            <td>
-                                            	<button class="btn btn-danger btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light" onclick="location.href='trainer.html'">승인</button>
-                                            	<button class="btn btn-defaul btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light cancel" onclick="location.href='trainer.html'">취소</button>
-                                            </td>
+                                            <td>이용정지</td>
+                                            <td>운동중 욕설</td>
+                                            <td>a1234</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>임완규</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">임완규</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>kku@greedy.com</td>
-                                            <td>1200</td>
-                                            <td>70</td>
-                                            <td>H1235</td>
-                                            <td>N</td>
-                                            <td>
-                                            	<button class="btn btn-danger btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light" onclick="location.href='trainer.html'">승인</button>
-                                            	<button class="btn btn-defaul btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light cancel" onclick="location.href='trainer.html'">취소</button>
-                                            </td>
+                                            <td>이용정지</td>
+                                            <td>사행성 홍보</td>
+                                            <td>a1235</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>정민서</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">정민서</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>ms@greedy.com</td>
-                                            <td>905</td>
-                                            <td>100</td>
-                                            <td>H1236</td>
-                                            <td>N</td>
-                                            <td>
-                                            	<button class="btn btn-danger btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light" onclick="location.href='trainer.html'">승인</button>
-                                            	<button class="btn btn-defaul btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light cancel" onclick="location.href='trainer.html'">취소</button>
-                                            </td>
+                                            <td>이용정지</td>
+                                            <td>금전거래</td>
+                                            <td>a1236</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>최희상</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">최희상</a></td>
                                             <td>01012345678</td>
                                             <td>남</td>
                                             <td>hee@greedy.com</td>
-                                            <td>930</td>
-                                            <td>77</td>
-                                            <td>H1237</td>
-                                            <td>N</td>
-                                            <td>
-                                            	<button class="btn btn-danger btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light" onclick="location.href='trainer.html'">승인</button>
-                                            	<button class="btn btn-defaul btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light cancel" onclick="location.href='trainer.html'">취소</button>
-                                            </td>
+                                            <td>영구정지</td>
+                                            <td>운동중 음란행위</td>
+                                            <td>a1237</td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Nigam</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">Nigam</a></td>
                                             <td>01012344321</td>
                                             <td>여</td>
                                             <td>ng@greedy.com</td>
-                                            <td>550</td>
-                                            <td>40</td>
-                                            <td>H1238</td>
-                                            <td>N</td>
-                                            <td>
-                                            	<button class="btn btn-danger btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light" onclick="location.href='trainer.html'">승인</button>
-                                            	<button class="btn btn-defaul btn-xs d-none d-md-inline pull-left m-l-5 hidden-xs hidden-sm waves-effect waves-light cancel" onclick="location.href='trainer.html'">취소</button>
-                                            </td>
+                                            <td>이용정지</td>
+                                            <td>뒷거래</td>
+                                            <td>a1238</td>
                                         </tr>
                                         <tr><td>&nbsp;</td></tr>  
                                         <tr><td>&nbsp;</td></tr>  
                                         <tr><td>&nbsp;</td></tr>  
-                                        <tr><td>&nbsp;</td></tr>  
-                                        <tr><td>&nbsp;</td></tr>  
+                                    </tbody>
+                                </table>
+                                <!-- 팝업만들기  -->
+                                <!-- <script>
+                                    function myFunction() {
+                                        var popup = document.getElementById('myPopup');
+                                        popup.classList.toggle('show');
+                                    }
+                                </script> -->
+                            </div>
+                        </div>
+                        <div class="white-box">
+                        	<div class="search_box">
+                        		<form action="" method="">
+                        		<table>
+	                            	<tr>
+	                            		<td class="box-title">트레이너명&nbsp;&nbsp;</td>
+	                            		<td>
+			    							<input type="text" class="search" name="name">
+		    							</td>
+		    							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		    							<td class="box-title">트레이너번호&nbsp;&nbsp;</td>
+		    							<td>                     	
+			    							<input type="text" class="search" name="member_no">
+		    							</td>
+		    							<td>
+                            				<button type="submit"
+                                				class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                            				조회</button>
+		    							</td>
+	    							</tr>
+    							</table>
+    						</div>
+                         	</form><br>
+                            <!-- form 태그 끝 -->
+                            <!-- ============================================================== -->
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">#</th>
+                                            <th class="border-top-0">이름</th>
+                                            <th class="border-top-0">전화번호</th>
+                                            <th class="border-top-0">성별</th>
+                                            <th class="border-top-0">이메일</th>
+                                            <th class="border-top-0">상태</th>
+                                            <th class="border-top-0">사유</th>
+                                            <th class="border-top-0">트레이너번호</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">깅민기</a></td>
+                                            <td>01071832721</td>
+                                            <td>남</td>
+                                            <td>mk@greedy.com</td>
+                                            <td>이용정지</td>
+                                            <td>운동중 욕설</td>
+                                            <td>H1234</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">임완뀨</a></td>
+                                            <td>01012345678</td>
+                                            <td>남</td>
+                                            <td>kku@greedy.com</td>
+                                            <td>이용정지</td>
+                                            <td>사행성 홍보</td>
+                                            <td>H1235</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">정민세</a></td>
+                                            <td>01012345678</td>
+                                            <td>남</td>
+                                            <td>ms@greedy.com</td>
+                                            <td>이용정지</td>
+                                            <td>금전거래</td>
+                                            <td>H1236</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">최상</a></td>
+                                            <td>01012345678</td>
+                                            <td>남</td>
+                                            <td>hee@greedy.com</td>
+                                            <td>영구정지</td>
+                                            <td>운동중 음란행위</td>
+                                            <td>H1237</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><a class="nameDetails" target="_blank" href="memberDetails.html">Nagam</a></td>
+                                            <td>01012344321</td>
+                                            <td>여</td>
+                                            <td>ng@greedy.com</td>
+                                            <td>이용정지</td>
+                                            <td>채팅 욕설</td>
+                                            <td>H1238</td>
+                                        </tr>
                                         <tr><td>&nbsp;</td></tr>  
                                         <tr><td>&nbsp;</td></tr>  
                                         <tr><td>&nbsp;</td></tr>  
