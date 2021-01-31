@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ko">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords"
+	content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, Ample lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Ample admin lite dashboard bootstrap 4 dashboard template">
+<meta name="description"
+	content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+<meta name="robots" content="noindex,nofollow">
+<title>HelloPT System administrator</title>
+<link rel="canonical"
+	href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="plugins/images/favicon.png">
+<!-- Custom CSS -->
+<link href="css/style.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+<script src="js/memberDetailsSettings.js"></script>
+<style>
+.close {
+	width: 80px;
+	height: 27px;
+	margin-top: 17px;
+	opacity: 94%;
+}
+
+.search:focus {
+	box-shadow: 0px 0px 12px #a0a0a0;
+	outline: none;
+}
+
+.selec {
+	width: 178px;
+	height: 27px;
+}
+
+.search_box {
+	margin-left: 50px;
+}
+
+.search {
+	text-align: center;
+}
+
+.table_align {
+	text-align: center;
+}
+
+.s_date {
+	width: 179px;
+}
+</style>
+</head>
+
+<body>
+	<!-- ============================================================== -->
+	<!-- Preloader - style you can find in spinners.css -->
+	<!-- ============================================================== -->
+	<div class="preloader">
+		<div class="lds-ripple">
+			<div class="lds-pos"></div>
+			<div class="lds-pos"></div>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5"
+		data-sidebartype="full" data-sidebar-position="absolute"
+		data-header-position="absolute" data-boxed-layout="full">
+		<!-- ============================================================== -->
+		<!-- Topbar header - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<header class="topbar" data-navbarbg="skin5">
+			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
+				<div class="navbar-header" data-logobg="skin6">
+					<!-- ============================================================== -->
+					<!-- Logo -->
+					<!-- ============================================================== -->
+					<a class="navbar-brand" href="dashboard.html"> <span
+						class="logo-text"> <img src="plugins/images/logo.png"
+							alt="homepage" />
+					</span>
+					</a>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- toggle and nav items -->
+					<!-- ============================================================== -->
+					<a
+						class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+						href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-collapse collapse" id="navbarSupportedContent"
+					data-navbarbg="skin5">
+					<ul class="navbar-nav d-none d-md-block d-lg-none">
+						<li class="nav-item"><a
+							class="nav-toggler nav-link waves-effect waves-light text-white"
+							href="javascript:void(0)"><i class="ti-menu ti-close"></i></a></li>
+					</ul>
+					<!-- ============================================================== -->
+					<!-- Right side toggle and nav items -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav ml-auto d-flex align-items-center">
+
+						<!-- ============================================================== -->
+						<!-- Search -->
+						<!-- ============================================================== -->
+						<li class=" in">
+							<form role="search" class="app-search d-none d-md-block mr-3">
+								<input type="text" placeholder="Search..."
+									class="form-control mt-0"> <a href="" class="active">
+									<i class="fa fa-search"></i>
+								</a>
+							</form>
+						</li>
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+						<li class="temp"><a class="profile-pic"
+							href="http://kordzor.cafe24.com/semiproject/index.html"> <img
+								src="plugins/images/close.png" alt="close-img" width="36"
+								class="close"></a></li>
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- ============================================================== -->
+		<!-- End Topbar header -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<aside class="left-sidebar" data-sidebarbg="skin6">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<!-- User Profile-->
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							aria-expanded="false"> <span class="hide-menu">----------
+									회원관리 ----------</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="member.html" aria-expanded="false"><i
+								class="fa fa-users" aria-hidden="true"></i><span
+								class="hide-menu">일반회원관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="trainer.html" aria-expanded="false"> <i
+								class="fa fa-id-card" aria-hidden="true"></i><span
+								class="hide-menu">트레이너관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="report.html" aria-expanded="false"> <i
+								class="fa fa-bullhorn" aria-hidden="true"></i><span
+								class="hide-menu">신고관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="blackList.html" aria-expanded="false"> <i
+								class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></a>
+						</li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							aria-expanded="false"> <span class="hide-menu">----------
+									결제관리 ----------</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="basic-table.html" aria-expanded="false"><i
+								class="fa fa-won-sign" aria-hidden="true"></i><span
+								class="hide-menu">회원 결제관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="fontawesome.html" aria-expanded="false"><i
+								class="fa fa-hands-helping" aria-hidden="true"></i><span
+								class="hide-menu">PT관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="map-google.html" aria-expanded="false"><i
+								class="fa fa-th-list" aria-hidden="true"></i><span
+								class="hide-menu">멤버쉽 관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="blank.html" aria-expanded="false"><i
+								class="fa fa-hourglass" aria-hidden="true"></i><span
+								class="hide-menu">기간 정산 관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="404.html" aria-expanded="false"><i
+								class="fa fa-chart-bar" aria-hidden="true"></i><span
+								class="hide-menu">종합 통계</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="404.html" aria-expanded="false"><i class="fa fa-redo"
+								aria-hidden="true"></i><span class="hide-menu">환불</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							aria-expanded="false"> <span class="hide-menu">----------
+									수업관리 ----------</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="404.html" aria-expanded="false"><i class="fa fa-plus"
+								aria-hidden="true"></i><span class="hide-menu">수업 등록 관리</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="404.html" aria-expanded="false"><i
+								class="fa fa-comments" aria-hidden="true"></i><span
+								class="hide-menu">리뷰</span></a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="404.html" aria-expanded="false"><i class="fa fa-play"
+								aria-hidden="true"></i><span class="hide-menu">영상관리</span></a></li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+					</ul>
+
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>
+		<!-- ============================================================== -->
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Page wrapper  -->
+		<!-- ============================================================== -->
+		<div class="page-wrapper">
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<div class="page-breadcrumb bg-white">
+				<div class="row align-items-center">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+						<h4 class="page-title text-uppercase font-medium font-14">김민기님
+							회원 정보</h4>
+					</div>
+					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+						<div class="d-md-flex">
+							<ol class="breadcrumb ml-auto">
+								<!-- <li><a href="#">Dashboard</a></li> -->
+							</ol>
+							<!-- ============================================================== -->
+							<!-- 검색 폼 시작 -->
+							<form action="" method="">
+								<button type="submit" id="enroll"
+									class="btn btn-danger  d-none d-md-inline pull-right m-l-5 hidden-xs hidden-sm waves-effect waves-light">
+									등록</button>
+								<button type="button" id="modify"
+									class="btn btn-danger  d-none d-md-inline pull-right m-l-5 hidden-xs hidden-sm waves-effect waves-light">
+									수정</button>
+						</div>
+					</div>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Container fluid  -->
+			<!-- ============================================================== -->
+			<div class="container-fluid">
+				<!-- ============================================================== -->
+				<!-- Start Page Content -->
+				<!-- ============================================================== -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="white-box">
+							<div class="search_box">
+								<table>
+									<tr>
+										<td class="box-title">회원번호&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="member_code"
+											value="M1" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">연락처&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="member_no"
+											value="010-1234-5678" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">이름&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="name"
+											value="김민기" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">이메일&nbsp;&nbsp;</td>
+										<td><input type="email" class="search" name="email"
+											value="mk@greedy.com" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">등록일자&nbsp;&nbsp;</td>
+										<td><input type="date" class="search s_date"
+											name="regist_date" value="2021-01-27" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">이용권&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="membership"
+											value="Y" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">만기일자&nbsp;&nbsp;</td>
+										<td><input type="date" class="search s_date"
+											name="expiration_date" value="2021-02-27" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">이용권 구매횟수&nbsp;&nbsp;</td>
+										<td><input type="number" class="search" name="total_buy"
+											value="2" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">총상담건&nbsp;&nbsp;</td>
+										<td><input type="number" class="search"
+											name="total_counsel" value="20" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">이용권 구매금액&nbsp;&nbsp;</td>
+										<td><input type="text" class="search"
+											name="total_payment" value="20,000" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">상담상태&nbsp;&nbsp;</td>
+										<td><input type="text" class="search"
+											name="counsel_status" value="Y" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">1:1PT&nbsp;&nbsp;</td>
+										<td><input type="number" class="search"
+											name="total_payment" value="3" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">상담처리여부&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="counsel_YN"
+											value="Y" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">PT구매금액&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="pt_payment"
+											value="45,000" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">성별&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="gender"
+											value="남" disabled></td>
+										<!-- <td>                    	
+			    							<select class="search selec" name="gender" disabled>
+			    								<option>전체</option>
+			    								<option>남</option>
+			    								<option>여</option>
+			    							</select>
+		    							</td> -->
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">비밀번호&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="password"
+											value="!@#12345" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<!-- 1행끝 -->
+									<tr>
+										<td class="box-title">블랙여부&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="black_list"
+											value="Y" disabled></td>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="box-title">주소&nbsp;&nbsp;</td>
+										<td><input type="text" class="search" name="address"
+											value="경기도 수원시" disabled></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+								</table>
+								<script>
+								</script>
+							</div>
+							</form>
+							<br>
+							<!-- form 태그 끝 -->
+							<!-- ============================================================== -->
+							<!-- <p class="text-muted">Add class <code>.table</code></p> -->
+
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End PAge Content -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Right sidebar -->
+				<!-- ============================================================== -->
+				<!-- .right-sidebar -->
+				<!-- ============================================================== -->
+				<!-- End Right sidebar -->
+				<!-- ============================================================== -->
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Container fluid  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- footer -->
+			<!-- ============================================================== -->
+			<footer class="footer text-center">
+				2020 © HelloPT Admin brought to you by <a href="#">www.HelloPT.com</a>
+			</footer>
+			<!-- ============================================================== -->
+			<!-- End footer -->
+			<!-- ============================================================== -->
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Page wrapper  -->
+		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>
+	<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="js/app-style-switcher.js"></script>
+	<!--Wave Effects -->
+	<script src="js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="js/custom.js"></script>
+</body>
+
+</html>
