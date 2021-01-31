@@ -5,4 +5,5 @@ $(document).ready(function() {
          			flag = $(this).val().length > 0 ? false : true;
          			$('.number_confirm').attr('disabled', flag);
          		});
-         	});
+});
+
