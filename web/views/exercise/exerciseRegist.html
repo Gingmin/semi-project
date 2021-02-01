@@ -11,6 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<!-- 폰트어썸 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 
 </head>
@@ -36,7 +38,7 @@
 	<!-- 수업등록 -->
 	<br>
 	<div class="container">
-		<form action="class/regist" method="get">
+		<form action="" method="">
 			<div class="class-regist">수업등록</div>
 			<br>
 			<div class="class-choice">
@@ -117,7 +119,7 @@
 				</div>
 				<img class="small-image" id="blah"
 					src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" /><br />
-				<input type='file' id="imgInp" />
+				<input type='file' id="imgInp" multiple />
 			</div>
 
 
@@ -129,7 +131,7 @@
 				</div>
 				<img class="small-image" id="blah"
 					src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" /><br />
-				<input type='file' id="imgInp" />
+				<input type='file' id="imgInp" multiple />
 			</div>
 
 
@@ -139,7 +141,7 @@
 				</div>
 				<img class="small-image" id="blah"
 					src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" /><br />
-				<input type='file' id="imgInp" />
+				<input type='file' id="imgInp" multiple />
 			</div>
 
 			<div class="file-field">
@@ -148,7 +150,7 @@
 				</div>
 				<img class="small-image" id="blah"
 					src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" /><br />
-				<input type='file' id="imgInp" />
+				<input type='file' id="imgInp" multiple />
 			</div>
 
 			<div class="set">수업 시간 등록</div>
@@ -162,9 +164,28 @@
 				<input type="time" id="time-picker" placeholder="Select time">
 				<label for="time-picker">60분 단위로 설정</label>
 			</div>
-			<div class="regist-button1"><button type="submit" class="btn btn-dark" id="regist-button">개설하기</button>
+			<div class="regist-button1"><button type="submit" class="btn btn-dark" id="regist-button"
+					data-toggle="modal" data-target="#myModal">개설하기</button>
 			</div>
 		</form>
+		<!-- 팝업 부분 -->
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<i class="fas fa-dumbbell"></i>
+					</div>
+					<div class="modal-body">
+						<div class="modal_text">결제가 완료 되었습니다.</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 팝업 끝 -->
 	</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br>
 	<!-- 푸터시작 -->
@@ -212,6 +233,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<!-- 푸터 -->
 </body>
