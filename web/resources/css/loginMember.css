@@ -1,0 +1,30 @@
+@charset "UTF-8";
+   .container{}
+   .container .info_area{box-shadow: 0 0 20px 0px black; height: 800px; padding: 50px 330px;}
+   .container .info_area .info_text{text-align: center; font-size: 25px; font-weight: bold; padding: 50px;}
+
+   .container .info_area .info .info_item1{}
+   .container .info_area .info .info_item1 .info_text1{ font-size: 17px; font-weight: bold; }
+    .container .info_area .info .info_item1 .info_text1 .info_detail{color: #ff3700;}
+   .container .info_area .info .info_item1 .box_detail{ width: 100%;  height: 47px;  line-height: 47px; padding: 10px; border: 1px solid;}
+   .container .info_area .info .info_item1 .box_detail:focus {box-shadow: 0px 0px 12px #a0a0a0; outline: none;}
+	a { text-decoration: none; }
+	.choice { width: 220px; height: 40px; border: 1px solid black; cursor: pointer; color: white; }
+	.ch1 { background: #000000; }
+	.ch1:hover { background: #252525; }
+	.ch2 { background: #FFFFFF; color: black; }
+	.ch2:hover { background: #e7e7e7 }
+	
+	.submit_reset { text-align: center; }
+	#login { width: 100%; height: 47px; background: #000000; border: 1px solid black; cursor: pointer; color: white;}
+	#login:hover { background: #252525; } 
+	#cancel { width: 100%; height: 47px; background: #FFFFFF; border: 1px solid black; cursor: pointer; color: black;}
+	#cancel:hover { background: #e7e7e7 }
+	
+	.regist { 
+		text-align: center;
+		border: 0;
+		background-color: white;
+		color: black;
+		text-decoration: none; 
+	}
