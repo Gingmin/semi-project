@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.footer_area{height: 320px; background-color:lightgray; padding: 30px;}
+   .footer_area .footer_logo{ font-family: Rock Salt; font-weight: bold;  font-size: 25px; padding: 15px 0;}
+   .footer_area .row{margin: 0;}
+   .footer_area .row .company_info{width: 50%; float: left;}
+   .footer_area .row .company_info .info_text{  font-family: Rock Salt; font-size: 15px; padding: 8px 0; }
+   .footer_area .row .service_area{width:25%; float: left;}
+   .footer_area .row .service_area .service_info{text-align: center; font-size: 18px; font-weight: bold;}
+   .footer_area .row .service_area .service_text{ font-family: Rock Salt; font-size: 15px; padding: 8px 0; text-align: center; }
+   .footer_area .row .service_area .service_text .service_text_1{text-decoration: none; color: black;}
+
+   .footer_area .row .terms_area{width:25%; float: left;}
+   .footer_area .row .terms_area .terms_info{text-align: center; font-size: 18px; font-weight: bold;}
+   .footer_area .row .terms_area .terms_text{ font-size: 15px; padding: 8px 0; text-align: center; }
+   .footer_area .row .terms_area .terms_text .terms_text_1{text-decoration: none; color: black;}

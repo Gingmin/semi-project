@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+    .modal.fade{}
+	.modal.fade .modal-dialog{ }
+	.modal.fade .modal-dialog .modal-content{ }
+	.modal.fade .modal-dialog .modal-content .modal-header{border:0; text-align: center; padding: 45px;}
+	.modal.fade .modal-dialog .modal-content .modal-header .fa-dumbbell{  font-size: 70px;  color: #ff3700;}
+	.modal.fade .modal-dialog .modal-content .modal-body{  }
+	.modal.fade .modal-dialog .modal-content .modal-body .modal_text{ font-size: 25px; text-align: center; }
+	.modal.fade .modal-dialog .modal-content .modal-footer{ text-align: center; padding: 30px;}
+	.modal.fade .modal-dialog .modal-content .modal-footer .btn-default{  width: 140px;  height: 50px;  color: white;  background-color: black; }
+
+	.container{}
+    .container .info_area{box-shadow: 0 0 20px 0px black; height: 1500px; padding: 50px 330px;}
+    .container .info_area .info_text{text-align: center; font-size: 25px; font-weight: bold; padding: 50px;}
+
+    .container .info_area .info .info_item1{}
+    .container .info_area .info .info_item1 .info_text1{ font-size: 17px; font-weight: bold; }
+    .container .info_area .info .info_item1 .info_text1 .info_detail{color: #ff3700;}
+    .container .info_area .info .info_item1 .box_detail{ width: 100%;  height: 47px;  line-height: 47px; padding: 10px; border: 1px solid;}
+    .container .info_area .info .info_item1 .box_detail:focus {box-shadow: 0px 0px 12px #a0a0a0; outline: none;}
+   
+    .guide { font-size: 14px; font-weight: lighter; text-decoration: underline }
+	input[type=radio], input[type=radio]:checked { appearance: none; border: 1px solid black; width: 15px; heihgt: 15px; cursor: pointer; border-radius: 100%; vertical-align: sub;}
+	input[type=radio] { width: 15px; height: 15px; border: 1px solid black; background-color: #FFFFFF border-radius: 100%; cursor: pointer; vertical-align: sub;}
+	input[type=radio]:checked { background-color: #FF3700 }
+	
+	.male { font-size: 14px; }
+	.female { font-size: 14px; }
+	a { text-decoration: none; }
+	input[type=checkbox] + label { display: inline-block; width: 30px; height: 30px; border: 1px solid black; vertical-align: middle; cursor: pointer;}
+	input[type=checkbox]:checked + label { background: #FF3700 }
+	input[type=checkbox] { display: none; }
+	.terms { text-align: center; }
+	.submit_reset { text-align: center; }
+	#registMember { width: 100px; height: 30px; background: #FF3700; color: white; border: 0; cursor: pointer; }
+	#registMember:hover { background: #fe4917 }
+	/* input[type=submit] { width: 100px; height: 30px; background: #FF3700; color: white; border: 0; cursor: pointer; }
+	input[type=submit]:hover { background: #fe4917 } */
+	#cancel { width: 100px; height: 30px; background: #FFFFFF; border: 1px solid black; cursor: pointer; }
+	.choice { width: 220px; height: 40px; border: 1px solid black; cursor: pointer; color: white; }
+	.ch1 { background: #000000; }
+	.ch1:hover { background: #252525; }
+	.ch2 { background: #FFFFFF; color: black; }
+	.ch2:hover { background: #e7e7e7 }
+	
+	
+	

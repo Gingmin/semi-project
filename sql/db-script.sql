@@ -1,0 +1,54 @@
+-- 기존 테이블 삭제
+DROP TABLE TBL_MEMBER;
+
+-- 기존 시퀀스 삭제
+DROP SEQUENCE SEQ_MEMBER_NO;
+
+-- 시퀀스 생성
+CREATE SEQUENCE SEQ_MEMBER_NO;
+
+-- 테이블 생성
+-- MEMBER 테이블 생성
+CREATE TABLE TBL_MEMBER(
+  MEMBER_NO NUMBER PRIMARY KEY,
+  EMAIL VARCHAR2(50) UNIQUE,
+  MEMBER_PWD VARCHAR2(255) NOT NULL,
+  MEMBER_NAME VARCHAR2(20) NOT NULL,
+  PHONE VARCHAR2(20) NOT NULL,
+  ENROLL_DATE DATE DEFAULT SYSDATE,
+  MODIFIED_DATE DATE,
+  BLACK_STATUS VARCHAR(2) DEFAULT 'N' CHECK(BLACK_STATUS IN ('Y', 'N')),
+  MEMBER_ROLE VARCHAR2(15) DEFAULT 'MEMBER' CHECK(MEMBER_ROLE IN ('MEMBER', 'ADMIN')),
+  MEMBER_STATUS VARCHAR2(2) DEFAULT 'Y' CHECK(MEMBER_STATUS IN ('Y', 'N'))
+);
+
+-- 관리자 계정 추가
+		INSERT
+		  INTO TBL_MEMBER A
+		(
+		  A.MEMBER_NO
+		, A.EMAIL
+		, A.MEMBER_PWD
+		, A.MEMBER_NAME
+		, A.PHONE
+        , A.MEMBER_ROLE
+		)
+		VALUES
+		(
+		  SEQ_MEMBER_NO.NEXTVAL
+		, 'hellopt@gmail.com'
+		, '$2a$10$7NqnZ0pUQh2RDLDkcEmubOSWB2DSewpDNs7q7xwxgZHHvMgZGJ.rW'
+		, '관리자'
+		, '010-1234-5678'
+        , 'ADMIN'
+		);
+commit;
+-- 공지사항 테이블 생성
+
+-- 카테고리 테이블 생성
+
+-- 카테고리 테이블에 카테고리 추가
+
+-- 게시판 테이블 생성
+
+-- 첨부파일 테이블 생성
