@@ -5,8 +5,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/mypage_trainer.css">
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/semi/resources/css/mypage_trainer.css">
+	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -58,7 +58,7 @@
 						<div class="profile_etc_btn">
 							<div class="row">
 								<div class="etc_btn">
-									<a class="etc_detail" href="#">매출내역</a>
+									<a class="etc_detail" href="#" id="sales-details">매출내역</a>
 								</div>
 								<div class="etc_btn">
 									<a class="etc_detail" href="#">신고</a>
@@ -157,7 +157,7 @@
 				</div>
 
 				<div class="insert_btn">
-					<a class="insert_detail" href="#">클래스 추가하기</a>
+					<a class="insert_detail" href="#" id="insert_class">클래스 추가하기</a>
 				</div>
 
 
