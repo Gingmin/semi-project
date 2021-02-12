@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+
+#wrap{}
+/* 헤더 */
+.header_area{ line-height: 60px;  padding: 0 30px; }
+.header_area .row{margin: 0;}
+.header_area .row .header_logo{float: left; font-family: Rock Salt; font-weight: bold; text-shadow: 0px 0px 8px black;  font-size: 20px; }
+.header_area .row .header_meun{float: right;}
+.header_area .row .header_meun .menu_list{float:right;  font-size: 18px;  text-decoration: none; padding: 0 20px; color: black;}
+/* 헤더 끝*/
+
+/* 배너 */
+.banner_area{ height: 500px; background-color: gray;}
+.banner_area .banner_detail{ width: 100%;  height: 500px; }
+/* 배너 끝*/
+
+
+
+.container{}
+.container .howuse_area{height: 600px; padding: 50px;}
+.container .howuse_area .row{ margin: 0; }
+.container .howuse_area .row .howuse_img_area{float: left; width: 50%; height: 500px;}
+.container .howuse_area .row .howuse_img_area .carousel{}
+.container .howuse_area .row .howuse_img_area .carousel .row{margin: 0;}
+.container .howuse_area .row .howuse_img_area .carousel .row .carousel-inner{float:left;}
+.container .howuse_area .row .howuse_img_area .carousel .row .carousel-inner .item{  margin: 25px 0; }
+.container .howuse_area .row .howuse_img_area .carousel .row .carousel-inner .item .img_detail{height:450px; width: 70%; margin: 0 auto; box-shadow: 0 0 30px 5px grey;}
+
+
+
+.howuse_area .row .howuse_img_area .carousel .carousel-control{     background-image: none; }
+.howuse_area .row .howuse_img_area .carousel .carousel-control .glyphicon-chevron-left{color: black;}
+.howuse_area .row .howuse_img_area .carousel .carousel-control .glyphicon-chevron-right{color: black;}
+
+
+.container .howuse_area .row .howuse_text_area{float: left; width: 50%; height: 500px; padding: 0 20px; }
+.container .howuse_area .row .howuse_text_area .howuse_text{text-align: center; font-size: 25px; font-weight: bold; padding: 20px;  }
+.container .howuse_area .row .howuse_text_area .howuse_text1{padding: 30px;  height: 400px; position: relative; display: none;}
+.container .howuse_area .row .howuse_text_area .howuse_text1.on{ display: block; }
+
+
+
+.trainer_area{height: 600px; background-color: black;}
+.trainer_area .swiper-container{height: 500px; height: 600px; }
+.trainer_area .swiper-container .contant_name{color: white; text-align: center; font-family: Rock Salt; font-weight: bold; padding: 25px 0; font-size: 20px;}
+.trainer_area .swiper-container .swiper-wrapper{}
+.trainer_area .swiper-container .swiper-wrapper .swiper-slide{height: 500px; background-color: black;}
+.trainer_area .swiper-container .swiper-wrapper .swiper-slide .img_detail{width: 100%;  height: 400px;}
+.trainer_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text{ width: 100%; padding: 10px; }
+.trainer_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text .trainer_name{color: white; }
+.trainer_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text .trainer_info{color: white;}
+
+
+.target_area{height: 600px; background-color: white;}
+.target_area .swiper-container{height: 500px; height: 600px; }
+.target_area .swiper-container .contant_name{color: black; text-align: center; font-family: Rock Salt; font-weight: bold; padding: 25px 0; font-size: 20px;}
+.target_area .swiper-container .swiper-wrapper{}
+.target_area .swiper-container .swiper-wrapper .swiper-slide{height: 500px; }
+.target_area .swiper-container .swiper-wrapper .swiper-slide .img_detail{width: 100%;  height: 400px;}
+.target_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text{ width: 100%; padding: 10px; }
+.target_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text .trainer_name{}
+.target_area .swiper-container .swiper-wrapper .swiper-slide .trainer_text .trainer_info{}
+
+
+.footer_area{height: 320px; background-color:lightgray; padding: 30px;}
+.footer_area .footer_logo{ font-family: Rock Salt; font-weight: bold;  font-size: 25px; padding: 15px 0;}
+.footer_area .row{margin: 0;}
+.footer_area .row .company_info{width: 50%; float: left;}
+.footer_area .row .company_info .info_text{  font-family: Rock Salt; font-size: 15px; padding: 8px 0; }
+.footer_area .row .service_area{width:25%; float: left;}
+.footer_area .row .service_area .service_info{text-align: center; font-size: 18px; font-weight: bold;}
+.footer_area .row .service_area .service_text{ font-family: Rock Salt; font-size: 15px; padding: 8px 0; text-align: center; }
+.footer_area .row .service_area .service_text .service_text_1{text-decoration: none; color: black;}
+
+.footer_area .row .terms_area{width:25%; float: left;}
+.footer_area .row .terms_area .terms_info{text-align: center; font-size: 18px; font-weight: bold;}
+.footer_area .row .terms_area .terms_text{ font-size: 15px; padding: 8px 0; text-align: center; }
+.footer_area .row .terms_area .terms_text .terms_text_1{text-decoration: none; color: black;}
+
+/* 이용방법 끝*/
+
+
+
+
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+ /* display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;*/
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}

@@ -44,7 +44,7 @@
 	      	</c:if>
 	      </c:if>
 	         <a class="menu_list" href="#">마이페이지</a>
-	         <a class="menu_list" href="#">Q&A</a>
+	         <a class="menu_list" href="#">게시판</a>
 	         <a class="menu_list" href="#">멤버쉽</a>
 	         <a class="menu_list" href="#">트레이너</a>
 	         <a class="menu_list" href="#">소개</a>

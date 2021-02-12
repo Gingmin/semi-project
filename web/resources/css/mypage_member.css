@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+.container{}
+.container .member_info_area{margin: 50px 0;}
+.container .member_info_area .member_area{}
+.container .member_info_area .member_area .member_text{font-size: 25px;  font-weight: bold; margin-bottom: 20px; }
+
+.container .member_info_area .member_area .row{margin: 0;}
+.container .member_info_area .member_area .row .member_info{float: left; width: 30%; height: 350px; box-shadow: 0 0 20px 0 gray; padding: 20px;}
+.container .member_info_area .member_area .row .member_info .member_img_area{width: 150px; height: 150px; margin: 0 auto; padding: 10px; border-radius: 30px;}
+.container .member_info_area .member_area .row .member_info .member_img_area .img_detail{width: 100%; height: 100%; border-radius: 63px;}
+.container .member_info_area .member_area .row .member_info .member_name{text-align: center;  font-size: 17px;  font-weight: bold;}
+
+.container .member_info_area .member_area .row .member_info .infobtn_area{padding: 40px 30px;}
+.container .member_info_area .member_area .row .member_info .infobtn_area .row{margin: 0;}
+.container .member_info_area .member_area .row .member_info .infobtn_area .row .membership_btn{float: left; width: 50%; text-align: center;}
+.container .member_info_area .member_area .row .member_info .infobtn_area .row .membership_btn .fa-star{font-size: 25px; padding-bottom: 15px;}
+.container .member_info_area .member_area .row .member_info .infobtn_area .row .membership_btn .member_text1{font-size: 20px; display: block; color: black; text-decoration: none;}
+.container .member_info_area .member_area .row .member_info .infobtn_area .row .membership_btn .fa-credit-card{font-size: 25px; padding-bottom: 15px;}
+
+.container .member_info_area .member_area .row .exercise_regi_area{float: right; width: 65%; box-shadow: 0 0 20px 0 gray; padding: 20px; height: 350px;}
+.container .member_info_area .member_area .row .exercise_regi_area .row{margin: 0;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area{ width: 70%; float: left; }
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .member_text2{font-size: 25px; font-weight: bold;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row{margin: 0;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count{ width: 45%; float: left; margin-right: 40px;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count .member_text3{ font-size: 20px; font-weight: bold; padding: 30px 0; }
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count .member_text4{font-size: 20px; padding: 15px 0;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count .member_text4 .member_count{ font-size: 20px; float: right;}
+
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count .line{border-bottom: 4px solid black; }
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_count .count_sum{ font-size: 20px; float: right; padding-top: 10px; font-weight: bold;}
+
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time{ width: 45%; float: left;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time .member_text3{ font-size: 20px; font-weight: bold; padding: 30px 0; }
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time .member_text4{font-size: 20px; padding: 15px 0;}
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time .member_text4 .member_count{ font-size: 20px; float: right;}
+
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time .line{border-bottom: 4px solid black; }
+.container .member_info_area .member_area .row .exercise_regi_area .row .regi_area .row .exercise_time .time_sum{ font-size: 20px; float: right; padding-top: 10px; font-weight: bold;}
+
+
+
+.container .member_info_area .member_area .row .myticket_area{float: right; width: 30%;}
+.container .member_info_area .member_area .row .myticket_area .member_text5{display: block; border: 1px solid #ff3700; width: 190px; height: 35px;     margin: 0 auto;  color: black;  text-decoration: none;  background-color: #ff3700;  font-size: 16px; line-height: 35px;  text-align: center;  border-radius: 12px; font-weight: bold;}
+
+.container .member_info_area .member_area .row .myticket_area .myticket{text-align: center;}
+.container .member_info_area .member_area .row .myticket_area .myticket .member_text6{font-size: 20px; font-weight: bold; padding: 30px 0; }
+.container .member_info_area .member_area .row .myticket_area .myticket .member_text7{ font-size: 18px; padding: 15px 0; }
+.container .member_info_area .member_area .row .myticket_area .myticket .member_text7 .ticket_kinds{}
+.container .member_info_area .member_area .row .myticket_area .myticket .member_text7 .ticket_count{}
+.container .member_info_area .memberbtn_area{padding: 20px 0;}
+.container .member_info_area .memberbtn_area .row{margin: 0;}
+.container .member_info_area .memberbtn_area .row .declaration_btn{float: right; }
+.container .member_info_area .memberbtn_area .row .secession_btn{float: right; margin-right: 20px;}
+
+.container .member_info_area .memberbtn_area .row .declaration_btn .btn_detail{color: white; display: block; font-size: 17px; border: 1px solid black; background-color:black; width: 100px; height: 40px; line-height: 40px; text-align: center; text-decoration: none; border-radius: 15px;}
+.container .member_info_area .memberbtn_area .row .secession_btn .btn_detail{color: white; display: block; font-size: 17px; border: 1px solid black; background-color:black; width: 100px; height: 40px; line-height: 40px; text-align: center; text-decoration: none; border-radius: 15px;}
+/* 회원 정보 끝*/
+
+
+/*.container .line{border: 1px solid black; margin-bottom: 80px;}*/
+
+.container .calendar_area{ height: 450px; }
+.container .calendar_area .row{margin: 0;}
+.container .calendar_area .row .cld_left_area{width: 40%;  float: left;}
+.container .calendar_area .row .cld_left_area .cld_text{font-size: 25px; font-weight: bold;}
+
+.container .calendar_area .row .cld_right_area{width: 60%; float: left;}
+.container .calendar_area .row .cld_right_area .cld_list{}
+.container .calendar_area .row .cld_right_area .cld_list .row{margin:0;}
+.container .calendar_area .row .cld_right_area .cld_list .row .list_kinds{float:left;  font-size: 25px;  font-weight: bold; padding: 0 40px;}
+
+.container .calendar_area .row .cld_right_area .line2{border: 1px solid black; margin: 30px 0;}
+
+.container .calendar_area .row .cld_right_area .cld_btnlist{margin-bottom: 20px;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row{margin:0;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds{float:left;  font-size: 20px;  font-weight: bold; padding: 0 20px;  width: 130px;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .btnlist_detail{  border-radius: 20px;  width: 85px;  height: 45px;  background-color: white; color: black;outline: none;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .btnlist_detail.on{ background-color: black; color: white; outline: none; }
+
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text{display: none; height: 300px; width: 550px; margin-top: 20px;
+}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text1{display: none;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text2{display: none;}
+.container .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text.on{display: block;}
+
+
+
+
+.container .payment_history_area{height: 450px;}
+.container .payment_history_area .ph_text{font-size: 25px; font-weight: bold; padding-bottom: 50px;}
+.container .payment_history_area .line3{border-bottom: 4px solid black;}
+.container .payment_history_area .row{margin: 0;}
+.container .payment_history_area .history_list{float:left;  height: 50px; line-height: 50px; width: 100%;  text-align: center;}
+.container .payment_history_area .history_list .histry_item{ font-weight: bold; font-size: 25px; display: block; width: 25%; float: left; }
+
+
+
+

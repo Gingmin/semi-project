@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.container{}
+.container .privacy_policy_area{ margin: 20px 0; box-shadow: 0 0 20px 0px black;}
+.container .privacy_policy_area .privacy_text{ padding: 25px; }
+.container .privacy_policy_area .privacy_text .privacy_text_1{ font-size: 17px; font-weight: bold; padding-bottom: 12px;}
+.container .privacy_policy_area .privacy_text .privacy_text_2{padding-bottom: 10px;}

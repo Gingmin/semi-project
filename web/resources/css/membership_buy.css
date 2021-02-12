@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+
+.container{}
+.container .membership_area{ margin: 100px 0 150px 0; }
+.container .membership_area .member_textarea{text-align: center; padding: 100px 0;}
+.container .membership_area .member_textarea .membet_text1{font-family: Rock Salt; padding-bottom: 15px; font-size: 17px; font-weight: bold;}
+.container .membership_area .member_textarea .membet_text2{font-family: Rock Salt; font-size: 17px; font-weight: bold;}
+
+
+.container .membership_area .membership_type_area{ padding: 0 11%; margin-bottom: 30px;}
+.container .membership_area .membership_type_area .row{margin: 0;}
+.container .membership_area .membership_type_area .row .ticket_area{float: left; box-shadow: 0 0 20px 0px black; width: 360px; height: 400px; padding: 20px 35px; margin: 0 40px;}
+.container .membership_area .membership_type_area .row .ticket_area .ticket_textarea{}
+.container .membership_area .membership_type_area .row .ticket_area .ticket_textarea .ticket_text1{text-align: center; font-size: 18px; font-weight: bold; padding: 24px 0;}
+.container .membership_area .membership_type_area .row .ticket_area .ticket_textarea .ticket_text2{text-align: center; font-size: 16px; padding-bottom: 15px;}
+.container .membership_area .membership_type_area .row .ticket_area .ticket_textarea .ticket_text3{padding-bottom: 12px;}
+
+.container .membership_area .membership_type_area .row .ticket_area .ticket_btn_area{text-align: center; padding: 20px;}
+.container .membership_area .membership_type_area .row .ticket_area .ticket_btn_area .ticket_btn_detail{border: 1px solid #ff3700; width: 250px; height: 50px; display: block; line-height: 50px; color: black; font-weight: bold; font-size: 25px; margin: 0 auto; background-color: #ff3700; border-radius: 12px; text-decoration: none;}
+
+.container .membership_area .membership_type_area .row .ticket_area .ticket_btn_area.type{padding: 49px 20px;}
