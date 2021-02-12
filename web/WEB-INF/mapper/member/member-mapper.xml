@@ -20,4 +20,27 @@
 		, ?
 		)
 	</entry>
+	<entry key="selectEncryptPwd">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectEncryptPwd() */
+		       B.MEMBER_PWD
+		  FROM TBL_MEMBER B
+		 WHERE B.MEMBER_STATUS = 'Y'
+		   AND B.EMAIL = ?
+	</entry>
+	<entry key="selectLoginMember">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectLoginMember() */
+		       C.MEMBER_NO
+		     , C.EMAIL
+		     , C.MEMBER_PWD
+		     , C.MEMBER_NAME
+		     , C.PHONE
+		     , C.ENROLL_DATE
+		     , C.MODIFIED_DATE
+		     , C.BLACK_STATUS
+		     , C.MEMBER_ROLE
+		     , C.MEMBER_STATUS
+		  FROM TBL_MEMBER C
+		 WHERE C.MEMBER_STATUS = 'Y'
+		   AND C.EMAIL = ?
+	</entry>
 </properties>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- jstl -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +29,20 @@
 	      <div class="header_logo ">
 	         <a class="logo_detail" href="">HELLOPT</a>
 	      </div>
-	      <div class="header_meun ">            
+	      <div class="header_meun ">
+	      <!-- 로그인이 안 되어 있는 경우  -->          
+	      <c:if test="${ empty sessionScope.loginMember }">
 	         <input type="button" class="loginPage" value="로그인" id="loginPage">
+	      </c:if>
+	      <!-- 로그인이 되어 있는 경우 -->
+	      <c:if test="${ ! empty sessionScope.loginMember }">
+	      	<span><c:out value="${ sessionScope.loginMember.name }"/>님 환영합니다.</span>
+	      	<input type="button" class="logout" value="로그아웃" id="logout">
+	      	<!-- 관리자페이지 -->
+	      	<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
+	      	<input type="button" class="adminPage" value="관리자 페이지" id="adminPage">
+	      	</c:if>
+	      </c:if>
 	         <a class="menu_list" href="#">마이페이지</a>
 	         <a class="menu_list" href="#">Q&A</a>
 	         <a class="menu_list" href="#">멤버쉽</a>

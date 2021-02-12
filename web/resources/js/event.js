@@ -20,6 +20,13 @@ window.onload = function() {
 			location.href = "/semi/member/regist";
 		}
 	}
+	
+	if(document.getElementById("logout")) {
+		const $logout = document.getElementById("logout");
+		$logout.onclick = function() {
+			location.href = "/semi/member/logout";
+		}
+	}
 
 	
 	
