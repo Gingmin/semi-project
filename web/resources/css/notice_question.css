@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.container .qna_list_area{ margin: 20px 0; }
+
+.container .qna_list_area .q_text{  font-size: 20px; font-weight: bold;  }
+.container .qna_list_area .row{margin: 0;}
+.container .qna_list_area .row .question_list{float: left; width: 45%; box-shadow: 0 3px 12px 0px grey; padding: 12px; margin-bottom: 15px;}
+.container .qna_list_area .row .question_list.type{float:right;}
+
+.container .qna_list_area .row .question_list .q_text1{ font-size: 18px; font-weight: bold; color: gray;}
+.container .qna_list_area .row .question_list .btn_detail{ background-color: white; color: gray; border: 0; padding: 0;}
+
+
+
+

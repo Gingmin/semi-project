@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+
+.container{}
+.container .profile_area{margin: 50px 0;}
+.container .profile_area .profile_text{font-size: 25px; font-weight: bold;}
+.container .profile_area .row{margin: 0;}
+.container .profile_area .row .profile_img_area{float: left; padding-top: 20px; width: 30%;}
+.container .profile_area .row .profile_img_area .profile_img{width: 300px; height: 300px; border-radius: 150px; box-shadow: 0 0 20px 0 black; margin: 0 auto;}
+.container .profile_area .row .profile_img_area .profile_img .img_detail{ width: 100%;  height: 100%; border-radius: 150px; }
+
+.container .profile_area .row .profile_img_area .profile_btn_area{text-align: center; padding: 30px;}
+.container .profile_area .row .profile_img_area .profile_btn_area .edit_btn{  font-size: 18px; border: 1px solid black; display: block; width: 150px; margin: 0 auto;
+    line-height: 30px; color: white; background-color: black; }
+
+.container .profile_area .row .profile_info_area{float: left;  width: 70%; padding: 50px 0 20px 20px;}
+.container .profile_area .row .profile_info_area .info_item{font-size: 20px; font-weight: bold; padding-bottom: 15px; }
+
+.container .profile_area .row .profile_info_area .class_btn{ padding-bottom: 30px; line-height: 35px;}
+.container .profile_area .row .profile_info_area .class_btn .start_btn{float: left;  font-size: 17px;    padding-right:21px;  font-weight: bold;}
+
+.container .profile_area .row .profile_info_area .profile_etc_btn{  } 
+.container .profile_area .row .profile_info_area .profile_etc_btn .row{ margin: 0; }
+.container .profile_area .row .profile_info_area .profile_etc_btn .row .etc_btn{float: left; padding-right: 25px;}
+.container .profile_area .row .profile_info_area .profile_etc_btn .row .etc_btn .etc_detail{ text-decoration: none; color: black;  display: block;     border: 1px solid black; width: 115px;  text-align: center;  line-height: 30px;  color: white;  background-color: black;}
+
+
+
+
+.container .profile_area .line{border: 1px solid black; margin-bottom: 80px;}
+
+
+
+.container .profile_area .calendar_area{ height: 450px; }
+.container .profile_area .calendar_area .row{margin: 0;}
+.container .profile_area .calendar_area .row .cld_left_area{width: 40%;  float: left;}
+.container .profile_area .calendar_area .row .cld_left_area .cld_text{font-size: 25px; font-weight: bold;}
+
+.container .profile_area .calendar_area .row .cld_right_area{width: 60%; float: left;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_list{}
+.container .profile_area .calendar_area .row .cld_right_area .cld_list .row{margin:0;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_list .row .list_kinds{float:left;  font-size: 25px;  font-weight: bold; padding: 0 40px;}
+
+.container .profile_area .calendar_area .row .cld_right_area .line2{border: 1px solid black; margin: 30px 0;}
+
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist{margin-bottom: 20px;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row{margin:0;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds{float:left;  font-size: 20px;  font-weight: bold; padding: 0 20px;  width: 130px;;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .btnlist_detail{  border-radius: 20px;  width: 85px;  height: 45px;  background-color: white; color: black;outline: none;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .btnlist_detail.on{ background-color: black; color: white; outline: none; }
+
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text{display: none; height: 300px; width: 550px; margin-top: 20px;
+}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text1{display: none;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text2{display: none;}
+.container .profile_area .calendar_area .row .cld_right_area .cld_btnlist .row .btnlist_kinds .calendar_text.on{display: block;}
+
+
+
+.container .profile_area .class_management_area{ height: 450px; }
+.container .profile_area .class_management_area .class_text{ font-size: 25px; font-weight: bold;}
+
+
+.container .profile_area .class_management_area .class_btn_list{ padding: 30px 0; }
+.container .profile_area .class_management_area .class_btn_list .row{margin: 0;}
+.container .profile_area .class_management_area .class_btn_list .row .cm_btn_list{float: left; padding-right: 20px; width: 200px;}
+.container .profile_area .class_management_area .class_btn_list .row .cm_btn_list .cm_btn{font-size: 18px;  border: 1px solid black;  font-weight: bold; text-align: center; line-height: 40px;}
+
+
+.container .profile_area .class_management_area .class_btn_list .row .cm_btn_list .cm_btn.on{background-color: black; color: white;}
+
+
+
+
+.container .profile_area .insert_btn{}
+.container .profile_area .insert_btn .insert_detail{border: 1px solid black;  display: block;  width: 300px;  line-height: 47px;  text-align: center;
+    font-size: 20px;  background-color: black;  color: white;  margin: 0 auto; text-decoration: none;}
+
+
+
+
+
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  vertical-align:middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+p {
+	margin:0px;
+	display:inline-block;
+	font-size:15px;
+	font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+
