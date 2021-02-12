@@ -22,12 +22,12 @@
 	         	<input type="button" class="choice ch2" value="트레이너" onclick="location.href='http://127.0.0.1:8001/semi/views/login/loginTrainer.html'">
 	      </div><br><br>
 	      
-	      <form class="info" action="" method="">
+	      <form class="info" action="${ pageContext.servletContext.contextPath }/member/login" method="post">
 	         <div class="info_item1">
 	            <div class="info_text1">
-	               아이디 <span class="info_detail">*</span>
+	               이메일 <span class="info_detail">*</span>
 	            </div>
-	            <input class="box_detail" type="text" name="userId" placeholder="아이디를 입력해주세요" autofocus>
+	            <input class="box_detail" type="email" name="email" placeholder="이메일을 입력해주세요" autofocus>
 	         </div>
 	         
 	         <br>

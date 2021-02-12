@@ -16,7 +16,7 @@
 			
 			switch(successCode) {
 				case "insertMember" :
-					movePath = "${ pageContext.servletContext.contextPath }";
+					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "회원 가입 성공!";
 					break;
 			}
