@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/index.css">
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/notice_borad.css">
+	<link rel="stylesheet" href="/semi/resources/css/index.css">
+	<link rel="stylesheet" href="/semi/resources/css/notice_board.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,23 +30,23 @@
 		<!-- 헤더 끝 -->
 		<!-- 메인 배너 -->
 		<div class="banner_area">
-			<img class="banner_detail" src="./img/notice_banner.JPG">
+			<img class="banner_detail" src="/semi/resources/images/notice_banner.JPG">
 		</div>
 		<!-- 메인 배너 끝 -->
 		<div class="container">
 			<div class="notice_menu_area">
 				<div class="row">
 					<div class="menu_list col-sm-3">
-						<a class="list_detail" href="http://kordzor.cafe24.com/semiproject/notice_borad.html">공지사항</a>
+						<input type="button" class="list_detail " value="공지사항" id="noticeNotice">
 					</div>
 					<div class="menu_list col-sm-3">
-						<a class="list_detail on" href="http://kordzor.cafe24.com/semiproject/notice_review.html">리뷰</a>
+						<input type="button" class="list_detail on" value="리뷰" id="noticeReview">
 					</div>
 					<div class="menu_list col-sm-3">
-						<a class="list_detail" href="http://kordzor.cafe24.com/semiproject/notice_report.html">신고 내역</a>
+						<input type="button" class="list_detail" value="신고 내역" id="noticeReport">
 					</div>
 					<div class="menu_list col-sm-3">
-						<a class="list_detail" href="http://kordzor.cafe24.com/semiproject/notice_question.html">자주 묻는 질문</a>
+						<input type="button" class="list_detail" value="자주 묻는 질문" id="noticeQuestion">
 					</div>
 				</div>
 			</div>
