@@ -9,25 +9,25 @@ public class MemberDTO implements java.io.Serializable {
 	private String pwd;
 	private String name;
 	private String phone;
-	private java.sql.Date enroll_date;
-	private java.sql.Date modified_Date;
-	private String black_status;
+	private java.sql.Date enrollDate;
+	private java.sql.Date modifiedDate;
+	private String blackStatus;
 	private String role;
 	private String status;
 	
 	public MemberDTO() {}
 
-	public MemberDTO(int no, String email, String pwd, String name, String phone, Date enroll_date, Date modified_Date,
-			String black_status, String role, String status) {
+	public MemberDTO(int no, String email, String pwd, String name, String phone, Date enrollDate, Date modifiedDate,
+			String blackStatus, String role, String status) {
 		super();
 		this.no = no;
 		this.email = email;
 		this.pwd = pwd;
 		this.name = name;
 		this.phone = phone;
-		this.enroll_date = enroll_date;
-		this.modified_Date = modified_Date;
-		this.black_status = black_status;
+		this.enrollDate = enrollDate;
+		this.modifiedDate = modifiedDate;
+		this.blackStatus = blackStatus;
 		this.role = role;
 		this.status = status;
 	}
@@ -72,28 +72,28 @@ public class MemberDTO implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	public java.sql.Date getEnroll_date() {
-		return enroll_date;
+	public java.sql.Date getEnrollDate() {
+		return enrollDate;
 	}
 
-	public void setEnroll_date(java.sql.Date enroll_date) {
-		this.enroll_date = enroll_date;
+	public void setEnrollDate(java.sql.Date enrollDate) {
+		this.enrollDate = enrollDate;
 	}
 
-	public java.sql.Date getModified_Date() {
-		return modified_Date;
+	public java.sql.Date getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public void setModified_Date(java.sql.Date modified_Date) {
-		this.modified_Date = modified_Date;
+	public void setModifiedDate(java.sql.Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
-	public String getBlack_status() {
-		return black_status;
+	public String getBlackStatus() {
+		return blackStatus;
 	}
 
-	public void setBlack_status(String black_status) {
-		this.black_status = black_status;
+	public void setBlackStatus(String blackStatus) {
+		this.blackStatus = blackStatus;
 	}
 
 	public String getRole() {
@@ -115,7 +115,7 @@ public class MemberDTO implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "MemberDTO [no=" + no + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone
-				+ ", enroll_date=" + enroll_date + ", modified_Date=" + modified_Date + ", black_status=" + black_status
+				+ ", enrollDate=" + enrollDate + ", modifiedDate=" + modifiedDate + ", blackStatus=" + blackStatus
 				+ ", role=" + role + ", status=" + status + "]";
 	}
 	

@@ -19,6 +19,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "회원 가입 성공!";
 					break;
+				case "updateMember" :
+					movePath = "${ pageContext.servletContext.contextPath }/member/update";
+					message = "회원 정보 수정 성공!";
+					break;
 			}
 			
 			alert(message);

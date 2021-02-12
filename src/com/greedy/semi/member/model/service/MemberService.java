@@ -54,4 +54,30 @@ public class MemberService {
 		return loginMember;
 	}
 
+	public MemberDTO updateMember(MemberDTO changeInfo) {
+		
+		Connection con = getConnection();
+		
+		MemberDTO changedMember = null;
+		
+		String encPwd = memberDAO.selectEncryptPwd(con, changeInfo);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		if(passwordEncoder.matches(changeInfo.getPwd(), encPwd)) {
+			
+			int result = memberDAO.updateMember(con, changeInfo);
+			
+			changedMember = memberDAO.selectLoginMember(con, changeInfo);
+			
+			if(changedMember != null && result > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		}
+		
+		close(con);
+		
+		return changedMember;
+	}
+
 }

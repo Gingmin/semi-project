@@ -43,4 +43,12 @@
 		 WHERE C.MEMBER_STATUS = 'Y'
 		   AND C.EMAIL = ?
 	</entry>
+	<entry key="updateMember">
+		UPDATE /* com.greedy.semi.member.model.dao.MemberDAO#updateMember() */
+		       TBL_MEMBER D
+		   SET D.PHONE = ?
+		     , D.MODIFIED_DATE = SYSDATE
+		 WHERE D.MEMBER_STATUS = 'Y'
+		   AND D.EMAIL = ?
+	</entry>
 </properties>

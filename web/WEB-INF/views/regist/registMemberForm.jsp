@@ -157,7 +157,7 @@
 	<script>
 		/* 필수 항목이 다 눌렸을 때만 회원가입 버튼을 눌를 수 있도록 */
 		function confirmRegist() {
-			console.log("ds")
+
 			const email = document.getElementById("email").value;
 			const password = document.getElementById("password").value;
 			const password2 = document.getElementById("password2").value;

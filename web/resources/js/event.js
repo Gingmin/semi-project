@@ -1,5 +1,6 @@
 window.onload = function() {
 	
+	/* 로그인 */
 	if(document.getElementById("loginPage")) {
 		const $loginPage = document.getElementById("loginPage");
 		$loginPage.onclick = function() {
@@ -7,6 +8,7 @@ window.onload = function() {
 		}
 	}
 	
+	/* 취소(메인으로) */
 	if(document.getElementById("cancel")) {
 		const $cancel = document.getElementById("cancel");
 		$cancel.onclick = function() {
@@ -14,6 +16,7 @@ window.onload = function() {
 		}
 	}
 	
+	/* 회원가입 */
 	if(document.getElementById("regist")) {
 		const $regist = document.getElementById("regist");
 		$regist.onclick = function() {
@@ -21,13 +24,30 @@ window.onload = function() {
 		}
 	}
 	
+	/* 로그아웃 */
 	if(document.getElementById("logout")) {
 		const $logout = document.getElementById("logout");
 		$logout.onclick = function() {
 			location.href = "/semi/member/logout";
 		}
 	}
-
+	
+	/* 회원정보페이지 */
+	if(document.getElementById("memberInfo")) {
+		const $memberInfo = document.getElementById("memberInfo");
+		$memberInfo.onclick = function() {
+			location.href = "/semi/member/update";
+		}
+	}
+	
+	/* 회원탈퇴 */
+	if(document.getElementById("memberDelete")) {
+		const $memberDelete = document.getElementById("memberDelete");
+		$memberDelete.onclick = function() {
+			location.href = "/semi/member/delete";
+		}
+	}
+	
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
 		const $logout = document.getElementById("trainer");
