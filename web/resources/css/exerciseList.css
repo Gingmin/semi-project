@@ -1,0 +1,193 @@
+ /* 헤더 */
+ .header_area .row .header_logo .logo_detail {
+ 	text-decoration: none;
+ 	color: black;
+ }
+
+ .header_area {
+ 	line-height: 60px;
+ 	padding: 0 30px;
+ }
+
+ .header_area .row {
+ 	margin: 0;
+ }
+
+ .header_area .row .header_logo {
+ 	float: left;
+ 	font-family: Rock Salt;
+ 	font-weight: bold;
+ 	text-shadow: 0px 0px 8px black;
+ 	font-size: 20px;
+ }
+
+ .header_area .row .header_meun {
+ 	float: right;
+ }
+
+ .header_area .row .header_meun .menu_list {
+ 	float: right;
+ 	font-size: 18px;
+ 	text-decoration: none;
+ 	padding: 0 20px;
+ 	color: black;
+ }
+
+ /* 헤더 끝 */
+
+ /* 메인베너 시작 */
+
+ .mainbanner {
+ 	background-color: black;
+ 	width: 1100px;
+ 	height: 300px;
+ }
+
+ .mainbannerfont {
+ 	font-family: Roboto;
+ 	color: white;
+ 	font-size: 30px;
+ 	margin-left: 80px;
+ 	margin-top: 50px;
+ 	display: inline-block;
+
+ }
+
+ /* 메인베너 */
+ .img-mainbanner {
+ 	width: 300px;
+ 	margin-left: 65%;
+ 	margin-top: 7.7%;
+ }
+
+ /* 버튼 */
+ .btn.btn-primary.btn-rounded {
+ 	border-radius: 30px;
+ 	margin-bottom: 2%;
+ 	margin-right: 3%;
+ }
+
+ /* 이번주 스케쥴 */
+ .schedule {
+ 	font-family: Roboto;
+ 	font-size: 25px;
+ 	width: 230px;
+ 	height: 29px;
+ 	line-height: 29px;
+ 	margin-top: 2%;
+ 	margin-bottom: 2%;
+ 	font-weight: bold;
+ }
+
+ .row {
+ 	margin: 0;
+ 	margin-bottom: 40px;
+ }
+
+ .row .card {
+ 	width: 300px;
+ 	height: 400px;
+ 	float: left;
+ }
+
+ .day {
+ 	font-family: Roboto;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	margin-bottom: 20px;
+ }
+
+ /* 요일 끝 */
+ /* 트레이너 카드 시작 */
+ .card {
+ 	width: 300px;
+ 	height: 400px;
+ 	/* float: left; */
+ }
+
+ .card-img-top {
+ 	height: 400px;
+ }
+
+ .mdb-color {
+ 	margin-top: 40px;
+ }
+
+
+ /* 트레이너 카드 끝 */
+
+ /* 푸터 시작 */
+ .footer_area {
+ 	height: 320px;
+ 	background-color: lightgray;
+ 	padding: 30px;
+ }
+
+ .footer_area .footer_logo {
+ 	font-family: Rock Salt;
+ 	font-weight: bold;
+ 	font-size: 25px;
+ 	padding: 15px 0;
+ }
+
+ .footer_area .row {
+ 	margin: 0;
+ }
+
+ .footer_area .row .company_info {
+ 	width: 50%;
+ 	float: left;
+ }
+
+ .footer_area .row .company_info .info_text {
+ 	font-family: Rock Salt;
+ 	font-size: 15px;
+ 	padding: 8px 0;
+ }
+
+ .footer_area .row .service_area {
+ 	width: 25%;
+ 	float: left;
+ }
+
+ .footer_area .row .service_area .service_info {
+ 	text-align: center;
+ 	font-size: 18px;
+ 	font-weight: bold;
+ }
+
+ .footer_area .row .service_area .service_text {
+ 	font-family: Rock Salt;
+ 	font-size: 15px;
+ 	padding: 8px 0;
+ 	text-align: center;
+ }
+
+ .footer_area .row .service_area .service_text .service_text_1 {
+ 	text-decoration: none;
+ 	color: black;
+ }
+
+ .footer_area .row .terms_area {
+ 	width: 25%;
+ 	float: left;
+ }
+
+ .footer_area .row .terms_area .terms_info {
+ 	text-align: center;
+ 	font-size: 18px;
+ 	font-weight: bold;
+ }
+
+ .footer_area .row .terms_area .terms_text {
+ 	font-size: 15px;
+ 	padding: 8px 0;
+ 	text-align: center;
+ }
+
+ .footer_area .row .terms_area .terms_text .terms_text_1 {
+ 	text-decoration: none;
+ 	color: black;
+ }
+
+ /* 푸터 끝 */
