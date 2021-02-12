@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+	.container{}
+    .container .info_area{box-shadow: 0 0 20px 0px black; height: 1000px; padding: 50px 330px;}
+    .container .info_area .info_text{text-align: center; font-size: 25px; font-weight: bold; padding: 50px;}
+
+    .container .info_area .info .info_item1{}
+    .container .info_area .info .info_item1 .info_text1{ font-size: 17px; font-weight: bold; }
+    .container .info_area .info .info_item1 .info_text1 .info_detail{color: #ff3700;}
+    .container .info_area .info .info_item1 .box_detail{ width: 100%;  height: 47px;  line-height: 47px; padding: 10px; border: 1px solid;}
+    .container .info_area .info .info_item1 .box_detail:focus {box-shadow: 0px 0px 12px #a0a0a0; outline: none;}
+   
+	.submit_reset { text-align: center; }
+	#updateMember { width: 100px; height: 30px; background: #FF3700; color: white; border: 0; cursor: pointer; }
+	#updateMember:hover { background: #fe4917 }
+	#cancel { width: 100px; height: 30px; background: #FFFFFF; border: 1px solid black; cursor: pointer; }
+	
+	
+	
