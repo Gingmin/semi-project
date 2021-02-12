@@ -50,6 +50,21 @@ window.onload = function() {
 		}
 	}
 	
+	/* 회원 마이페이지 */
+	if(document.getElementById("mypage")) {
+		const $logout = document.getElementById("mypage");
+		$logout.onclick = function() {
+			location.href = "/semi/member/mypage";
+		}
+	}
+	/* 무제한 클래스 참여하기*/
+	if(document.getElementById("participation")) {
+		const $logout = document.getElementById("participation");
+		$logout.onclick = function() {
+			location.href = "/semi/class/list";
+		}
+	}
+	
 	
 	
 	

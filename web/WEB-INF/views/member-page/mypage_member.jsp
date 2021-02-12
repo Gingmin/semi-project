@@ -5,8 +5,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/mypage_member.css">
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/semi/resources/css/mypage_member.css">
+	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -104,9 +104,8 @@
 								</div>
 
 								<div class="myticket_area">
-									<a href="#" class="member_text5">
-										무제한 클레스 참여하기
-									</a>
+									<input type="button" value="무제한 클레스 참여하기" class="member_text5" id="participation">
+									
 									<div class="myticket">
 										<div class="member_text6">
 											나의 이용권											
