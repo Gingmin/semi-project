@@ -158,7 +158,7 @@
 				<!-- Card header -->
 				<div class="card-header z-depth-1 teal lighten-4" role="tab" id="heading10">
 					<a data-toggle="collapse" data-parent="#accordionEx2" href="#collapse10" aria-expanded="true"
-						aria-controls="collapse10">
+						aria-controls="collapse10" style="text-decoration: none;">
 						<h4 class="mb-0 black-text text-center font-weight-bold text-uppercase">
 							실시간 수업 수익 산정 배분 비율
 						</h4>
@@ -186,7 +186,7 @@
 				<!-- Card header -->
 				<div class="card-header z-depth-1 teal lighten-3" role="tab" id="heading11">
 					<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx2" href="#collapse11"
-						aria-expanded="false" aria-controls="collapse11">
+						aria-expanded="false" aria-controls="collapse11" style="text-decoration: none;">
 						<h4 class="mb-0 black-text text-center font-weight-bold text-uppercase">
 							1:1 수업 수익 산정 배분 비율
 						</h4>

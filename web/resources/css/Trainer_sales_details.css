@@ -1,39 +1,18 @@
-/* 헤더 */
-.header_area .row .header_logo .logo_detail {
-	text-decoration: none;
-	color: black;
-}
+/* 완규 수정 */
+.header_area .row .header_logo{width:20%;}
+.header_area .row .header_meun{width:80%;}
 
-.header_area {
-	line-height: 60px;
-	padding: 0 30px;
-}
 
-.header_area .row {
-	margin: 0;
-}
 
-.header_area .row .header_logo {
-	float: left;
-	font-family: Rock Salt;
-	font-weight: bold;
-	text-shadow: 0px 0px 8px black;
-	font-size: 20px;
-}
+.accordion.md-accordion.accordion-4{box-shadow: 0 0 15px grey; margin-top:15px;}
+.card-header.z-depth-1.teal.lighten-4 { background-color: black !important;}
+.card-header.z-depth-1.teal.lighten-3{ background-color: black !important;}
+.mb-0.black-text.text-center.font-weight-bold.text-uppercase {color: white !important;}
+.card-body.rgba-teal-strong.white-text{background-color:white; color:black !important;}
 
-.header_area .row .header_meun {
-	float: right;
-}
 
-.header_area .row .header_meun .menu_list {
-	float: right;
-	font-size: 18px;
-	text-decoration: none;
-	padding: 0 20px;
-	color: black;
-}
 
-/* 헤더 끝 */
+/* 완규 수정 */
 /* 테이블 시작 */
 
 /*	
@@ -44,6 +23,10 @@
 
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+/* 완규 수정 */
+table.container{box-shadow: 0 0 20px grey;}
+/* 완규 수정 */
 
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -88,12 +71,18 @@ h2 a {
 
 .container th h1 {
 	font-weight: bold;
-	font-size: 1em;
+	font-size: 17px;
 	text-align: left;
-	color: #185875;
+	/* 완규 수정 */
+	color: white;
+	/* 완규 수정 */
 }
 
 .container td {
+	/* 완규 수정 */
+	width:33.3333%;
+	/* 완규 수정 */
+	
 	font-weight: normal;
 	font-size: 1em;
 	-webkit-box-shadow: 0 2px 2px -2px #0E1119;
@@ -115,11 +104,15 @@ h2 a {
 	padding-bottom: 2%;
 	padding-top: 2%;
 	padding-left: 2%;
+	/* 완규 수정 */
+	font-size: 18px;
+	/* 완규 수정 */
 }
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
-	background-color: #323C50;
+	/* background-color: #323C50; */
+	
 }
 
 /* Background-color of the even rows */
@@ -128,26 +121,34 @@ h2 a {
 }
 
 .container th {
-	background-color: #1F2739;
+	/* 완규 수정 */
+	background-color: black;
+	/* 완규 수정 */
 }
 
 .container td:first-child {
 	color: #FB667A;
+	font-size:16px;
 }
 
 .container tr:hover {
-	background-color: #464A52;
+	/* background-color: #464A52; */
 	-webkit-box-shadow: 0 6px 6px -6px #0E1119;
 	-moz-box-shadow: 0 6px 6px -6px #0E1119;
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 .container td:hover {
-	background-color: #FFF842;
-	color: #403E10;
+	/* 완규수정 */
+	background-color: orangered;
+	color: white;
+	box-shadow: #ff3700 -1px 1px, #ff3700 -2px 2px, #ff3700 -3px 3px, #ff3700 -4px 4px, #ff3700 -5px 5px, #ff3700 -6px 6px;
+	/* 완규수정 */
+	/* background-color: #FFF842; */
+	/* color: #403E10; */
 	font-weight: bold;
 
-	box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+	/* box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px; */
 	transform: translate3d(6px, -6px, 0);
 
 	transition-delay: 0s;

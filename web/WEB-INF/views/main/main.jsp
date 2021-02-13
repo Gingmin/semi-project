@@ -199,7 +199,7 @@
 				<div class="contant_name">TARGET</div>
 			    <div class="swiper-wrapper">
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="./img/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				슬림핏
@@ -210,7 +210,7 @@
 			    		</div>			    		
 			    	</div>
 					<div class="swiper-slide">
-			    		<img class="img_detail" src="./img/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				좋은체격
@@ -221,7 +221,7 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="./img/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				근육질
@@ -232,7 +232,7 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="./img/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				볼륨감
@@ -243,7 +243,7 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="./img/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				S라인
