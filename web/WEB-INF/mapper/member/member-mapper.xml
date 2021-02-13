@@ -51,4 +51,20 @@
 		 WHERE D.MEMBER_STATUS = 'Y'
 		   AND D.EMAIL = ?
 	</entry>
+	<entry key="deletMember">
+		UPDATE /* com.greedy.semi.member.model.dao.MemberDAO#deleteMember() */
+		       TBL_MEMBER E
+		   SET E.MEMBER_STATUS = 'N'
+		     , E.MODIFIED_DATE = SYSDATE
+		 WHERE E.MEMBER_STATUS = 'Y'
+		   AND E.MEMBER_NO = ?
+	</entry>
+	<entry key="updatePassword">
+		UPDATE /* com.greedy.semi.member.model.dao.MemberDAO#updatePassword() */
+		       TBL_MEMBER D
+		   SET D.MEMBER_PWD = ?
+		     , D.MODIFIED_DATE = SYSDATE
+		 WHERE D.MEMBER_STATUS = 'Y'
+		   AND D.MEMBER_NO = ?
+	</entry>
 </properties>

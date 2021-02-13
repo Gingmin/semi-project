@@ -22,6 +22,7 @@
 <script src="/semi/resources/js/event.js"></script>
 <!-- css -->
 <link rel="stylesheet" href="/semi/resources/css/footer.css">
+
 </head>
 <body>
 	<div class="footer_area">

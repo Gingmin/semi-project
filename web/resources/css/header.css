@@ -5,7 +5,7 @@
    .header_area .row .header_logo{float: left; font-family: Rock Salt; font-weight: bold; text-shadow: 0px 0px 8px black;  font-size: 20px; }
    .header_area .row .header_meun{float: right;}
    .header_area .row .header_meun .menu_list{float:right;  font-size: 18px;  text-decoration: none; padding: 0 20px; color: black;}
-   .header_area .row .header_logo .logo_detail{ text-decoration: none; color: black; }
+   .header_area .row .header_logo .logo_detail{ text-decoration: none; color: black; border: 0; background-color: white;}
    
    /* 임시 css */
    .loginPage {
