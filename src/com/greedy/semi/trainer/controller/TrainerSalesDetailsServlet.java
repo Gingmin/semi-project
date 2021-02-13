@@ -18,6 +18,10 @@ public class TrainerSalesDetailsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String name = request.getParameter("name");
+		
+		System.out.println(name);
+
 	}
 
 }

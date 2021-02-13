@@ -45,8 +45,10 @@
 	      	</c:if>
 	      </c:if>
 	         <a class="menu_list" href="#" id="mypage">마이페이지</a>
+
 	       	 <input type="button" class="menu_list" value="게시판" id="noticePage">
 	         <input type="button" class="menu_list" value="멤버십" id="membership">
+
 	         <a class="menu_list" href="#" id="trainer">트레이너</a>
 	         <a class="menu_list" href="#">소개</a>
 	      </div>

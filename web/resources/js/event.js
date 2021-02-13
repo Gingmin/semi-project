@@ -39,8 +39,8 @@ window.onload = function() {
 			location.href = "/semi/member/logout";
 		}
 	}
-	
-	/* 회원정보페이지 */
+  
+  	/* 회원정보페이지 */
 	if(document.getElementById("memberInfo")) {
 		const $memberInfo = document.getElementById("memberInfo");
 		$memberInfo.onclick = function() {
@@ -55,7 +55,9 @@ window.onload = function() {
 			location.href = "/semi/member/passwordChange";
 		}
 	}
-	
+  
+  
+
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
 		const $logout = document.getElementById("trainer");
@@ -85,6 +87,7 @@ window.onload = function() {
 			location.href = "/semi/member/mypage";
 		}
 	}
+  
 	/* 무제한 클래스 참여하기*/
 	if(document.getElementById("participation")) {
 		const $logout = document.getElementById("participation");
@@ -92,8 +95,7 @@ window.onload = function() {
 			location.href = "/semi/class/list";
 		}
 	}
-	
-	
+
 	
 	//완규 영역	
 	
