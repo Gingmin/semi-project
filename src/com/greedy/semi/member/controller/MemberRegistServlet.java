@@ -22,9 +22,9 @@ public class MemberRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String email = request.getParameter("email");
-		String pwd = request.getParameter("password").replace("-", "");
+		String pwd = request.getParameter("password");
 		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
+		String phone = request.getParameter("phone").replace("-", "");
 	
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setEmail(email);

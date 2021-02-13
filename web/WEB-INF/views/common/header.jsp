@@ -27,7 +27,8 @@
 	<div class="header_area">
 	   	<div class="row">
 	      <div class="header_logo ">
-	         <a class="logo_detail" href="">HELLOPT</a>
+	      	 <button class="logo_detail" id="moveMain">HELLOPT</button>
+	         <!-- <a class="logo_detail" href="">HELLOPT</a> -->
 	      </div>
 	      <div class="header_meun ">
 	      <!-- 로그인이 안 되어 있는 경우  -->          

@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>HELLO PT!</title>
+	<!-- 파비콘 -->
+	<link rel="shortcut icon" href="/semi/resources/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/semi/resources/images/favicon.ico">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 

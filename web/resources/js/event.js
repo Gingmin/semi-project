@@ -1,5 +1,13 @@
 window.onload = function() {
 	
+	/* 메인으로 이동 */
+	if(document.getElementById("moveMain")) {
+		const $moveMain = document.getElementById("moveMain");
+		$moveMain.onclick = function() {
+			location.href = "/semi/";
+		}
+	}
+	
 	/* 로그인 */
 	if(document.getElementById("loginPage")) {
 		const $loginPage = document.getElementById("loginPage");
@@ -40,11 +48,11 @@ window.onload = function() {
 		}
 	}
 	
-	/* 회원탈퇴 */
-	if(document.getElementById("memberDelete")) {
-		const $memberDelete = document.getElementById("memberDelete");
-		$memberDelete.onclick = function() {
-			location.href = "/semi/member/delete";
+	/* 비밀번호 변경 */
+	if(document.getElementById("passwordChange")) {
+		const $passwordChange = document.getElementById("passwordChange");
+		$passwordChange.onclick = function() {
+			location.href = "/semi/member/passwordChange";
 		}
 	}
 	

@@ -45,6 +45,15 @@
 					<input class="box_detail" type="password" name="password" id="password2"
 						placeholder="비밀번호를 입력하세요">
 				</div>
+				<br>
+				<div>
+					<table>
+						<tr>
+							<td width="400px"></td>
+							<td><input type="button" id="passwordChange" value="비밀번호 변경"></td>
+						</tr>
+					</table>
+				</div>
 
 				<br>
 				<br>
