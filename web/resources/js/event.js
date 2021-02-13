@@ -15,6 +15,12 @@ window.onload = function() {
 			location.href = "/semi/member/login";
 		}
 	}
+	if(document.getElementById("login")) {
+		const $login = document.getElementById("login");
+		$login.onclick = function() {
+			location.href = "/semi/member/login";
+		}
+	}
 	
 	/* 취소(메인으로) */
 	if(document.getElementById("cancel")) {
@@ -55,7 +61,23 @@ window.onload = function() {
 			location.href = "/semi/member/passwordChange";
 		}
 	}
-  
+	
+	/* 계정 찾기 */
+	if(document.getElementById("FindEmail")) {
+		const $FindEmail = document.getElementById("FindEmail");
+		$FindEmail.onclick = function() {
+			location.href = "/semi/member/findEmail";
+		}
+	}
+	
+	/* 비밀번호 찾기 */
+	if(document.getElementById("resetPassword")) {
+		const $resetPassword = document.getElementById("resetPassword");
+		$resetPassword.onclick = function() {
+			location.href = "/semi/member/resetPassword";
+		}
+	}
+	
   
 
 	/* 트레이너 마이 페이지*/

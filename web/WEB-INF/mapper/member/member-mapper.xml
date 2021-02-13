@@ -67,4 +67,20 @@
 		 WHERE D.MEMBER_STATUS = 'Y'
 		   AND D.MEMBER_NO = ?
 	</entry>
+	<entry key="selectMemberByName">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectMemberByName() */
+		       E.EMAIL
+		     , E.ENROLL_DATE
+		  FROM TBL_MEMBER E
+		 WHERE E.MEMBER_STATUS = 'Y'
+		   AND E.MEMBER_NAME = ?
+	</entry>
+	<entry key="selectMemberByPhone">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectMemberByPhone() */
+		       E.EMAIL
+		     , E.ENROLL_DATE
+		  FROM TBL_MEMBER E
+		 WHERE E.MEMBER_STATUS = 'Y'
+		   AND E.PHONE = ?
+	</entry>
 </properties>

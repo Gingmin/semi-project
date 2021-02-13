@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 변경</title>
-<link rel="stylesheet" href="/semi/resources/css/updatePasswordForm.css">
+<title>비밀번호 재설정</title>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
 	
 	<div class="container">
 		<div class="info_area">
