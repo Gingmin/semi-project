@@ -31,6 +31,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "비밀번호 변경 성공! 다시 로그인 해주세요!"
 					break;
+				case "" :
+					movePath = "${ pageContext.servletContext.contextPath }";
+					message = ""
+					break;
 			}
 			
 			alert(message);

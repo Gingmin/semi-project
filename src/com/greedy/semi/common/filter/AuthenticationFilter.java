@@ -100,6 +100,12 @@ public class AuthenticationFilter implements Filter {
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");
 		allPermitList.add("/member/logout");
+		allPermitList.add("/member/findEmail");
+		allPermitList.add("/member/findPwd");
+		allPermitList.add("/member/resultFindEmail");
+		allPermitList.add("/member/resetPassword");
+		
+		allPermitList.add("/member/test_mail.jsp");
 		
 		permitURIList.put("memberPermitList", memberPermitList);
 		permitURIList.put("adminPermitList", adminPermitList);

@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
@@ -195,6 +197,76 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+
+	public List<MemberDTO> selectMemberByName(Connection con, MemberDTO requestMember) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> memberListByName = null;
+		
+		String query = prop.getProperty("selectMemberByName");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestMember.getName());
+			
+			rset = pstmt.executeQuery();
+			
+			memberListByName = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setEmail(rset.getString("EMAIL"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				
+				memberListByName.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberListByName;
+	}
+
+	public List<MemberDTO> selectMemberByPhone(Connection con, MemberDTO requestMember) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> memberListByPhone = null;
+		
+		String query = prop.getProperty("selectMemberByPhone");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestMember.getPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			memberListByPhone = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setEmail(rset.getString("EMAIL"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				
+				memberListByPhone.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberListByPhone;
 	}
 
 }
