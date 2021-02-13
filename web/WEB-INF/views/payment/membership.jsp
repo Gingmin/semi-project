@@ -5,8 +5,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/membership_buy.css">
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/index.css">
+	
+	<link rel="stylesheet" href="/semi/resources/css/membership_buy.css">
+	<link rel="stylesheet" href="/semi/resources/css/index.css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -63,7 +64,7 @@
 								</div>
 							</div>
 							<div class="ticket_btn_area">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">30,000원</a>
+								<input type="button" class="ticket_btn_detail" value="30,000원" id="ticketBtn">
 							</div>
 						</div>
 						<div class="ticket_area">
@@ -86,7 +87,7 @@
 								
 							</div>
 							<div class="ticket_btn_area type">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">15,000원</a>
+								<input type="button" class="ticket_btn_detail" value="15,000원" id="ticketBtn">
 							</div>
 						</div>
 					</div>
@@ -115,7 +116,7 @@
 								</div>
 							</div>
 							<div class="ticket_btn_area">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">90,000원</a>
+								<input type="button" class="ticket_btn_detail" value="90,000원" id="ticketBtn">
 							</div>
 						</div>
 						<div class="ticket_area">
@@ -138,7 +139,7 @@
 								
 							</div>
 							<div class="ticket_btn_area type">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">75,000원</a>
+								<input type="button" class="ticket_btn_detail" value="75,000원" id="ticketBtn">
 							</div>
 						</div>
 					</div>
@@ -167,7 +168,7 @@
 								</div>
 							</div>
 							<div class="ticket_btn_area">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">180,000원</a>
+								<input type="button" class="ticket_btn_detail" value="180,000원" id="ticketBtn">
 							</div>
 						</div>
 						<div class="ticket_area">
@@ -190,7 +191,7 @@
 								
 							</div>
 							<div class="ticket_btn_area type">
-								<a class="ticket_btn_detail" href="http://kordzor.cafe24.com/semiproject/payment.html#">150,000원</a>
+								<input type="button" class="ticket_btn_detail" value="150,000원" id="ticketBtn">
 							</div>
 						</div>
 					</div>

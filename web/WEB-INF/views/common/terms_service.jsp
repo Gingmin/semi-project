@@ -6,9 +6,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/index.css">
-	<link rel="stylesheet" type="text/css" href="/web/resources/css/terms_service.css">
-	
+	<link rel="stylesheet" href="/semi/resources/css/index.css">
+	<link rel="stylesheet" href="/semi/resources/css/terms_service.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,12 +17,6 @@
 	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
 
 
-	<!-- 스와이퍼 -->
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 	<title>이용약관</title>
 

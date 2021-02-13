@@ -3,8 +3,9 @@
 .container{}
 .container .notice_menu_area{ height: 50px; line-height: 50px; border-bottom: 1px solid gray; margin-bottom: 30px;}
 .container .notice_menu_area .row{margin: 0;}
-.container .notice_menu_area .row .menu_list{ float: left; border-bottom: 0;  padding: 0!important;}
-.container .notice_menu_area .row .menu_list .list_detail{ display: block; color: black; font-size: 20px; text-decoration: none;text-align: center;}
+.container .notice_menu_area .row .menu_list{ float: left;   padding: 0!important;}
+.container .notice_menu_area .row .menu_list .list_detail{ display: block; color: black; font-size: 20px; text-decoration: none;text-align: center; border: 0;
+    background-color: white; width:100%; outline: none; height: 49px;}
 .container .notice_menu_area .row .menu_list .list_detail.on{background-color: black; color: white; font-weight: bold;}
 
 
