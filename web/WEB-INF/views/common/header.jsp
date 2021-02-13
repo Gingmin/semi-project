@@ -37,20 +37,18 @@
 	      </c:if>
 	      <!-- 로그인이 되어 있는 경우 -->
 	      <c:if test="${ ! empty sessionScope.loginMember }">
-	      	<span><c:out value="${ sessionScope.loginMember.name }"/>님 환영합니다.</span>
+	      	<span class="menu_list"><c:out value="${ sessionScope.loginMember.name }"/>님 환영합니다.</span>
 	      	<input type="button" class="menu_list logout" value="로그아웃" id="logout">
 	      	<!-- 관리자페이지 -->
 	      	<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
 	      	<input type="button" class="menu_list adminPage" value="관리자 페이지" id="adminPage">
 	      	</c:if>
 	      </c:if>
-	         <a class="menu_list" href="#" id="mypage">마이페이지</a>
-
+	         <input type="button" class="menu_list" value="마이페이지" id="mypage">
 	       	 <input type="button" class="menu_list" value="게시판" id="noticePage">
 	         <input type="button" class="menu_list" value="멤버십" id="membership">
-
-	         <a class="menu_list" href="#" id="trainer">트레이너</a>
-	         <a class="menu_list" href="#">소개</a>
+	         <input type="button" class="menu_list" value="트레이너" id="trainer">
+	         <input type="button" class="menu_list" value="소개" id="introduce">
 	      </div>
 	   </div>
 	</div>
