@@ -26,39 +26,48 @@
 		
 		<div class="container">
 			<h1 align="center">수업등록</h1>
-			<label>클래스 이름*</label>
-			<input type="text" name="name"><br>
+			<label class="regist_text">클래스 이름 <span class="text_detail">*</span></label>
+			<input type="text" name="name" class="input_detail">
 			
-			<label>클래스 종류 선택*</label>
-    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="ptclass">
-			<label class="btn btn-outline-secondary" for="btn-check-2-outlined">1:1 클래스</label><br>
-    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="groupclass">
-			<label class="btn btn-outline-secondary" for="btn-check-3-outlined">그룹 클래스</label><br>
-    		
+			<label class="regist_text">클래스 종류 선택 <span class="text_detail">*</span></label>
+			<div class="row">
+			
+	    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="ptclass">
+				<label class="btn btn-outline-secondary" for="btn-check-2-outlined">1:1 클래스</label><br>
+	    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="groupclass">
+				<label class="btn btn-outline-secondary" for="btn-check-3-outlined">그룹 클래스</label><br>
+	    		
+			</div>	
 			
 			
-			<label>카테고리</label>
-			<input type="checkbox" class="btn-check" id="btn-check-4-outlined" name="health">
-			<label class="btn btn-outline-secondary" for="btn-check-4-outlined">헬스</label><br>
-			<input type="checkbox" class="btn-check" id="btn-check-5-outlined" disabled>
-			<label class="btn btn-outline-secondary" for="btn-check-5-outlined">요가</label><br>
-			<input type="checkbox" class="btn-check" id="btn-check-6-outlined" disabled>
-			<label class="btn btn-outline-secondary" for="btn-check-6-outlined">필라테스</label><br>
+			<label class="regist_text">카테고리</label>
+			<div class="row">
+				<input type="checkbox" class="btn-check" id="btn-check-4-outlined" name="health">
+				<label class="btn btn-outline-secondary" for="btn-check-4-outlined">헬스</label><br>
+				<input type="checkbox" class="btn-check" id="btn-check-5-outlined" disabled>
+				<label class="btn btn-outline-secondary" for="btn-check-5-outlined">요가</label><br>
+				<input type="checkbox" class="btn-check" id="btn-check-6-outlined" disabled>
+				<label class="btn btn-outline-secondary" for="btn-check-6-outlined">필라테스</label><br>
+			</div>
 			
-			<div><label>수업을 소개할 문구 (3가지)*</label><br>
-			<input type="text" name="intro1"><input type="text" name="intro2"><input type="text" name="intro3"></div><br>
+			<div>
+				<label class="regist_text">
+					수업을 소개할 문구 (3가지)<span class="text_detail">*</span>
+				</label><br>
+			<input type="text" name="intro1"><input type="text" name="intro2"><input type="text" name="intro3"></div>
 			
-			<div><label>개설할 클래스 소개*</label><br>
+			<div><label class="regist_text">개설할 클래스 소개*</label><br>
 			<textarea rows="10" cols="10" class="textarea" name="introduce"></textarea></div>
 			
-			<label>수업 가능 시간을 선택해 주세요*</label>
+			<label class="regist_text">수업 가능 시간을 선택해 주세요*</label>
 			<div><input type="datetime-local" name="time"></div>
 			<br>
 			
-		
-			<button type="submit" class="btn btn-default" id="classinsert">개설하기</button><br>
+			<div class="btn_area">
+				<button type="submit" class="btn btn-default" id="classinsert">개설하기</button><br>
+			</div>
 
-    </div>
+   		 </div>
 	
 	</form>
 
