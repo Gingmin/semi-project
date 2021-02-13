@@ -111,9 +111,9 @@ public class MemberDAO {
 				loginMember.setPwd(rset.getString("MEMBER_PWD"));
 				loginMember.setName(rset.getString("MEMBER_NAME"));
 				loginMember.setPhone(rset.getString("PHONE"));
-				loginMember.setEnroll_date(rset.getDate("ENROLL_DATE"));
-				loginMember.setModified_Date(rset.getDate("MODIFIED_DATE"));
-				loginMember.setBlack_status(rset.getString("BLACK_STATUS"));
+				loginMember.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				loginMember.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				loginMember.setBlackStatus(rset.getString("BLACK_STATUS"));
 				loginMember.setRole(rset.getString("MEMBER_ROLE"));
 				loginMember.setStatus(rset.getString("MEMBER_STATUS"));
 			}
@@ -126,6 +126,75 @@ public class MemberDAO {
 		}
 		System.out.println("로그인 정보 조회 성공");
 		return loginMember;
+	}
+
+	public int updateMember(Connection con, MemberDTO changeInfo) {
+		
+		PreparedStatement pstmt = null; 
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, changeInfo.getPhone());
+			pstmt.setString(2, changeInfo.getEmail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteMember(Connection con, MemberDTO requestMember) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("deletMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, requestMember.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updatePassword(Connection con, MemberDTO requestMember, String newPwd) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updatePassword");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, newPwd);
+			pstmt.setInt(2, requestMember.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

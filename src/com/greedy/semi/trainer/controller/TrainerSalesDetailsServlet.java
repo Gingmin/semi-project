@@ -21,6 +21,7 @@ public class TrainerSalesDetailsServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		
 		System.out.println(name);
+
 	}
 
 }

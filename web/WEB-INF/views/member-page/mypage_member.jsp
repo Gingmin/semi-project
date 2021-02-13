@@ -128,10 +128,10 @@
 				<div class="memberbtn_area">
 					<div class="row">
 						<div class="declaration_btn">
-							<a class="btn_detail" href="#">신고</a>
+							<input type="button" class="btn_detail" value="신고" id="report">
 						</div>
 						<div class="secession_btn">
-							<a class="btn_detail" href="#">회원탈퇴</a>
+							<input type="button" class="btn_detail" value="내정보" id="memberInfo">
 						</div>
 					</div>
 				</div>

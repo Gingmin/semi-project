@@ -19,6 +19,18 @@
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "회원 가입 성공!";
 					break;
+				case "updateMember" :
+					movePath = "${ pageContext.servletContext.contextPath }/member/update";
+					message = "회원 정보 수정 성공!";
+					break;
+				case "deleteMember" :
+					movePath = "${ pageContext.servletContext.contextPath }";
+					message = "회원 탈퇴 성공!";
+					break;
+				case "changePassword" :
+					movePath = "${ pageContext.servletContext.contextPath }/member/login";
+					message = "비밀번호 변경 성공! 다시 로그인 해주세요!"
+					break;
 			}
 			
 			alert(message);

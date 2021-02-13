@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- jstl -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +24,7 @@
 <script src="/semi/resources/js/event.js"></script>
 <!-- css -->
 <link rel="stylesheet" href="/semi/resources/css/footer.css">
+
 </head>
 <body>
 	<div class="footer_area">
@@ -44,13 +47,14 @@
 			<div class="terms_area">
 				<div class="terms_info">약관</div>
 				<div class="terms_text">
-					<a class="terms_text_1"
-						href="/common/terms_service.jsp">이용약관</a>
+					<!-- <a class="terms_text_1" id="terms">이용약관</a> -->
+					<input type="button" class="terms_text_1" id="terms" value="이용약관">
 				</div>
 				<div class="terms_text">
-					<a class="terms_text_1"
+					<!-- <a class="terms_text_1"
 						href="http://kordzor.cafe24.com/semiproject/privacy_policy.html">개인정보
-						처리방침</a>
+						처리방침</a> -->
+					<input type="button" class="terms_text_1" id="privacy" value="개인정보 처리방침">
 				</div>
 			</div>
 		</div>
