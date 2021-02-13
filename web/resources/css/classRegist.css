@@ -15,4 +15,14 @@
 	width: 550px;
 }
 
+.container .regist_text{margin-top: 20px;}
 
+.container .regist_text .text_detail{color:#ff3700;}
+.container .input_detail{height:50px; font-size:20px; width:50%;}
+.container .input_detail:focus {box-shadow: 0px 0px 12px #a0a0a0; outline: none;}
+
+.container .row{margin:0;}
+.container .btn.btn-outline-secondary{width:30%; float:left; height:50px; line-height:50px; font-size: 17px; padding:0; margin-right:20px;box-shadow: 0px 0px 12px #a0a0a0;}
+
+.container .btn_area{text-align:center; margin-bottom:20px;}
+.container .btn_area .btn.btn-default{ height:50px; font-size:20px; width:50%; }
