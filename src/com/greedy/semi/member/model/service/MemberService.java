@@ -165,4 +165,51 @@ public class MemberService {
 		return responseMember;
 	}
 
+	public MemberDTO searchEmail(String email) {
+
+		Connection con = getConnection();
+		
+		MemberDTO searchedEmail = memberDAO.selectEmail(con, email);
+		
+		close(con);
+		
+		return searchedEmail;
+	}
+
+	public MemberDTO selectResetMember(MemberDTO requestMember) {
+
+		Connection con = getConnection();
+		
+		MemberDTO resetMember = memberDAO.selectResetMember(con, requestMember);
+		
+		close(con);
+		
+		return resetMember;
+	}
+
+	public MemberDTO updateResetPassword(MemberDTO updateResetMember) {
+		
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		MemberDTO resetMember = new MemberDTO();
+		
+		result = memberDAO.updateResetPassword(con, updateResetMember);
+		System.out.println("result : " + result);
+		resetMember = memberDAO.selectLoginMember(con, updateResetMember);
+		System.out.println("resetMember : " + resetMember);
+		
+		if(result > 0 && resetMember != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return resetMember;
+		
+	}
+
 }

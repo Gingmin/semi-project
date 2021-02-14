@@ -18,9 +18,9 @@
 	input[type=submit] { width: 100px; height: 30px; background: #FF3700; color: white; border: 0; cursor: pointer; }
 	
 	.special { }
-	.number_input { width: 306px;  height: 100%; padding: 10px; line-height: 47px; border: 1px solid black;}
+	table {  }
+	td { padding: 8px; }
+	.number_input { width: 210px;  height: 30px;  line-height: 47px; border: 1px solid black;}
 	.number_input:focus { box-shadow: 0px 0px 12px #a0a0a0; outline: none; }
-	.number_confirm { width: 50px;  height: 100%; padding: 10px; background: white; border: 1px solid black; margin: 3px; }
-	.number_confirm:hover { background: #e7e7e7 }
-	.certify { padding: 10px; border: 1px solid; background: white; }
+	.certify {  border: 1px solid; background: white;  }
 	.certify:hover { background: #e7e7e7 }

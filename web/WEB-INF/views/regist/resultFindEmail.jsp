@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>이메일 찾기 결과</title>
-<link rel="stylesheet" href="/semi/resources/css/resultFindEmail.css">
+<link rel="stylesheet" href="/semi/resources/css/member/resultFindEmail.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
@@ -40,7 +40,7 @@
 				<br>
 				<div class="submit_reset">
 					<input type="button" value="로그인하기" name="" id="login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" value="비밀번호찾기" name="" id="resetPassword">
+					<input type="button" value="비밀번호찾기" name="" id="findPwd">
 				</div>
 
 			</form>

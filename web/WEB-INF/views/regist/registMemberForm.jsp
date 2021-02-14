@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>일반 회원가입</title>
-<link rel="stylesheet" href="/semi/resources/css/registMember.css">
+<link rel="stylesheet" href="/semi/resources/css/member/registMember.css">
 <!-- <script type="text/javascript" src="/semi/resources/js/registSettings.js"></script> -->
 </head>
 <body>
