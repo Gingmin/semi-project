@@ -63,21 +63,28 @@ window.onload = function() {
 	}
 	
 	/* 계정 찾기 */
-	if(document.getElementById("FindEmail")) {
-		const $FindEmail = document.getElementById("FindEmail");
-		$FindEmail.onclick = function() {
+	if(document.getElementById("findEmail")) {
+		const $findEmail = document.getElementById("findEmail");
+		$findEmail.onclick = function() {
 			location.href = "/semi/member/findEmail";
 		}
 	}
 	
 	/* 비밀번호 찾기 */
-	if(document.getElementById("resetPassword")) {
-		const $resetPassword = document.getElementById("resetPassword");
-		$resetPassword.onclick = function() {
-			location.href = "/semi/member/resetPassword";
+	if(document.getElementById("findPwd")) {
+		const $findPwd = document.getElementById("findPwd");
+		$findPwd.onclick = function() {
+			location.href = "/semi/member/identify";
 		}
 	}
 	
+	/* 계정확인 취소 */
+	if(document.getElementById("cancelIdentify")) {
+		const $cancelIdentify = document.getElementById("cancelIdentify");
+		$cancelIdentify.onclick = function() {
+			location.href = "/semi/member/login";
+		}
+	}
   
 
 	/* 트레이너 마이 페이지*/

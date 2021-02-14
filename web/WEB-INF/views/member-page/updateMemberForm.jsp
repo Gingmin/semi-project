@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내정보</title>
-<link rel="stylesheet" href="/semi/resources/css/updateMemberForm.css">
+<link rel="stylesheet" href="/semi/resources/css/member/updateMemberForm.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>

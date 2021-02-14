@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
-<link rel="stylesheet" href="/semi/resources/css/updatePasswordForm.css">
+<link rel="stylesheet" href="/semi/resources/css/member/updatePasswordForm.css">
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import com.greedy.semi.member.model.dto.MemberDTO;
 
-@WebFilter(urlPatterns = {"/member/*"})
+@WebFilter(urlPatterns = {"/member/*", "/notice/*", "/trainer/*", "/admin/*"})
 public class AuthenticationFilter implements Filter {
 
 	private Map<String, List<String>> permitURIList;
@@ -89,24 +89,32 @@ public class AuthenticationFilter implements Filter {
 		List<String> allPermitList = new ArrayList<>();
 		
 		adminPermitList.add("");
+		adminPermitList.add("");
+		adminPermitList.add("");
+		adminPermitList.add("");
 		
 		memberPermitList.add("/member/mypage");
 		memberPermitList.add("/member/update");
 		memberPermitList.add("/member/delete");
 		memberPermitList.add("/member/passwordChange");
 		memberPermitList.add("/member/buy");
-		
+		memberPermitList.add("/notice/notice");
+   	    memberPermitList.add("/notice/review");
+	    memberPermitList.add("/notice/report");
+        memberPermitList.add("/notice/question");
+		 
 		trainerPermitList.add("");
 		
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");
 		allPermitList.add("/member/logout");
 		allPermitList.add("/member/findEmail");
-		allPermitList.add("/member/findPwd");
 		allPermitList.add("/member/resultFindEmail");
+		allPermitList.add("/member/identify");
+		allPermitList.add("/member/verfication");
 		allPermitList.add("/member/resetPassword");
+		allPermitList.add("/member/finalResetPwd");
 		
-		allPermitList.add("/member/test_mail.jsp");
 		
 		permitURIList.put("memberPermitList", memberPermitList);
 		permitURIList.put("adminPermitList", adminPermitList);

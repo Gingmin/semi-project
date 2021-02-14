@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/semi/resources/css/seleFindEmailForm.css">
+<link rel="stylesheet" href="/semi/resources/css/member/selectFindEmailForm.css">
 <title>계정 찾기</title>
 </head>
 <body>

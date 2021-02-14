@@ -83,4 +83,31 @@
 		 WHERE E.MEMBER_STATUS = 'Y'
 		   AND E.PHONE = ?
 	</entry>
+	<entry key="selectEmail">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectEmail() */
+		       F.EMAIL
+		     , F.MEMBER_NAME
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_STATUS = 'Y'
+		   AND F.EMAIL = ?
+	</entry>
+	<entry key="selectResetMember">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectResetMember() */
+		       G.MEMBER_NO
+		     , G.MEMBER_NAME
+		     , G.EMAIL
+		     , G.MEMBER_PWD
+		  FROM TBL_MEMBER G
+		 WHERE G.MEMBER_STATUS = 'Y'
+		   AND G.MEMBER_NAME = ?
+		   AND G.EMAIL = ?
+	</entry>
+	<entry key="updateResetPassword">
+		UPDATE /* com.greedy.semi.member.model.dao.MemberDAO#updateResetPassword() */
+		       TBL_MEMBER H
+		   SET H.MEMBER_PWD = ?
+		     , H.MODIFIED_DATE = SYSDATE
+		 WHERE H.MEMBER_STATUS = 'Y'
+		   AND H.EMAIL = ?
+	</entry>
 </properties>
