@@ -63,16 +63,22 @@
 						<div class="q_text1">비밀번호 변경 또는 재설정</div>
 						<button type="button" class="btn_detail" data-toggle="collapse" data-target="#demo">자세히 보기 >></button>
 						<div id="demo" class="collapse">
-							비번 이케 바꿔 
+						      비밀번호가 기억 나지 않는 경우 :
+                                                      로그인 페이지 하단에서 "비밀번호 찾기"를 선택하십시오. 
+                           HELLOPT에서 사용하던 이메일을 입력하고 "다음"을 선택하십시오.
+                                                      사용하던 이메일의 등록된 이름과 이메일을 입력 후 인증번호받기를 클릭합니다. 
+                                                      입력 된 이메일에서 전송 된 인증번호를 확인하십시오. 
+                                                      새 비밀번호와 새 비밀번호 확인을 입력하고 확인을 선택합니다. 
 						</div>	
 					</div>
 					<div class="question_list type">					
 						<div class="q_text1">멤버십 일시 중지</div>
 						<button type="button" class="btn_detail" data-toggle="collapse" data-target="#demo1">자세히 보기 >></button>
 						<div id="demo1" class="collapse">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							귀하의 계정이 활성화되어있는 한 귀하의 멤버십을 일시 중지할 수 있습니다. 
+							멤버십을 일시 중지하려면 별도의 양식을 작성하여 제출해 주십시오 . 
+							일시 중지 된 기간이 만료되면 멤버십이 자동으로 복원됩니다. 
+							멤버십을 일시 중지하면 HELLOPT 콘텐츠에 대한 액세스도 일시 중지됩니다.
 						</div>	
 					</div>
 				</div>
