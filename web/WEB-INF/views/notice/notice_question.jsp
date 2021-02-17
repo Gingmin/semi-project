@@ -63,7 +63,6 @@
 						<div class="q_text1">비밀번호 변경 또는 재설정</div>
 						<button type="button" class="btn_detail" data-toggle="collapse" data-target="#demo">자세히 보기 >></button>
 						<div id="demo" class="collapse">
-						      비밀번호가 기억 나지 않는 경우 :
                                                       로그인 페이지 하단에서 "비밀번호 찾기"를 선택하십시오. 
                            HELLOPT에서 사용하던 이메일을 입력하고 "다음"을 선택하십시오.
                                                       사용하던 이메일의 등록된 이름과 이메일을 입력 후 인증번호받기를 클릭합니다. 
@@ -84,10 +83,15 @@
 				</div>
 				<div class="row">
 					<div class="question_list">					
-						<div class="q_text1">비밀번호 변경 또는 재설정</div>
+						<div class="q_text1">계정 이메일 업데이트</div>
 						<button type="button" class="btn_detail" data-toggle="collapse" data-target="#demo2">자세히 보기 >></button>
 						<div id="demo2" class="collapse">
-							비번 이케 바꿔 
+							HELLOPT 멤버십의 이메일 주소를 변경하려면 다음 단계를 따르십시오.
+							 페이지 하단에서 "로그인"을 클릭합니다 (왼쪽 하단).
+							이메일 주소와 비밀번호를 입력하세요
+							왼쪽 메뉴에서 "내 계정"을 선택합니다.
+							"이메일 주소"옆에있는 "(변경)"을 클릭합니다.
+							새 이메일 주소를 입력하고 "이메일 변경"을 선택하십시오.
 						</div>	
 					</div>
 					<div class="question_list type">					
