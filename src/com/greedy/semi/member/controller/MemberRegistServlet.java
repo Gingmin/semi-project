@@ -21,7 +21,7 @@ public class MemberRegistServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String email = request.getParameter("email");
+		String email = request.getParameter("email2");
 		String pwd = request.getParameter("password");
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone").replace("-", "");
