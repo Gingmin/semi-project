@@ -29,11 +29,15 @@
 					break;
 				case "changePassword" :
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
-					message = "비밀번호 변경 성공! 다시 로그인 해주세요!"
+					message = "비밀번호 변경 성공! 다시 로그인 해주세요!";
 					break;
 				case "insertNotice" :
 					movePath = "${ pageContext.servletContext.contextPath }/notice/notice";
-					message = "공지사항이 등록 되었습니다."
+					message = "공지사항이 등록 되었습니다.";
+          break;
+				case "updateResetPassword" :
+					movePath = "${ pageContext.servletContext.contextPath }/member/login";
+					message = "비밀번호 변경 성공! 로그인 해주세요!";
 					break;
 			}
 			

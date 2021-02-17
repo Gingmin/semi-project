@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
@@ -185,6 +187,162 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, newPwd);
 			pstmt.setInt(2, requestMember.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<MemberDTO> selectMemberByName(Connection con, MemberDTO requestMember) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> memberListByName = null;
+		
+		String query = prop.getProperty("selectMemberByName");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestMember.getName());
+			
+			rset = pstmt.executeQuery();
+			
+			memberListByName = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setEmail(rset.getString("EMAIL"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				
+				memberListByName.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberListByName;
+	}
+
+	public List<MemberDTO> selectMemberByPhone(Connection con, MemberDTO requestMember) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> memberListByPhone = null;
+		
+		String query = prop.getProperty("selectMemberByPhone");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestMember.getPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			memberListByPhone = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setEmail(rset.getString("EMAIL"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				
+				memberListByPhone.add(member);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return memberListByPhone;
+	}
+
+	public MemberDTO selectEmail(Connection con, String email) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		MemberDTO searchedEmail = null;
+		
+		String query = prop.getProperty("selectEmail");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				searchedEmail = new MemberDTO();
+				searchedEmail.setEmail(rset.getString("EMAIL"));
+				searchedEmail.setName(rset.getString("MEMBER_NAME"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return searchedEmail;
+	}
+
+	public MemberDTO selectResetMember(Connection con, MemberDTO requestMember) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		MemberDTO resetMember = null;
+		
+		String query = prop.getProperty("selectResetMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestMember.getName());
+			pstmt.setString(2, requestMember.getEmail());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				resetMember = new MemberDTO();
+				resetMember.setNo(rset.getInt("MEMBER_NO"));
+				resetMember.setPwd(rset.getString("MEMBER_PWD"));
+				resetMember.setName(rset.getString("MEMBER_NAME"));
+				resetMember.setEmail(rset.getString("EMAIL"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return resetMember;
+	}
+
+	public int updateResetPassword(Connection con, MemberDTO updateResetMember) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateResetPassword");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, updateResetMember.getPwd());
+			pstmt.setString(2, updateResetMember.getEmail());
 			
 			result = pstmt.executeUpdate();
 			

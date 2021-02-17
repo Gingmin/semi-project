@@ -15,6 +15,12 @@ window.onload = function() {
 			location.href = "/semi/member/login";
 		}
 	}
+	if(document.getElementById("login")) {
+		const $login = document.getElementById("login");
+		$login.onclick = function() {
+			location.href = "/semi/member/login";
+		}
+	}
 	
 	/* 취소(메인으로) */
 	if(document.getElementById("cancel")) {
@@ -55,8 +61,54 @@ window.onload = function() {
 			location.href = "/semi/member/passwordChange";
 		}
 	}
-  
-  
+	
+	/* 계정 찾기 */
+	if(document.getElementById("findEmail")) {
+		const $findEmail = document.getElementById("findEmail");
+		$findEmail.onclick = function() {
+			location.href = "/semi/member/findEmail";
+		}
+	}
+	
+	/* 비밀번호 찾기 */
+	if(document.getElementById("findPwd")) {
+		const $findPwd = document.getElementById("findPwd");
+		$findPwd.onclick = function() {
+			location.href = "/semi/member/identify";
+		}
+	}
+	
+	/* 계정확인 취소 */
+	if(document.getElementById("cancelIdentify")) {
+		const $cancelIdentify = document.getElementById("cancelIdentify");
+		$cancelIdentify.onclick = function() {
+			location.href = "/semi/member/login";
+		}
+	}
+	
+	/* 관리자 페이지 이동 */
+	if(document.getElementById("adminPage")) {
+		const $adminPage = document.getElementById("adminPage");
+		$adminPage.onclick = function() {
+			location.href = "/semi/admin/dashboard";
+		}
+	}
+	
+	/* 관리자 페이지(일반회원으로 이동) */
+	if(document.getElementById("adminMember")) {
+		const $adminMember = document.getElementById("adminMember");
+		$adminMember.onclick = function() {
+			location.href = "/semi/admin/member";
+		}
+	}
+	
+	/* 관리자 페이지(트레이너로 이동) */
+	if(document.getElementById("adminTrainer")) {
+		const $adminTrainer = document.getElementById("adminTrainer");
+		$adminTrainer.onclick = function() {
+			location.href = "/semi/admin/trainer";
+		}
+	}
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {

@@ -6,6 +6,8 @@ import static com.greedy.semi.common.jdbc.JDBCTemplate.getConnection;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -128,6 +130,86 @@ public class MemberService {
 		close(con);
 		
 		return result;
+	}
+
+	public MemberDTO selectFindEmail(MemberDTO requestMember) {
+		
+		Connection con = getConnection();
+		
+		List<MemberDTO> memberListByName = new ArrayList<>();
+		List<MemberDTO> memberListByPhone = new ArrayList<>();
+		
+		memberListByName = memberDAO.selectMemberByName(con, requestMember);
+		memberListByPhone = memberDAO.selectMemberByPhone(con, requestMember);
+		
+		MemberDTO responseMember = new MemberDTO();
+		String email = "";
+		java.sql.Date enrollDate = null;
+		
+		for(int i = 0; i < memberListByName.size(); i++) {
+			for(int j = 0; j < memberListByPhone.size(); j++) {
+				if(memberListByName.get(i).getEmail().equals(memberListByPhone.get(j).getEmail())) {
+					email = memberListByName.get(i).getEmail();
+					enrollDate = memberListByName.get(i).getEnrollDate();
+				} else {
+					responseMember = null;
+				}
+			}
+		}
+		
+		responseMember.setEmail(email);
+		responseMember.setEnrollDate(enrollDate);
+		
+		close(con);
+				
+		return responseMember;
+	}
+
+	public MemberDTO searchEmail(String email) {
+
+		Connection con = getConnection();
+		
+		MemberDTO searchedEmail = memberDAO.selectEmail(con, email);
+		
+		close(con);
+		
+		return searchedEmail;
+	}
+
+	public MemberDTO selectResetMember(MemberDTO requestMember) {
+
+		Connection con = getConnection();
+		
+		MemberDTO resetMember = memberDAO.selectResetMember(con, requestMember);
+		
+		close(con);
+		
+		return resetMember;
+	}
+
+	public MemberDTO updateResetPassword(MemberDTO updateResetMember) {
+		
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		MemberDTO resetMember = new MemberDTO();
+		
+		result = memberDAO.updateResetPassword(con, updateResetMember);
+		System.out.println("result : " + result);
+		resetMember = memberDAO.selectLoginMember(con, updateResetMember);
+		System.out.println("resetMember : " + resetMember);
+		
+		if(result > 0 && resetMember != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return resetMember;
+		
 	}
 
 }

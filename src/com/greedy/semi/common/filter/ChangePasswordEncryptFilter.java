@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.greedy.semi.common.wrapper.EncryptRequestChangePasswordWrapper;
 
-@WebFilter("/member/passwordChange")
+@WebFilter(urlPatterns = {"/member/passwordChange", "/member/finalResetPwd"})
 public class ChangePasswordEncryptFilter implements Filter {
 
     public ChangePasswordEncryptFilter() {

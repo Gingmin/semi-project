@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>일반회원 로그인</title>
-<link rel="stylesheet" href="/semi/resources/css/loginMember.css">
+<link rel="stylesheet" href="/semi/resources/css/member/loginMember.css">
 </head>
 <body>
 	<!-- 헤더 -->
@@ -59,11 +59,11 @@
 				<div class="info_item1">
 					<div class="guide">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" class="regist" id="regist" value="회원가입">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="regist"
-							href="../regist/searchMember.html">계정찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="regist"
-							href="../regist/identifyId.html">비밀번호 찾기</a>
+						<input type="button" class="regist" id="regist" value="회원가입">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" class="regist" id="findEmail" value="계정찾기">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" class="regist" id="findPwd" value="비밀번호 찾기">
 					</div>
 				</div>
 
