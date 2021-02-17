@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,23 +25,37 @@
 			<br>
 			<br>
 
-			<form class="info" action="" method="post" id="myForm">
+			<form class="info" action="" method="post" id="verifyForm">
 				<div class="info_item1">
 					<div class="info_text1">
 						이메일 주소 <span class="info_detail">*</span>
 					</div>
-					<input class="box_detail" type="text" name="email" id="email"
+				<c:if test="${ empty requestScope.verificationNumber }">
+					<input class="box_detail2" type="text" name="email" id="email"
 						placeholder="이메일주소를 입력해주세요" autofocus>
+				</c:if>
+				<c:if test="${ !empty requestScope.verificationNumber }">
+					<input class="box_detail2" type="text" name="email" id="email" value="${ requestScope.requestMember.email }"
+						placeholder="이메일주소를 입력해주세요" autofocus readonly>
+				</c:if>
+					<button class="certify" onclick="return sendVerificationNumber();">인증번호 받기</button>
 				</div>
-
 				<br>
-
+				<div class="info_item1">
+					<input class="box_detail2" type="text" name="verificationNumber" id="verificationNumber" placeholder="인증번호를 입력하세요">
+					<button class="certify2" type="button" disabled onclick="return confirm();">확인</button>
+				</div>
+			</form>
+			
+				<form class="info" action="" method="post" id="myForm">
+				<input type="email" name="email2" id="email2" value="${ requestScope.requestMember.email }" style="display: none;">
+				<br>
 				<div class="info_item1">
 					<div class="info_text1">
 						비밀번호 <span class="info_detail">*</span>
 					</div>
 					<input class="box_detail" type="password" name="password" id="password"
-						placeholder="비밀번호를 입력하세요">
+						placeholder="비밀번호를 입력하세요" disabled>
 				</div>
 
 				<br>
@@ -50,7 +65,7 @@
 						비밀번호 확인 <span class="info_detail">*</span>
 					</div>
 					<input class="box_detail" type="password" name="password" id="password2"
-						placeholder="비밀번호를 입력하세요">
+						placeholder="비밀번호를 입력하세요" disabled>
 					<div class="guide">
 						<br> 8글자 이상 / 영문 숫자 조합
 					</div>
@@ -64,7 +79,7 @@
 						이름 <span class="info_detail">*</span>
 					</div>
 					<input class="box_detail" type="text" name="name" id="name"
-						placeholder="이름를 입력하세요">
+						placeholder="이름를 입력하세요" disabled>
 				</div>
 
 				<br>
@@ -74,7 +89,7 @@
 						연락처 <span class="info_detail">*</span>
 					</div>
 					<input class="box_detail" type="tel" name="phone" id="phone"
-						placeholder="전화번호를 입력하세요">
+						placeholder="전화번호를 입력하세요" disabled>
 				</div>
 
 				<br><br>
@@ -153,6 +168,68 @@
 	</div>
 	<br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"/>
+	
+	<script>
+		/* 메일인증 가입 */ 
+		function sendVerificationNumber() {
+			
+			const email = document.getElementById("email").value;
+			const $verifyForm = document.getElementById("verifyForm");
+			
+			if(!email || email === "") {
+				alert("이메일을 반드시 입력해야 합니다.");
+				document.getElementById("email").focus();
+				return false;
+			}
+			
+			$verifyForm.action = "${ pageContext.servletContext.contextPath }/member/registVerfication";
+			$verifyForm.submit();
+			
+			alert("인증번호가 발송되었습니다. 메일을 확인해보세요.");
+			
+		}
+		
+		//인증번호를 쳐야지만 확인 버튼이 눌리는 로직
+		$(document).ready(function() {
+		         		$('#verificationNumber').on('keyup', function() {
+		         			var flag = true;
+		         			flag = $(this).val().length > 0 ? false : true;
+		         			$('.certify2').attr('disabled', flag);
+		         		});
+		});
+		
+		/* 인증번호 확인 */
+		function confirm() {
+			
+			const verificationNumber = document.getElementById("verificationNumber").value;
+
+			const $password = document.getElementById("password");
+			const $password2 = document.getElementById("password2");
+			const $name = document.getElementById("name");
+			const $phone = document.getElementById("phone");
+			
+			/* 인증번호 확인 */
+			if(!verificationNumber || verificationNumber === "") {
+				alert("인증번호를 입력해야 합니다.");
+				document.getElementById("verificationNumber").focus();
+				return false;
+			}
+			if(verificationNumber != "${ requestScope.verificationNumber }") {
+				alert("인증번호가 다릅니다.");
+				document.getElementById("verificationNumber").focus();
+				return false;
+			}
+			
+			alert("인증되었습니다.");
+			
+			$password.disabled = false;
+			$password2.disabled = false;
+			$name.disabled = false;
+			$phone.disabled = false;
+			
+		}
+		
+	</script>
 	
 	<script>
 		/* 필수 항목이 다 눌렸을 때만 회원가입 버튼을 눌를 수 있도록 */
