@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!-- jstl -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-		
+	
 	<link rel="stylesheet" href="/semi/resources/css/index.css">
 	<link rel="stylesheet" href="/semi/resources/css/notice_board.css">
-	
+	<link rel="stylesheet" href="/semi/resources/css/notice_detail.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -56,70 +55,40 @@
 				공지사항
 			</div>
 			<div class="line"></div>
+		<form action="${ pageContext.servletContext.contextPath }/notice/insert" method="post">
+			<div class="notice_detail_area">
+				<div class="row">
+					<div class="notice_title">
+						제목 : 
+						<input class="no_title_detail" type="text" name="title"/>
+					</div>	
+					<div class="notice_writer">작성자 : <input class="no_writer_detail" type="text" value="${ sessionScope.loginMember.name}" name="writer"></div>
+				</div>	
+				<div class="content_area">
+					<div class="writing_date" >2021.02.11 23:52</div>
+					<textarea class="textarea_detail" name="body"></textarea>
+				</div>
 
-			<div class="notice_content_area">
-				<table class="table_detail">
-					<tr class="tr_detail">
-						<th class="th_detail">번호</th>
-						<th class="th_detail1">내용</th>
-						<th class="th_detail2">작성자</th>
-						<th class="th_detail2">날짜</th>
-						<th class="th_detail">조회수</th>
-					</tr>
-					<c:forEach var="notice" items="${ requestScope.noticeList }">
-						<tr>
-							<td><c:out value="${ notice.no }"/></td>
-							<td><c:out value="${ notice.title }"/></td>
-							<td><c:out value="${ notice.writer.name }"/></td>
-							<td><c:out value="${ notice.createdDate }"/></td>
-							<td><c:out value="${ notice.count }"/></td>
-						</tr>
-					</c:forEach>
-										
-				</table>
+			</div>	
+			<div class="btn_area">
+				<div class="row">					
+					<button type="reset" class="btn_detail" id="cancle">취소</button>
+					<button type="submit" class="btn_detail">등록하기</button>
+				</div>
 			</div>
+		
+		</form>
 
-			<div class="page_area">
-				<button><</button>
-				<span>1</span>
-				<span>2</span>
-				<span>3</span>
-				<span>4</span>
-				<span>5</span>
-				<button>></button>
-			</div>
+			
 
-			<div class="search_area" >
-				<select id="searchCondition" name="searchCondition">
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
-					<option value="body">내용</option>
-				</select> <input type="search" name="searchValue">
-				<button type="submit">검색하기</button>
-				<c:if test="${ sessionScope.loginMember.role eq 'ADMIN'}">
-					<button id="writeNotice">작성하기</button>		
-				</c:if>
-			</div>
-		</div>
+			
 	
 
+			
+		</div>
 		<jsp:include page="../common/footer.jsp"/>
 	</div>
 
-	<script type="text/javascript">
-		if(document.getElementsByTagName("td")){
-			const $no_list = document.getElementsByTagName("td");
-			
-			for(let i = 0; i < $no_list.length; i++){
-				
-				$no_list[i].onclick = function() {
-					const no = this.parentNode.children[0].innerText;
-					location.href = "${ pageContext.servletContext.contextPath }/notice/detail?no=" + no;
-				}
-				
-			}
-		}
-	</script>
 
 		
 </body>

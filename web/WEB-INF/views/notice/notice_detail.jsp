@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,24 +60,24 @@
 			<div class="notice_detail_area">
 				<div class="row">
 					<div class="notice_title">
-						공지다
+						제목 : 
+						<c:out value="${ requestScope.notice.title }"/>
 					</div>	
-					<div class="notice_writer">작성자 : 민서찡</div>
+					<div class="notice_writer">작성자 : <c:out value="${ requestScope.notice.writer.name }"/></div>
 				</div>	
 				<div class="content_area">
-					<div class="writing_date">2021.02.11 23:52</div>
-					<textarea class="textarea_detail"  readonly>
-					
-					</textarea>
+					<div class="writing_date"><c:out value="${ requestScope.notice.createdDate }"/></div>
+					<textarea class="textarea_detail"  readonly><c:out value="${ requestScope.notice.body }"/></textarea>
 				</div>
 
 
 			</div>	
 			<div class="btn_area">
 				<div class="row">
-					<a class="btn_detail" href="http://kordzor.cafe24.com/semiproject/notice_borad.html">목록으로</a>
-					<a class="btn_detail" href="#">수정하기</a>
-					<a class="btn_detail" href="#">삭제하기</a>
+					
+					<button class="btn_detail">목록으로</button>
+					<button type="submit" class="btn_detail">수정하기</button>
+					<button type="submit" class="btn_detail">삭제하기</button>
 				</div>
 			</div>
 

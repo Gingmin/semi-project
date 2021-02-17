@@ -1,7 +1,6 @@
 package com.greedy.semi.notice.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,29 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.service.NoticeService;
 
-@WebServlet("/notice/notice")
-public class NoticeNoticeServlet extends HttpServlet {
+
+@WebServlet("/notice/detail")
+public class NoticeDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		List<NoticeDTO> noticeList = new NoticeService().selectAllNoticeList();
+		NoticeDTO noticeDetail = new NoticeService().selectNoticeDetail(no);
 		
-		System.out.println(noticeList);
-		
-		String path ="";
-		if(noticeList != null) {
-			path = "/WEB-INF/views/notice/notice_borad.jsp";
-			request.setAttribute("noticeList", noticeList);
+		System.out.println("서비스 :" + noticeDetail);
+		String path = "";
+		if(noticeDetail != null) {
+			path = "/WEB-INF/views/notice/notice_detail.jsp";
+			request.setAttribute("notice", noticeDetail);
 		} else {
-			path = "WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message","조회 실패");
-			
+			path = "/WEB-INF/views/notice/failed.jsp";
+			request.setAttribute("message", "공지사항 상세 보기 조회에 실패하셨습니다.");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
-	
 	
 
 }

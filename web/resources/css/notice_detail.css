@@ -12,4 +12,9 @@
 
 .btn_area{ margin: 20px 0; }
 .btn_area .row{margin: 0;}
-.btn_area .row .btn_detail{float: right; border: 1px solid black; width: 100px; height: 40px; margin: 0 10px; text-align: center; line-height: 40px; font-size: 18px; background-color: black; color: white; text-decoration: none;}
+.btn_area .row .btn_detail{float: right; border: 1px solid black; width: 100px; height: 40px; margin: 0 10px; text-align: center; line-height: 40px; font-size: 18px; background-color: black; color: white; text-decoration: none; outline: none;}
+
+
+.notice_detail_area .row .notice_title .no_title_detail{ border:0; height: 60px; width: 450px;}
+
+.notice_detail_area .row .notice_writer .no_writer_detail{ border:0;  height: 60px; width: 55px;}
