@@ -36,7 +36,7 @@
 					<div class="row">
 						<div class="member_info">
 							<div class="member_img_area">
-								<img class="img_detail" src="./img/testimg.JPG">
+								<img class="img_detail" src="/semi/resources/images/testimg.JPG">
 							</div>
 							<div class="member_name">
 								정민서

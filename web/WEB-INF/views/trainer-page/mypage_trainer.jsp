@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="profile_img_area">
 						<div class="profile_img">
-							<img class="img_detail" src="./img/testimg.JPG">
+							<img class="img_detail" src="/semi/resources/images/testimg.JPG">
 						</div>
 						<div class="profile_btn_area">
 							<a class="edit_btn" href="#">프로필 편집</a>	

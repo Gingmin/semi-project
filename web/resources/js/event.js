@@ -176,7 +176,22 @@ window.onload = function() {
 		}
 	}
 	
-	
+	/* 게시판 공지사항 작성하기 버튼 클릭시 */
+	if(document.getElementById("writeNotice")){
+		const $writeNotice = document.getElementById("writeNotice");
+		$writeNotice.onclick = function() {
+			location.href = "/semi/notice/insert";
+			console.log($writeNotice);
+		}
+	}
+	/* 공지사항 등록 페이지 취소 버튼 클릭시 */
+	if(document.getElementById("cancle")){
+		const $cancle = document.getElementById("cancle");
+		$cancle.onclick = function() {
+			location.href = "/semi/notice/notice";
+			console.log($cancle);
+		}
+	}
 	
 	//완규 영역 끝
 	
