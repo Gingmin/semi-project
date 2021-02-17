@@ -88,9 +88,9 @@ public class AuthenticationFilter implements Filter {
 		List<String> trainerPermitList = new ArrayList<>();
 		List<String> allPermitList = new ArrayList<>();
 		
-		adminPermitList.add("");
-		adminPermitList.add("");
-		adminPermitList.add("");
+		adminPermitList.add("/admin/dashboard");
+		adminPermitList.add("/admin/member");
+		adminPermitList.add("/admin/trainer");
 		adminPermitList.add("");
 		
 		memberPermitList.add("/member/mypage");

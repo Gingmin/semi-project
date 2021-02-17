@@ -85,7 +85,30 @@ window.onload = function() {
 			location.href = "/semi/member/login";
 		}
 	}
-  
+	
+	/* 관리자 페이지 이동 */
+	if(document.getElementById("adminPage")) {
+		const $adminPage = document.getElementById("adminPage");
+		$adminPage.onclick = function() {
+			location.href = "/semi/admin/dashboard";
+		}
+	}
+	
+	/* 관리자 페이지(일반회원으로 이동) */
+	if(document.getElementById("adminMember")) {
+		const $adminMember = document.getElementById("adminMember");
+		$adminMember.onclick = function() {
+			location.href = "/semi/admin/member";
+		}
+	}
+	
+	/* 관리자 페이지(트레이너로 이동) */
+	if(document.getElementById("adminTrainer")) {
+		const $adminTrainer = document.getElementById("adminTrainer");
+		$adminTrainer.onclick = function() {
+			location.href = "/semi/admin/trainer";
+		}
+	}
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
