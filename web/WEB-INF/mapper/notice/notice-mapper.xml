@@ -59,4 +59,19 @@
 	     WHERE A.NOTICE_STATUS = 'Y'
 	       AND A.NOTICE_NO = ?        
 	</entry>
+	
+	<entry key="updateNotice">
+		UPDATE
+		       TBL_NOTICE A
+		   SET A.NOTICE_TITLE = ?
+		     , A.NOTICE_BODY = ?
+		 WHERE A.NOTICE_STATUS = 'Y' 
+           AND A.NOTICE_NO = ?  
+	</entry>
+	
+	<entry key="deleteNotice">
+		DELETE
+		  FROM
+		 WHERE A.NOTICE_NO = ? 
+	</entry>
 </properties>

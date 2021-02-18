@@ -34,7 +34,15 @@
 				case "insertNotice" :
 					movePath = "${ pageContext.servletContext.contextPath }/notice/notice";
 					message = "공지사항이 등록 되었습니다.";
-          break;
+         			 break;
+				case "updateNotice" :
+					movePath = "${ pageContext.servletContext.contextPath }/notice/update?no=" + "${requestScope.no}";
+					message = "공지사항이 수정 되었습니다.";
+         			 break;
+				case "deleteNotice" :
+					movePath = "${ pageContext.servletContext.contextPath }/notice/delete";
+					message = "공지사항이 삭제 되었습니다.";
+         			 break;
 				case "updateResetPassword" :
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "비밀번호 변경 성공! 로그인 해주세요!";
