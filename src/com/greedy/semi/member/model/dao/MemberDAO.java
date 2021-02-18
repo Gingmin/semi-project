@@ -355,4 +355,34 @@ public class MemberDAO {
 		return result;
 	}
 
+	public String selectEmailList(Connection con, String email) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String selectEmail = "";
+		
+		String query = prop.getProperty("selectEmailList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				selectEmail = rset.getString("EMAIL");
+			}
+			System.out.println("dao selectEmail : " + selectEmail);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return selectEmail;
+	}
+
 }

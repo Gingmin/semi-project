@@ -115,6 +115,7 @@ public class AuthenticationFilter implements Filter {
 		allPermitList.add("/member/registVerfication");
 		allPermitList.add("/member/resetPassword");
 		allPermitList.add("/member/finalResetPwd");
+		allPermitList.add("/member/infoCheck");
 		
 		
 		permitURIList.put("memberPermitList", memberPermitList);

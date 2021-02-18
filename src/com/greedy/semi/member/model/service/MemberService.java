@@ -212,4 +212,24 @@ public class MemberService {
 		
 	}
 
+	public String selectEmailList(String email) {
+
+		Connection con = getConnection();
+		
+		String result = "";
+		
+		String selectEmail = memberDAO.selectEmailList(con, email);
+		System.out.println("selecteEmail : " + selectEmail);
+		
+		if(selectEmail != "") {
+			result = "unable";
+		} else {
+			result = "able";
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 }

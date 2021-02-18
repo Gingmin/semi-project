@@ -110,4 +110,10 @@
 		 WHERE H.MEMBER_STATUS = 'Y'
 		   AND H.EMAIL = ?
 	</entry>
+	<entry key="selectEmailList">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectEmailList() */
+		       I.EMAIL
+		  FROM TBL_MEMBER I
+		 WHERE I.EMAIL = ? 
+	</entry>
 </properties>

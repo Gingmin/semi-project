@@ -8,6 +8,7 @@
 <title>일반 회원가입</title>
 <link rel="stylesheet" href="/semi/resources/css/member/registMember.css">
 <!-- <script type="text/javascript" src="/semi/resources/js/registSettings.js"></script> -->
+
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
@@ -38,8 +39,11 @@
 					<input class="box_detail2" type="text" name="email" id="email" value="${ requestScope.requestMember.email }"
 						placeholder="이메일주소를 입력해주세요" autofocus readonly>
 				</c:if>
-					<button class="certify" onclick="return sendVerificationNumber();">인증번호 받기</button>
+					<button class="certify" disabled onclick="return sendVerificationNumber();">인증번호 받기</button>
 				</div>
+				<br>
+				<p id="id_check"></p>
+				
 				<br>
 				<div class="info_item1">
 					<input class="box_detail2" type="text" name="verificationNumber" id="verificationNumber" placeholder="인증번호를 입력하세요">
@@ -168,6 +172,38 @@
 	</div>
 	<br><br><br><br><br>
 	<jsp:include page="../common/footer.jsp"/>
+	
+	<script>
+		/* 아이디(이메일) 중복 체크 */
+		$('#email').blur(function() {
+			
+				$.ajax({
+					url : '/semi/member/infoCheck',
+					data : { email: $('#email').val() },
+					method : 'GET',
+					success : function(data, textStatus, xhr) {
+						
+						var obj = JSON.parse(data);
+						
+						if(obj.result === 'unable') {
+							$('#id_check').text('사용중인 아이디 입니다.');
+							$('#id_check').css('color', 'orangered');
+							$('#email').focus();
+							$('.certify').attr('disabled', true);
+						} else if(obj.result === 'able' && $('#email').val() !== "") {
+							$('#id_check').text('사용 가능합니다.');
+							$('#id_check').css('color', '#1EA4FF');
+							$('.certify').attr('disabled', false);
+						}
+					},
+					error : function(xhr, status, error) {
+						console.log(xhr);
+						console.log(status);
+						console.log(error);
+					},
+				});
+			});
+	</script>
 	
 	<script>
 		/* 메일인증 가입 */ 
