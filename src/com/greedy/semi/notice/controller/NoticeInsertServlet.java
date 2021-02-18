@@ -52,8 +52,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			request.setAttribute("message", "공지사항 등록 실패 ");
 		}
 		
-		System.out.println("리절트 : "  +  result);
-		System.out.println("패치" + path);
+		
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

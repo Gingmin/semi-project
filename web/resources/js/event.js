@@ -245,6 +245,8 @@ window.onload = function() {
 		}
 	}
 	
+
+	
 	//완규 영역 끝
 	
 	

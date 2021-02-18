@@ -56,19 +56,19 @@
 				공지사항
 			</div>
 			<div class="line"></div>
-			<!-- <form action="" method="post"> -->
+			<form action="" method="post">
 			
 				<div class="notice_detail_area">
 					<div class="row">
 						<div class="notice_title">
 							제목 : 
-							<c:out value="${ requestScope.notice.title }"/>
+							<input class="no_title_detail" type="text" name="title" value="${ requestScope.notice.title }"/>
 						</div>	
-						<div class="notice_writer">작성자 : <c:out value="${ requestScope.notice.writer.name }"/></div>
+						<div class="notice_writer">작성자 : <c:out value="${ sessionScope.loginMember.name }"/></div>
 					</div>	
 					<div class="content_area">
 						<div class="writing_date"><c:out value="${ requestScope.notice.createdDate }"/></div>
-						<textarea class="textarea_detail" readonly ><c:out value="${ requestScope.notice.body }"/></textarea>
+						<textarea class="textarea_detail" name="body" ><c:out value="${ requestScope.notice.body }"/></textarea>
 					</div>
 	
 	
@@ -78,38 +78,19 @@
 						
 						<input type="button" value="목록으로" class="btn_detail" onclick="location.href='${ pageContext.servletContext.contextPath}/notice/notice'">
 						<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
-							<input type="button" class="btn_detail" value="수정하기" onclick="location.href='${ pageContext.servletContext.contextPath}/notice/update?no=${ requestScope.notice.no }'">
-							<input type="button" id="btn_delete" class="btn_detail" value="삭제하기" onclick="return movePath('deleteNotice')">
+							<button class="btn_detail" onclick="return movePath('updateNotice');">수정하기</button>							
 						</c:if>
 					</div>
 				</div>
-			<!-- </form> -->
+			</form>
+
+			
 
 			
 		</div>
 		<jsp:include page="../common/footer.jsp"/>
 	</div>
 
-	<script type="text/javascript">
-		function movePath(intent){
-			
-			const $btn_delete = document.getElementById("btn_delete");
-			
-			let requestPath = "${ pageContext.servletContext.contextPath }";
-			switch(intent) {
-				case "deleteNotice" :
-					requestPath += "/notice/delete";
-					break;
-			
-			}
-			console.log(intent);
-			console.log($btn_delete);
-			console.log(requestPath);
-			location.href = requestPath;
-			
-		}
-	
-	</script>
 
 		
 </body>

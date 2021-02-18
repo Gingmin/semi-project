@@ -139,7 +139,7 @@ public class NoticeDAO {
 			close(pstmt);
 		}
 		
-		System.out.println("dao인서트 : " + noticeDetail);
+		
 		return noticeDetail;
 	}
 
@@ -166,7 +166,62 @@ public class NoticeDAO {
 			
 		}
 		
-		System.out.println("셀렉트올 다오 : " + result);
+		
+		return result;
+	}
+
+	public int updateNotice(Connection con, NoticeDTO changeContent) {
+
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, changeContent.getTitle());
+			pstmt.setString(2, changeContent.getBody());
+			pstmt.setInt(3, changeContent.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+			System.out.println("DAO 리절트 : " + result);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteNotice(Connection con, NoticeDTO requestNotice) {
+
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, requestNotice.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+			System.out.println("dao는 들리나 ???");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		
+		
 		return result;
 	}
 }

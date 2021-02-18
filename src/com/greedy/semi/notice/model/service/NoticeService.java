@@ -2,8 +2,8 @@ package com.greedy.semi.notice.model.service;
 
 import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.commit;
-import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.getConnection;
+import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -70,6 +70,42 @@ public class NoticeService {
 		}
 		
 		return noticeDetail;
+	}
+
+	public int updateNotice(NoticeDTO changeContent) {
+
+		Connection con = getConnection();
+		
+		int changeNotice = noticeDAO.updateNotice(con, changeContent);
+		
+		System.out.println("서비스 들렸냥 " + changeNotice);
+		
+		if( changeNotice > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		
+		return changeNotice;
+	}
+
+	public int deleteNotice(NoticeDTO requestNotice) {
+
+		Connection con = getConnection();
+		
+		int result = noticeDAO.deleteNotice(con, requestNotice);
+		
+		System.out.println("서비스는 ~~~ ");
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
 	}
 
 }
