@@ -56,8 +56,8 @@
 				공지사항
 			</div>
 			<div class="line"></div>
-			<!-- <form action="" method="post"> -->
-			
+			<form id="deleted_no" action="" method="post">
+				<input type="text" name="no" style="display:none;" value="${ requestScope.notice.no }">
 				<div class="notice_detail_area">
 					<div class="row">
 						<div class="notice_title">
@@ -83,7 +83,7 @@
 						</c:if>
 					</div>
 				</div>
-			<!-- </form> -->
+			</form>
 
 			
 		</div>
@@ -93,6 +93,7 @@
 	<script type="text/javascript">
 		function movePath(intent){
 			
+			const $deleted_no = document.getElementById("deleted_no")
 			const $btn_delete = document.getElementById("btn_delete");
 			
 			let requestPath = "${ pageContext.servletContext.contextPath }";
@@ -105,7 +106,8 @@
 			console.log(intent);
 			console.log($btn_delete);
 			console.log(requestPath);
-			location.href = requestPath;
+			$deleted_no.action = requestPath;
+			$deleted_no.submit();
 			
 		}
 	

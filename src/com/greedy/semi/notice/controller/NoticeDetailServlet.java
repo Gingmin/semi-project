@@ -26,6 +26,7 @@ public class NoticeDetailServlet extends HttpServlet {
 		if(noticeDetail != null) {
 			path = "/WEB-INF/views/notice/notice_detail.jsp";
 			request.setAttribute("notice", noticeDetail);
+			
 		} else {
 			path = "/WEB-INF/views/notice/failed.jsp";
 			request.setAttribute("message", "공지사항 상세 보기 조회에 실패하셨습니다.");

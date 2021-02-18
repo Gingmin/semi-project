@@ -198,7 +198,7 @@ public class NoticeDAO {
 		return result;
 	}
 
-	public int deleteNotice(Connection con, NoticeDTO requestNotice) {
+	public int deleteNotice(Connection con, NoticeDTO deleteNotice) {
 
 		PreparedStatement pstmt = null;
 		
@@ -208,7 +208,7 @@ public class NoticeDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, requestNotice.getNo());
+			pstmt.setInt(1, deleteNotice.getNo());
 			
 			result = pstmt.executeUpdate();
 			

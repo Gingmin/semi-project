@@ -52,7 +52,7 @@ public class NoticeUpdateServlet extends HttpServlet {
 		
 		String path = "";
 		if(changeNotice > 0) {
-			System.out.println("dsfsdfsdfdsdf...");
+			
 			path = "/WEB-INF/views/common/success.jsp";
 			request.setAttribute("successCode", "updateNotice");
 			request.setAttribute("no", no);

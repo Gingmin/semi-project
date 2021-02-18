@@ -70,8 +70,10 @@
 	</entry>
 	
 	<entry key="deleteNotice">
-		DELETE
-		  FROM
-		 WHERE A.NOTICE_NO = ? 
+		UPDATE
+		       TBL_NOTICE A
+		   SET A.NOTICE_STATUS = 'N'    
+		 WHERE A.NOTICE_STATUS = 'Y'
+		   AND A.NOTICE_NO = ? 
 	</entry>
 </properties>

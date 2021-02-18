@@ -90,11 +90,11 @@ public class NoticeService {
 		return changeNotice;
 	}
 
-	public int deleteNotice(NoticeDTO requestNotice) {
+	public int deleteNotice(NoticeDTO deleteNotice) {
 
 		Connection con = getConnection();
 		
-		int result = noticeDAO.deleteNotice(con, requestNotice);
+		int result = noticeDAO.deleteNotice(con, deleteNotice);
 		
 		System.out.println("서비스는 ~~~ ");
 		

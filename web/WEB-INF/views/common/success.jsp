@@ -40,7 +40,7 @@
 					message = "공지사항이 수정 되었습니다.";
          			 break;
 				case "deleteNotice" :
-					movePath = "${ pageContext.servletContext.contextPath }/notice/delete";
+					movePath = "${ pageContext.servletContext.contextPath }/notice/notice";
 					message = "공지사항이 삭제 되었습니다.";
          			 break;
 				case "updateResetPassword" :
