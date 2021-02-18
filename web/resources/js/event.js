@@ -121,7 +121,7 @@ window.onload = function() {
 	if(document.getElementById("insert_class")) {
 		const $logout = document.getElementById("insert_class");
 		$logout.onclick = function() {
-			location.href = "/semi/trainer/class";
+			location.href = "/semi/class/insert";
 		}
 	}
 	/* 매출 내역 */

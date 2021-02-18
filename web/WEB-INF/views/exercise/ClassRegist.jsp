@@ -22,19 +22,19 @@
 	<jsp:include page="../common/header.jsp" />
 	<!-- 헤더끝 -->
 
-	<form action="" method="post">
+	<form action="" method="post" encType="multipart/form-data">
 		
 		<div class="container">
 			<h1 align="center">수업등록</h1>
 			<label class="regist_text">클래스 이름 <span class="text_detail">*</span></label>
-			<input type="text" name="name" class="input_detail">
+			<input type="text" name="className" class="input_detail">
 			
 			<label class="regist_text">클래스 종류 선택 <span class="text_detail">*</span></label>
 			<div class="row">
 			
-	    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="ptclass">
+	    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="classType" value="1:1 클래스">
 				<label class="btn btn-outline-secondary" for="btn-check-2-outlined">1:1 클래스</label><br>
-	    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="groupclass">
+	    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="classType" value="그룹 클래스">
 				<label class="btn btn-outline-secondary" for="btn-check-3-outlined">그룹 클래스</label><br>
 	    		
 			</div>	
@@ -42,7 +42,7 @@
 			
 			<label class="regist_text">카테고리</label>
 			<div class="row">
-				<input type="checkbox" class="btn-check" id="btn-check-4-outlined" name="health">
+				<input type="checkbox" class="btn-check" id="btn-check-4-outlined" name="category" value="헬스">
 				<label class="btn btn-outline-secondary" for="btn-check-4-outlined">헬스</label><br>
 				<input type="checkbox" class="btn-check" id="btn-check-5-outlined" disabled>
 				<label class="btn btn-outline-secondary" for="btn-check-5-outlined">요가</label><br>
@@ -54,13 +54,41 @@
 				<label class="regist_text">
 					수업을 소개할 문구 (3가지)<span class="text_detail">*</span>
 				</label><br>
-			<input type="text" name="intro1"><input type="text" name="intro2"><input type="text" name="intro3"></div>
+			<input type="text" name="intro"><input type="text" name="intro"><input type="text" name="intro"></div>
 			
 			<div><label class="regist_text">개설할 클래스 소개*</label><br>
 			<textarea rows="10" cols="10" class="textarea" name="introduce"></textarea></div>
 			
+			<div class="thumbnail-insert-area">
+				<table>
+					
+					<tr>
+						<td>
+							<div class="content-img-area1" id="contentImgArea1">
+								<img id="contentImg1" width="180" height="120">
+							</div>
+						</td>
+						<td>
+							<div class="content-img-area2" id="contentImgArea2">
+								<img id="contentImg2" width="180" height="120">
+							</div>
+						</td>
+						<td>
+							<div class="content-img-area3" id="contentImgArea3">
+								<img id="contentImg3" width="180" height="120">
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="thumbnail-file-area">
+					<input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this, 1)">
+					<input type="file" id="thumbnailImg2" name="thumbnailImg2" onchange="loadImg(this, 2)">
+					<input type="file" id="thumbnailImg3" name="thumbnailImg3" onchange="loadImg(this, 3)">
+				</div>
+			</div>
+			
 			<label class="regist_text">수업 가능 시간을 선택해 주세요*</label>
-			<div><input type="datetime-local" name="time"></div>
+			<div><input type="datetime-local" name="classDate"></div>
 			<br>
 			
 			<div class="btn_area">
@@ -70,6 +98,47 @@
    		 </div>
 	
 	</form>
+	
+	<script>
+		
+		const $contentImgArea1 = document.getElementById("contentImgArea1");
+		const $contentImgArea2 = document.getElementById("contentImgArea2");
+		const $contentImgArea3 = document.getElementById("contentImgArea3");
+		
+		$contentImgArea1.onclick = function() {
+			document.getElementById("thumbnailImg1").click();
+		}
+		
+		$contentImgArea2.onclick = function() {
+			document.getElementById("thumbnailImg2").click();
+		}
+		
+		$contentImgArea3.onclick = function() {
+			document.getElementById("thumbnailImg3").click();
+		}
+		
+		function loadImg(value, num) {
+			if(value.files && value.files[0]) {
+				const reader = new FileReader();
+				
+				reader.onload = function(e) {
+					switch(num) {
+					case 1 : 
+						document.getElementById("contentImg1").src = e.target.result;
+						break;
+					case 2 : 
+						document.getElementById("contentImg2").src = e.target.result;
+						break;
+					case 3 : 
+						document.getElementById("contentImg3").src = e.target.result;
+						break;
+					}
+				}
+				
+				reader.readAsDataURL(value.files[0]);
+			}
+		}
+	</script>
 
 
 
