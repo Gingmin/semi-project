@@ -61,6 +61,8 @@
 					<input class="box_detail" type="password" name="password" id="password"
 						placeholder="비밀번호를 입력하세요" disabled>
 				</div>
+				<br>
+				<p id="pwd_check"></p>
 
 				<br>
 
@@ -174,6 +176,56 @@
 	<jsp:include page="../common/footer.jsp"/>
 	
 	<script>
+		/* 비밀번호 유효성 체크 */
+		$('#password').change(function() {
+			checkPassword($('#password').val());
+		});
+		
+		const reg_pwd = /^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; /* 영문 숫자 혼합 8 - 20자 */
+		
+		function checkPassword(pwd) {
+			
+			let isUsePwd = false;
+			
+			if(!reg_pwd.test(pwd)) {
+				/* alert('영문 + 숫자 조합 8자리 이상 사용해야 합니다.');
+				$('#password').val('').focus(); */
+				isUsePwd = false;
+			} else {
+				
+			
+			/* var checkNumber = password.search(/[0-9]/g);
+			var checkEnglish = password.search(/[a-z]/ig);
+			if(checkNumber < 0 || checkEnglish < 0) {
+				alert('숫자와 영문을 혼용하여야 합니다.');
+				$('#password').val('').focus();
+				return false;
+			}
+			
+			if(/(\w)\1\1\1/.test(password)) {
+				alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+				$('#password').val('').focus();
+				return false;
+			} */
+			
+				isUsePwd = true;
+			}
+		
+			if(!isUsePwd) {
+				$('#pwd_check').text('영문 + 숫자 조합 8자리 이상 사용해야 합니다.');	
+				$('#pwd_check').css('color', 'orangered');
+				$('#password').val('').focus();
+				return false;
+			} else {
+				$('#pwd_check').text('사용 가능합니다.');	
+				$('#pwd_check').css('color', '#1EA4FF');
+				return true;
+			}
+			
+		}
+	</script>
+	
+	<script>
 		/* 아이디(이메일) 중복 체크 */
 		$('#email').blur(function() {
 			
@@ -250,6 +302,7 @@
 				document.getElementById("verificationNumber").focus();
 				return false;
 			}
+			
 			if(verificationNumber != "${ requestScope.verificationNumber }") {
 				alert("인증번호가 다릅니다.");
 				document.getElementById("verificationNumber").focus();
