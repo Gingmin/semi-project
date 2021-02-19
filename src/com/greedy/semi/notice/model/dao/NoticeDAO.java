@@ -14,6 +14,7 @@ import java.util.Properties;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
+import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
 import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
 
@@ -31,9 +32,9 @@ public class NoticeDAO {
 		}
 	}
 	
-	public List<NoticeDTO> selectAllNoticeList(Connection con){
+	public List<NoticeDTO> selectAllNoticeList(Connection con, PageInfoDTO pageInfo){
 		
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		List<NoticeDTO> noticeList = null;
@@ -41,8 +42,11 @@ public class NoticeDAO {
 		String query = prop.getProperty("selectAllNoticeList");
 		
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+			
+			rset = pstmt.executeQuery();
 			
 			noticeList = new ArrayList<>();
 			
@@ -57,10 +61,11 @@ public class NoticeDAO {
 				notice.getWriter().setName(rset.getString("MEMBER_NAME"));
 				notice.setCount(rset.getInt("NOTICE_COUNT"));
 				notice.setCreatedDate(rset.getDate("CREATED_DATE"));
+				notice.setStatus(rset.getString("NOTICE_STATUS"));
 				
 				
 				noticeList.add(notice);
-				
+				System.out.println("여기는 오나 ??");
 			}
 			
 			
@@ -68,7 +73,7 @@ public class NoticeDAO {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		
@@ -186,7 +191,7 @@ public class NoticeDAO {
 			
 			result = pstmt.executeUpdate();
 			
-			System.out.println("DAO 리절트 : " + result);
+			
 			
 			
 		} catch (SQLException e) {
@@ -212,7 +217,7 @@ public class NoticeDAO {
 			
 			result = pstmt.executeUpdate();
 			
-			System.out.println("dao는 들리나 ???");
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -223,5 +228,124 @@ public class NoticeDAO {
 		
 		
 		return result;
+	}
+
+	public int selectTotalCount(Connection con) {
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = prop.getProperty("selectTotalCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return totalCount;
+	}
+
+	public int searchNoticeCount(Connection con, String searchCondition, String searchValue) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = null;
+		if("writer".equals(searchCondition)) {
+			query = prop.getProperty("searchWriterCount");
+		} else if("title".contentEquals(searchCondition)) {
+			query = prop.getProperty("searchTitleCount");
+		} else if("content".equals(searchCondition)) {
+			query = prop.getProperty("searchContentCount");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return totalCount;
+	}
+
+	public List<NoticeDTO> searchNoticeList(Connection con, String searchCondition, String searchValue, PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<NoticeDTO> noticeList = null;
+		
+		String query = null;
+		
+		if("writer".equals(searchCondition)) {
+			query = prop.getProperty("searchWriterList");
+		} else if("title".equals(searchCondition)) {
+			query = prop.getProperty("searchTitleList");
+		} else if("content".equals(searchCondition)) {
+			query = prop.getProperty("searchContentList");
+		}
+				
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, pageInfo.getStartRow());
+			pstmt.setInt(3, pageInfo.getEndRow());
+			
+			rset = pstmt.executeQuery();
+			
+			noticeList = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				NoticeDTO notice = new NoticeDTO();
+				notice.setWriter(new MemberDTO());
+				
+				notice.setNo(rset.getInt("NOTICE_NO"));
+				notice.setTitle(rset.getString("NOTICE_TITLE"));
+				notice.setBody(rset.getString("NOTICE_BODY"));
+				notice.setWriterMemberNo(rset.getInt("NOTICE_WRITER_MEMBER_NO"));
+				notice.getWriter().setName(rset.getString("MEMBER_NAME"));
+				notice.setCount(rset.getInt("NOTICE_COUNT"));
+				notice.setCreatedDate(rset.getDate("CREATED_DATE"));
+				notice.setStatus(rset.getString("NOTICE_STATUS"));
+				
+				noticeList.add(notice);
+				
+			}
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+				
+		return noticeList;
 	}
 }
