@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.greedy.semi.common.wrapper.EncryptRequestWrapper;
 
-@WebFilter("/member/regist")
+@WebFilter(urlPatterns = {"/member/regist", "/trainer/regist"})
 public class PasswordEncryptFilter implements Filter {
 
     public PasswordEncryptFilter() {

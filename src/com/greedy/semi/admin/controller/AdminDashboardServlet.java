@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.greedy.semi.admin.controller.common.ControlMethod;
+import com.greedy.semi.common.movecontroll.ControlMethod;
 
 @WebServlet("/admin/dashboard")
 public class AdminDashboardServlet extends HttpServlet {

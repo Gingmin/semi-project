@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>일반 회원가입</title>
-<link rel="stylesheet" href="/semi/resources/css/member/registMember.css">
+<link rel="stylesheet" href="/semi/resources/css/member/registTrainer.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
@@ -96,6 +96,91 @@
 				</div>
 
 				<br><br>
+				<label>계좌번호</label>
+				<input type="text" id="account" name="account" placeholder="계좌번호를 입력하세요">
+				<br>
+				<label>은행명</label>
+				<select name="bankname" id="bankname">
+					<option selected disabled hidden>선택하세요</option>
+					<option>KB국민은행</option>
+					<option>NH농형은행</option>
+					<option>SH수협은행</option>
+					<option>우리은행</option>
+					<option>신한은행</option>
+					<option>하나은행</option>
+					<option>SC제일은행</option>
+					<option>힌극씨티은행</option>
+					<option>IBK기업은행</option>
+					<option>KDB산업은행</option>
+					<option>카카오뱅크</option>
+				</select>
+				<br>
+				<label>에금주</label>
+				<input type="text" id="holder" name="holder" placeholder="예금주를 입력하세요">
+				<br>
+				<label>경력사항</label>
+				<input type="text" id="placeWork" name="placeWork" placeholder="근무처를 입력하세요">
+				<br>
+				<label>근무시작일</label>
+				<input type="date" id="startDate" name="startDate">
+				<br>
+				<label>근무종료일</label>
+				<input type="date" id="endDate" name="endDate">
+				<!-- input + label 세트 떨어뜨리면 안됨 -->
+				<br>
+				<label>재직여부</label>
+				<select name="empStatus" id="empStatus">
+					<option selected disabled hidden>선택하세요</option>
+					<option>재직중 아님</option>
+					<option>재직중</option>
+				</select>
+				<br>
+				<label>자격증번호</label>
+				<input type="text" name="licenseCode" id="licenseCode" placeholder="자격증번호 or 면허증번호">				
+				<br>
+				<label>자격증명</label>
+				<select name="licenseName" id="licenseName">
+					<option selected disabled hidden>선택하세요</option>
+					<option>생활스포츠지도사</option>
+					<option>물리치료사</option>
+				</select>	
+				<br>
+				<label>급수</label>
+				<select name="grade" id="grade">
+					<option selected disabled hidden>선택하세요</option>
+					<option>1급</option>
+					<option>2급</option>
+				</select>			
+				<br>
+				<label>발급기관</label>
+				<p id="institution"></p>
+				
+				<script>
+					$('#licenseName').change(function() {
+						
+						var value = $(this).children('option:selected').text();
+						
+						if('생활스포츠지도사' === value) {
+							$('#grade').attr('disabled', false);
+							$('#institution').text('국민체육공단');
+						}
+						if('물리치료사' === value) {
+							$('#grade').attr('disabled', true);
+							$('#institution').text('한국보건의료인국가시험원');
+						}
+					
+					});
+				</script>
+				
+				<br>
+				<label>발급일자</label>
+				<input type="date" name="issueDate" id="issueDate">
+				<br>
+				<label>만료일자</label>
+				<input type="date" name="expDate" id="expDate">
+				<br>
+				<label>자격증 첨부</label>
+				<input type="file" name="license" id="license">
 
 				<br><br><br>
 				<div class="terms">
