@@ -11,6 +11,10 @@
 	
 }
 
+.thumbnail-file-area input[type=file] {
+	display:none;
+}
+
 .textarea {
 	width: 550px;
 }

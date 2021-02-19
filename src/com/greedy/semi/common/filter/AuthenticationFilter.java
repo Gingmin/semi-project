@@ -105,6 +105,9 @@ public class AuthenticationFilter implements Filter {
 	    memberPermitList.add("/notice/report");
         memberPermitList.add("/notice/question");
         memberPermitList.add("/notice/detail");
+        memberPermitList.add("/trainer/insert");
+        memberPermitList.add("/trainer/page");
+        memberPermitList.add("/trainer/sales_details");
 		 
 		trainerPermitList.add("");
 		
