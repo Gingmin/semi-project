@@ -100,20 +100,16 @@ public class ClassInertServlet extends HttpServlet {
 							
 							int width = 0;
 							int height = 0;
-							if("contentImgArea1".equals(fieldName)) {
-								fileMap.put("fileType", "thumbnail1");
-								if("contentImgArea2".equals(fieldName))
-									fileMap.put("fileType", "thumbnail2");
-									if("contentImgArea3".equals(fieldName))
-										fileMap.put("fileType", "thumbnail3");
+							if("thumbnailImg1".equals(fieldName)) {
+								fileMap.put("fileType", "CLASSNAME");
 									
 									width = 180;
 									height = 120;
 							} else {
-								fileMap.put("fileType", "thumbnail");
+								fileMap.put("fileType", "INTRODUCE");
 								
-								width = 120;
-								height = 100;
+								width = 180;
+								height = 120;
 							}
 							
 							Thumbnails.of(fileUploadDirectory + randomFileName)
