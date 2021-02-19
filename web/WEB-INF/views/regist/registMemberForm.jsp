@@ -63,6 +63,7 @@
 				</div>
 				<br>
 				<p id="pwd_check"></p>
+				<p id="caps_check"></p>
 
 				<br>
 
@@ -284,6 +285,20 @@
 		         			flag = $(this).val().length > 0 ? false : true;
 		         			$('.certify2').attr('disabled', flag);
 		         		});
+		         		
+		         		/* caps lock 체크 */
+		         		$("#password").on("keypress", function(e) { 
+		         			
+		         			var text = String.fromCharCode( e.which );
+		         			
+		         		    if ( text.toUpperCase() === text && text.toLowerCase() !== text && !e.shiftKey ) { 
+		         		    	$('#caps_check').text('Caps Lock이 켜져있습니다.');	
+		        				$('#caps_check').css('color', 'orangered');
+		         		    } else {
+		         		    	$('#caps_check').text('');	
+		         		    }
+		         		});
+		         			         		
 		});
 		
 		/* 인증번호 확인 */
