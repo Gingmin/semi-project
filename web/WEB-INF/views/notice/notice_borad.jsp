@@ -18,6 +18,9 @@
 
 	<!-- Rock Salt font -->
 	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+	
+	<!-- 폰트어썸 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 
 	<title>HelloPT</title>
@@ -80,13 +83,18 @@
 			</div>
 
 			<div class="page_area">
-				<button><</button>
-				<span>1</span>
-				<span>2</span>
-				<span>3</span>
-				<span>4</span>
-				<span>5</span>
-				<button>></button>
+				<c:choose>
+					<c:when test="${ empty requestScope.searchValue }">
+					
+						<i class="fas fa-backward"></i>
+						<i class="fas fa-caret-left"></i>
+						
+						<span>1</span>
+						
+						<i class="fas fa-caret-right"></i>
+						<i class="fas fa-forward"></i>
+					</c:when>
+				</c:choose>
 			</div>
 
 			<div class="search_area" >
