@@ -47,7 +47,7 @@
 	         <input type="button" class="menu_list" value="마이페이지" id="mypage">
 	       	 <input type="button" class="menu_list" value="게시판" id="noticePage">
 	         <input type="button" class="menu_list" value="멤버십" id="membership">
-	         <input type="button" class="menu_list" value="트레이너" id="trainer">
+	         <input type="button" class="menu_list" value="클래스" id="trainer">
 	         <input type="button" class="menu_list" value="소개" id="introduce">
 	      </div>
 	   </div>
