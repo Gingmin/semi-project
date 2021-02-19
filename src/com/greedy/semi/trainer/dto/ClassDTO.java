@@ -11,7 +11,6 @@ public class ClassDTO implements Serializable {
 	private int trainerNo;
 	private MemberDTO memberNo;
 	private int attachmentNo;
-	private List<AttachmentDTO> attachmentList;
 	private String name;
 	private String type;
 	private String category;
@@ -20,6 +19,8 @@ public class ClassDTO implements Serializable {
 	private String createdDate;
 	private String status;
 	private String approval;
+	
+	private List<AttachmentDTO> attachmentList;
 	
 	public ClassDTO() {}
 
