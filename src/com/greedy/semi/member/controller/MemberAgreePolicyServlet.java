@@ -1,4 +1,4 @@
-package com.greedy.semi.admin.controller;
+package com.greedy.semi.member.controller;
 
 import java.io.IOException;
 
@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.greedy.semi.common.movecontroll.ControlMethod;
 
-@WebServlet("/admin/member")
-public class AdminMemberServlet extends HttpServlet {
+@WebServlet("/member/policy")
+public class MemberAgreePolicyServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String path = "admin/member.jsp";
-		ControlMethod.moveForward(path, request, response);
-		
+		String movePath = "common/privacy_policy.jsp";
+		ControlMethod.moveForward(movePath, request, response);
+	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 
 }
