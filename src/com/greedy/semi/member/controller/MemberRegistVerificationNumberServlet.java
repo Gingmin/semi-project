@@ -33,6 +33,8 @@ public class MemberRegistVerificationNumberServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String email = request.getParameter("email");
+		/* 트레이너 회원가입시, 메일 전송 후 다시 트레이너 페이지로 돌아가기 위한 파라미터 값 */
+		String trn = request.getParameter("trn");
 		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setEmail(email);
@@ -111,7 +113,12 @@ public class MemberRegistVerificationNumberServlet extends HttpServlet {
 		
 		String path = "";
 		if(isSuccess) {
-			path = "/WEB-INF/views/regist/registMemberForm.jsp";
+			/* trn의 파라미터 값을 받아오면 트레이너 회원가입 */
+			if("trn".equals(trn)) {
+				path = "/WEB-INF/views/regist/registTrainerForm.jsp";
+			} else {
+				path = "/WEB-INF/views/regist/registMemberForm.jsp";
+			}
 			request.setAttribute("verificationNumber", verificationNumber);
 			request.setAttribute("requestMember", requestMember);
 			System.out.println("메일 발송 후 다시 이동");
