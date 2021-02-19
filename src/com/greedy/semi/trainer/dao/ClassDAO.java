@@ -28,7 +28,7 @@ public class ClassDAO {
 		}
 	}
 
-	public int insertThumbnailContent(Connection con, ClassDTO classInsert) {
+	public int insertThumbnailContent(Connection con, ClassDTO thumbnail) {
 		
 		PreparedStatement pstmt = null;
 		
@@ -38,14 +38,16 @@ public class ClassDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, classInsert.getName());
-			pstmt.setString(2, classInsert.getType());
-			pstmt.setString(3, classInsert.getCategory());
-			pstmt.setString(4, classInsert.getIntro());
-			pstmt.setString(5, classInsert.getIntroduce());
-			pstmt.setString(6, classInsert.getCreatedDate());
+			pstmt.setString(1, thumbnail.getName());
+			pstmt.setString(2, thumbnail.getType());
+			pstmt.setString(3, thumbnail.getCategory());
+			pstmt.setString(4, thumbnail.getIntro());
+			pstmt.setString(5, thumbnail.getIntroduce());
+			pstmt.setString(6, thumbnail.getCreatedDate());
+			pstmt.setInt(7, thumbnail.getTrainerNo());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -55,17 +57,18 @@ public class ClassDAO {
 		return result;
 	}
 
-	public int selectThumbnailSequence(Connection con) {
+	public int selectClassSequence(Connection con) {
 		
 		Statement stmt = null;
 		ResultSet rset = null;
 		
 		int lastClassNo = 0;
 		
-		String query = prop.getProperty("selectThumbnailSequence");
+		String query = prop.getProperty("selectClassSequence");
 		
 		try {
 			stmt = con.createStatement();
+			
 			rset = stmt.executeQuery(query);
 			
 			if(rset.next()) {
@@ -86,10 +89,10 @@ public class ClassDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String qeury = prop.getProperty("insertAttachment");
+		String query = prop.getProperty("insertAttachment");
 		
 		try {
-			pstmt = con.prepareStatement(qeury);
+			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, file.getRefClassNo());
 			pstmt.setString(2, file.getOriginalName());
 			pstmt.setString(3, file.getSavedName());
@@ -98,6 +101,7 @@ public class ClassDAO {
 			pstmt.setString(6, file.getThumbnailPath());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -108,3 +112,16 @@ public class ClassDAO {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

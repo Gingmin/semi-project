@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="insertThumbnailContent">
+        INSERT
+          INTO TBL_CLASS A
+        (
+          A.CLASS_NO
+        , A.CLASS_NAME
+        , A.CLASS_TYPE
+        , A.CLASS_CATEGORY
+        , A.CLASS_INTRO
+        , A.CLASS_INTRODUCE
+        , A.CREATED_DATE
+        , A.TRAINER_NO
+        )
+        VALUES
+        (
+          SEQ_CLASS_NO.NEXTVAL
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        )
+    </entry>
+    <entry key="selectClassSequence">
+        SELECT
+               SEQ_CLASS_NO.CURRVAL
+          FROM DUAL     
+    </entry>
+    <entry key="insertAttachment">
+        INSERT
+          INTO TBL_ATTACHMENT A
+        (
+          A.ATTACHMENT_NO
+        , A.REF_CLASS_NO
+        , A.ORIGINAL_NAME
+        , A.SAVED_NAME
+        , A.SAVE_PATH
+        , A.FILE_TYPE
+        , A.THUMBNAIL_PATH  
+        )
+        VALUES
+        (
+          SEQ_ATTACHMENT_NO.NEXTVAL
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?  
+        ) 
+    </entry>
+</properties>
