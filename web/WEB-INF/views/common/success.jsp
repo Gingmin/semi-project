@@ -47,6 +47,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/member/login";
 					message = "비밀번호 변경 성공! 로그인 해주세요!";
 					break;
+				case "insertClass" :
+					movePath = "${ pageContext.servletContext.contextPath }/trainer/page";
+					message = "수업등록에 성공했습니다!";
+					break;
 			}
 			
 			alert(message);

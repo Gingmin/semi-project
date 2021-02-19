@@ -1,4 +1,4 @@
-package com.greedy.semi.admin.controller.common;
+package com.greedy.semi.common.movecontroll;
 
 import java.io.IOException;
 

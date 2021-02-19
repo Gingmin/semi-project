@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>일반 회원가입</title>
-<link rel="stylesheet" href="/semi/resources/css/member/registMember.css">
+<link rel="stylesheet" href="/semi/resources/css/member/registTrainer.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
@@ -36,6 +36,7 @@
 						placeholder="이메일주소를 입력해주세요" autofocus readonly>
 				</c:if>
 					<button class="certify" disabled onclick="return sendVerificationNumber();">인증번호 받기</button>
+					<input type="text" value="trn" name="trn" style="display: none;">
 				</div>
 				<br>
 				<p id="id_check"></p>
@@ -47,7 +48,7 @@
 				</div>
 			</form>
 			
-				<form class="info" action="" method="post" id="myForm">
+				<form class="info" action="" method="post" id="myForm" encType="multipart/form-data">
 				<input type="email" name="email2" id="email2" value="${ requestScope.requestMember.email }" style="display: none;">
 				<br>
 				<div class="info_item1">
@@ -96,7 +97,215 @@
 				</div>
 
 				<br><br>
+				<div class="info_item1">
+					<div class="info_text1">
+						계좌번호 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="text" id="account" name="account" placeholder="계좌번호를 입력하세요" disabled>
+				</div>
 
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						은행명 <span class="info_detail">*</span>
+					</div>
+					<select class="box_detail" name="bankname" id="bankname" disabled>
+						<option selected disabled hidden>선택하세요</option>
+						<option>KB국민은행</option>
+						<option>NH농형은행</option>
+						<option>SH수협은행</option>
+						<option>우리은행</option>
+						<option>신한은행</option>
+						<option>하나은행</option>
+						<option>SC제일은행</option>
+						<option>힌극씨티은행</option>
+						<option>IBK기업은행</option>
+						<option>KDB산업은행</option>
+						<option>카카오뱅크</option>
+					</select>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						에금주 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="text" id="holder" name="holder" placeholder="예금주를 입력하세요" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						경력사항 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="text" id="placeWork" name="placeWork" placeholder="근무처를 입력하세요" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						근무시작일 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="date" id="startDate" name="startDate" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						근무종료일 <span class="info_detail"></span>
+					</div>
+					<input class="box_detail" type="date" id="endDate" name="endDate" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						재직여부 <span class="info_detail">*</span>
+					</div>
+					<select class="box_detail" name="empStatus" id="empStatus" disabled>
+						<option selected disabled hidden>선택하세요</option>
+						<option>재직중 아님</option>
+						<option>재직중</option>
+					</select>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						자격증번호 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="text" name="licenseCode" id="licenseCode" placeholder="자격증번호 or 면허증번호" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						자격증명 <span class="info_detail">*</span>
+					</div>
+					<select class="box_detail" name="licenseName" id="licenseName" disabled>
+						<option selected disabled hidden>선택하세요</option>
+						<option>생활스포츠지도사</option>
+						<option>물리치료사</option>
+					</select>	
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						급수 <span class="info_detail">*</span>
+					</div>
+					<select class="box_detail" name="grade" id="grade" disabled>
+						<option selected disabled hidden>선택하세요</option>
+						<option>1급</option>
+						<option>2급</option>
+					</select>	
+				</div>
+
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						발급기관 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="text" id="institution" name="institution" disabled>
+				</div>
+				
+				<script>
+					$('#licenseName').change(function() {
+						
+						var value = $(this).children('option:selected').text();
+						
+						if('생활스포츠지도사' === value) {
+							$('#grade').attr('disabled', false);
+							$('#institution').val('국민체육공단');
+						}
+						if('물리치료사' === value) {
+							$('#grade').attr('disabled', true);
+							$('#institution').val('한국보건의료인국가시험원');
+						}
+					
+					});
+				</script>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						발급일자 <span class="info_detail">*</span>
+					</div>
+					<input class="box_detail" type="date" name="issueDate" id="issueDate" disabled>
+				</div>
+				
+				<br>
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						만료일자 <span class="info_detail"></span>
+					</div>
+					<input class="box_detail" type="date" name="expDate" id="expDate" disabled>
+				</div>
+				
+				<br>
+				<div class="info_item1">
+					<div class="info_text1">
+						자격증 첨부 <span class="info_detail">*</span>
+					</div>
+				</div>
+				<div class="filebox preview-image">
+					<input class="upload-name" value="파일선택" disabled>
+					<label for="inputFile">업로드</label>
+					<input type="file" id="inputFile" class="upload-hidden" name="inputFile" multiple disabled>
+				</div>
+				
+				<script>
+					var fileTarget = $('.filebox .upload-hidden'); 
+					fileTarget.on('change', function(){ // 값이 변경되면 
+							
+					if(window.FileReader){ // modern browser 
+						var filename = $(this)[0].files[0].name; 
+					} else { // old IE var 
+						filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+					} // 추출한 파일명 삽입 
+					$(this).siblings('.upload-name').val(filename);
+						
+					}); 
+					
+					var imgTarget = $('.preview-image .upload-hidden'); 
+					
+					imgTarget.on('change', function(){ 
+						var parent = $(this).parent(); 
+						parent.children('.upload-display').remove(); 
+						
+						if(window.FileReader){ //image 파일만
+							if (!$(this)[0].files[0].type.match(/image\//)) return; 
+						
+						var reader = new FileReader(); 
+						reader.onload = function(e){ 
+							var src = e.target.result; 
+							parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>'); 
+						} 
+						reader.readAsDataURL($(this)[0].files[0]); 
+						
+					} else { 
+						$(this)[0].select(); 
+						$(this)[0].blur(); 
+						var imgSrc = document.selection.createRange().text; 
+						parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+						
+						var img = $(this).siblings('.upload-display').find('img'); 
+						img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")"; 
+					} 
+				});
+				</script>
 				<br><br><br>
 				<div class="terms">
 					<table>
@@ -291,6 +500,19 @@
 			const $password2 = document.getElementById("password2");
 			const $name = document.getElementById("name");
 			const $phone = document.getElementById("phone");
+			const $account = document.getElementById("account");
+			const $bankname = document.getElementById("bankname");
+			const $holder = document.getElementById("holder");
+			const $placeWork = document.getElementById("placeWork");
+			const $startDate = document.getElementById("startDate");
+			const $endDate = document.getElementById("endDate");
+			const $empStatus = document.getElementById("empStatus");
+			const $licenseCode = document.getElementById("licenseCode");
+			const $licenseName = document.getElementById("licenseName");
+			const $grade = document.getElementById("grade");
+			const $issueDate = document.getElementById("issueDate");
+			const $expDate = document.getElementById("expDate");
+			const $inputFile = document.getElementById("inputFile");
 			
 			/* 인증번호 확인 */
 			if(!verificationNumber || verificationNumber === "") {
@@ -311,7 +533,19 @@
 			$password2.disabled = false;
 			$name.disabled = false;
 			$phone.disabled = false;
-			
+			$account.disabled = false;
+			$bankname.disabled = false; 
+			$holder.disabled = false; 
+			$placeWork.disabled = false; 
+			$startDate.disabled = false; 
+			$endDate.disabled = false; 
+			$empStatus.disabled = false;
+			$licenseCode.disabled = false; 
+			$licenseName.disabled = false; 
+			$grade.disabled = false; 
+			$issueDate.disabled = false; 
+			$expDate.disabled = false; 
+			$inputFile.disabled = false;
 		}
 		
 	</script>

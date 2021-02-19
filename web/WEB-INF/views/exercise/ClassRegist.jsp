@@ -22,7 +22,7 @@
 	<jsp:include page="../common/header.jsp" />
 	<!-- 헤더끝 -->
 
-	<form action="" method="post" encType="multipart/form-data">
+	<form action="${ pageContext.servletContext.contextPath }/class/insert" method="post" encType="multipart/form-data">
 		
 		<div class="container">
 			<h1 align="center">수업등록</h1>

@@ -37,6 +37,36 @@ window.onload = function() {
 			location.href = "/semi/member/regist";
 		}
 	}
+	/* 회원가입에서 일반회원가입 */
+	if(document.getElementById("ge")) {
+		const $ge = document.getElementById("ge");
+		$ge.onclick = function() {
+			location.href = "/semi/member/regist";
+		}
+	}
+	/* 회원가입에서 트레이너회원가입 */
+	if(document.getElementById("tr")) {
+		const $tr = document.getElementById("tr");
+		$tr.onclick = function() {
+			location.href = "/semi/trainer/regist";
+		}
+	}
+	
+	/* 개인정보제공동의 */
+	if(document.getElementById("agree1")) {
+		const $agree1 = document.getElementById("agree1");
+		$agree1.onclick = function() {
+			location.href = "/semi/member/policy";
+		}
+	}
+	
+	/* 이용약관동의 */
+	if(document.getElementById("agree2")) {
+		const $agree2 = document.getElementById("agree2");
+		$agree2.onclick = function() {
+			location.href = "/semi/member/terms";
+		}
+	}
 	
 	/* 로그아웃 */
 	if(document.getElementById("logout")) {
@@ -109,6 +139,8 @@ window.onload = function() {
 			location.href = "/semi/admin/trainer";
 		}
 	}
+	
+	
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {

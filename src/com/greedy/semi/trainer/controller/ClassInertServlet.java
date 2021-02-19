@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -39,7 +40,7 @@ public class ClassInertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			if(ServletFileUpload.isMultipartContent(request)) {
+		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			String rootLocation = getServletContext().getRealPath("/");
 			int maxFileSize = 1024 * 1024 * 10;
@@ -55,7 +56,7 @@ public class ClassInertServlet extends HttpServlet {
 				System.out.println("원본 저장 폴더 생성 : " + directory1.mkdirs());
 				System.out.println("썸네일 저장 폴더 생성 : " + directory2.mkdirs());
 			}
-
+			
 			Map<String, String> parameter = new HashMap<>();
 			List<Map<String, String>> fileList = new ArrayList<>();
 			
@@ -70,7 +71,7 @@ public class ClassInertServlet extends HttpServlet {
 				
 				for(FileItem item : fileItems) {
 					System.out.println(item);
-				}				
+				}
 				
 				for(int i = 0; i < fileItems.size(); i++) {
 					
@@ -99,13 +100,17 @@ public class ClassInertServlet extends HttpServlet {
 							
 							int width = 0;
 							int height = 0;
-							if("thumbnailImg1".equals(fieldName)) {
-								fileMap.put("fileType", "TITLE");
-								
-								width = 350;
-								height = 200;
+							if("contentImgArea1".equals(fieldName)) {
+								fileMap.put("fileType", "thumbnail1");
+								if("contentImgArea2".equals(fieldName))
+									fileMap.put("fileType", "thumbnail2");
+									if("contentImgArea3".equals(fieldName))
+										fileMap.put("fileType", "thumbnail3");
+									
+									width = 180;
+									height = 120;
 							} else {
-								fileMap.put("fileType", "BODY");
+								fileMap.put("fileType", "thumbnail");
 								
 								width = 120;
 								height = 100;
@@ -118,33 +123,28 @@ public class ClassInertServlet extends HttpServlet {
 							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
-							
 						}
 						
 					} else {
 						
 						parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
-						
 					}
-					
 				}
 				
 				System.out.println("parameter : " + parameter);
 				System.out.println("fileList : " + fileList);
 				
-				ClassDTO classInsert = new ClassDTO();
-				classInsert.setName(parameter.get("className"));
-				classInsert.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
-				classInsert.setType(parameter.get("classType"));
-				classInsert.setCategory(parameter.get("category"));
-				classInsert.setIntro(parameter.get("intro"));
-				classInsert.setIntroduce(parameter.get("introduce"));
-				classInsert.setCreatedDate(parameter.get("classDate"));
+				ClassDTO thumbnail = new ClassDTO();
+				thumbnail.setName(parameter.get("className"));
+				thumbnail.setType(parameter.get("classType"));
+				thumbnail.setCategory(parameter.get("category"));
+				thumbnail.setIntro(parameter.get("intro"));
+				thumbnail.setIntroduce("introduce");
+				thumbnail.setCreatedDate("classDate");
+				thumbnail.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
 				
-				System.out.println(classInsert);
-				
-				classInsert.setAttachmentList(new ArrayList<AttachmentDTO>());
-				List<AttachmentDTO> list = classInsert.getAttachmentList();
+				thumbnail.setAttachmentList(new ArrayList<AttachmentDTO>());
+				List<AttachmentDTO> list = thumbnail.getAttachmentList();
 				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String> file = fileList.get(i);
 					
@@ -158,7 +158,7 @@ public class ClassInertServlet extends HttpServlet {
 					list.add(tempFileInfo);
 				}
 				
-				int result = new ClassService().insertClass(classInsert);
+				int result = new ClassService().insertClass(thumbnail);
 				
 				String path = "";
 				if(result > 0) {
@@ -166,7 +166,7 @@ public class ClassInertServlet extends HttpServlet {
 					request.setAttribute("successCode", "insertClass");
 				} else {
 					path = "/WEB-INF/views/common/failed.jsp";
-					request.setAttribute("message", "썸네일 게시판 등록 실패!");
+					request.setAttribute("message", "수업등록 실패!");
 				}
 				
 				request.getRequestDispatcher(path).forward(request, response);
@@ -192,10 +192,7 @@ public class ClassInertServlet extends HttpServlet {
 					System.out.println("사진 삭제 실패!");
 				}
 			}
-			
-			
 		}
-		
 	}
 
 }

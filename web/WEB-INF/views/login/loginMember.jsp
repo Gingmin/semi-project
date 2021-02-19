@@ -16,12 +16,12 @@
 			<div class="info_text">로그인</div>
 			<br>
 
-			<div class="submit_reset">
+			<!-- <div class="submit_reset">
 				<input type="button" class="choice ch1" value="일반회원"
 					onclick="location.href='http://127.0.0.1:8001/semi/views/login/loginMember.html'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" class="choice ch2" value="트레이너"
 					onclick="location.href='http://127.0.0.1:8001/semi/views/login/loginTrainer.html'">
-			</div>
+			</div> -->
 			<br>
 			<br>
 

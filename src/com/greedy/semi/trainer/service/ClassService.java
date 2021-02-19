@@ -22,19 +22,19 @@ public class ClassService {
 		classDAO = new ClassDAO();
 	}
 
-	public int insertClass(ClassDTO classInsert) {
+	public int insertClass(ClassDTO thumbnail) {
 		
 		Connection con = getConnection();
 		
 		int result = 0;
 		
-		int classResult = classDAO.insertThumbnailContent(con, classInsert);
+		int classResult = classDAO.insertThumbnailContent(con, thumbnail);
 		
-		int classNo = classDAO.selectThumbnailSequence(con);
+		int classNo = classDAO.selectClassSequence(con);
 		
-		List<AttachmentDTO> fileList = classInsert.getAttachmentList();
+		List<AttachmentDTO> fileList = thumbnail.getAttachmentList();
 		for(int i = 0; i < fileList.size(); i++) {
-			fileList.get(i).setRefClassNo(classNo);
+			fileList.get(i).setRefClassNo(classNo);;
 		}
 		
 		int attachmentResult = 0;
@@ -53,5 +53,7 @@ public class ClassService {
 		
 		return result;
 	}
+
+
 
 }
