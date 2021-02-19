@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.greedy.semi.notice.model.dao.NoticeDAO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
+import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
 
 
@@ -21,11 +22,11 @@ public class NoticeService {
 		noticeDAO = new NoticeDAO();
 	}
 	
-	public List<NoticeDTO> selectAllNoticeList() {
+	public List<NoticeDTO> selectAllNoticeList(PageInfoDTO pageInfo) {
 
 		Connection con = getConnection();
 
-		List<NoticeDTO> noticeList = noticeDAO.selectAllNoticeList(con);
+		List<NoticeDTO> noticeList = noticeDAO.selectAllNoticeList(con, pageInfo);
 
 		close(con);
 
@@ -96,7 +97,7 @@ public class NoticeService {
 		
 		int result = noticeDAO.deleteNotice(con, deleteNotice);
 		
-		System.out.println("서비스는 ~~~ ");
+		
 		
 		if(result > 0) {
 			commit(con);
@@ -106,6 +107,39 @@ public class NoticeService {
 		close(con);
 		
 		return result;
+	}
+
+	public int selectTotalCount() {
+
+		Connection con = getConnection();
+		
+		int totalCount = noticeDAO.selectTotalCount(con);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public int searchNoticeCount(String searchCondition, String searchValue) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = noticeDAO.searchNoticeCount(con, searchCondition, searchValue);
+				
+		close(con);		
+		
+		return totalCount;
+	}
+
+	public List<NoticeDTO> searchNoticeList(String searchCondition, String searchValue, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<NoticeDTO> noticeList = noticeDAO.searchNoticeList(con, searchCondition, searchValue, pageInfo);
+		
+		close(con);
+		
+		return noticeList;
 	}
 
 }

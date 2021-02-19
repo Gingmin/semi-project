@@ -18,6 +18,9 @@
 
 	<!-- Rock Salt font -->
 	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+	
+	<!-- 폰트어썸 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 
 	<title>HelloPT</title>
@@ -61,7 +64,7 @@
 				<table class="table_detail">
 					<tr class="tr_detail">
 						<th class="th_detail">번호</th>
-						<th class="th_detail1">내용</th>
+						<th class="th_detail1">제목</th>
 						<th class="th_detail2">작성자</th>
 						<th class="th_detail2">날짜</th>
 						<th class="th_detail">조회수</th>
@@ -80,26 +83,84 @@
 			</div>
 
 			<div class="page_area">
-				<button><</button>
-				<span>1</span>
-				<span>2</span>
-				<span>3</span>
-				<span>4</span>
-				<span>5</span>
-				<button>></button>
+				<c:choose>
+					<c:when test="${ empty requestScope.searchValue }">
+						<i id="startBtn" class="fas fa-backward"></i>
+						<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+							<i class="fas fa-caret-left"></i>						
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+							<i id="prevBtn" class="fas fa-caret-left"></i>
+						</c:if>
+						
+						<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end = "${ requestScope.pageInfo.endPage }" step="1">
+							<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+								<button class="btn_detail"><c:out value="${ p }"/></button>
+							</c:if>
+							
+							<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+								<button class="btn_detail" onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+							<i class="fas fa-caret-right"></i>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+							<i id="nextBtn" class="fas fa-caret-right"></i>
+						</c:if>
+						<i id="endBtn" class="fas fa-forward"></i>
+					</c:when>
+					
+					
+					<%--검색 했을시 페이징처리 --%> 
+					<c:otherwise>
+						<i id="searchStartBtn" class="fas fa-backward"></i>
+						<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+							<i class="fas fa-caret-left"></i>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+							<i id="searchPrevBtn" class="fas fa-caret-left"></i>
+						</c:if>
+						
+						<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end = "${ requestScope.pageInfo.endPage }" step="1">
+							<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+								<button class="btn_detail" disabled><c:out value="${ p }"/></button>
+							</c:if>
+						
+							<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+								<button class="btn_detail" onclick="searchPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							</c:if>
+						
+						</c:forEach>
+						
+						<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+							<i class="fas fa-caret-right"></i>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+							<i id="searchNextBtn" class="fas fa-caret-right"></i>
+						</c:if>
+						<i id="searchEndBtn" class="fas fa-forward"></i>
+					</c:otherwise>
+				</c:choose>
 			</div>
 
-			<div class="search_area" >
-				<select id="searchCondition" name="searchCondition">
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
-					<option value="body">내용</option>
-				</select> <input type="search" name="searchValue">
-				<button type="submit">검색하기</button>
-				<c:if test="${ sessionScope.loginMember.role eq 'ADMIN'}">
-					<button id="writeNotice">작성하기</button>		
-				</c:if>
-			</div>
+
+			<%-- 검색폼 --%>
+			<form id="serchForm" action="${ pageContext.servletContext.contextPath }/notice/search">
+				<div class="search_area" >
+					<select id="searchCondition" name="searchCondition">
+						<option value="writer" <c:if test="${ requestScope.searchCondition eq 'writer' }">seleted</c:if>>작성자</option>
+						<option value="title" <c:if test="${ requestScope.searchCondition eq 'title' }">seleted</c:if>>제목</option>
+						<option value="body" <c:if test="${ requestScope.searchCondition eq 'content' }">seleted</c:if>>내용</option>
+					</select>
+					<input type="search" name="searchValue" value="${ requestScope.searchValue }">
+					<button type="submit">검색하기</button>
+					<c:if test="${ sessionScope.loginMember.role eq 'ADMIN'}">
+						<input type="button" id="writeNotice" value="작성하기">		
+					</c:if>
+				</div>			
+			</form>
 		</div>
 	
 
@@ -119,6 +180,74 @@
 				
 			}
 		}
+		
+		const link = "${ pageContext.servletContext.contextPath }/notice/notice";
+		const searchLink = "${ pageContext.servletContext.contextPath}/notice/search";
+		
+		if(document.getElementById("startBtn")){
+			const $startBtn = document.getElementById("startBtn");
+			$startBtn.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevBtn")){
+			const $prevBtn = document.getElementById("prevBtn");
+			$prevBtn.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1}";
+			}
+		}
+		
+		if(document.getElementById("nextBtn")){
+			const $nextBtn = document.getElementById("nextBtn");
+			$nextBtn.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1}";
+			}
+		}
+		
+		if(document.getElementById("endBtn")){
+			const $endBtn = document.getElementById("endBtn");
+			$endBtn.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage}";
+			}
+		}
+		
+		if(document.getElementById("searchStartBtn")){
+			const $searchStartBtn = document.getElementById("searchStartBtn");
+			$searchStartBtn.onclick = function() {
+				location.href = searchlink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+			}
+		}
+		if(document.getElementById("searchPrevBtn")){
+			const $searchPrevBtn = document.getElementById("searchPrevBtn");
+			$searchPrevBtn.onclick = function() {
+				location.href = searchlink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchNextBtn")){
+			const $searchNextBtn = document.getElementById("searchNextBtn");
+			$searchNextBtn.onclick = function() {
+				location.href = searchlink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchEndBtn")){
+			const $searchEndBtn = document.getElementById("searchEndBtn");
+			$searchEndBtn.onclick = function() {
+				location.href = searchlink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		
+		 function pageButtonAction(text){
+	    	  location.href = link + "?currentPage=" + text;
+	      }
+	    
+	      
+	      function searchPageButtonAction(text) {
+	    	  location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+	      }
 	</script>
 
 		

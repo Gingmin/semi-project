@@ -2,19 +2,40 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="selectAllNoticeList">
-		SELECT 
-		       A.NOTICE_NO
-		     , A.NOTICE_TITLE
-		     , A.NOTICE_BODY
-		     , A.NOTICE_WRITER_MEMBER_NO
-		     , B.MEMBER_NAME
-		     , A.NOTICE_COUNT
-		     , A.CREATED_DATE
-		  FROM TBL_NOTICE A
-		  JOIN TBL_MEMBER B ON (A.NOTICE_WRITER_MEMBER_NO = B.MEMBER_NO)
-		 WHERE A.NOTICE_STATUS = 'Y'
-		 ORDER BY A.NOTICE_NO DESC   
-	
+        SELECT
+                 A.RNUM
+               , A.NOTICE_NO                    
+               , A.NOTICE_TITLE
+               , A.NOTICE_BODY
+               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_COUNT
+               , A.CREATED_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO                    
+                       , B.NOTICE_TITLE
+                       , B.NOTICE_BODY
+                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_COUNT
+                       , B.CREATED_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_BODY
+                               , C.NOTICE_WRITER_MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_COUNT
+                               , C.CREATED_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C                 
+                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
 	</entry>
 	
 	<entry key="insertNotice">
@@ -76,4 +97,157 @@
 		 WHERE A.NOTICE_STATUS = 'Y'
 		   AND A.NOTICE_NO = ? 
 	</entry>
+	
+	<entry key="selectTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_NOTICE A
+		 WHERE A.NOTICE_STATUS = 'Y'      
+	</entry>
+	
+	<entry key="searchWriterCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A
+          JOIN TBL_MEMBER B ON (A.NOTICE_WRITER_MEMBER_NO = B.MEMBER_NO)
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND B.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="searchTitleCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_TITLE LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="searchContentCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A          
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_BODY LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="searchWriterList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO                    
+               , A.NOTICE_TITLE
+               , A.NOTICE_BODY
+               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_COUNT
+               , A.CREATED_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO                    
+                       , B.NOTICE_TITLE
+                       , B.NOTICE_BODY
+                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_COUNT
+                       , B.CREATED_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_BODY
+                               , C.NOTICE_WRITER_MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_COUNT
+                               , C.CREATED_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C                 
+                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND E.MEMBER_NAME LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="searchTitleList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO                    
+               , A.NOTICE_TITLE
+               , A.NOTICE_BODY
+               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_COUNT
+               , A.CREATED_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO                    
+                       , B.NOTICE_TITLE
+                       , B.NOTICE_BODY
+                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_COUNT
+                       , B.CREATED_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_BODY
+                               , C.NOTICE_WRITER_MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_COUNT
+                               , C.CREATED_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C                 
+                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_TITLE LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="searchContentList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO                    
+               , A.NOTICE_TITLE
+               , A.NOTICE_BODY
+               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_COUNT
+               , A.CREATED_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO                    
+                       , B.NOTICE_TITLE
+                       , B.NOTICE_BODY
+                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_COUNT
+                       , B.CREATED_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_BODY
+                               , C.NOTICE_WRITER_MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_COUNT
+                               , C.CREATED_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C                 
+                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_BODY  LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	
+	
+	
+	
+	
+	
 </properties>
