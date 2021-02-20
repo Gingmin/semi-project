@@ -5,14 +5,20 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,9 +71,18 @@ public class MemberVerificationNumberServlet extends HttpServlet {
 			verificationNumber += String.valueOf(number);
 		}
 		
+		MimeMultipart multipart = new MimeMultipart("related");
+		/* 첫번 째 파트 */
+		BodyPart messageBodyPart = new MimeBodyPart();
+		
 		/* 제목 내용 */
 		String title = "[헬로피티] 인증메일입니다";
-		String content = "회원님이 요청하신 인증번호는 '" + verificationNumber + "' 입니다." + "\n\n-헬로피티 관리자";
+		String html = "<div align=\"center\"><img src=\"cid:1qjs.png\">"
+				+ "<div style=\"\"><h1>HELLO PT!</h1>"
+				+ "<br>"
+				+ "<div style=\"font-size: 15px\">회원님이 요청하신 인증번호 입니다<br>"
+				+ "<h2 style=\"color: orangered;\">'" + verificationNumber + "'</h2><br>"
+				+ "</div>- 헬로피티 관리자 -</div></div>";
 		
 		/* 성공여부를 확인할 boolean */
 		boolean isSuccess = true;
@@ -84,6 +99,17 @@ public class MemberVerificationNumberServlet extends HttpServlet {
 			/* 수신자의 메일 생성 */
 			InternetAddress to = new InternetAddress(email);
 			
+			/* 메세지 영역*/
+			messageBodyPart.setContent(html, "text/html; charset=UTF-8");
+			multipart.addBodyPart(messageBodyPart);
+			
+			/* 두번쨰 파트 */
+			messageBodyPart = new MimeBodyPart();
+			DataSource fds = new FileDataSource(request.getServletContext().getRealPath("/") + "/resources/images/1qjs.png");
+			messageBodyPart.setDataHandler(new DataHandler(fds));
+			messageBodyPart.setHeader("Content-ID", "<1qjs.png>");
+			multipart.addBodyPart(messageBodyPart);
+			
 			/* Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정 
 			 * setRecipient() 메소드로 수신자, 참조, 숨은 참조 설정이 가능하다. */
 			msg.setRecipient(Message.RecipientType.TO, to); //받는 사람
@@ -91,8 +117,8 @@ public class MemberVerificationNumberServlet extends HttpServlet {
 
 			/*제목 내용*/
 			msg.setSubject(title, "UTF-8");					//메일 제목
-			msg.setText(content, "UTF-8");    //메일 내용
-			
+			//msg.setText(content, "UTF-8");    //메일 내용
+			msg.setContent(multipart, "text/html; charset=UTF-8");
 			/* Transport는 메일을 최종적으로 보내는 클래스로 메일을 보내는 부분 */
 			if(isSuccess) {
 				Transport.send(msg);

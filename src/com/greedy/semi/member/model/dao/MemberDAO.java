@@ -15,7 +15,10 @@ import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
+import com.greedy.semi.member.model.dto.CareerDTO;
+import com.greedy.semi.member.model.dto.LicenseDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.member.model.dto.TrainerInfoDTO;
 
 public class MemberDAO {
 
@@ -383,6 +386,56 @@ public class MemberDAO {
 		}
 		
 		return selectEmail;
+	}
+
+	public int insertTrainer(Connection con, MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int selectMember(Connection con, MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertInfoTrainer(Connection con, int selectedTrainerNo, TrainerInfoDTO trainerInfoDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertCareer(Connection con, int selectedTrainerNo, CareerDTO careerDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertAttachment(Connection con, LicenseDTO licenseDTO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Integer selectAttachmentNo(Connection con, int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int insertLicense(Connection con) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public String selectLicenseCode(Connection con) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int insertAttachLicense(Connection con, int i, String licenseCode) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int insertTrainerLicense(Connection con, String licenseCode) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
