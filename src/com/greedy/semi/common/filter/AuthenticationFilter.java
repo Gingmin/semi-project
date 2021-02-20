@@ -101,13 +101,13 @@ public class AuthenticationFilter implements Filter {
 		memberPermitList.add("/member/passwordChange");
 		memberPermitList.add("/member/buy");
 		memberPermitList.add("/notice/notice");
-   	memberPermitList.add("/notice/review");
-	  memberPermitList.add("/notice/report");
-    memberPermitList.add("/notice/question");
-    memberPermitList.add("/notice/detail");
-    memberPermitList.add("/trainer/insert");
-    memberPermitList.add("/trainer/page");
-    memberPermitList.add("/trainer/sales_details");
+		memberPermitList.add("/notice/review");
+	 	memberPermitList.add("/notice/report");
+	 	memberPermitList.add("/notice/question");
+	 	memberPermitList.add("/notice/detail");
+	 	memberPermitList.add("/trainer/insert");
+	 	memberPermitList.add("/trainer/page");
+	 	memberPermitList.add("/trainer/sales_details");
 		 
 		trainerPermitList.add("");
 		

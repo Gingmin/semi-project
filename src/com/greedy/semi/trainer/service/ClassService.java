@@ -65,6 +65,29 @@ public class ClassService {
 		return thumbnailList;
 	}
 
-
+	public ClassDTO selectOneThumbnailClass(int no) {
+		
+		Connection con = getConnection();
+		
+		ClassDTO thumbnail = null;
+		
+		int result = classDAO.incrementClassCount(con, no);
+		
+		if(result > 0) {
+			thumbnail = classDAO.selectOneThumbnailClass(con, no);
+			
+			if(thumbnail != null) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return thumbnail;
+	}
 
 }

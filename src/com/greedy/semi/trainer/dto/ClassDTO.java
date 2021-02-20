@@ -19,20 +19,20 @@ public class ClassDTO implements Serializable {
 	private String createdDate;
 	private String status;
 	private String approval;
+	private int count;
 	
 	private List<AttachmentDTO> attachmentList;
 	
 	public ClassDTO() {}
 
-	public ClassDTO(int no, int trainerNo, MemberDTO memberNo, int attachmentNo, List<AttachmentDTO> attachmentList,
-			String name, String type, String category, String intro, String introduce, String createdDate,
-			String status, String approval) {
+	public ClassDTO(int no, int trainerNo, MemberDTO memberNo, int attachmentNo, String name, String type,
+			String category, String intro, String introduce, String createdDate, String status, String approval,
+			int count, List<AttachmentDTO> attachmentList) {
 		super();
 		No = no;
 		this.trainerNo = trainerNo;
 		this.memberNo = memberNo;
 		this.attachmentNo = attachmentNo;
-		this.attachmentList = attachmentList;
 		this.name = name;
 		this.type = type;
 		this.category = category;
@@ -41,6 +41,8 @@ public class ClassDTO implements Serializable {
 		this.createdDate = createdDate;
 		this.status = status;
 		this.approval = approval;
+		this.count = count;
+		this.attachmentList = attachmentList;
 	}
 
 	public int getNo() {
@@ -57,10 +59,6 @@ public class ClassDTO implements Serializable {
 
 	public int getAttachmentNo() {
 		return attachmentNo;
-	}
-
-	public List<AttachmentDTO> getAttachmentList() {
-		return attachmentList;
 	}
 
 	public String getName() {
@@ -95,6 +93,14 @@ public class ClassDTO implements Serializable {
 		return approval;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public List<AttachmentDTO> getAttachmentList() {
+		return attachmentList;
+	}
+
 	public void setNo(int no) {
 		No = no;
 	}
@@ -109,10 +115,6 @@ public class ClassDTO implements Serializable {
 
 	public void setAttachmentNo(int attachmentNo) {
 		this.attachmentNo = attachmentNo;
-	}
-
-	public void setAttachmentList(List<AttachmentDTO> attachmentList) {
-		this.attachmentList = attachmentList;
 	}
 
 	public void setName(String name) {
@@ -147,13 +149,22 @@ public class ClassDTO implements Serializable {
 		this.approval = approval;
 	}
 
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public void setAttachmentList(List<AttachmentDTO> attachmentList) {
+		this.attachmentList = attachmentList;
+	}
+
 	@Override
 	public String toString() {
 		return "ClassDTO [No=" + No + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo + ", attachmentNo="
 				+ attachmentNo + ", name=" + name + ", type=" + type + ", category=" + category + ", intro=" + intro
 				+ ", introduce=" + introduce + ", createdDate=" + createdDate + ", status=" + status + ", approval="
-				+ approval + "]";
+				+ approval + ", count=" + count + ", attachmentList=" + attachmentList + "]";
 	}
+
 	
 	
 }

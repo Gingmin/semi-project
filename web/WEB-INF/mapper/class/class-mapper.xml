@@ -56,8 +56,15 @@
     </entry>
     <entry key="selectThumbnailList">
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectThumbnailList() */
-               A.CLASS_NAME
+               A.CLASS_NO
+             , A.CLASS_NAME
+             , A.CLASS_TYPE
+             , A.CLASS_CATEGORY
+             , A.CLASS_TYPE
+             , A.CLASS_INTRO
+             , A.CLASS_INTRODUCE  
              , A.CREATED_DATE
+             , A.CLASS_COUNT
              , B.ATTACHMENT_NO
              , B.ORIGINAL_NAME
              , B.SAVED_NAME
@@ -69,5 +76,36 @@
            AND B.ATTACHMENT_STATUS = 'Y'
            AND B.FILE_TYPE = 'CLASSNAME'
          ORDER BY A.CLASS_NO DESC  
+    </entry>
+    <entry key="incrementClassCount">
+        UPDATE
+               TBL_CLASS A
+           SET A.CLASS_COUNT = (SELECT B.CLASS_COUNT
+                                  FROM TBL_CLASS B
+                                 WHERE B.CLASS_NO = ?
+                               ) + 1
+         WHERE A.CLASS_NO = ?                          
+    </entry>
+    <entry key="selectOneThumbnailClass">
+        SELECT
+               A.CLASS_NO
+             , A.CLASS_NAME
+             , A.CLASS_TYPE
+             , A.CLASS_CATEGORY
+             , A.CLASS_INTRO
+             , A.CLASS_INTRODUCE
+             , A.CREATED_DATE
+             , A.CLASS_COUNT
+             , B.ATTACHMENT_NO
+             , B.ORIGINAL_NAME
+             , B.SAVED_NAME
+             , B.SAVE_PATH
+             , B.FILE_TYPE
+             , B.THUMBNAIL_PATH
+          FROM TBL_CLASS A
+          JOIN TBL_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
+         WHERE A.CLASS_STATUS = 'N'
+           AND B.ATTACHMENT_STATUS = 'Y'
+           AND A.CLASS_NO = ? 
     </entry>
 </properties>
