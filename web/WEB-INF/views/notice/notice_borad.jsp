@@ -149,15 +149,15 @@
 			<%-- 검색폼 --%>
 			<form id="serchForm" action="${ pageContext.servletContext.contextPath }/notice/search">
 				<div class="search_area" >
-					<select id="searchCondition" name="searchCondition">
+					<select id="searchCondition" name="searchCondition" class="select_detail">
 						<option value="writer" <c:if test="${ requestScope.searchCondition eq 'writer' }">seleted</c:if>>작성자</option>
 						<option value="title" <c:if test="${ requestScope.searchCondition eq 'title' }">seleted</c:if>>제목</option>
 						<option value="body" <c:if test="${ requestScope.searchCondition eq 'content' }">seleted</c:if>>내용</option>
 					</select>
-					<input type="search" name="searchValue" value="${ requestScope.searchValue }">
-					<button type="submit">검색하기</button>
+					<input class="searchinput_detail" type="search" name="searchValue" value="${ requestScope.searchValue }">
+					<button class="searchBtn_detail" type="submit">검색하기</button>
 					<c:if test="${ sessionScope.loginMember.role eq 'ADMIN'}">
-						<input type="button" id="writeNotice" value="작성하기">		
+						<input class="searchBtn_detail" type="button" id="writeNotice" value="작성하기">		
 					</c:if>
 				</div>			
 			</form>

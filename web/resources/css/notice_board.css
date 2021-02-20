@@ -35,4 +35,22 @@
 .container .page_area .btn_detail{ border: 0; background: white; padding: 0 10px; height: 50px; line-height: 50px; font-size: 19px;}
 .container .page_area .btn_detail.on{color:red; } 
 
+.container .search_area{padding-bottom: 15px;}
+.container .search_area .select_detail{height: 30px; width: 80px;}
+
+.container .search_area .searchinput_detail{height:30px; width: 300px;}
+.container .search_area .searchBtn_detail{background-color: black; border:0; color: white; width: 100px; height: 30px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

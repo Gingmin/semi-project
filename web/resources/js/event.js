@@ -277,7 +277,39 @@ window.onload = function() {
 		}
 	}
 	
-
+	/* 메인 소개 버튼 클릭시 */
+	if(document.getElementById("introduce")){
+		const $introduce = document.getElementById("introduce");
+		$introduce.onclick = function() {
+			location.href = "/semi/introduce/info";
+			console.log($introduce);
+		}
+	}
+	
+	/* 소개 페이지 하단 지금쇼핑 버튼 클릭시 */
+	if(document.getElementById("shopingBtn")){
+		const $shopingBtn = document.getElementById("shopingBtn");
+		$shopingBtn.onclick = function() {
+			location.href = "/semi/member/buy";
+			console.log($shopingBtn);
+		}
+	}
+	/* 소개 페이지 탐색 버튼 클릭시 */
+	if(document.getElementById("questBtn")){
+		const $questBtn = document.getElementById("questBtn");
+		$questBtn.onclick = function() {
+			location.href = "/semi/class/list";
+			console.log($questBtn);
+		}
+	}
+	/* 회원마이페이지 신고버튼 클릭시 */
+	if(document.getElementById("report")){
+		const $report = document.getElementById("report");
+		$report.onclick = function() {
+			location.href = "/semi/black/list";
+			console.log($report);
+		}
+	}
 	
 	//완규 영역 끝
 	
