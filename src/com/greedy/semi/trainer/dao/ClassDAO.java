@@ -103,6 +103,7 @@ public class ClassDAO {
 			pstmt.setString(4, file.getSavePath());
 			pstmt.setString(5, file.getFileType());
 			pstmt.setString(6, file.getThumbnailPath());
+			pstmt.setInt(7, file.getRefTrainerNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -238,6 +239,91 @@ public class ClassDAO {
 		
 		return thumbnail;
 	}
+
+	public int updateClass(Connection con, ClassDTO thumbnail) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateClass");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, thumbnail.getName());
+			pstmt.setString(2, thumbnail.getType());
+			pstmt.setString(3, thumbnail.getCategory());
+			pstmt.setString(4, thumbnail.getIntro());
+			pstmt.setString(5, thumbnail.getIntroduce());
+			pstmt.setString(6, thumbnail.getCreatedDate());
+			pstmt.setInt(7, thumbnail.getTrainerNo());
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectTrainerNo(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int classNo = 0;
+		
+		String query = prop.getProperty("selectTrainerNo");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				classNo = rset.getInt("REF_CLASS_NO");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return classNo;
+	
+	}
+
+	public int updateAttachment(Connection con, AttachmentDTO update) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, update.getOriginalName());
+			pstmt.setString(2, update.getSavedName());
+			pstmt.setString(3, update.getSavePath());
+			pstmt.setString(4, update.getFileType());
+			pstmt.setString(5, update.getThumbnailPath());
+			pstmt.setInt(6, update.getRefClassNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 }
 
