@@ -168,8 +168,9 @@
 					</c:forEach>
 				</div>
 				</div>
-				
-
+				<br>
+				<br>
+				<br>
 				<div class="insert_btn">
 					<a class="insert_detail" href="#" id="insert_class">클래스 추가하기</a>
 				</div>

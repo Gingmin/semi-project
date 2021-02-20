@@ -57,7 +57,6 @@
 
 
 
-.container .profile_area .class_management_area{ height: 450px; }
 .container .profile_area .class_management_area .class_text{ font-size: 25px; font-weight: bold;}
 
 
@@ -80,7 +79,8 @@
 
 
 .thumnail-area {
-	display: inline-block;
+	
+	display: flex;
 }
 
 

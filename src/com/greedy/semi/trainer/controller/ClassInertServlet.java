@@ -135,8 +135,8 @@ public class ClassInertServlet extends HttpServlet {
 				thumbnail.setType(parameter.get("classType"));
 				thumbnail.setCategory(parameter.get("category"));
 				thumbnail.setIntro(parameter.get("intro"));
-				thumbnail.setIntroduce("introduce");
-				thumbnail.setCreatedDate("classDate");
+				thumbnail.setIntroduce(parameter.get("introduce"));
+				thumbnail.setCreatedDate(parameter.get("classDate"));
 				thumbnail.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
 				
 				thumbnail.setAttachmentList(new ArrayList<AttachmentDTO>());

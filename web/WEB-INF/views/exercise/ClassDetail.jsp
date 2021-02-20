@@ -20,7 +20,7 @@
 	<jsp:include page="../common/header.jsp" />
 	<!-- 헤더끝 -->
 	
-		<form action="${ pageContext.servletContext.contextPath }/class/insert" method="post" encType="multipart/form-data">
+		<form method="post" encType="multipart/form-data" id="updateForm">
 		
 		<div class="container">
 			<h1 align="center">수업등록</h1>
@@ -55,7 +55,7 @@
 			<input type="text" name="intro" value="${ requestScope.thumbnail.intro }"><input type="text" name="intro" value="${ requestScope.thumbnail.intro }"><input type="text" name="intro" value="${ requestScope.thumbnail.intro }"></div>
 			
 			<div><label class="regist_text">개설할 클래스 소개*</label><br>
-			<textarea rows="10" cols="10" class="textarea" name="introduce"></textarea></div>
+			<textarea rows="10" cols="10" class="textarea" name="introduce"><c:out value="${ requestScope.thumbnail.introduce }"/></textarea></div>
 			
 			<div class="thumbnail-insert-area">
 				<table>
@@ -90,7 +90,10 @@
 			<br>
 			
 			<div class="btn_area">
-				<button type="submit" class="btn btn-default" id="classinsert">수정하기</button><br>
+				<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
+					<button class="btn btn-default" id="classdelete" onclick="location.href='${ pageContext.servletContext.contextPath }/class/detail?no=${ requestScope.notice.no }'">수정하기</button><br>
+					<button class="btn btn-default" id="classupdate" onclick="location.href='${ pageContext.servletContext.contextPath }/class/detail?no=${ requestScope.notice.no }'">삭제하기</button><br>
+				</c:if>
 			</div>
 
    		 </div>
@@ -136,6 +139,7 @@
 			}
 		}
 	</script>
+
 	
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp" />
