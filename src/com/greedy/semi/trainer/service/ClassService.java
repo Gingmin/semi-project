@@ -54,6 +54,17 @@ public class ClassService {
 		return result;
 	}
 
+	public List<ClassDTO> selectThumbnailList() {
+		
+		Connection con = getConnection();
+		
+		List<ClassDTO> thumbnailList = classDAO.selectThumbnailList(con);
+		
+		close(con);
+		
+		return thumbnailList;
+	}
+
 
 
 }

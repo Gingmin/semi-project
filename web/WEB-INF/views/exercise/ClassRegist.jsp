@@ -64,18 +64,18 @@
 					
 					<tr>
 						<td>
-							<div class="content-img-area1" id="contentImgArea1">
+							<div class="content-img-area1" id="titleImgArea">
+								<img id="titleImg" width="180" height="120">
+							</div>
+						</td>
+						<td>
+							<div class="content-img-area2" id="contentImgArea1">
 								<img id="contentImg1" width="180" height="120">
 							</div>
 						</td>
 						<td>
-							<div class="content-img-area2" id="contentImgArea2">
+							<div class="content-img-area3" id="contentImgArea2">
 								<img id="contentImg2" width="180" height="120">
-							</div>
-						</td>
-						<td>
-							<div class="content-img-area3" id="contentImgArea3">
-								<img id="contentImg3" width="180" height="120">
 							</div>
 						</td>
 					</tr>
@@ -100,10 +100,9 @@
 	</form>
 	
 	<script>
-		
-		const $contentImgArea1 = document.getElementById("contentImgArea1");
-		const $contentImgArea2 = document.getElementById("contentImgArea2");
-		const $contentImgArea3 = document.getElementById("contentImgArea3");
+		const $contentImgArea1 = document.getElementById("titleImgArea");
+		const $contentImgArea2 = document.getElementById("contentImgArea1");
+		const $contentImgArea3 = document.getElementById("contentImgArea2");
 		
 		$contentImgArea1.onclick = function() {
 			document.getElementById("thumbnailImg1").click();
@@ -124,13 +123,13 @@
 				reader.onload = function(e) {
 					switch(num) {
 					case 1 : 
-						document.getElementById("contentImg1").src = e.target.result;
+						document.getElementById("titleImg").src = e.target.result;
 						break;
 					case 2 : 
-						document.getElementById("contentImg2").src = e.target.result;
+						document.getElementById("contentImg1").src = e.target.result;
 						break;
 					case 3 : 
-						document.getElementById("contentImg3").src = e.target.result;
+						document.getElementById("contentImg2").src = e.target.result;
 						break;
 					}
 				}

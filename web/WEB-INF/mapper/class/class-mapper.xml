@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="insertThumbnailContent">
-        INSERT
+        INSERT /* com.greedy.semi.trainer.dao.ClassDAO#insertThumbnailContent() */
           INTO TBL_CLASS A
         (
           A.CLASS_NO
@@ -27,12 +27,12 @@
         )
     </entry>
     <entry key="selectClassSequence">
-        SELECT
+        SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectClassSequence() */
                SEQ_CLASS_NO.CURRVAL
           FROM DUAL     
     </entry>
     <entry key="insertAttachment">
-        INSERT
+        INSERT /* com.greedy.semi.trainer.dao.ClassDAO#insertAttachment() */
           INTO TBL_ATTACHMENT A
         (
           A.ATTACHMENT_NO
@@ -53,5 +53,21 @@
         , ?
         , ?  
         ) 
+    </entry>
+    <entry key="selectThumbnailList">
+        SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectThumbnailList() */
+               A.CLASS_NAME
+             , A.CREATED_DATE
+             , B.ATTACHMENT_NO
+             , B.ORIGINAL_NAME
+             , B.SAVED_NAME
+             , B.SAVE_PATH
+             , B.THUMBNAIL_PATH
+          FROM TBL_CLASS A
+          JOIN TBL_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
+         WHERE A.CLASS_STATUS = 'N'
+           AND B.ATTACHMENT_STATUS = 'Y'
+           AND B.FILE_TYPE = 'CLASSNAME'
+         ORDER BY A.CLASS_NO DESC  
     </entry>
 </properties>

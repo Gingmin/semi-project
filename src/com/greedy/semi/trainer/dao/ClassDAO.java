@@ -1,5 +1,7 @@
 package com.greedy.semi.trainer.dao;
 
+import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,12 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
+import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
-import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
 
 public class ClassDAO {
 	
@@ -109,6 +113,50 @@ public class ClassDAO {
 		}
 		
 		return result;
+	}
+
+	public List<ClassDTO> selectThumbnailList(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		List<ClassDTO> thumbnailList = null;
+		
+		String query = prop.getProperty("selectThumbnailList");
+		
+		try {
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			thumbnailList = new ArrayList<>();
+			
+			while(rset.next()) {
+				ClassDTO thumbnailClass = new ClassDTO();
+				List<AttachmentDTO> attachmentList = new ArrayList<>();
+				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
+				
+				thumbnailClass.setName(rset.getString("CLASS_NAME"));
+				thumbnailClass.setCreatedDate(rset.getString("CREATED_DATE"));
+				thumbnailAttachment.setNo(rset.getInt("ATTACHMENT_NO"));
+				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
+				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
+				thumbnailAttachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
+				
+				attachmentList.add(thumbnailAttachment);
+				
+				thumbnailClass.setAttachmentList(attachmentList);
+				
+				thumbnailList.add(thumbnailClass);				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return thumbnailList;
 	}
 
 }
