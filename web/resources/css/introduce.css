@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+.header_banner_area{}
+.header_banner_area .introimg_detail{width: 100%; height:400px;}
+
+.container{}
+.container .contentarea{}
+.container .contentarea .exercise_type_area{}
+.container .contentarea .exercise_type_area .typetext_area{text-align: center; margin: 50px 0;}
+.container .contentarea .exercise_type_area .typetext_area .typetext1{font-size: 25px; font-weight: bold; padding: 20px 0 ;}
+.container .contentarea .exercise_type_area .typetext_area .typetext2{font-size: 18px;}
+
+
+.swiper-container{height: 500px; height: 600px; }
+.swiper-container .contant_name{color: white; text-align: center; font-family: Rock Salt; font-weight: bold; padding: 25px 0; font-size: 20px;}
+.swiper-container .swiper-wrapper{}
+.swiper-container .swiper-wrapper .swiper-slide{}
+.swiper-container .swiper-wrapper .swiper-slide .img_detail{width: 100%;  height: 290px;}
+
+
+.container .contentarea .exercise_type_area .questbtn_area{text-align: center; margin: 40px 0;}
+.container .contentarea .exercise_type_area .questbtn_area .questbtn_dateil{color: white; border: 0; background-color: black; font-size: 17px; padding: 15px 30px;}
+
+
+
+
+.container .contentarea .helloPT_intro{margin: 50px 0;}
+.container .contentarea .helloPT_intro .intro_textarea{text-align: center;}
+.container .contentarea .helloPT_intro .intro_textarea .intro_text1{font-size: 20px; }
+
+.container .contentarea .helloPT_intro .intro_imgarea{padding: 30px 0;}
+.container .contentarea .helloPT_intro .intro_imgarea .introimg_detail{width: 100%;}
+
+
+
+.container .contentarea .CEO_into_area{ height: 500px; }
+.container .contentarea .CEO_into_area .row{margin: 0;}
+.container .contentarea .CEO_into_area .row .CEO_text_area{float: left; width: 60%; text-align: center; height: 500px; padding: 150px 50px;}
+.container .contentarea .CEO_into_area .row .CEO_text_area .CEO_text{ font-size: 18px; font-weight: bold;  padding: 20px 0;}
+
+.container .contentarea .CEO_into_area .row .CEO_img_area{float: left; width: 40%;}
+.container .contentarea .CEO_into_area .row .CEO_img_area .carousel-inner{width: 450px; height: 350px; margin: 75px 0;}
+.container .contentarea .CEO_into_area .row .CEO_img_area .carousel-inner .item{height: 350px;}
+.container .contentarea .CEO_into_area .row .CEO_img_area .carousel-inner .item .CEOimg_detail{width: 100%; height: 100%;}
+
+
+.ptstartbtn_area{text-align: center; background-color: whitesmoke; padding: 50px 0;}
+.ptstartbtn_area .btntext_area{padding: 20px 0;}
+.ptstartbtn_area .btntext_area .btntext{ font-weight: bold; font-size: 20px; }
+.ptstartbtn_area .startbtn_area{}
+.ptstartbtn_area .startbtn_area .startbtn_detail{border: 0; background-color: black; color: white; padding: 10px 20px; font-size: 18px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+ /* display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;*/
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}

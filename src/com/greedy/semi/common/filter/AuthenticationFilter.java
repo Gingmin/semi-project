@@ -102,6 +102,8 @@ public class AuthenticationFilter implements Filter {
 		memberPermitList.add("/member/buy");
 		memberPermitList.add("/notice/notice");
 		memberPermitList.add("/notice/review");
+   	memberPermitList.add("/trainer/insert");
+   	memberPermitList.add("/notice/search");
 	 	memberPermitList.add("/notice/report");
 	 	memberPermitList.add("/notice/question");
 	 	memberPermitList.add("/notice/detail");
@@ -123,13 +125,8 @@ public class AuthenticationFilter implements Filter {
 		allPermitList.add("/member/resetPassword");
 		allPermitList.add("/member/finalResetPwd");
 		allPermitList.add("/member/infoCheck");
-
-		allPermitList.add("/notice/search");
-
 		allPermitList.add("/member/policy");
 		allPermitList.add("/member/terms");
-
-		
 		allPermitList.add("/trainer/regist");
 		
 		permitURIList.put("memberPermitList", memberPermitList);
