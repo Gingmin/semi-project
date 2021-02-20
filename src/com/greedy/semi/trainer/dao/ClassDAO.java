@@ -136,8 +136,14 @@ public class ClassDAO {
 				List<AttachmentDTO> attachmentList = new ArrayList<>();
 				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
 				
+				thumbnailClass.setNo(rset.getInt("CLASS_NO"));
 				thumbnailClass.setName(rset.getString("CLASS_NAME"));
+				thumbnailClass.setType(rset.getString("CLASS_TYPE"));
+				thumbnailClass.setCategory(rset.getString("CLASS_CATEGORY"));
+				thumbnailClass.setIntro(rset.getString("CLASS_INTRO"));
+				thumbnailClass.setIntroduce(rset.getString("CLASS_INTRODUCE"));
 				thumbnailClass.setCreatedDate(rset.getString("CREATED_DATE"));
+				thumbnailClass.setCount(rset.getInt("CLASS_COUNT"));
 				thumbnailAttachment.setNo(rset.getInt("ATTACHMENT_NO"));
 				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
 				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
@@ -157,6 +163,80 @@ public class ClassDAO {
 		}
 		
 		return thumbnailList;
+	}
+
+	public int incrementClassCount(Connection con, int no) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("incrementClassCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			pstmt.setInt(2, no);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ClassDTO selectOneThumbnailClass(Connection con, int no) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ClassDTO thumbnail = null;
+		
+		String qeury = prop.getProperty("selectOneThumbnailClass");
+		
+		try {
+			pstmt = con.prepareStatement(qeury);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			thumbnail = new ClassDTO();
+			List<AttachmentDTO> attachmentList = new ArrayList<>();
+			while(rset.next()) {
+				
+				AttachmentDTO attachment = new AttachmentDTO();
+				
+				thumbnail.setNo(rset.getInt("CLASS_NO"));
+				thumbnail.setName(rset.getString("CLASS_NAME"));
+				thumbnail.setType(rset.getString("CLASS_TYPE"));
+				thumbnail.setCategory(rset.getString("CLASS_CATEGORY"));
+				thumbnail.setIntro(rset.getString("CLASS_INTRO"));
+				thumbnail.setIntroduce(rset.getString("CLASS_INTRODUCE"));
+				thumbnail.setCreatedDate(rset.getString("CREATED_DATE"));
+				thumbnail.setCount(rset.getInt("CLASS_COUNT"));
+				attachment.setNo(rset.getInt("ATTACHMENT_NO"));
+				attachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
+				attachment.setSavedName(rset.getString("SAVED_NAME"));
+				attachment.setSavePath(rset.getString("SAVE_PATH"));
+				attachment.setFileType(rset.getString("FILE_TYPE"));
+				attachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
+				
+				attachmentList.add(attachment);
+			}
+			
+			thumbnail.setAttachmentList(attachmentList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return thumbnail;
 	}
 
 }

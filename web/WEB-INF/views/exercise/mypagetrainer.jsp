@@ -153,8 +153,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				
 				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
 						<div class="thumb-list">
@@ -163,11 +161,16 @@
 									width="200" height="150">
 							</div>
 							<p>
-							<label><c:out value="${ thumbnail.name }"></c:out></label>
+							<label><c:out value="${ thumbnail.no }"/></label>&nbsp;&nbsp;&nbsp;
+							<c:out value="${ thumbnail.name }"/>&nbsp;&nbsp;&nbsp;
+							<c:out value="${ thumbnail.count }"/>
 						</div>
 					</c:forEach>
 				</div>
-
+				</div>
+				<br>
+				<br>
+				<br>
 				<div class="insert_btn">
 					<a class="insert_detail" href="#" id="insert_class">클래스 추가하기</a>
 				</div>
