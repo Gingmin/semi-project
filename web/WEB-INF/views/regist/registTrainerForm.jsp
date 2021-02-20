@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일반 회원가입</title>
+<title>트레이너 회원가입</title>
 <link rel="stylesheet" href="/semi/resources/css/member/registTrainer.css">
 </head>
 <body>
@@ -170,8 +170,8 @@
 					</div>
 					<select class="box_detail" name="empStatus" id="empStatus" disabled>
 						<option selected disabled hidden>선택하세요</option>
-						<option>재직중 아님</option>
-						<option>재직중</option>
+						<option>N</option>
+						<option>Y</option>
 					</select>
 				</div>
 				
@@ -220,6 +220,7 @@
 				</div>
 				
 				<script>
+				/* 자격증마다 자동으로 발급기관 띄우기 */
 					$('#licenseName').change(function() {
 						
 						var value = $(this).children('option:selected').text();
@@ -231,6 +232,7 @@
 						if('물리치료사' === value) {
 							$('#grade').attr('disabled', true);
 							$('#institution').val('한국보건의료인국가시험원');
+							document.getElementById("grade").value = "선택하세요";
 						}
 					
 					});
@@ -468,8 +470,8 @@
 			
 		}
 		
-		//인증번호를 쳐야지만 확인 버튼이 눌리는 로직
 		$(document).ready(function() {
+		//인증번호를 쳐야지만 확인 버튼이 눌리도록
 		         		$('#verificationNumber').on('keyup', function() {
 		         			var flag = true;
 		         			flag = $(this).val().length > 0 ? false : true;
@@ -559,9 +561,29 @@
 			const password2 = document.getElementById("password2").value;
 			const name = document.getElementById("name").value;
 			const phone = document.getElementById("phone").value;
-			const termsP = document.getElementById("terms_p");
-			const termsT = document.getElementById("terms_t");
+			const termsP = document.getElementById("terms_p").value;
+			const termsT = document.getElementById("terms_t").value;
+			const account = document.getElementById("account").value;
+			const holder = document.getElementById("holder").value;
+			const placeWork = document.getElementById("placeWork").value;
+			const startDate = document.getElementById("startDate").value;
+			const licenseCode = document.getElementById("licenseCode").value;
+			const issueDate = document.getElementById("issueDate").value;
+			const inputFile = document.getElementById("inputFile").value;
 			
+			const $bankname = document.getElementById("bankname");
+			const bankname = $bankname.options[$bankname.selectedIndex].value;
+			
+			const $empStatus = document.getElementById("empStatus");
+			const empStatus = $empStatus.options[$empStatus.selectedIndex].value;
+			
+			const $licenseName = document.getElementById("licenseName");
+			const licenseName = $licenseName.options[$licenseName.selectedIndex].value;
+			
+			const $grade = document.getElementById("grade");
+			const grade = $grade.options[$grade.selectedIndex].value;
+			
+				
 			if(!email || email === "") {
 				alert("이메일을 반드시 입력해야 합니다.");
 				document.getElementById("email").focus();
@@ -595,6 +617,74 @@
 			if(!phone || phone === "") {
 				alert("전화번호를 반드시 입력해야 합니다.");
 				document.getElementById("phone").focus();
+				return false;
+			}
+			
+			if(!account || account === "") {
+				alert("계좌번호를 반드시 입력해야 합니다.");
+				document.getElementById("account").focus();
+				return false;
+			}
+			
+			if(!bankname || bankname === "" || bankname === "선택하세요") {
+				alert("은행을 반드시 선택해야 합니다.");
+				document.getElementById("bankname").focus();
+				return false;
+			}
+			
+			if(!holder || holder === "") {
+				alert("예금주를 반드시 입력해야 합니다.");
+				document.getElementById("holder").focus();
+				return false;
+			}
+			
+			if(!placeWork || placeWork === "") {
+				alert("근무처를 반드시 입력해야 합니다.");
+				document.getElementById("placeWork").focus();
+				return false;
+			}
+			
+			if(!startDate || startDate === "") {
+				alert("근무시작일을 반드시 입력해야 합니다.");
+				document.getElementById("startDate").focus();
+				return false;
+			}
+			
+			if(!empStatus || empStatus === "" || empStatus === "선택하세요") {
+				alert("재직여부를 반드시 선택해야 합니다.");
+				document.getElementById("empStatus").focus();
+				return false;
+			}
+			
+			if(!licenseCode || licenseCode === "") {
+				alert("자격증 번호를 반드시 입력해야 합니다.");
+				document.getElementById("licenseCode").focus();
+				return false;
+			}
+			
+			if(!licenseName || licenseName === "" || licenseName === "선택하세요") {
+				alert("자격증명을 반드시 입력해야 합니다.");
+				document.getElementById("licenseName").focus();
+				return false;
+			}
+			
+			if(licenseName === "생활스포츠지도사") {
+				if(!grade || grade === "" || grade === "선택하세요") {
+					alert("급수를 반드시 선택해야 합니다.");
+					document.getElementById("grade").focus();
+					return false;
+				}
+			}
+			
+			if(!issueDate || issueDate === "") {
+				alert("발급일자를 반드시 입력해야 합니다.");
+				document.getElementById("issueDate").focus();
+				return false;
+			}
+			
+			if(!inputFile || inputFile === "") {
+				alert("자격증을 반드시 첨부해야 합니다.");
+				document.getElementById("inputFile").focus();
 				return false;
 			}
 			
