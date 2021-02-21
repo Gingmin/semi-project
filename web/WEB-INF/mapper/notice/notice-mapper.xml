@@ -5,32 +5,32 @@
         SELECT
                  A.RNUM
                , A.NOTICE_NO                    
-               , A.NOTICE_TITLE
+               , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
-               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NO
                , A.MEMBER_NAME
-               , A.NOTICE_COUNT
-               , A.CREATED_DATE
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
                        , B.NOTICE_NO                    
-                       , B.NOTICE_TITLE
+                       , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
-                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NO
                        , B.MEMBER_NAME
-                       , B.NOTICE_COUNT
-                       , B.CREATED_DATE
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
-                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
-                               , C.NOTICE_WRITER_MEMBER_NO
+                               , C.MEMBER_NO
                                , E.MEMBER_NAME
-                               , C.NOTICE_COUNT
-                               , C.CREATED_DATE
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
                             FROM TBL_NOTICE C                 
-                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
                            ORDER BY C.NOTICE_NO DESC
                         ) B
@@ -43,23 +43,25 @@
 		  INTO TBL_NOTICE A
 		(
 		  A.NOTICE_NO
-		, A.NOTICE_TITLE
+		, A.NOTICE_SUBJECT
 		, A.NOTICE_BODY
-		, A.NOTICE_WRITER_MEMBER_NO 
+		, A.MEMBER_NO 
+		, A.NOTICE_REGIST_DATE
 		)  
 		VALUES
 		(
 		  SEQ_NOTICE_NO.NEXTVAL
 		, ?
 		, ?
-		, ?  
+		, ? 
+		, SYSDATE 
 		)
 	</entry>
 	
 	<entry key="incrementNoticeCount">
 		UPDATE
 		       TBL_NOTICE A
-		   SET A.NOTICE_COUNT = (SELECT B.NOTICE_COUNT
+		   SET A.NOTICE_VIEW_COUNT = (SELECT B.NOTICE_VIEW_COUNT
 		                           FROM TBL_NOTICE B
 		                          WHERE B.NOTICE_NO = ?
 		                        ) + 1
@@ -69,14 +71,14 @@
 	<entry key="selectAllNoticeDetail">
 		SELECT
 	            A.NOTICE_NO
-	          , A.NOTICE_TITLE
+	          , A.NOTICE_SUBJECT
 	          , A.NOTICE_BODY
-	          , A.NOTICE_WRITER_MEMBER_NO
+	          , A.MEMBER_NO
 	          , B.MEMBER_NAME
-	          , A.NOTICE_COUNT
-	          , A.CREATED_DATE
+	          , A.NOTICE_VIEW_COUNT
+	          , A.NOTICE_REGIST_DATE
 	      FROM TBL_NOTICE A
-	      JOIN TBL_MEMBER B ON (A.NOTICE_WRITER_MEMBER_NO = B.MEMBER_NO)
+	      JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
 	     WHERE A.NOTICE_STATUS = 'Y'
 	       AND A.NOTICE_NO = ?        
 	</entry>
@@ -84,7 +86,7 @@
 	<entry key="updateNotice">
 		UPDATE
 		       TBL_NOTICE A
-		   SET A.NOTICE_TITLE = ?
+		   SET A.NOTICE_SUBJECT = ?
 		     , A.NOTICE_BODY = ?
 		 WHERE A.NOTICE_STATUS = 'Y' 
            AND A.NOTICE_NO = ?  
@@ -109,7 +111,7 @@
 		SELECT
                COUNT(*)
           FROM TBL_NOTICE A
-          JOIN TBL_MEMBER B ON (A.NOTICE_WRITER_MEMBER_NO = B.MEMBER_NO)
+          JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
          WHERE A.NOTICE_STATUS = 'Y'
            AND B.MEMBER_NAME LIKE '%' || ? || '%'
 	</entry>
@@ -119,7 +121,7 @@
                COUNT(*)
           FROM TBL_NOTICE A
          WHERE A.NOTICE_STATUS = 'Y'
-           AND A.NOTICE_TITLE LIKE '%' || ? || '%'
+           AND A.NOTICE_SUBJECT LIKE '%' || ? || '%'
 	</entry>
 	
 	<entry key="searchContentCount">
@@ -134,32 +136,32 @@
 		SELECT
                  A.RNUM
                , A.NOTICE_NO                    
-               , A.NOTICE_TITLE
+               , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
-               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NO
                , A.MEMBER_NAME
-               , A.NOTICE_COUNT
-               , A.CREATED_DATE
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
                        , B.NOTICE_NO                    
-                       , B.NOTICE_TITLE
+                       , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
-                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NO
                        , B.MEMBER_NAME
-                       , B.NOTICE_COUNT
-                       , B.CREATED_DATE
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
-                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
-                               , C.NOTICE_WRITER_MEMBER_NO
+                               , C.MEMBER_NO
                                , E.MEMBER_NAME
-                               , C.NOTICE_COUNT
-                               , C.CREATED_DATE
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
                             FROM TBL_NOTICE C                 
-                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
                              AND E.MEMBER_NAME LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
@@ -172,34 +174,34 @@
 		SELECT
                  A.RNUM
                , A.NOTICE_NO                    
-               , A.NOTICE_TITLE
+               , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
-               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NO
                , A.MEMBER_NAME
-               , A.NOTICE_COUNT
-               , A.CREATED_DATE
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
                        , B.NOTICE_NO                    
-                       , B.NOTICE_TITLE
+                       , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
-                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NO
                        , B.MEMBER_NAME
-                       , B.NOTICE_COUNT
-                       , B.CREATED_DATE
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
-                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
-                               , C.NOTICE_WRITER_MEMBER_NO
+                               , C.MEMBER_NO
                                , E.MEMBER_NAME
-                               , C.NOTICE_COUNT
-                               , C.CREATED_DATE
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
                             FROM TBL_NOTICE C                 
-                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
-                             AND C.NOTICE_TITLE LIKE '%' || ? || '%'
+                             AND C.NOTICE_SUBJECT LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
                  ) A
@@ -210,34 +212,34 @@
 		SELECT
                  A.RNUM
                , A.NOTICE_NO                    
-               , A.NOTICE_TITLE
+               , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
-               , A.NOTICE_WRITER_MEMBER_NO
+               , A.MEMBER_NO
                , A.MEMBER_NAME
-               , A.NOTICE_COUNT
-               , A.CREATED_DATE
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
                        , B.NOTICE_NO                    
-                       , B.NOTICE_TITLE
+                       , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
-                       , B.NOTICE_WRITER_MEMBER_NO
+                       , B.MEMBER_NO
                        , B.MEMBER_NAME
-                       , B.NOTICE_COUNT
-                       , B.CREATED_DATE
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
-                               , C.NOTICE_TITLE                 
+                               , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
-                               , C.NOTICE_WRITER_MEMBER_NO
+                               , C.MEMBER_NO
                                , E.MEMBER_NAME
-                               , C.NOTICE_COUNT
-                               , C.CREATED_DATE
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
                             FROM TBL_NOTICE C                 
-                            JOIN TBL_MEMBER E ON (C.NOTICE_WRITER_MEMBER_NO = E.MEMBER_NO)
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
-                             AND C.NOTICE_BODY  LIKE '%' || ? || '%'
+                             AND C.NOTICE_BODY LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
                  ) A
