@@ -1,8 +1,8 @@
-package com.greedy.semi.common.dto;
+package com.greedy.semi.member.model.dto;
 
 import java.sql.Date;
 
-public class AttachmentDTO implements java.io.Serializable {
+public class LcAttachmentDTO implements java.io.Serializable {
 
 	private int no;
 	private String code;
@@ -11,11 +11,12 @@ public class AttachmentDTO implements java.io.Serializable {
 	private String fileName;
 	private String thumbnailPath;
 	private java.sql.Date uploadDate;
+	private String status;
 	
-	public AttachmentDTO() {}
+	public LcAttachmentDTO() {}
 
-	public AttachmentDTO(int no, String code, String filePath, String originalName, String fileName,
-			String thumbnailPath, Date uploadDate) {
+	public LcAttachmentDTO(int no, String code, String filePath, String originalName, String fileName,
+			String thumbnailPath, Date uploadDate, String status) {
 		super();
 		this.no = no;
 		this.code = code;
@@ -24,6 +25,7 @@ public class AttachmentDTO implements java.io.Serializable {
 		this.fileName = fileName;
 		this.thumbnailPath = thumbnailPath;
 		this.uploadDate = uploadDate;
+		this.status = status;
 	}
 
 	public int getNo() {
@@ -82,12 +84,21 @@ public class AttachmentDTO implements java.io.Serializable {
 		this.uploadDate = uploadDate;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
-		return "AttachmentDTO [no=" + no + ", code=" + code + ", filePath=" + filePath + ", originalName="
+		return "LcAttachmentDTO [no=" + no + ", code=" + code + ", filePath=" + filePath + ", originalName="
 				+ originalName + ", fileName=" + fileName + ", thumbnailPath=" + thumbnailPath + ", uploadDate="
-				+ uploadDate + "]";
+				+ uploadDate + ", status=" + status + "]";
 	}
+
 	
 	
 	

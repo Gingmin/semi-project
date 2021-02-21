@@ -116,4 +116,126 @@
 		  FROM TBL_MEMBER I
 		 WHERE I.EMAIL = ? 
 	</entry>
+	<entry key="insertTrainer">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertTrainer() */
+		  INTO TBL_MEMBER J
+		(
+		  J.MEMBER_NO
+		, J.EMAIL
+		, J.MEMBER_PWD
+		, J.MEMBER_NAME
+		, J.PHONE
+		, J.MEMBER_ROLE
+		)
+		VALUES
+		(
+		  SEQ_MEMBER_NO.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, ?
+		, 'TRAINER'
+		)
+	</entry>
+	<entry key="selectTrainer">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectTrainer() */
+		       K.MEMBER_NO
+		  FROM TBL_MEMBER K
+		 WHERE K.EMAIL = ?
+	</entry>
+	<entry key="insertInfoTrainer">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertInfoTrainer() */
+		  INTO TBL_TRAINER_INFO L
+		(
+		  L.MEMBER_NO
+		, L.ACCOUNT_NUMBER
+		, L.BANK_NAME
+		, L.ACCOUNT_HOLDER
+		)
+		VALUES
+		(
+		  ?
+		, ?
+		, ?
+		, ?
+		)
+	</entry>
+	<entry key="insertCareer">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertCareer() */
+		  INTO TBL_CAREER M
+		(
+		  M.MEMBER_NO
+		, M.PLACE_OF_WORK
+		, M.START_DATE
+		, M.END_DATE
+		, M.EMPLOYMENT_STATUS
+		)
+		VALUES
+		(
+		  ?
+		, ?
+		, ?
+		, ?
+		, ?
+		)
+	</entry>
+	<entry key="insertLicense">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertLicense() */
+		  INTO TBL_LICENSE N
+		(
+		  N.LICENSE_CODE
+		, N.LICENSE_NAME
+		, N.ISSUING_INSTITUTION
+		, N.GRADE
+		, N.ISSUE_DATE
+		, N.EXPIRATION_DATE
+		)
+		VALUES
+		(
+		  ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		)
+	</entry>
+	<entry key="insertAttachment">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertAttachment() */
+		  INTO TBL_LICENSE_ATTACHMENT O
+		(
+		  O.LICENSE_ATTACHMENT_NO
+		, O.REF_LICENSE_CODE
+		, O.ORIGINAL_NAME
+		, O.FILE_NAME
+		, O.FILE_PATH
+		, O.THUMBNAIL_PATH
+		, O.UPLOAD_DATE
+		)
+		VALUES
+		(
+		  SEQ_LICENSE_ATTACHMENT_NO.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, SYSDATE
+		)
+	</entry>
+	<entry key="insertTrainerLicense">
+		INSERT /* com.greedy.semi.member.model.dao.MemberDAO#insertTrainerLicense() */
+		  INTO TBL_TRAINER_LICENSE P
+		(
+		  P.LICENSE_MANAGE_NO
+		, P.MEMBER_NO
+		, P.LICENSE_CODE
+		)
+		VALUES
+		(
+		  SEQ_LICENSE_MANAGE_NO.NEXTVAL
+		, ?
+		, ?
+		)
+	</entry>
 </properties>

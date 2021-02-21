@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>내정보</title>
-<link rel="stylesheet" href="/semi/resources/css/member/updateMemberForm.css">
+<link rel="stylesheet" href="/semi/resources/css/member/updateTrainerForm.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	
 	<div class="container">
 		<div class="info_area">
-			<div class="info_text">내정보</div>
+			<div class="info_text">추가정보</div>
 			<br>
 			<br>
 

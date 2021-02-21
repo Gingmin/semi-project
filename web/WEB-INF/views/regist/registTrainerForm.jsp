@@ -561,8 +561,8 @@
 			const password2 = document.getElementById("password2").value;
 			const name = document.getElementById("name").value;
 			const phone = document.getElementById("phone").value;
-			const termsP = document.getElementById("terms_p").value;
-			const termsT = document.getElementById("terms_t").value;
+			const termsP = document.getElementById("terms_p");
+			const termsT = document.getElementById("terms_t");
 			const account = document.getElementById("account").value;
 			const holder = document.getElementById("holder").value;
 			const placeWork = document.getElementById("placeWork").value;
@@ -691,19 +691,17 @@
 			if(!(termsP.checked)) {
 				alert("개인정보 제공에 동의하셔야 합니다.");
 				/* 왜 포커스가 안될까? */
-				document.getElementById("terms_p").focus();
 				return false;
 			}
 			
 			if(!(termsT.checked)) {
 				alert("이용약관에 동의하셔야 합니다.");
 				/* 왜 포커스가 안될까? */
-				document.getElementById("terms_t").focus();
 				return false;
 			}
 			
 			const $myform = document.getElementById("myForm");
-			$myform.action = "${ pageContext.servletContext.contextPath }/member/regist";
+			$myform.action = "${ pageContext.servletContext.contextPath }/trainer/regist";
 			$myform.submit(); 
 			
 			
