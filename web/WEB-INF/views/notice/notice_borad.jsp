@@ -152,7 +152,7 @@
 					<select id="searchCondition" name="searchCondition" class="select_detail">
 						<option value="writer" <c:if test="${ requestScope.searchCondition eq 'writer' }">seleted</c:if>>작성자</option>
 						<option value="title" <c:if test="${ requestScope.searchCondition eq 'title' }">seleted</c:if>>제목</option>
-						<option value="body" <c:if test="${ requestScope.searchCondition eq 'content' }">seleted</c:if>>내용</option>
+						<option value="content" <c:if test="${ requestScope.searchCondition eq 'content' }">seleted</c:if>>내용</option>
 					</select>
 					<input class="searchinput_detail" type="search" name="searchValue" value="${ requestScope.searchValue }">
 					<button class="searchBtn_detail" type="submit">검색하기</button>

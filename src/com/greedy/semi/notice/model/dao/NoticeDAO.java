@@ -55,17 +55,17 @@ public class NoticeDAO {
 				notice.setWriter(new MemberDTO());
 				
 				notice.setNo(rset.getInt("NOTICE_NO"));
-				notice.setTitle(rset.getString("NOTICE_TITLE"));
+				notice.setTitle(rset.getString("NOTICE_SUBJECT"));
 				notice.setBody(rset.getString("NOTICE_BODY"));
-				notice.setWriterMemberNo(rset.getInt("NOTICE_WRITER_MEMBER_NO"));
+				notice.setWriterMemberNo(rset.getInt("MEMBER_NO"));
 				notice.getWriter().setName(rset.getString("MEMBER_NAME"));
-				notice.setCount(rset.getInt("NOTICE_COUNT"));
-				notice.setCreatedDate(rset.getDate("CREATED_DATE"));
+				notice.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				notice.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
 				notice.setStatus(rset.getString("NOTICE_STATUS"));
 				
 				
 				noticeList.add(notice);
-				System.out.println("여기는 오나 ??");
+				System.out.println("셀렉트올노티스 리스트 DAO");
 			}
 			
 			
@@ -128,12 +128,12 @@ public class NoticeDAO {
 				noticeDetail.setWriter(new MemberDTO());
 				
 				noticeDetail.setNo(rset.getInt("NOTICE_NO"));
-				noticeDetail.setTitle(rset.getString("NOTICE_TITLE"));
+				noticeDetail.setTitle(rset.getString("NOTICE_SUBJECT"));
 				noticeDetail.setBody(rset.getString("NOTICE_BODY"));
-				noticeDetail.setWriterMemberNo(rset.getInt("NOTICE_WRITER_MEMBER_NO"));
+				noticeDetail.setWriterMemberNo(rset.getInt("MEMBER_NO"));
 				noticeDetail.getWriter().setName(rset.getString("MEMBER_NAME"));
-				noticeDetail.setCount(rset.getInt("NOTICE_COUNT"));
-				noticeDetail.setCreatedDate(rset.getDate("CREATED_DATE"));
+				noticeDetail.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				noticeDetail.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
 				
 			}
 			
@@ -269,10 +269,10 @@ public class NoticeDAO {
 			query = prop.getProperty("searchWriterCount");
 		} else if("title".contentEquals(searchCondition)) {
 			query = prop.getProperty("searchTitleCount");
-		} else if("content".equals(searchCondition)) {
+		} else if("content".contentEquals(searchCondition)) {
 			query = prop.getProperty("searchContentCount");
 		}
-		
+		System.out.println("수정여기는??" + query);
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, searchValue);
@@ -326,12 +326,12 @@ public class NoticeDAO {
 				notice.setWriter(new MemberDTO());
 				
 				notice.setNo(rset.getInt("NOTICE_NO"));
-				notice.setTitle(rset.getString("NOTICE_TITLE"));
+				notice.setTitle(rset.getString("NOTICE_SUBJECT"));
 				notice.setBody(rset.getString("NOTICE_BODY"));
-				notice.setWriterMemberNo(rset.getInt("NOTICE_WRITER_MEMBER_NO"));
+				notice.setWriterMemberNo(rset.getInt("MEMBER_NO"));
 				notice.getWriter().setName(rset.getString("MEMBER_NAME"));
-				notice.setCount(rset.getInt("NOTICE_COUNT"));
-				notice.setCreatedDate(rset.getDate("CREATED_DATE"));
+				notice.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				notice.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
 				notice.setStatus(rset.getString("NOTICE_STATUS"));
 				
 				noticeList.add(notice);

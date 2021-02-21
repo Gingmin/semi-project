@@ -50,7 +50,7 @@ public class NoticeNoticeServlet extends HttpServlet {
 		
 		List<NoticeDTO> noticeList = new NoticeService().selectAllNoticeList(pageInfo);
 		
-		System.out.println("SEFWEF :" +noticeList);
+		System.out.println("노티스서비스 :" +noticeList);
 		
 		String path ="";
 		if(noticeList != null) {
