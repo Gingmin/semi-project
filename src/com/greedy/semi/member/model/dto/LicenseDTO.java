@@ -3,8 +3,6 @@ package com.greedy.semi.member.model.dto;
 import java.sql.Date;
 import java.util.List;
 
-import com.greedy.semi.common.dto.AttachmentDTO;
-
 public class LicenseDTO implements java.io.Serializable {
 	
 	private String code;
@@ -13,12 +11,12 @@ public class LicenseDTO implements java.io.Serializable {
 	private String grade;
 	private java.sql.Date issueDate;
 	private java.sql.Date expDate;
-	private List<AttachmentDTO> attachmentList;
+	private List<LcAttachmentDTO> attachmentList;
 	
 	public LicenseDTO() {}
 
 	public LicenseDTO(String code, String name, String institution, String grade, Date issueDate, Date expDate,
-			List<AttachmentDTO> attachmentList) {
+			List<LcAttachmentDTO> attachmentList) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -77,11 +75,11 @@ public class LicenseDTO implements java.io.Serializable {
 		this.expDate = expDate;
 	}
 
-	public List<AttachmentDTO> getAttachmentList() {
+	public List<LcAttachmentDTO> getAttachmentList() {
 		return attachmentList;
 	}
 
-	public void setAttachmentList(List<AttachmentDTO> attachmentList) {
+	public void setAttachmentList(List<LcAttachmentDTO> attachmentList) {
 		this.attachmentList = attachmentList;
 	}
 

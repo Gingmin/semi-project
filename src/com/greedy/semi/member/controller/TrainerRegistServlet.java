@@ -18,9 +18,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.greedy.semi.common.dto.AttachmentDTO;
 import com.greedy.semi.common.movecontroll.ControlMethod;
 import com.greedy.semi.member.model.dto.CareerDTO;
+import com.greedy.semi.member.model.dto.LcAttachmentDTO;
 import com.greedy.semi.member.model.dto.LicenseDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.member.model.dto.TrainerInfoDTO;
@@ -47,8 +47,8 @@ public class TrainerRegistServlet extends HttpServlet {
 			int maxFileSize = 1024 * 1024 * 10;
 			String encodingType = "UTF-8";
 			
-			String fileUploadDirectory = rootLocation + "/resources/attachment/license/original";
-			String thumbnailDirectory = rootLocation + "/resources/attachment/license/thumbnail";
+			String fileUploadDirectory = rootLocation + "/resources/attachment/license/original/";
+			String thumbnailDirectory = rootLocation + "/resources/attachment/license/thumbnail/";
 			
 			File directory1 = new File(fileUploadDirectory);
 			File directory2 = new File(thumbnailDirectory);
@@ -70,6 +70,10 @@ public class TrainerRegistServlet extends HttpServlet {
 			try {
 				
 				List<FileItem> fileItems = fileUpload.parseRequest(request);
+				
+				for(FileItem item : fileItems) {
+					System.out.println(item);
+				}
 				
 				for(int i = 0; i < fileItems.size(); i++) {
 					
@@ -140,21 +144,31 @@ public class TrainerRegistServlet extends HttpServlet {
 //				java.sql.Date expDate = java.sql.Date.valueOf(request.getParameter("expDate"));
 				/* 회원 테이블 */
 				MemberDTO requestMember = new MemberDTO();
-				requestMember.setEmail(parameter.get("email"));
-				requestMember.setPwd(parameter.get("pwd"));
+				requestMember.setEmail(parameter.get("email2"));
+				requestMember.setPwd(parameter.get("password"));
 				requestMember.setName(parameter.get("name"));
 				requestMember.setPhone(parameter.get("phone"));
+				System.out.println("memberDTO 오류");
 				/* 트레이너 추가정보 */
 				TrainerInfoDTO trainer = new TrainerInfoDTO();
 				trainer.setAccountNumber(parameter.get("account"));
 				trainer.setBankName(parameter.get("bankname"));
 				trainer.setAccountHolder(parameter.get("holder"));
+				System.out.println("trainerDTO 오류");
 				/* 경력 */
 				CareerDTO career = new CareerDTO();
 				career.setPlaceWork(parameter.get("placeWork"));
-				career.setStartDate(java.sql.Date.valueOf(parameter.get("startDate)")));
-				career.setEndDate(java.sql.Date.valueOf(parameter.get("endDate")));
+				System.out.println("여기까지완료");
+				career.setStartDate(java.sql.Date.valueOf(parameter.get("startDate")));
+				
+				/* endDate값이 있을 때만 */
+				if(parameter.get("endDate").length() > 6) {
+					System.out.println("endDate 값있음");
+					career.setEndDate(java.sql.Date.valueOf(parameter.get("endDate")));
+				} 
+				
 				career.setEmpStatus(parameter.get("empStatus"));
+				System.out.println("career 오류");
 				/* 자격증 */
 				LicenseDTO license = new LicenseDTO();
 				license.setCode(parameter.get("licenseCode"));
@@ -162,15 +176,22 @@ public class TrainerRegistServlet extends HttpServlet {
 				license.setGrade(parameter.get("grade"));
 				license.setInstitution(parameter.get("institution"));
 				license.setIssueDate(java.sql.Date.valueOf(parameter.get("issueDate")));
-				license.setExpDate(java.sql.Date.valueOf(parameter.get("expDate")));
+				System.out.println("issueDate");
+				/* expDate값이 있을 때만 */
+				if(parameter.get("expDate").length() > 6) {
+					System.out.println("expDate 값있음");
+					license.setExpDate(java.sql.Date.valueOf(parameter.get("expDate")));
+				} 
+				System.out.println("license 에러");
+				
 				/* 첨부파일정보 */
-				license.setAttachmentList(new ArrayList<AttachmentDTO>());
-				List<AttachmentDTO> list = license.getAttachmentList();
+				license.setAttachmentList(new ArrayList<LcAttachmentDTO>());
+				List<LcAttachmentDTO> list = license.getAttachmentList();
 				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String> file = fileList.get(i);
 					
-					AttachmentDTO tempFileInfo = new AttachmentDTO();
-					tempFileInfo.setOriginalName(file.get("originalName"));
+					LcAttachmentDTO tempFileInfo = new LcAttachmentDTO();
+					tempFileInfo.setOriginalName(file.get("originalFileName"));
 					tempFileInfo.setFileName(file.get("savedFileName"));
 					tempFileInfo.setFilePath(file.get("savePath"));
 					tempFileInfo.setThumbnailPath(file.get("thumbnailPath"));

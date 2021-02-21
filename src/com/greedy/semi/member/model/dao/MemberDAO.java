@@ -10,12 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.CareerDTO;
+import com.greedy.semi.member.model.dto.LcAttachmentDTO;
 import com.greedy.semi.member.model.dto.LicenseDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.member.model.dto.TrainerInfoDTO;
@@ -388,54 +391,223 @@ public class MemberDAO {
 		return selectEmail;
 	}
 
+	/* 여기부터 트레이너 */
 	public int insertTrainer(Connection con, MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		PreparedStatement pstmt = null;
+		
+		int memberResult = 0;
+		
+		String query = prop.getProperty("insertTrainer");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, memberDTO.getEmail());
+			pstmt.setString(2, memberDTO.getPwd());
+			pstmt.setString(3, memberDTO.getName());
+			pstmt.setString(4, memberDTO.getPhone());
+			
+			memberResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return memberResult;
 	}
 
-	public int selectMember(Connection con, MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectTrainer(Connection con, MemberDTO memberDTO) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int selectedTrainerNo = 0;
+		
+		String query = prop.getProperty("selectTrainer");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, memberDTO.getEmail());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				selectedTrainerNo = rset.getInt("MEMBER_NO");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return selectedTrainerNo;
 	}
 
 	public int insertInfoTrainer(Connection con, int selectedTrainerNo, TrainerInfoDTO trainerInfoDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		PreparedStatement pstmt = null;
+		int trainerInfoResult = 0;
+		
+		String query = prop.getProperty("insertInfoTrainer");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, selectedTrainerNo);
+			pstmt.setString(2, trainerInfoDTO.getAccountNumber());
+			pstmt.setString(3, trainerInfoDTO.getBankName());
+			pstmt.setString(4, trainerInfoDTO.getAccountHolder());
+			
+			trainerInfoResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return trainerInfoResult;
 	}
 
 	public int insertCareer(Connection con, int selectedTrainerNo, CareerDTO careerDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		PreparedStatement pstmt = null;
+		int careerResult = 0;
+		
+		String query = prop.getProperty("insertCareer");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, selectedTrainerNo);
+			pstmt.setString(2, careerDTO.getPlaceWork());
+			pstmt.setDate(3, careerDTO.getStartDate());
+			pstmt.setDate(4, careerDTO.getEndDate());
+			pstmt.setString(5, careerDTO.getEmpStatus());
+			
+			careerResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return careerResult;
 	}
 
-	public int insertAttachment(Connection con, LicenseDTO licenseDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertLicense(Connection con, LicenseDTO licenseDTO) {
+		
+		PreparedStatement pstmt = null;
+		int licenseResult = 0;
+		
+		String query = prop.getProperty("insertLicense");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, licenseDTO.getCode());
+			pstmt.setString(2, licenseDTO.getName());
+			pstmt.setString(3, licenseDTO.getGrade());
+			pstmt.setString(4, licenseDTO.getInstitution());
+			pstmt.setDate(5, licenseDTO.getIssueDate());
+			pstmt.setDate(6, licenseDTO.getExpDate());
+			
+			licenseResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return licenseResult;
 	}
 
-	public Integer selectAttachmentNo(Connection con, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertAttachment(Connection con, LcAttachmentDTO file) {
+		
+		PreparedStatement pstmt = null;
+		int attachmentResult = 0;
+		
+		String query = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, file.getCode());
+			pstmt.setString(2, file.getOriginalName());
+			pstmt.setString(3, file.getFileName());
+			pstmt.setString(4, file.getFilePath());
+			pstmt.setString(5, file.getThumbnailPath());
+			
+			attachmentResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return attachmentResult;
 	}
 
-	public int insertLicense(Connection con) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertTrainerLicense(Connection con, int selectedTrainerNo, String selectedLicense) {
+		
+		PreparedStatement pstmt = null;
+		int trainerLicenseResult = 0;
+		
+		String query = prop.getProperty("insertTrainerLicense");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, selectedTrainerNo);
+			pstmt.setString(2, selectedLicense);
+			
+			trainerLicenseResult = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return trainerLicenseResult;
 	}
+	/* 트레이너 끝 */
 
-	public String selectLicenseCode(Connection con) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public TrainerInfoDTO selectTrainerInfo(Connection con, int no) {
 
-	public int insertAttachLicense(Connection con, int i, String licenseCode) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		TrainerInfoDTO trainer = null;
+		
+		String query = prop.getProperty("selectTrainerInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				trainer = new TrainerInfoDTO();
+				trainer.setAccountNumber(rset.getString("ACCOUNT_NUMBER"));
+				trainer.setBankName(rset.getString("BANK_NAME"));
+				trainer.setAccountHolder(rset.getString("ACCOUNT_HOLDER"));
+				trainer.setApprovalStatus(rset.getString("APPROVAL_STATUS"));
+				trainer.setAverageScore(rset.getInt("AVERAGE_SCORE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return trainer;
 	}
-
-	public int insertTrainerLicense(Connection con, String licenseCode) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 }

@@ -46,6 +46,7 @@ public class AuthenticationFilter implements Filter {
 			
 			boolean isPermitAdmin = permitURIList.get("adminPermitList").contains(intent);
 			boolean isPermitMember = permitURIList.get("memberPermitList").contains(intent);
+			boolean isPermitTrainer = permitURIList.get("trainerPermitList").contains(intent);
 			boolean isPermitAll = permitURIList.get("allPermitList").contains(intent);
 			
 			if("ADMIN".equals(loginMember.getRole())) {
@@ -59,6 +60,13 @@ public class AuthenticationFilter implements Filter {
 				if((isPermitAll || isPermitMember) && !isPermitAdmin) {
 					isAuthorized = true;
 				}
+				
+			} else if("TRAINER".equals(loginMember.getRole())) {
+				
+				if((isPermitAll || isPermitTrainer) && !isPermitAdmin) {
+					isAuthorized = true;
+				}
+				
 			}
 			
 			if(isAuthorized) {
@@ -102,17 +110,27 @@ public class AuthenticationFilter implements Filter {
 		memberPermitList.add("/member/buy");
 		memberPermitList.add("/notice/notice");
 		memberPermitList.add("/notice/review");
-   	memberPermitList.add("/trainer/insert");
-   	memberPermitList.add("/notice/search");
+		memberPermitList.add("/notice/search");
 	 	memberPermitList.add("/notice/report");
 	 	memberPermitList.add("/notice/question");
 	 	memberPermitList.add("/notice/detail");
-	 	memberPermitList.add("/class/insert");
-	 	memberPermitList.add("/trainer/page");
-	 	memberPermitList.add("/class/detail");
-	 	memberPermitList.add("/trainer/sales_details");
-		 
-		trainerPermitList.add("");
+	 	
+		trainerPermitList.add("/member/mypage");
+		trainerPermitList.add("/member/update");
+		trainerPermitList.add("/member/delete");
+		trainerPermitList.add("/member/passwordChange");
+		trainerPermitList.add("/member/trainerInfo");
+		trainerPermitList.add("/notice/notice");
+		trainerPermitList.add("/notice/review");
+		trainerPermitList.add("/notice/search");
+		trainerPermitList.add("/notice/report");
+		trainerPermitList.add("/notice/detail");
+		trainerPermitList.add("/notice/question");
+		trainerPermitList.add("/trainer/insert");
+		trainerPermitList.add("/class/insert");
+		trainerPermitList.add("/trainer/page");
+		trainerPermitList.add("/class/detail");
+		trainerPermitList.add("/trainer/sales_details");
 		
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");

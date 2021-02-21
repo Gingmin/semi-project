@@ -32,7 +32,8 @@ public class MemberLoginServlet extends HttpServlet {
 		requestMember.setEmail(email);
 		requestMember.setPwd(pwd);
 		
-		MemberDTO loginMember = new MemberService().memberCheck(requestMember);
+		MemberService ms = new MemberService();
+		MemberDTO loginMember = ms.memberCheck(requestMember);
 		
 		if(loginMember != null) {
 			HttpSession session = request.getSession();

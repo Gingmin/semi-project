@@ -84,6 +84,14 @@ window.onload = function() {
 		}
 	}
 	
+	/* 트레이너 추가정보 */
+	if(document.getElementById("trainerInfo")) {
+		const $trainerInfo = document.getElementById("trainerInfo");
+		$trainerInfo.onclick = function() {
+			location.href = "/semi/member/trainerInfo";
+		}
+	}
+	
 	/* 비밀번호 변경 */
 	if(document.getElementById("passwordChange")) {
 		const $passwordChange = document.getElementById("passwordChange");
