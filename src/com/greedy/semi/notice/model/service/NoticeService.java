@@ -27,7 +27,7 @@ public class NoticeService {
 		Connection con = getConnection();
 
 		List<NoticeDTO> noticeList = noticeDAO.selectAllNoticeList(con, pageInfo);
-
+		System.out.println("셀렉트올노티스리스트");
 		close(con);
 
 		return noticeList;
@@ -57,7 +57,7 @@ public class NoticeService {
 		NoticeDTO noticeDetail = null;
 		
 		int result = noticeDAO.incrementNoticeCount(con, no);
-		
+		System.out.println("서비스리졀트 : " + result);
 		if(result > 0) {
 			noticeDetail = noticeDAO.selectAllNoticeDetail(con, no);
 			

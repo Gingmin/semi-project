@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.headerimg_area{background-color: black; height: 600px; padding: 5% 10%;}
+.headerimg_area .row{margin: 0; height: 100%;}
+.headerimg_area .row .classimg_area{float: left; height: 100%; width: 60%; }
+.headerimg_area .row .classimg_area .classimg_detail{ width: 100%; height: 100%; }
+
+.headerimg_area .row .classinfo_area{float: left; height: 100%; width: 40%; background-color: black; padding: 15px 35px;}
+.headerimg_area .row .classinfo_area .class_type{color: white; font-size: 16px; padding-bottom: 10px;}
+.headerimg_area .row .classinfo_area .class_name{color: white; font-size: 16px; padding-bottom: 10px;}
+.headerimg_area .row .classinfo_area .class_score{color: white; font-size: 16px; padding-bottom: 20px;}
+.headerimg_area .row .classinfo_area .class_score .fa-star{color: yellow;}
+
+.headerimg_area .row .classinfo_area .trainerinfo{ height: 180px;  border-bottom: 2px solid white; }
+.headerimg_area .row .classinfo_area .trainerinfo .row{margin: 0; height: 150px; }
+.headerimg_area .row .classinfo_area .trainerinfo .row .trainerimg{float: left; height: 150px;  width: 150px;}
+.headerimg_area .row .classinfo_area .trainerinfo .row .trainerimg .trainerimg_detail{ height: 100%;  width: 100%;  border-radius: 75px; }
+.headerimg_area .row .classinfo_area .trainerinfo .row .trainer_name{float: left; line-height: 150px; color: white; font-weight: bold; font-size: 20px; padding: 0 20px;}
+
+.headerimg_area .row .classinfo_area .classbtn_area{}
+.headerimg_area .row .classinfo_area .classbtn_area .classbtn_detail{border: 0; display: block; width: 150px; height: 40px; font-size:17px; margin: 20px 0; margin-left: auto; margin-right: auto; border-radius: 7px;}
+.headerimg_area .row .classinfo_area .classbtn_area .classbtn_detail.on{background-color: #ff3700; color: white;}
+
+
+
+.container{margin: 50px 0;}
+.container .classinfomation_area{height: 600px; border-bottom: 2px solid gray;}
+.container .classinfomation_area .row{margin: 0; }
+.container .classinfomation_area .row .trainer_intro{ float: left; width: 40%;}
+.container .classinfomation_area .row .trainer_intro .intro_text{ font-size: 25px; font-weight: bold; text-align: center; }
+.container .classinfomation_area .row .trainer_intro .intro_img{ height: 500px; box-shadow: 0 0 20px grey;}
+.container .classinfomation_area .row .trainer_intro .intro_img .intro_img_detail{ width: 100%; height: 100%;}
+.container .classinfomation_area .row .trainer_intro2{ float: right; width: 40%; text-align: center; }
+.container .classinfomation_area .row .trainer_intro2 .intro_text2{font-size: 18px;}
+
+
+.container .classinfomation_area2{ text-align: center; height: 500px;  padding: 40px;  border-bottom: 2px solid gray;}
+.container .classinfomation_area2 .intro_text3{font-size: 17px; font-weight: bold;}
+
+.container .review_area{ text-align: center; height: 500px;  padding: 40px 0;  border-bottom: 2px solid gray;}
+.container .review_area .review_text{font-size: 20px; font-weight: bold; padding-bottom: 20px;}
+.container .review_area .review_text .fa-star{}
+
+.container .review_area .review_table{}
+.container .review_area .review_table .table_detail{width: 100%; border-top: 1px solid gray; border-bottom: 1px solid gray;}
+.container .review_area .review_table .table_detail .score{padding: 10px; width: 20%;}
+.container .review_area .review_table .table_detail .nickname{padding: 10px; width: 40%;}
+.container .review_area .review_table .table_detail .reviewdate{padding: 10px; width: 40%;}
+.container .review_area .review_table .table_detail .content{font-size: 17px;}
+.container .review_area .review_table .text_detail{width: 100%; height: 100%; border: 0;}
+
+
+
+
