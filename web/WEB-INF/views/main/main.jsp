@@ -249,7 +249,12 @@
 			    				S라인
 			    			</div>
 			    			<div class="trainer_info">
-			    				귀찮다.. 
+			    				귀찮다.. <button id="chat" type="button" onclick="chat();">chat</button>
+			    				<script>
+			    					function chat() {
+			    						location.href = "/semi/chat";
+			    					}
+			    				</script>
 			    			</div>
 			    		</div>			    		
 			    	</div>

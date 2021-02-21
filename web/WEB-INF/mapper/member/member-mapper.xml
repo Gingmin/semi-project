@@ -238,4 +238,22 @@
 		, ?
 		)
 	</entry>
+	<entry key="selectTrainerInfo">
+		SELECT /* com.greedy.semi.member.model.dao.MemberDAO#selectTrainerInfo() */
+		       Q.ACCOUNT_NUMBER
+		     , Q.BANK_NAME
+		     , Q.ACCOUNT_HOLDER
+		     , Q.APPROVAL_STATUS 
+		     , Q.AVERAGE_SCORE
+		  FROM TBL_TRAINER_INFO Q
+		 WHERE Q.MEMBER_NO = ? 
+	</entry>
+	<entry key="updateTrainerInfo">
+		UPDATE
+		       TBL_TRAINER_INFO R
+		   SET R.ACCOUNT_NUMBER = ?
+		     , R.ACCOUNT_HOLDER = ?
+		     , R.BANK_NAME = ?
+		 WHERE R.MEMBER_NO = ?
+	</entry>
 </properties>

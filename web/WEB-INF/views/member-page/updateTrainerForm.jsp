@@ -20,89 +20,67 @@
 			<form class="info" action="" method="post" id="myForm">
 				<div class="info_item1">
 					<div class="info_text1">
-						이메일 주소 <span class="info_detail">*</span>
+						계좌번호 <span class="info_detail">*</span>
 					</div>
-					<input class="box_detail" type="text" name="email" id="email"
-						value="${ sessionScope.loginMember.email }" readonly>
+					<input class="box_detail" type="text" name="account" id="account"
+						value="${ requestScope.trainerInfo.accountNumber }" placeholder="계좌번호를 입력하세요">
 				</div>
 
+				<br>
+
+				
+				<div class="info_item1">
+					<div class="info_text1">
+						은행명 <span class="info_detail">*</span>
+					</div>
+					<select class="box_detail" name="bankname" id="bankname">
+						<option selected disabled hidden>선택하세요</option>
+						<option value="KB국민은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'KB국민은행' }">selected</c:if>>KB국민은행</option>
+						<option value="NH농협은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'NH농협은행' }">selected</c:if>>NH농형은행</option>
+						<option value="SH수협은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'SH수협은행' }">selected</c:if>>SH수협은행</option>
+						<option value="우리은행" <c:if test="${ requestScope.trainerInfo.bankName eq '우리은행' }">selected</c:if>>우리은행</option>
+						<option value="신한은행" <c:if test="${ requestScope.trainerInfo.bankName eq '신한은행' }">selected</c:if>>신한은행</option>
+						<option value="하나은행" <c:if test="${ requestScope.trainerInfo.bankName eq '하나은행' }">selected</c:if>>하나은행</option>
+						<option value="SC제일은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'SC제일은행' }">selected</c:if>>SC제일은행</option>
+						<option value="힌극씨티은행" <c:if test="${ requestScope.trainerInfo.bankName eq '한국씨티은행' }">selected</c:if>>힌극씨티은행</option>
+						<option value="IBK기업은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'IBK기업은행' }">selected</c:if>>IBK기업은행</option>
+						<option value="KDB산업은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'KDB산업은행' }">selected</c:if>>KDB산업은행</option>
+						<option value="카카오뱅크" <c:if test="${ requestScope.trainerInfo.bankName eq '카카오뱅크' }">selected</c:if>>카카오뱅크</option>
+					</select>
+				</div>
 				<br>
 
 				<div class="info_item1">
 					<div class="info_text1">
-						비밀번호 <span class="info_detail">*</span>
+						예금주 <span class="info_detail">*</span>
 					</div>
-					<input class="box_detail" type="password" name="password" id="password"
-						placeholder="비밀번호를 입력하세요">
+					<input class="box_detail" type="text" name="holder" id="holder"
+						placeholder="예금주를 입력하세요" value="${ requestScope.trainerInfo.accountHolder }">
 				</div>
-
 				<br>
 
 				<div class="info_item1">
 					<div class="info_text1">
-						비밀번호 확인 <span class="info_detail">*</span>
-					</div>
-					<input class="box_detail" type="password" name="password" id="password2"
-						placeholder="비밀번호를 입력하세요">
-				</div>
-				<br>
-				<div>
-					<table>
-						<tr>
-							<td width="400px"></td>
-							<td><input type="button" id="passwordChange" value="비밀번호 변경"></td>
-						</tr>
-					</table>
-				</div>
-
-				<br>
-				<br>
-
-				<div class="info_item1">
-					<div class="info_text1">
-						이름 <span class="info_detail">*</span>
+						승인여부 <span class="info_detail">*</span>
 					</div>
 					<input class="box_detail" type="text" name="name" id="name"
-						value="${ sessionScope.loginMember.name }" placeholder="이메일주소를 입력해주세요" 
-						placeholder="이름를 입력하세요" readonly>
+						value="${ requestScope.trainerInfo.approvalStatus }" readonly>
 				</div>
 
 				<br>
 
 				<div class="info_item1">
 					<div class="info_text1">
-						연락처 <span class="info_detail">*</span>
+						누적평점 <span class="info_detail">*</span>
 					</div>
-					<input class="box_detail" type="tel" name="phone" id="phone"
-						placeholder="전화번호를 입력하세요" value="${ sessionScope.loginMember.phone }">
+					<input class="box_detail" type="number" name="averageScore" 
+					id="averageScore" value="${ requestScope.trainerInfo.averageScore }" readonly>
 				</div>
-				<br>
-				<div class="info_item1">
-					<div class="info_text1">
-						가입일 <span class="info_detail">*</span>
-					</div>
-					<input class="box_detail" type="text" name="enrollDate" id="enrollDate"
-						value="${ sessionScope.loginMember.enrollDate }" readonly>
-				</div>
-
-				<br><br>
-				<c:if test="${ sessionScope.loginMember.role eq 'TRAINER' }">
-					<!-- 트레이너 추가 정보칸 -->
-					<div>
-						<table>
-							<tr>
-								<td width="400px"></td>
-								<td><input name="trainerInfo" id="trainerInfo" type="button" value="추가정보"></td>
-							</tr>
-						</table>
-					</div>
-				</c:if>
+				
 				<br><br><br>
 
 				<div class="submit_reset">
-					<input type="button" id="updateMember" value="수정" onclick="return movePath('updateMember');">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" id="updateMember" value="탈퇴" onclick="return movePath('deleteMember');">
+					<input type="button" id="modify" value="수정" onclick="return movePath();">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" value="취소" id="cancel">
 				</div>
@@ -115,38 +93,35 @@
 	
 	<jsp:include page="../common/footer.jsp"/>
 	<script>
-	function movePath(intent) {
+	function movePath() {
 
-		const password = document.getElementById("password").value;
-		const password2 = document.getElementById("password2").value;
+		const account = document.getElementById("account").value;
+		const holder = document.getElementById("holder").value;
+		
+		const $bankname = document.getElementById("bankname");
+		const bankname = $bankname.options[$bankname.selectedIndex].value;
 		
 		const $myForm = document.getElementById("myForm");
 		
-		if(!password || password === "") {
-			alert("비밀번호를 반드시 입력해야 합니다.");
-			document.getElementById("password").focus();
+		if(!bankname || bankname === "" || bankname === "선택하세요") {
+			alert("은행을 반드시 선택해야 합니다.");
+			document.getElementById("bankname").focus();
 			return false;
 		}
 		
-		if(!password2 || password2 === "") {
-			alert("비밀번호를 반드시 입력해야 합니다.");
-			document.getElementById("password2").focus();
+		if(!account || account === "") {
+			alert("계좌번호를 반드시 입력해야 합니다.");
+			document.getElementById("account").focus();
 			return false;
 		}
 		
-		if(!(password === password2)) {
-			alert("비밀번호가 다릅니다.");
-			document.getElementById("password2").focus();
+		if(!holder || holder === "") {
+			alert("예금주를 반드시 입력해야 합니다.");
+			document.getElementById("holder").focus();
 			return false;
 		}
 		
-		let requestPath = "${ pageContext.servletContext.contextPath }";
-		switch(intent) {
-			case "updateMember" :
-				requestPath += "/member/update"; break;
-			case "deleteMember" :
-				requestPath += "/member/delete"; break;
-		}
+		let requestPath = "${ pageContext.servletContext.contextPath }/member/trainerInfo"; 
 		
 		$myForm.action = requestPath;
 		$myForm.submit();
