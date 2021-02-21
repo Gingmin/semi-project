@@ -6,6 +6,7 @@ public class AttachmentDTO implements Serializable {
 	
 	private int no;
 	private int refClassNo;
+	private int refTrainerNo;
 	private String originalName;
 	private String savedName;
 	private String savePath;
@@ -15,11 +16,12 @@ public class AttachmentDTO implements Serializable {
 	
 	public AttachmentDTO() {}
 
-	public AttachmentDTO(int no, int refClassNo, String originalName, String savedName, String savePath,
-			String fileType, String thumbnailPath, String status) {
+	public AttachmentDTO(int no, int refClassNo, int refTrainerNo, String originalName, String savedName,
+			String savePath, String fileType, String thumbnailPath, String status) {
 		super();
 		this.no = no;
 		this.refClassNo = refClassNo;
+		this.refTrainerNo = refTrainerNo;
 		this.originalName = originalName;
 		this.savedName = savedName;
 		this.savePath = savePath;
@@ -34,6 +36,10 @@ public class AttachmentDTO implements Serializable {
 
 	public int getRefClassNo() {
 		return refClassNo;
+	}
+
+	public int getRefTrainerNo() {
+		return refTrainerNo;
 	}
 
 	public String getOriginalName() {
@@ -68,6 +74,10 @@ public class AttachmentDTO implements Serializable {
 		this.refClassNo = refClassNo;
 	}
 
+	public void setRefTrainerNo(int refTrainerNo) {
+		this.refTrainerNo = refTrainerNo;
+	}
+
 	public void setOriginalName(String originalName) {
 		this.originalName = originalName;
 	}
@@ -94,11 +104,11 @@ public class AttachmentDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AttachmentDTO [no=" + no + ", refClassNo=" + refClassNo + ", originalName=" + originalName
-				+ ", savedName=" + savedName + ", savePath=" + savePath + ", fileType=" + fileType + ", thumbnailPath="
-				+ thumbnailPath + ", status=" + status + "]";
+		return "AttachmentDTO [no=" + no + ", refClassNo=" + refClassNo + ", refTrainerNo=" + refTrainerNo
+				+ ", originalName=" + originalName + ", savedName=" + savedName + ", savePath=" + savePath
+				+ ", fileType=" + fileType + ", thumbnailPath=" + thumbnailPath + ", status=" + status + "]";
 	}
-	
-	
 
+	
+	
 }

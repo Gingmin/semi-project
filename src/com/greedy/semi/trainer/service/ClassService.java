@@ -90,4 +90,40 @@ public class ClassService {
 		return thumbnail;
 	}
 
+	public int updateClass(ClassDTO thumbnail) {
+		
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		int classUpdate = classDAO.updateClass(con, thumbnail);
+		
+		int classNo = classDAO.selectTrainerNo(con);
+		
+		List<AttachmentDTO> fileList = thumbnail.getAttachmentList();
+		for(int i = 0; i < fileList.size(); i++) {
+			fileList.get(i).setRefClassNo(classNo);
+		}
+		
+		int attachmentUpdate = 0;
+		for(int i = 0; i < fileList.size(); i++) {
+			attachmentUpdate += classDAO.updateAttachment(con, fileList.get(i));
+		}
+		
+		if(classUpdate > 0 && attachmentUpdate == fileList.size()) {
+			commit(con);
+			result = 1;
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+
+
 }

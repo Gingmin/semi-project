@@ -145,6 +145,7 @@ public class ClassInertServlet extends HttpServlet {
 					Map<String, String> file = fileList.get(i);
 					
 					AttachmentDTO tempFileInfo = new AttachmentDTO();
+					tempFileInfo.setRefTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
 					tempFileInfo.setOriginalName(file.get("originFileName"));
 					tempFileInfo.setSavedName(file.get("savedFileName"));
 					tempFileInfo.setSavePath(file.get("savePath"));
