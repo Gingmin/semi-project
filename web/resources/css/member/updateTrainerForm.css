@@ -27,3 +27,6 @@
 	#trainerInfo:hover {
 		background: #e7e7e7;
 	}
+	#modify {
+		width: 100px; height: 30px; background: #FF3700; border: 1px solid black; cursor: pointer; color: white;
+	}

@@ -216,7 +216,7 @@
 					<div class="info_text1">
 						발급기관 <span class="info_detail">*</span>
 					</div>
-					<input class="box_detail" type="text" id="institution" name="institution" disabled>
+					<input class="box_detail" type="text" id="institution" name="institution" readonly>
 				</div>
 				
 				<script>

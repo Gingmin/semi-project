@@ -310,4 +310,21 @@ public class MemberService {
 		return trainerInfo;
 	}
 
+	public int updateTrainerInfo(TrainerInfoDTO trainer) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.updateTrainerInfo(con, trainer);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 }
