@@ -250,9 +250,13 @@
 			    			</div>
 			    			<div class="trainer_info">
 			    				귀찮다.. <button id="chat" type="button" onclick="chat();">chat</button>
+			    				<button id="video" type="button" onclick="video();">video</button>
 			    				<script>
 			    					function chat() {
 			    						location.href = "/semi/chat";
+			    					}
+			    					function video() {
+			    						location.href = "http://127.0.0.1:1337/";
 			    					}
 			    				</script>
 			    			</div>
