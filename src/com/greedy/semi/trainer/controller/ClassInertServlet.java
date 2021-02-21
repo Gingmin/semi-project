@@ -132,7 +132,7 @@ public class ClassInertServlet extends HttpServlet {
 				
 				ClassDTO thumbnail = new ClassDTO();
 				thumbnail.setName(parameter.get("className"));
-				thumbnail.setType(parameter.get("classType"));
+				thumbnail.setKind(parameter.get("classKind"));
 				thumbnail.setCategory(parameter.get("category"));
 				thumbnail.setIntro(parameter.get("intro"));
 				thumbnail.setIntroduce(parameter.get("introduce"));
@@ -145,6 +145,7 @@ public class ClassInertServlet extends HttpServlet {
 					Map<String, String> file = fileList.get(i);
 					
 					AttachmentDTO tempFileInfo = new AttachmentDTO();
+					tempFileInfo.setRefTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
 					tempFileInfo.setOriginalName(file.get("originFileName"));
 					tempFileInfo.setSavedName(file.get("savedFileName"));
 					tempFileInfo.setSavePath(file.get("savePath"));

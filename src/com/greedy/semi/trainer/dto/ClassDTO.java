@@ -12,7 +12,7 @@ public class ClassDTO implements Serializable {
 	private MemberDTO memberNo;
 	private int attachmentNo;
 	private String name;
-	private String type;
+	private String kind;
 	private String category;
 	private String intro;
 	private String introduce;
@@ -25,7 +25,7 @@ public class ClassDTO implements Serializable {
 	
 	public ClassDTO() {}
 
-	public ClassDTO(int no, int trainerNo, MemberDTO memberNo, int attachmentNo, String name, String type,
+	public ClassDTO(int no, int trainerNo, MemberDTO memberNo, int attachmentNo, String name, String kind,
 			String category, String intro, String introduce, String createdDate, String status, String approval,
 			int count, List<AttachmentDTO> attachmentList) {
 		super();
@@ -34,7 +34,7 @@ public class ClassDTO implements Serializable {
 		this.memberNo = memberNo;
 		this.attachmentNo = attachmentNo;
 		this.name = name;
-		this.type = type;
+		this.kind = kind;
 		this.category = category;
 		this.intro = intro;
 		this.introduce = introduce;
@@ -65,8 +65,8 @@ public class ClassDTO implements Serializable {
 		return name;
 	}
 
-	public String getType() {
-		return type;
+	public String getKind() {
+		return kind;
 	}
 
 	public String getCategory() {
@@ -121,8 +121,8 @@ public class ClassDTO implements Serializable {
 		this.name = name;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 
 	public void setCategory(String category) {
@@ -160,7 +160,7 @@ public class ClassDTO implements Serializable {
 	@Override
 	public String toString() {
 		return "ClassDTO [No=" + No + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo + ", attachmentNo="
-				+ attachmentNo + ", name=" + name + ", type=" + type + ", category=" + category + ", intro=" + intro
+				+ attachmentNo + ", name=" + name + ", kind=" + kind + ", category=" + category + ", intro=" + intro
 				+ ", introduce=" + introduce + ", createdDate=" + createdDate + ", status=" + status + ", approval="
 				+ approval + ", count=" + count + ", attachmentList=" + attachmentList + "]";
 	}

@@ -51,6 +51,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/trainer/page";
 					message = "수업등록에 성공했습니다!";
 					break;
+				case "updateClass" :
+					movePath = "${ pageContext.servletContext.contextPath }/trainer/page";
+					message = "수업수정에 성공했습니다!";
+					break;
 			}
 			
 			alert(message);

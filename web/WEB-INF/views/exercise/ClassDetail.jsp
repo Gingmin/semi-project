@@ -30,9 +30,9 @@
 			<label class="regist_text">클래스 종류 선택 <span class="text_detail">*</span></label>
 			<div class="row">
 			
-	    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="classType" value="1:1 클래스">
+	    		<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off" name="classKind" value="1:1 클래스">
 				<label class="btn btn-outline-secondary" for="btn-check-2-outlined">1:1 클래스</label><br>
-	    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="classType" value="그룹 클래스">
+	    		<input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="classKind" value="그룹 클래스">
 				<label class="btn btn-outline-secondary" for="btn-check-3-outlined">그룹 클래스</label><br>
 	    		
 			</div>	

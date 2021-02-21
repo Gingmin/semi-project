@@ -90,4 +90,25 @@ public class ClassService {
 		return thumbnail;
 	}
 
+	public int updateClass(ClassDTO thumbnail) {
+		
+		Connection con = getConnection();
+		
+		int result = classDAO.updateClass(con, thumbnail);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+
+
 }
