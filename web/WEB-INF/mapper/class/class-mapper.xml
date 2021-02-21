@@ -3,11 +3,11 @@
 <properties>
     <entry key="insertThumbnailContent">
         INSERT /* com.greedy.semi.trainer.dao.ClassDAO#insertThumbnailContent() */
-          INTO TBL_CLASS A
+          INTO TBL_OPENED_CLASS A
         (
           A.CLASS_NO
         , A.CLASS_NAME
-        , A.CLASS_TYPE
+        , A.CLASS_KIND
         , A.CLASS_CATEGORY
         , A.CLASS_INTRO
         , A.CLASS_INTRODUCE
@@ -33,9 +33,9 @@
     </entry>
     <entry key="insertAttachment">
         INSERT /* com.greedy.semi.trainer.dao.ClassDAO#insertAttachment() */
-          INTO TBL_ATTACHMENT A
+          INTO TBL_CLASS_ATTACHMENT A
         (
-          A.ATTACHMENT_NO
+          A.CLASS_ATTACHMENT_NO
         , A.REF_CLASS_NO
         , A.ORIGINAL_NAME
         , A.SAVED_NAME
@@ -60,20 +60,20 @@
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectThumbnailList() */
                A.CLASS_NO
              , A.CLASS_NAME
-             , A.CLASS_TYPE
+             , A.CLASS_KIND
              , A.CLASS_CATEGORY
-             , A.CLASS_TYPE
+             , A.CLASS_KIND
              , A.CLASS_INTRO
              , A.CLASS_INTRODUCE  
              , A.CREATED_DATE
              , A.CLASS_COUNT
-             , B.ATTACHMENT_NO
+             , B.CLASS_ATTACHMENT_NO
              , B.ORIGINAL_NAME
              , B.SAVED_NAME
              , B.SAVE_PATH
              , B.THUMBNAIL_PATH
-          FROM TBL_CLASS A
-          JOIN TBL_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
+          FROM TBL_OPENED_CLASS A
+          JOIN TBL_CLASS_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
          WHERE A.CLASS_STATUS = 'N'
            AND B.ATTACHMENT_STATUS = 'Y'
            AND B.FILE_TYPE = 'CLASSNAME'
@@ -81,9 +81,9 @@
     </entry>
     <entry key="incrementClassCount">
         UPDATE /* com.greedy.semi.trainer.dao.ClassDAO#incrementClassCount() */
-               TBL_CLASS A
+               TBL_OPENED_CLASS A
            SET A.CLASS_COUNT = (SELECT B.CLASS_COUNT
-                                  FROM TBL_CLASS B
+                                  FROM TBL_OPENED_CLASS B
                                  WHERE B.CLASS_NO = ?
                                ) + 1
          WHERE A.CLASS_NO = ?                          
@@ -92,50 +92,34 @@
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectOneThumbnailClass() */
                A.CLASS_NO
              , A.CLASS_NAME
-             , A.CLASS_TYPE
+             , A.CLASS_KIND
              , A.CLASS_CATEGORY
              , A.CLASS_INTRO
              , A.CLASS_INTRODUCE
              , A.CREATED_DATE
              , A.CLASS_COUNT
-             , B.ATTACHMENT_NO
+             , B.CLASS_ATTACHMENT_NO
              , B.ORIGINAL_NAME
              , B.SAVED_NAME
              , B.SAVE_PATH
              , B.FILE_TYPE
              , B.THUMBNAIL_PATH
-          FROM TBL_CLASS A
-          JOIN TBL_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
+          FROM TBL_OPENED_CLASS A
+          JOIN TBL_CLASS_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
          WHERE A.CLASS_STATUS = 'N'
            AND B.ATTACHMENT_STATUS = 'Y'
            AND A.CLASS_NO = ? 
     </entry>
     <entry key="updateClass">
         UPDATE
-               TBL_CLASS A
+               TBL_OPENED_CLASS A
            SET A.CLASS_NAME = ?
-             , A.CLASS_TYPE = ?
+             , A.CLASS_KIND = ?
              , A.CLASS_CATEGORY = ?
              , A.CLASS_INTRO = ?
              , A.CLASS_INTRODUCE = ?
              , A.CREATED_DATE = ?
          WHERE A.CLASS_STATUS = 'N'
            AND A.TRAINER_NO = ?
-    </entry>
-    <entry key="selectTrainerNo">
-        SELECT
-               A.REF_CLASS_NO
-          FROM TBL_ATTACHMENT A
-    </entry>
-    <entry key="updateAttachment">
-        UPDATE
-               TBL_ATTACHMENT A
-           SET A.ORIGINAL_NAME = ?
-             , A.SAVED_NAME = ?
-             , A.SAVE_PATH = ?
-             , A.FILE_TYPE = ?
-             , A.THUMBNAIL_PATH = ?
-         WHERE A.ATTACHMENT_STATUS = 'Y'
-           AND A.REF_CLASS_NO = ?    
     </entry>
 </properties>

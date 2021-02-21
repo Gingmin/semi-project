@@ -144,7 +144,7 @@ public class ClassDetailSerlvlet extends HttpServlet {
 				ClassDTO thumbnail = new ClassDTO();
 
 				thumbnail.setName(parameter.get("className"));
-				thumbnail.setType(parameter.get("classType"));
+				thumbnail.setKind(parameter.get("classKind"));
 				thumbnail.setCategory(parameter.get("category"));
 				thumbnail.setIntro(parameter.get("intro"));
 				thumbnail.setIntroduce(parameter.get("introduce"));

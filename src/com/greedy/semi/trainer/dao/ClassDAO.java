@@ -43,7 +43,7 @@ public class ClassDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, thumbnail.getName());
-			pstmt.setString(2, thumbnail.getType());
+			pstmt.setString(2, thumbnail.getKind());
 			pstmt.setString(3, thumbnail.getCategory());
 			pstmt.setString(4, thumbnail.getIntro());
 			pstmt.setString(5, thumbnail.getIntroduce());
@@ -139,13 +139,13 @@ public class ClassDAO {
 				
 				thumbnailClass.setNo(rset.getInt("CLASS_NO"));
 				thumbnailClass.setName(rset.getString("CLASS_NAME"));
-				thumbnailClass.setType(rset.getString("CLASS_TYPE"));
+				thumbnailClass.setKind(rset.getString("CLASS_KIND"));
 				thumbnailClass.setCategory(rset.getString("CLASS_CATEGORY"));
 				thumbnailClass.setIntro(rset.getString("CLASS_INTRO"));
 				thumbnailClass.setIntroduce(rset.getString("CLASS_INTRODUCE"));
 				thumbnailClass.setCreatedDate(rset.getString("CREATED_DATE"));
 				thumbnailClass.setCount(rset.getInt("CLASS_COUNT"));
-				thumbnailAttachment.setNo(rset.getInt("ATTACHMENT_NO"));
+				thumbnailAttachment.setNo(rset.getInt("CLASS_ATTACHMENT_NO"));
 				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
 				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
 				thumbnailAttachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
@@ -212,13 +212,13 @@ public class ClassDAO {
 				
 				thumbnail.setNo(rset.getInt("CLASS_NO"));
 				thumbnail.setName(rset.getString("CLASS_NAME"));
-				thumbnail.setType(rset.getString("CLASS_TYPE"));
+				thumbnail.setKind(rset.getString("CLASS_KIND"));
 				thumbnail.setCategory(rset.getString("CLASS_CATEGORY"));
 				thumbnail.setIntro(rset.getString("CLASS_INTRO"));
 				thumbnail.setIntroduce(rset.getString("CLASS_INTRODUCE"));
 				thumbnail.setCreatedDate(rset.getString("CREATED_DATE"));
 				thumbnail.setCount(rset.getInt("CLASS_COUNT"));
-				attachment.setNo(rset.getInt("ATTACHMENT_NO"));
+				attachment.setNo(rset.getInt("CLASS_ATTACHMENT_NO"));
 				attachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
 				attachment.setSavedName(rset.getString("SAVED_NAME"));
 				attachment.setSavePath(rset.getString("SAVE_PATH"));
@@ -240,6 +240,26 @@ public class ClassDAO {
 		return thumbnail;
 	}
 
+	public int selectClassNo(Connection con, ClassDTO thumbnail) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectClassNo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, thumbnail.getTrainerNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	public int updateClass(Connection con, ClassDTO thumbnail) {
 		
 		PreparedStatement pstmt = null;
@@ -250,16 +270,15 @@ public class ClassDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, thumbnail.getName());
-			pstmt.setString(2, thumbnail.getType());
+			pstmt.setString(2, thumbnail.getKind());
 			pstmt.setString(3, thumbnail.getCategory());
 			pstmt.setString(4, thumbnail.getIntro());
 			pstmt.setString(5, thumbnail.getIntroduce());
 			pstmt.setString(6, thumbnail.getCreatedDate());
 			pstmt.setInt(7, thumbnail.getTrainerNo());
 			
-			
 			result = pstmt.executeUpdate();
-			
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -269,60 +288,7 @@ public class ClassDAO {
 		return result;
 	}
 
-	public int selectTrainerNo(Connection con) {
-		
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		int classNo = 0;
-		
-		String query = prop.getProperty("selectTrainerNo");
-		
-		try {
-			stmt = con.createStatement();
-			
-			rset = stmt.executeQuery(query);
-			
-			if(rset.next()) {
-				classNo = rset.getInt("REF_CLASS_NO");
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}
-		
-		return classNo;
 	
-	}
-
-	public int updateAttachment(Connection con, AttachmentDTO update) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("updateAttachment");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, update.getOriginalName());
-			pstmt.setString(2, update.getSavedName());
-			pstmt.setString(3, update.getSavePath());
-			pstmt.setString(4, update.getFileType());
-			pstmt.setString(5, update.getThumbnailPath());
-			pstmt.setInt(6, update.getRefClassNo());
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 
 
 }

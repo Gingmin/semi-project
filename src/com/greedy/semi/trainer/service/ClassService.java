@@ -94,25 +94,10 @@ public class ClassService {
 		
 		Connection con = getConnection();
 		
-		int result = 0;
+		int result = classDAO.updateClass(con, thumbnail);
 		
-		int classUpdate = classDAO.updateClass(con, thumbnail);
-		
-		int classNo = classDAO.selectTrainerNo(con);
-		
-		List<AttachmentDTO> fileList = thumbnail.getAttachmentList();
-		for(int i = 0; i < fileList.size(); i++) {
-			fileList.get(i).setRefClassNo(classNo);
-		}
-		
-		int attachmentUpdate = 0;
-		for(int i = 0; i < fileList.size(); i++) {
-			attachmentUpdate += classDAO.updateAttachment(con, fileList.get(i));
-		}
-		
-		if(classUpdate > 0 && attachmentUpdate == fileList.size()) {
+		if(result > 0) {
 			commit(con);
-			result = 1;
 		} else {
 			rollback(con);
 		}
