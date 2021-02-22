@@ -2,6 +2,9 @@ package com.greedy.semi.member.model.dto;
 
 import java.sql.Date;
 
+import com.greedy.semi.admin.model.dto.AmountDTO;
+import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
+
 public class MemberDTO implements java.io.Serializable {
 
 	private int no;
@@ -15,10 +18,13 @@ public class MemberDTO implements java.io.Serializable {
 	private String role;
 	private String status;
 	
+	private AmountDTO amountDTO;
+	private PurchaseProductDTO purchaseProductDTO;
+	
 	public MemberDTO() {}
 
 	public MemberDTO(int no, String email, String pwd, String name, String phone, Date enrollDate, Date modifiedDate,
-			String blackStatus, String role, String status) {
+			String blackStatus, String role, String status, AmountDTO amountDTO, PurchaseProductDTO purchaseProductDTO) {
 		super();
 		this.no = no;
 		this.email = email;
@@ -30,6 +36,8 @@ public class MemberDTO implements java.io.Serializable {
 		this.blackStatus = blackStatus;
 		this.role = role;
 		this.status = status;
+		this.amountDTO = amountDTO;
+		this.purchaseProductDTO = purchaseProductDTO;
 	}
 
 	public int getNo() {
@@ -112,12 +120,31 @@ public class MemberDTO implements java.io.Serializable {
 		this.status = status;
 	}
 
+	public AmountDTO getAmountDTO() {
+		return amountDTO;
+	}
+
+	public void setAmountDTO(AmountDTO amountDTO) {
+		this.amountDTO = amountDTO;
+	}
+
+	public PurchaseProductDTO getPurchaseProductDTO() {
+		return purchaseProductDTO;
+	}
+
+	public void setPurchaseProductDTO(PurchaseProductDTO purchaseProductDTO) {
+		this.purchaseProductDTO = purchaseProductDTO;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [no=" + no + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone
 				+ ", enrollDate=" + enrollDate + ", modifiedDate=" + modifiedDate + ", blackStatus=" + blackStatus
-				+ ", role=" + role + ", status=" + status + "]";
+				+ ", role=" + role + ", status=" + status + ", amountDTO=" + amountDTO + ", purchaseProductDTO="
+				+ purchaseProductDTO + "]";
 	}
+
+	
 	
 	
 }
