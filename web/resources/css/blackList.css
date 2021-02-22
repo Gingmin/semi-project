@@ -12,21 +12,20 @@
 .container .report_area{margin: 100px 0;}
 .container .report_area .table_detail{width: 100%; box-shadow: 0 0 20px grey; border: 0; }
 .container .report_area .table_detail .report_title{padding: 15px 25px; font-size: 18px;}
-.container .report_area .table_detail .report_title .reportinput_detail{width: 60%; height: 40px; margin: 0 10px; font-size: 17px;}
+.container .report_area .table_detail .report_title .reportinput_detail{width: 80%; height: 40px; margin: 0 10px; font-size: 17px; border:0;  box-shadow: 0 0 6px 0px grey;}
 
-.container .report_area .table_detail .td_detail1{text-align: center; font-size: 18px; font-weight: bold;}
+.container .report_area .table_detail .td_detail1{text-align: center; font-size: 18px; font-weight: bold; width:200px;}
 .container .report_area .table_detail .td_detail2{font-size: 18px; font-weight: bold; padding: 15px;}
 .container .report_area .table_detail .textarea_detail{width: 100%; height: 550px; border: 0; padding: 15px;}
+.container .report_area .table_detail .report_writer{width: 20%; padding: 0 12px;}
+.container .report_area .table_detail .report_writer .re_writer_detail{border:0; width:50%}
+.container .report_area .table_detail .report_select{ width: 20%; padding:0 12px;}
+.container .report_area .table_detail .report_select .select_detail{ width: 70%; height: 30px;}
 
 
 
 
-
-
-
-
-
-
-
+.reportbtn_area{text-align:right; margin: 20px 0;}
+.reportbtn_area .btn_detail{ border: 0; background-color:black; color:white; width: 100px; height: 40px; font-size: 17px; margin-left:15px;}
 
 

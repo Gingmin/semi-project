@@ -43,6 +43,7 @@
 		  INTO TBL_NOTICE A
 		(
 		  A.NOTICE_NO
+		, A.NOTICE_CATEGORY_CODE 
 		, A.NOTICE_SUBJECT
 		, A.NOTICE_BODY
 		, A.MEMBER_NO 
@@ -51,6 +52,7 @@
 		VALUES
 		(
 		  SEQ_NOTICE_NO.NEXTVAL
+		, 'NT'
 		, ?
 		, ?
 		, ? 
@@ -246,10 +248,47 @@
              WHERE A.RNUM BETWEEN ? AND ? 
 	</entry>
 	
+	<entry key="insertReport">
+		INSERT
+		  INTO TBL_NOTICE A
+		(
+		  A.NOTICE_NO
+		, A.NOTICE_CATEGORY_CODE 
+		, A.NOTICE_SUBJECT
+		, A.NOTICE_BODY
+		, A.MEMBER_NO 
+		, A.NOTICE_REGIST_DATE
+		)  
+		VALUES
+		(
+		  SEQ_NOTICE_NO.NEXTVAL
+		, 'RPR' 
+		, ?
+		, ?
+		, ? 
+		, SYSDATE 
+		)
+	</entry>
 	
-	
-	
-	
+	<entry key="insertBlack">
+		INSERT
+          INTO TBL_REPORT B
+       (
+         B.REPORT_NO
+       , B.REPORT_MEMBER_NO
+       , B.REPORT_CODE 
+       , B.REPORT_DATE
+       , B.REASON
+       )
+       VALUES
+       ( 
+         SEQ_REPORT_NO.NEXTVAL
+       , ? 
+       , ?
+       , SYSDATE
+       , 'NULL'
+       )
+	</entry>
 	
 	
 </properties>

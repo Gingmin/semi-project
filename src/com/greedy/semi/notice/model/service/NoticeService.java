@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.greedy.semi.notice.model.dao.NoticeDAO;
+import com.greedy.semi.notice.model.dto.BlackListDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
@@ -140,6 +141,27 @@ public class NoticeService {
 		close(con);
 		
 		return noticeList;
+	}
+
+	public int insertReport(NoticeDTO reportNotice, BlackListDTO reportBlack) {
+		
+		Connection con = getConnection();
+		
+		
+		int result = noticeDAO.insertReport(con, reportNotice);
+		
+		if(result > 0) {
+			int blackList = noticeDAO.insertBlack(con, reportBlack);
+			
+			if(blackList > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		} else {
+			rollback(con);
+		} 	
+		return result;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.greedy.semi.notice.model.dao;
 
+import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,10 +15,9 @@ import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.notice.model.dto.BlackListDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
-
-import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
 
 public class NoticeDAO {
 
@@ -348,4 +349,54 @@ public class NoticeDAO {
 				
 		return noticeList;
 	}
+
+	public int insertReport(Connection con, NoticeDTO reportNotice) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertReport");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, reportNotice.getTitle());
+			pstmt.setString(2, reportNotice.getBody());
+			pstmt.setInt(3, reportNotice.getWriterMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertBlack(Connection con, BlackListDTO reportBlack) {
+		
+		PreparedStatement pstmt = null;
+		int blackList = 0;
+		
+		String query = prop.getProperty("insertBlack");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, reportBlack.getMemberNo());
+			pstmt.setString(2, reportBlack.getReportCode());
+			
+			
+			blackList = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return blackList;
+	}
+
+	
 }
