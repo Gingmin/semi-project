@@ -26,7 +26,8 @@
 
 .container .contentarea .helloPT_intro{margin: 50px 0;}
 .container .contentarea .helloPT_intro .intro_textarea{text-align: center;}
-.container .contentarea .helloPT_intro .intro_textarea .intro_text1{font-size: 20px; }
+.container .contentarea .helloPT_intro .intro_textarea .intro_text1{font-size: 25px; font-weight: bold; padding: 20px 0 ; }
+.container .contentarea .helloPT_intro .intro_textarea .intro_text2{font-size: 18px;}
 
 .container .contentarea .helloPT_intro .intro_imgarea{padding: 30px 0;}
 .container .contentarea .helloPT_intro .intro_imgarea .introimg_detail{width: 100%;}
@@ -36,7 +37,8 @@
 .container .contentarea .CEO_into_area{ height: 500px; }
 .container .contentarea .CEO_into_area .row{margin: 0;}
 .container .contentarea .CEO_into_area .row .CEO_text_area{float: left; width: 60%; text-align: center; height: 500px; padding: 150px 50px;}
-.container .contentarea .CEO_into_area .row .CEO_text_area .CEO_text{ font-size: 18px; font-weight: bold;  padding: 20px 0;}
+.container .contentarea .CEO_into_area .row .CEO_text_area .CEO_text{ font-size: 25px; font-weight: bold;  padding: 20px 0;}
+.container .contentarea .CEO_into_area .row .CEO_text_area .CEO_text1{ font-size: 18px; padding: 20px 0; line-height: 30PX;}
 
 .container .contentarea .CEO_into_area .row .CEO_img_area{float: left; width: 40%;}
 .container .contentarea .CEO_into_area .row .CEO_img_area .carousel-inner{width: 450px; height: 350px; margin: 75px 0;}
