@@ -35,6 +35,9 @@
 <link rel="stylesheet" href="/semi/resources/admin/css/style.css">
 <link rel="stylesheet" href="/semi/resources/admin/css/admin.css">
 <script src="/semi/resources/js/event.js"></script>
+<style>
+	.admBtn { border: 1px solid #e9ecef; color: black; background-color: white; }
+</style>
 </head>
 <body>
 	<!-- ============================================================== -->
@@ -137,7 +140,7 @@
 				<div class="row align-items-center">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 						<h4 class="page-title text-uppercase font-medium font-14">회원
-							정보</h4>
+							정보</h4><br>
 					</div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 						<div class="d-md-flex">
@@ -230,8 +233,8 @@
 										<td><c:out value="${ member.blackStatus }"/></td>
 										<td><c:out value="${ member.role }"/></td>
 										<td><c:out value="${ member.status }"/></td>
-										<td><c:out value="${ member.ptAmount }"/></td>
-										<td><c:out value="${ member.expDate }"/></td>
+										<td><c:out value="${ member.amountDTO.amount }"/></td>
+										<td><c:out value="${ member.amountDTO.expDate }"/></td>
 									</tr>
 									</c:forEach>
 								</tbody>
@@ -239,73 +242,76 @@
 							
 							<div class="pagingArea" align="center">
 								<c:choose>
-									<c:when test="${ empty requestScope.searchMember.no && empty requestScope.searchMember.phone && empty requestScope.searchMember.name } ">
-										<button id="startPage"><<</button>
-									<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-										<button disabled><</button>
-									</c:if>
-									<c:if test="${ requestScope.pageInfo.pageNo > 1}">
-										<button id="prevPage"><</button>
-									</c:if>
-									
-									<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
-										<c:if test="${ requestScope.pageInfo.pageNo eq p }">
-											<button disabled><c:out value="${ p }"/></button>
-										</c:if>
-										<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-											<button onclick="pageButtonAction(this.innerText)"><c:out value="${ p }"/></button>
-										</c:if>
-									</c:forEach>
-									
-									<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-										<button disabled></button>
-									</c:if>
-									<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-										<button id="nextPage">></button>
-									</c:if>
-									
-									<button id="maxPage">>></button>
-									</c:when>
-									
-									<%-- 검색(조회)했을 때 --%>
-									<c:otherwise>
-										<button id="searchStartPage"><<</button>
-										
+									<c:when test="${ empty requestScope.searchValue }">
+										<button class="admBtn" id="startPage"><<</button>
 										<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-											<button disabled><</button>
+											<button class="admBtn" disabled><</button>
 										</c:if>
 										<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
-											<button id="searchPrevPage"><</button>
+											<button class="admBtn" id="prevPage"><</button>
 										</c:if>
 										
-										<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.maxPage }" step="1">
+										<!-- 중간 번호  -->
+										<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
 											<c:if test="${ requestScope.pageInfo.pageNo eq p }">
-												<button disabled><c:out value="${ p }"/></button>
+												<button class="admBtn" disabled><c:out value="${ p }"/></button>
 											</c:if>
-											<c:if test="${ requestScope.pageInfo.pageNo ne p}">
-												<button onclick="searchPageButtonAction(this.innerText);"></button>
+											<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+												<button class="admBtn" onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
 											</c:if>
 										</c:forEach>
 										
 										<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-											<button disabled>></button>
+											<button class="admBtn" disabled>></button>
 										</c:if>
 										<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-											<button id="searchNextPage">></button>
+											<button class="admBtn" id="nextPage">></button>
 										</c:if>
-										<button id="searchMaxPage">>></button>
+										<button class="admBtn" id="maxPage">>></button>
+									</c:when>
+									
+									<%-- 검색(조회)했을 때 --%>
+									
+									<c:otherwise>
+										<button class="admBtn" id="searchStartPage"><<</button>
+										
+										<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+											<button class="admBtn" disabled><</button>
+										</c:if>
+										<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+											<button class="admBtn" id="searchPrevPage"><</button>
+										</c:if>
+										
+										<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.maxPage }" step="1">
+											<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+												<button class="admBtn" disabled><c:out value="${ p }"/></button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo ne p}">
+												<button class="admBtn" onclick="searchPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+											</c:if>
+										</c:forEach>
+										
+										<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+											<button class="admBtn" disabled>></button>
+										</c:if>
+										<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+											<button class="admBtn" id="searchNextPage">></button>
+										</c:if> 
+										<button class="admBtn" id="searchMaxPage">>></button>
 									</c:otherwise>
+									
 								</c:choose>
 								<script>
 									const link = "${ pageContext.servletContext.contextPath }/admin/member";
-									const searchLink = "${ pageContext.servletContext.contextPath }/admin/member/search"
+									const searchLink = "${ pageContext.servletContext.contextPath }/admin/member/search";
 								
 									if(document.getElementById("startPage")) {
 										const $startPage = document.getElementById("startPage");
 										$startPage.onclick = function() {
-											location.href = link + "currentPage=1";
+											location.href = link + "?currentPage=1";
 										}
 									}
+									
 									if(document.getElementById("prevPage")) {
 									    const $prevPage = document.getElementById("prevPage");
 									    $prevPage.onclick = function() {
@@ -330,44 +336,69 @@
 									function pageButtonAction(text) {
 										  location.href = link + "?currentPage=" + text;
 							        }
-									    
+									
+									/* 검색 */
+									
 									if(document.getElementById("searchStartPage")){
-									      const $searchStartPage = document.getElementById("searchStartPage");
-								          $searchStartPage.onclick = function() {
-								              location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
-									      }
-								    }
-									     
+								        const $searchStartPage = document.getElementById("searchStartPage");
+								        $searchStartPage.onclick = function() {
+								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								        }
+								     }
+								     
 								    if(document.getElementById("searchPrevPage")){
-									      const $searchPrevPage = document.getElementById("searchPrevPage");
-									      $searchPrevPage.onclick = function() {
-								              location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								        const $searchPrevPage = document.getElementById("searchPrevPage");
+								        $searchPrevPage.onclick = function() {
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
 								           
 								        }
 								        
 								    }
-									     
-									     
+								     
 								    if(document.getElementById("searchNextPage")){
-								          const $searchNextPage = document.getElementById("searchNextPage");
-								          $searchNextPage.onclick = function() {
-									          location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
-								          }
-									        
+								        const $searchNextPage = document.getElementById("searchNextPage");
+								        $searchNextPage.onclick = function() {
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								        }
+								        
 								    }
-									     
-							       if(document.getElementById("searchMaxPage")){
-									      const $searchMaxPage = document.getElementById("searchMaxPage");
-									      $searchMaxPage.onclick = function() {
-									         location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
-								         }
-									        
-							       }
-									     
-							       function searchPageButtonAction(text) {
-									      location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
-							       }
-								
+								     
+								    if(document.getElementById("searchMaxPage")){
+								        const $searchMaxPage = document.getElementById("searchMaxPage");
+								        $searchMaxPage.onclick = function() {
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								        }
+								        
+								    }
+								     
+								    function searchPageButtonAction(text) {
+								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								    }
+								    
+								    /*효과*/
+								    
+								    if(document.getElementsByTagName("td")) {
+								 		const $tds = document.getElementsByTagName("td");
+								 		
+								 		for(let i = 0; i < $tds.length; i++ ) {
+								 			
+								 			$tds[i].onmouseenter = function() {
+								 				this.parentNode.style.background = "#e9ecef";
+								 				this.parentNode.style.cursor = "pointer";
+								 			}
+								 			
+								 			$tds[i].onmouseout = function() {
+								 				this.parentNode.style.background = "white";
+								 			}
+								 			
+								 			$tds[i].onclick = function() {
+								 				const no = this.parentNode.children[0].innerText;
+								 				
+								 				location.href = "${ pageContext.servletContext.contextPath }/admin/member/detail?no=" + no;
+								 			}
+								 			
+								 		}
+								 	}
 								</script>
 							</div>
 							

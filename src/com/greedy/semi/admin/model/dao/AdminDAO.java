@@ -76,14 +76,10 @@ public class AdminDAO {
 				rset = pstmt.executeQuery();
 
 				memberList = new ArrayList<>();
-
-				System.out.println("dasd");
 				
 				while(rset.next()) {
 					MemberDTO member = new MemberDTO();
 					member.setAmountDTO(new AmountDTO());
-					
-					System.out.println("아아아아앙아아~");
 					
 					member.setNo(rset.getInt("MEMBER_NO"));
 					member.setEmail(rset.getString("EMAIL"));
@@ -97,8 +93,6 @@ public class AdminDAO {
 					member.getAmountDTO().setAmount(rset.getInt("PT_AMOUNT"));
 					member.getAmountDTO().setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
 					
-					System.out.println("dao의 member : " + member);
-					
 					memberList.add(member);
 				}
 				
@@ -108,8 +102,110 @@ public class AdminDAO {
 				close(rset);
 				close(pstmt);
 			}
-		System.out.println("dao의 memberList : " + memberList);
-		return memberList;
+
+			return memberList;
+	}
+
+	public int searchMemberCount(Connection con, String name, int no, String phone, int ptAmount) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		/* 8가지 경우의 수 */
+		String query = null;
+		if(name.length() > 0) {
+			query = prop.getProperty("searchNameCount");
+		} else if(no > 0) {
+			query = prop.getProperty("searchNoCount");
+		} else if(phone.length() > 0) {
+			query = prop.getProperty("searchPhoneCount");
+		} else if(ptAmount > 0) {
+			query = prop.getProperty("searchPtCount");
+		} else if(name.length() > 0 && no > 0) {
+			query = prop.getProperty("searchNameNoCount");
+		} else if(name.length() > 0 && phone.length() > 0) {
+			query = prop.getProperty("searchNamePhoneCount");
+		} else if(no > 0 && phone.length() > 0) {
+			query = prop.getProperty("searchNoPhoneCount");
+		} else if(name.length() > 0 && no > 0 && phone.length() > 0) {
+			query = prop.getProperty("searchNameNoPhoneCount");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			/* 경우의 수에 따른 쿼리 결과 */
+			if(name.length() > 0) {
+				pstmt.setString(1, name);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(no > 0) {
+				pstmt.setInt(1, no);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(phone.length() > 0) {
+				pstmt.setString(1, phone);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(ptAmount > 0) {
+				pstmt.setInt(1, ptAmount);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(name.length() > 0 && no > 0) {
+				pstmt.setString(1, name);
+				pstmt.setInt(2, no);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(name.length() > 0 && phone.length() > 0) {
+				pstmt.setString(1, name);
+				pstmt.setString(2, phone);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(no > 0 && phone.length() > 0) {
+				pstmt.setInt(1, no);
+				pstmt.setString(2, phone);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			} else if(name.length() > 0 && no > 0 && phone.length() > 0) {
+				pstmt.setString(1, name);
+				pstmt.setInt(2, no);
+				pstmt.setString(3, phone);
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> searchMemberList(Connection con, int no, String phone, int ptAmount, PageInfoDTO pageInfo) {
+
+		
+		return null;
 	}
 	
 	
