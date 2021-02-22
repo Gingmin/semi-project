@@ -16,6 +16,8 @@
 
 	<!-- Rock Salt font -->
 	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+	
+	
 
 	<title>마이페이지</title>
 </head>
@@ -36,7 +38,8 @@
 							<img class="img_detail" src="/semi/resources/images/testimg.JPG">
 						</div>
 						<div class="profile_btn_area">
-							<a class="edit_btn" href="#">프로필 편집</a>	
+							<input class="edit_btn" id="profileEdit" type="file" value="프로필 편집" />	
+							  
 						</div>						
 					</div>
 					<div class="profile_info_area">
@@ -144,6 +147,7 @@
 							<div class="cm_btn_list">
 								<div class="cm_btn">
 									1:1클래스
+									
 								</div>
 							</div>
 							<div class="cm_btn_list">
