@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,11 +94,11 @@
 							제목 : <input class="reportinput_detail" type="text" name="title">
 						</th>
 						<th class="report_select">
-							<select class="select_detail" name="searchReason">
-								<option value="SW" <c:if test="${ requestScope.searchReason eq 'SW' }">seleted</c:if>>욕설</option>
-								<option value="GM"<c:if test="${ requestScope.searchReason eq 'GM' }">seleted</c:if>>사행성</option>
-								<option value="LA"<c:if test="${ requestScope.searchReason eq 'LA' }">seleted</c:if>>음란행위</option>
-								<option value="ETC"<c:if test="${ requestScope.searchReason eq 'ETC' }">seleted</c:if>>기타</option>
+							<select class="select_detail" name="searchCode">
+								<option value="SW" <c:if test="${ requestScope.searchCode eq 'SW' }">seleted</c:if>>욕설</option>
+								<option value="GM"<c:if test="${ requestScope.searchCode eq 'GM' }">seleted</c:if>>사행성</option>
+								<option value="LA"<c:if test="${ requestScope.searchCode eq 'LA' }">seleted</c:if>>음란행위</option>
+								<option value="ETC"<c:if test="${ requestScope.searchCode eq 'ETC' }">seleted</c:if>>기타</option>
 							</select>
 						</th>
 						<th class="report_writer">작성자 : <input	class="re_writer_detail" type="text" value="${ sessionScope.loginMember.name}" name="writer"></th>

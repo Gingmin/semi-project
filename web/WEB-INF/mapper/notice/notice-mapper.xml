@@ -4,7 +4,8 @@
 	<entry key="selectAllNoticeList">
         SELECT
                  A.RNUM
-               , A.NOTICE_NO                    
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
                , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
                , A.MEMBER_NO
@@ -13,7 +14,8 @@
                , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
-                       , B.NOTICE_NO                    
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
                        , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
                        , B.MEMBER_NO
@@ -22,6 +24,7 @@
                        , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
                                , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
                                , C.MEMBER_NO
@@ -29,13 +32,15 @@
                                , C.NOTICE_VIEW_COUNT
                                , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
-                            FROM TBL_NOTICE C                 
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )
                             JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'NT'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
                  ) A
-             WHERE A.RNUM BETWEEN ? AND ? 
+             WHERE A.RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="insertNotice">
@@ -137,7 +142,8 @@
 	<entry key="searchWriterList">
 		SELECT
                  A.RNUM
-               , A.NOTICE_NO                    
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
                , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
                , A.MEMBER_NO
@@ -146,7 +152,8 @@
                , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
-                       , B.NOTICE_NO                    
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
                        , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
                        , B.MEMBER_NO
@@ -155,6 +162,7 @@
                        , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
                                , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
                                , C.MEMBER_NO
@@ -162,9 +170,11 @@
                                , C.NOTICE_VIEW_COUNT
                                , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
-                            FROM TBL_NOTICE C                 
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )                
                             JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'NT'
                              AND E.MEMBER_NAME LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
@@ -175,7 +185,8 @@
 	<entry key="searchTitleList">
 		SELECT
                  A.RNUM
-               , A.NOTICE_NO                    
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
                , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
                , A.MEMBER_NO
@@ -184,7 +195,8 @@
                , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
-                       , B.NOTICE_NO                    
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
                        , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
                        , B.MEMBER_NO
@@ -193,6 +205,7 @@
                        , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
                                , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
                                , C.MEMBER_NO
@@ -200,9 +213,11 @@
                                , C.NOTICE_VIEW_COUNT
                                , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
-                            FROM TBL_NOTICE C                 
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )               
                             JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'NT'
                              AND C.NOTICE_SUBJECT LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
@@ -213,7 +228,8 @@
 	<entry key="searchContentList">
 		SELECT
                  A.RNUM
-               , A.NOTICE_NO                    
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
                , A.NOTICE_SUBJECT
                , A.NOTICE_BODY
                , A.MEMBER_NO
@@ -222,7 +238,8 @@
                , A.NOTICE_REGIST_DATE
                , A.NOTICE_STATUS
             FROM (SELECT ROWNUM RNUM
-                       , B.NOTICE_NO                    
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
                        , B.NOTICE_SUBJECT
                        , B.NOTICE_BODY
                        , B.MEMBER_NO
@@ -231,6 +248,7 @@
                        , B.NOTICE_REGIST_DATE
                        , B.NOTICE_STATUS
                     FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
                                , C.NOTICE_SUBJECT                 
                                , C.NOTICE_BODY
                                , C.MEMBER_NO
@@ -238,9 +256,11 @@
                                , C.NOTICE_VIEW_COUNT
                                , C.NOTICE_REGIST_DATE
                                , C.NOTICE_STATUS
-                            FROM TBL_NOTICE C                 
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )                
                             JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'NT'
                              AND C.NOTICE_BODY LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
@@ -290,5 +310,175 @@
        )
 	</entry>
 	
+	<entry key="selectReportList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
+               , A.NOTICE_SUBJECT
+               , A.NOTICE_BODY
+               , A.MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
+                       , B.NOTICE_SUBJECT
+                       , B.NOTICE_BODY
+                       , B.MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
+                               , C.NOTICE_SUBJECT                 
+                               , C.NOTICE_BODY
+                               , C.MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'RPR'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="reportWriterList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
+               , A.NOTICE_SUBJECT
+               , A.NOTICE_BODY
+               , A.MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
+                       , B.NOTICE_SUBJECT
+                       , B.NOTICE_BODY
+                       , B.MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
+                               , C.NOTICE_SUBJECT                 
+                               , C.NOTICE_BODY
+                               , C.MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )                
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'RPR'
+                             AND C.MEMBER_NAME LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="reportTitleList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
+               , A.NOTICE_SUBJECT
+               , A.NOTICE_BODY
+               , A.MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
+                       , B.NOTICE_SUBJECT
+                       , B.NOTICE_BODY
+                       , B.MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
+                               , C.NOTICE_SUBJECT                 
+                               , C.NOTICE_BODY
+                               , C.MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )                
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'RPR'
+                             AND C.NOTICE_SUBJECT LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="reportContentList">
+		SELECT
+                 A.RNUM
+               , A.NOTICE_NO 
+               , A.NOTICE_CATEGORY_CODE
+               , A.NOTICE_SUBJECT
+               , A.NOTICE_BODY
+               , A.MEMBER_NO
+               , A.MEMBER_NAME
+               , A.NOTICE_VIEW_COUNT
+               , A.NOTICE_REGIST_DATE
+               , A.NOTICE_STATUS
+            FROM (SELECT ROWNUM RNUM
+                       , B.NOTICE_NO   
+                       , B.NOTICE_CATEGORY_CODE
+                       , B.NOTICE_SUBJECT
+                       , B.NOTICE_BODY
+                       , B.MEMBER_NO
+                       , B.MEMBER_NAME
+                       , B.NOTICE_VIEW_COUNT
+                       , B.NOTICE_REGIST_DATE
+                       , B.NOTICE_STATUS
+                    FROM (SELECT C.NOTICE_NO
+                               , C.NOTICE_CATEGORY_CODE
+                               , C.NOTICE_SUBJECT                 
+                               , C.NOTICE_BODY
+                               , C.MEMBER_NO
+                               , E.MEMBER_NAME
+                               , C.NOTICE_VIEW_COUNT
+                               , C.NOTICE_REGIST_DATE
+                               , C.NOTICE_STATUS
+                            FROM TBL_NOTICE C       
+                            JOIN TBL_POST_CLASSIFICATION D ON ( C.NOTICE_CATEGORY_CODE = D.CLASSIFICATION_CODE )                
+                            JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                           WHERE C.NOTICE_STATUS = 'Y' 
+                             AND C.NOTICE_CATEGORY_CODE = 'RPR'
+                             AND C.NOTICE_BODY LIKE '%' || ? || '%'
+                           ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
 	
 </properties>
