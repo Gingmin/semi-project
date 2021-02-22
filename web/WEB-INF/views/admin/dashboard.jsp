@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="/semi/resources/admin/css/style.min.css">
 	<link rel="stylesheet" href="/semi/resources/admin/css/style.css">
 	<link rel="stylesheet" href="/semi/resources/admin/css/admin.css">
+	<script src="/semi/resources/js/event.js"></script>
 </head>
 <body>
 	  <!-- ============================================================== -->
@@ -103,11 +104,9 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="temp">
-                           <a class="profile-pic" href="">
-                                <img src="/semi/resources/admin/plugins/images/close.png" alt="close-img" width="36"
-                                    class="close"></a>
-                          </li>
+                        <li class="temp"><div class="profile-pic" href=""> <img
+								src="/semi/resources/admin/plugins/images/close.png"
+								alt="closeAdmin" width="36" class="close" id="closeAdmin"></div></li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -135,7 +134,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title text-uppercase font-medium font-14">회원 정보</h4>
+                        <h4 class="page-title text-uppercase font-medium font-14">종합통계</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">

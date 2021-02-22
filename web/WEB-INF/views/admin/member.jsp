@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="/semi/resources/admin/css/style.min.css">
 <link rel="stylesheet" href="/semi/resources/admin/css/style.css">
 <link rel="stylesheet" href="/semi/resources/admin/css/admin.css">
+<script src="/semi/resources/js/event.js"></script>
 </head>
 <body>
 	<!-- ============================================================== -->
@@ -104,9 +105,9 @@
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-						<li class="temp"><a class="profile-pic" href=""> <img
+						<li class="temp"><div class="profile-pic" href=""> <img
 								src="/semi/resources/admin/plugins/images/close.png"
-								alt="close-img" width="36" class="close"></a></li>
+								alt="closeAdmin" width="36" class="close" id="closeAdmin"></div></li>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
@@ -171,13 +172,13 @@
 											</td>
 											<!-- <td></td> -->
 											<td class="box-title">회원번호</td>
-											<td><input type="text" class="search" name="member_no">
+											<td><input type="text" class="search" name="memberNo">
 											</td>
 											<td class="box-title">전화번호</td>
 											<td><input type="tel" class="search" name="phone">
 											<td>
 											<td class="box-title">PT여부</td>
-											<td><select class="search selec" name="pt_yn">
+											<td><select class="search selec" name="ptYn">
 													<option>전체</option>
 													<option>Y</option>
 													<option>N</option>
@@ -203,77 +204,21 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th class="border-top-0">#</th>
+										<th class="border-top-0">회원번호</th>
+										<th class="border-top-0">이메일</th>
+										<th class="border-top-0">비밀번호</th>
 										<th class="border-top-0">이름</th>
 										<th class="border-top-0">전화번호</th>
-										<th class="border-top-0">성별</th>
-										<th class="border-top-0">이메일</th>
-										<th class="border-top-0">멤버쉽</th>
-										<th class="border-top-0">PT</th>
-										<th class="border-top-0">회원번호</th>
+										<th class="border-top-0">가입일자</th>
+										<th class="border-top-0">수정일자</th>
+										<th class="border-top-0">블랙여부</th>
+										<th class="border-top-0">회원구분</th>
+										<th class="border-top-0">회원상태</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>1</td>
-										<td>
-											<!-- <div class="popup" onclick="myFunction()">
-		                                            <input type="button" class="memberPopup" value="김민기">
-		                                            <span class="popup_info" id="myPopup">팝업</span>
-                                          		</div> --> <a
-											class="nameDetails" target="_blank" href="memberDetails.html">김민기</a>
-										</td>
-										<td>01071832721</td>
-										<td>남</td>
-										<td>mk@greedy.com</td>
-										<td>28</td>
-										<td>Y</td>
-										<td>H1234</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">임완규</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>kku@greedy.com</td>
-										<td>15</td>
-										<td>Y</td>
-										<td>H1235</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">정민서</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>ms@greedy.com</td>
-										<td>5</td>
-										<td>Y</td>
-										<td>H1236</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">최희상</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>hee@greedy.com</td>
-										<td>20</td>
-										<td>Y</td>
-										<td>H1237</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">Nigam</a></td>
-										<td>01012344321</td>
-										<td>여</td>
-										<td>ng@greedy.com</td>
-										<td>32</td>
-										<td>Y</td>
-										<td>H1238</td>
-									</tr>
+										<td></td>
 
 								</tbody>
 							</table>

@@ -51,56 +51,56 @@
                                  aria-expanded="false">
                                 <span class="hide-menu">---------- 회원관리 ----------</span></a>
                         </li>
-                        <li class="sidebar-item"> <p class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
                                 id="adminMember" aria-expanded="false"><i class="fa fa-users"
-                                    aria-hidden="true"></i><span class="hide-menu">일반회원관리</span></p></li>
-                        <li class="sidebar-item"> <p class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    aria-hidden="true"></i><span class="hide-menu">일반회원관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
                                 id="adminTrainer" aria-expanded="false">
-                                <i class="fa fa-id-card" aria-hidden="true"></i><span class="hide-menu">트레이너관리</span></p>
+                                <i class="fa fa-id-card" aria-hidden="true"></i><span class="hide-menu">트레이너관리</span></div>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="report.html" aria-expanded="false">
-                                <i class="fa fa-bullhorn" aria-hidden="true"></i><span class="hide-menu">신고관리</span></a>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false">
+                                <i class="fa fa-bullhorn" aria-hidden="true"></i><span class="hide-menu">신고관리</span></div>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="blackList.html" aria-expanded="false">
-                                <i class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></a>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false">
+                                <i class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></div>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false">
                                 <span class="hide-menu">---------- 결제관리 ----------</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="memberPayment.html" aria-expanded="false"><i class="fa fa-won-sign"
-                                    aria-hidden="true"></i><span class="hide-menu">회원 결제관리</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ptPage.html" aria-expanded="false"><i class="fa fa-hands-helping"
-                                    aria-hidden="true"></i><span class="hide-menu">PT관리</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="map-google.html" aria-expanded="false"><i class="fa fa-th-list"
-                                    aria-hidden="true"></i><span class="hide-menu">멤버쉽 관리</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="blank.html" aria-expanded="false"><i class="fa fa-hourglass"
-                                    aria-hidden="true"></i><span class="hide-menu">기간 정산 관리</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="fa fa-chart-bar"
-                                    aria-hidden="true"></i><span class="hide-menu">종합 통계</span></a></li>
-                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="fa fa-redo"
-                                    aria-hidden="true"></i><span class="hide-menu">환불</span></a></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-won-sign"
+                                    aria-hidden="true"></i><span class="hide-menu">회원 결제관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-hands-helping"
+                                    aria-hidden="true"></i><span class="hide-menu">PT관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-th-list"
+                                    aria-hidden="true"></i><span class="hide-menu">멤버쉽 관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-hourglass"
+                                    aria-hidden="true"></i><span class="hide-menu">기간 정산 관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 id="adminPage" aria-expanded="false"><i class="fa fa-chart-bar"
+                                    aria-hidden="true"></i><span class="hide-menu">종합 통계</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-redo"
+                                    aria-hidden="true"></i><span class="hide-menu">환불</span></div></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false">
                                 <span class="hide-menu">---------- 수업관리 ----------</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="fa fa-plus"
-                                    aria-hidden="true"></i><span class="hide-menu">수업 등록 관리</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="fa fa-comments"
-                                    aria-hidden="true"></i><span class="hide-menu">리뷰</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="fa fa-play"
-                                    aria-hidden="true"></i><span class="hide-menu">영상관리</span></a></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-plus"
+                                    aria-hidden="true"></i><span class="hide-menu">수업 등록 관리</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-comments"
+                                    aria-hidden="true"></i><span class="hide-menu">리뷰</span></div></li>
+                        <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="fa fa-play"
+                                    aria-hidden="true"></i><span class="hide-menu">영상관리</span></div></li>
                              
                     </ul>
 
