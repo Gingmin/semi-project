@@ -34,10 +34,32 @@ public class AdminService {
 		Connection con = getConnection();
 		
 		List<MemberDTO> memberList = adminDAO.selectMemberList(con, pageInfo);
-		System.out.println("service");
+
 		close(con);
 		
 		return memberList;
+	}
+
+	public int searchMemberCount(String name, int no, String phone, int ptAmount) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchMemberCount(con, name, no, phone, ptAmount);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> searchMemberList(String name, int no, String phone, int ptAmount, PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> boardList = adminDAO.searchMemberList(con, no, phone, ptAmount, pageInfo);
+		
+		close(con);
+		
+		return boardList;
 	}
 
 }

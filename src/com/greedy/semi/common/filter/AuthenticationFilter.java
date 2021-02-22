@@ -98,6 +98,8 @@ public class AuthenticationFilter implements Filter {
 		
 		adminPermitList.add("/admin/dashboard");
 		adminPermitList.add("/admin/member");
+		adminPermitList.add("/admin/member/search");
+		adminPermitList.add("/admin/member/detail");
 		adminPermitList.add("/admin/trainer");
 		adminPermitList.add("/notice/insert");
 		adminPermitList.add("/notice/update");
