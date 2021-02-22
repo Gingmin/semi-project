@@ -163,6 +163,7 @@ window.onload = function() {
 			location.href = "/semi/trainer/page";
 		}
 	}
+	
 	/* 클래스 개설하기 */
 	if(document.getElementById("insert_class")) {
 		const $logout = document.getElementById("insert_class");
