@@ -55,29 +55,28 @@
 				공지사항
 			</div>
 			<div class="line"></div>
-		<form action="${ pageContext.servletContext.contextPath }/notice/insert" method="post">
-			<div class="notice_detail_area">
-				<div class="row">
-					<div class="notice_title">
-						제목 : 
-						<input class="no_title_detail" type="text" name="title"/>
+			<form action="${ pageContext.servletContext.contextPath }/notice/insert" method="post">
+				<div class="notice_detail_area">
+					<div class="row">
+						<div class="notice_title">
+							제목 : 
+							<input class="no_title_detail" type="text" name="title"/>
+						</div>	
+						<div class="notice_writer">작성자 : <input class="no_writer_detail" type="text" value="${ sessionScope.loginMember.name}" name="writer"></div>
 					</div>	
-					<div class="notice_writer">작성자 : <input class="no_writer_detail" type="text" value="${ sessionScope.loginMember.name}" name="writer"></div>
+					<div class="content_area">
+						<div class="writing_date" >2021.02.11 23:52</div>
+						<textarea class="textarea_detail" name="body"></textarea>
+					</div>
 				</div>	
-				<div class="content_area">
-					<div class="writing_date" >2021.02.11 23:52</div>
-					<textarea class="textarea_detail" name="body"></textarea>
+				<div class="btn_area">
+					<div class="row">					
+						<button type="reset" class="btn_detail" id="cancle">취소</button>
+						<button type="submit" class="btn_detail">등록하기</button>
+					</div>
 				</div>
-
-			</div>	
-			<div class="btn_area">
-				<div class="row">					
-					<button type="reset" class="btn_detail" id="cancle">취소</button>
-					<button type="submit" class="btn_detail">등록하기</button>
-				</div>
-			</div>
-		
-		</form>
+			
+			</form>
 
 			
 

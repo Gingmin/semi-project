@@ -9,6 +9,7 @@ public class NoticeDTO implements java.io.Serializable {
 	private int no;
 	private String title;
 	private String body;
+	private String categoryCode;
 	private int writerMemberNo;
 	private MemberDTO writer;
 	private int count;
@@ -17,12 +18,13 @@ public class NoticeDTO implements java.io.Serializable {
 	
 	public NoticeDTO() {}
 
-	public NoticeDTO(int no, String title, String body, int writerMemberNo, MemberDTO writer, int count,
-			Date createdDate, String status) {
+	public NoticeDTO(int no, String title, String body, String categoryCode, int writerMemberNo, MemberDTO writer,
+			int count, Date createdDate, String status) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.body = body;
+		this.categoryCode = categoryCode;
 		this.writerMemberNo = writerMemberNo;
 		this.writer = writer;
 		this.count = count;
@@ -52,6 +54,14 @@ public class NoticeDTO implements java.io.Serializable {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
 	}
 
 	public int getWriterMemberNo() {
@@ -96,10 +106,10 @@ public class NoticeDTO implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "NoticeDTO [no=" + no + ", title=" + title + ", body=" + body + ", writerMemberNo=" + writerMemberNo
-				+ ", writer=" + writer + ", count=" + count + ", createdDate=" + createdDate + ", status=" + status
-				+ "]";
+		return "NoticeDTO [no=" + no + ", title=" + title + ", body=" + body + ", categoryCode=" + categoryCode
+				+ ", writerMemberNo=" + writerMemberNo + ", writer=" + writer + ", count=" + count + ", createdDate="
+				+ createdDate + ", status=" + status + "]";
 	}
-	
+
 	
 }

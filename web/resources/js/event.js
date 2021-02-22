@@ -326,6 +326,15 @@ window.onload = function() {
 		}
 	}
 	
+	/* 회원마이페이지 신고버튼 클릭시 */
+	if(document.getElementById("writeReport")){
+		const $writeReport = document.getElementById("writeReport");
+		$writeReport.onclick = function() {
+			location.href = "/semi/black/list";
+			console.log($writeReport);
+		}
+	}
+	
 	//완규 영역 끝
 	
 	
