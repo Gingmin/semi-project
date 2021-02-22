@@ -15,16 +15,21 @@ import com.greedy.semi.notice.model.dto.PageInfoDTO;
 import com.greedy.semi.notice.model.service.NoticeService;
 
 
-@WebServlet("/notice/report")
-public class NoticeReportServlet extends HttpServlet {
+@WebServlet("/report/search")
+public class ReportSearchServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String currentPage = request.getParameter("currentPage");
 		
+		String searchCondition = request.getParameter("searchCondition");
+		String searchValue = request.getParameter("searchValue");
+		
+		System.out.println("seachCondition : " + searchCondition);
+		System.out.println("searchValue : " + searchValue);
+		
+		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
 		
-		if(currentPage != null && !"".equals("currentPage")) {
+		if(currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
 		}
 		
@@ -32,40 +37,39 @@ public class NoticeReportServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		
-		System.out.println("커런트페이지 : " + currentPage);
-		System.out.println("페이지넘버 : " + pageNo);
-		
 		NoticeService noticeService = new NoticeService();
-		int totalCount = noticeService.selectTotalCount();
+		int totalCount = noticeService.searchNoticeCount(searchCondition, searchValue);
 		
-		System.out.println("토탈카운트 :" + totalCount);
+		System.out.println("totalCount : " + totalCount);
 		
 		int limit = 10;
-		
 		int buttonAmount = 5;
 		
 		PageInfoDTO pageInfo = Pagenation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
-		System.out.println("pinfo : " + pageInfo);
 		
-		List<NoticeDTO> reportList = new NoticeService().selectReportList(pageInfo);
+		List<NoticeDTO> reportList = noticeService.searchReportList(searchCondition, searchValue, pageInfo);
 		
-		System.out.println("리포트리스트 : " + reportList);
-		
+		for(NoticeDTO notice : reportList) {
+			System.out.println("reportList : " + reportList);
+		}
 		
 		String path = "";
+		
 		if(reportList != null) {
 			path = "/WEB-INF/views/notice/notice_report.jsp";
 			request.setAttribute("reportList", reportList);
 			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("searchCondition", searchCondition);
+			request.setAttribute("searchValue", searchValue);
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "신고내역 조회실패!");
+			request.setAttribute("message", "게시물 검색 실패");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

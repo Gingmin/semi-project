@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	 <!-- jstl -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,8 @@
 <!-- Rock Salt font -->
 <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
 
+<!-- 폰트어썸 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 <title>HelloPT</title>
 
@@ -60,90 +64,20 @@
 				<table class="table_detail">
 					<tr class="tr_detail">
 						<th class="th_detail">번호</th>
-						<th class="th_detail1">내용</th>
+						<th class="th_detail1">제목</th>
 						<th class="th_detail2">작성자</th>
 						<th class="th_detail2">날짜</th>
 						<th class="th_detail">조회수</th>
 					</tr>
-					<tr>
-						<td>11</td>
-						<td><a
-							href="http://kordzor.cafe24.com/semiproject/notice_detail.html">여긴
-								내용이다</a></td>
-						<td>민기찡</td>
-						<td>2021.02.11</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>여긴 내용이다</td>
-						<td>민서찡</td>
-						<td>2021.02.11</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>여긴 내용이다</td>
-						<td>희상찡</td>
-						<td>2021.02.11</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>여긴 내용이다</td>
-						<td>민서찡</td>
-						<td>2021.02.11</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>여긴 내용이다</td>
-						<td>민기찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>여긴 내용이다</td>
-						<td>희상찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>여긴 내용이다</td>
-						<td>민서찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>여긴 내용이다</td>
-						<td>민기찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>여긴 내용이다</td>
-						<td>민서찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>여긴 내용이다</td>
-						<td>희상찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>여긴 내용이다</td>
-						<td>희상찡</td>
-						<td>2021.02.11</td>
-						<td>0</td>
-					</tr>
+					<c:forEach var="report" items="${ requestScope.reportList }">
+						<tr>
+							<td><c:out value="${ report.no }"/></td>
+							<td><c:out value="${ report.title }"/></td>
+							<td><c:out value="${ report.writer.name }"/></td>
+							<td><c:out value="${ report.createdDate }"/></td>
+							<td><c:out value="${ report.count }"/></td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 
@@ -212,7 +146,7 @@
 
 
 			<%-- 검색폼 --%>
-			<form id="serchForm" action="${ pageContext.servletContext.contextPath }/notice/search">
+			<form id="serchForm" action="${ pageContext.servletContext.contextPath }/report/search">
 				<div class="search_area" >
 					<select id="searchCondition" name="searchCondition" class="select_detail">
 						<option value="writer" <c:if test="${ requestScope.searchCondition eq 'writer' }">seleted</c:if>>작성자</option>
@@ -238,14 +172,14 @@
 				
 				$no_list[i].onclick = function() {
 					const no = this.parentNode.children[0].innerText;
-					location.href = "${ pageContext.servletContext.contextPath }/notice/detail?no=" + no;
+					location.href = "${ pageContext.servletContext.contextPath }/report/detail?no=" + no;
 				}
 				
 			}
 		}
 		
-		const link = "${ pageContext.servletContext.contextPath }/notice/notice";
-		const searchLink = "${ pageContext.servletContext.contextPath}/notice/search";
+		const link = "${ pageContext.servletContext.contextPath }/notice/report";
+		const searchLink = "${ pageContext.servletContext.contextPath}/report/search";
 		
 		if(document.getElementById("startBtn")){
 			const $startBtn = document.getElementById("startBtn");

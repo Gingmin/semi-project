@@ -16,6 +16,7 @@ import java.util.Properties;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.BlackListDTO;
+import com.greedy.semi.notice.model.dto.CategoryDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
@@ -126,9 +127,11 @@ public class NoticeDAO {
 			
 			if(rset.next()) {
 				noticeDetail = new NoticeDTO();
+				noticeDetail.setCategory(new CategoryDTO());
 				noticeDetail.setWriter(new MemberDTO());
 				
 				noticeDetail.setNo(rset.getInt("NOTICE_NO"));
+				noticeDetail.setCategoryCode(rset.getString("NOTICE_CATEGORY_CODE"));
 				noticeDetail.setTitle(rset.getString("NOTICE_SUBJECT"));
 				noticeDetail.setBody(rset.getString("NOTICE_BODY"));
 				noticeDetail.setWriterMemberNo(rset.getInt("MEMBER_NO"));
@@ -396,6 +399,108 @@ public class NoticeDAO {
 		}
 		
 		return blackList;
+	}
+
+	public List<NoticeDTO> selectReportList(Connection con, PageInfoDTO pageInfo) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<NoticeDTO> reportList = null;
+		
+		String query = prop.getProperty("selectReportList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartPage());
+			pstmt.setInt(2, pageInfo.getEndRow());
+			
+			rset = pstmt.executeQuery();
+			
+			reportList = new ArrayList<>();
+			
+			while(rset.next()) {
+				NoticeDTO report = new NoticeDTO();
+				report.setCategory(new CategoryDTO());
+				report.setWriter(new MemberDTO());
+				
+				report.setNo(rset.getInt("NOTICE_NO"));
+				report.setCategoryCode(rset.getString("NOTICE_CATEGORY_CODE"));
+				report.setTitle(rset.getString("NOTICE_SUBJECT"));
+				report.setBody(rset.getString("NOTICE_BODY"));
+				report.setWriterMemberNo(rset.getInt("MEMBER_NO"));
+				report.getWriter().setName(rset.getString("MEMBER_NAME"));
+				report.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				report.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
+				
+				reportList.add(report);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return reportList;
+	}
+
+	public List<NoticeDTO> searchReportList(Connection con, String searchCondition, String searchValue,	PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<NoticeDTO> reportList = null;
+		
+		String query = null;
+		
+		if("writer".equals(searchCondition)) {
+			query = prop.getProperty("reportWriterList");
+		} else if("title".equals(searchCondition)) {
+			query = prop.getProperty("reportTitleList");
+		} else if("content".equals(searchCondition)) {
+			query = prop.getProperty("reportContentList");
+		}
+				
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, pageInfo.getStartRow());
+			pstmt.setInt(3, pageInfo.getEndRow());
+			
+			rset = pstmt.executeQuery();
+			
+			reportList = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				NoticeDTO notice = new NoticeDTO();
+				notice.setWriter(new MemberDTO());
+				
+				notice.setNo(rset.getInt("NOTICE_NO"));
+				notice.setTitle(rset.getString("NOTICE_SUBJECT"));
+				notice.setBody(rset.getString("NOTICE_BODY"));
+				notice.setWriterMemberNo(rset.getInt("MEMBER_NO"));
+				notice.getWriter().setName(rset.getString("MEMBER_NAME"));
+				notice.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				notice.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
+				notice.setStatus(rset.getString("NOTICE_STATUS"));
+				
+				reportList.add(notice);
+				
+			}
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+				
+		return reportList;
 	}
 
 	

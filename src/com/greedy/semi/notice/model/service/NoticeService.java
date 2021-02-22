@@ -164,6 +164,29 @@ public class NoticeService {
 		return result;
 	}
 
+	public List<NoticeDTO> selectReportList(PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<NoticeDTO> reportList = noticeDAO.selectReportList(con, pageInfo);
+		
+		close(con);
+		
+		return reportList;
+	}
+
+	public List<NoticeDTO> searchReportList(String searchCondition, String searchValue, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<NoticeDTO> reportList = noticeDAO.searchReportList(con, searchCondition, searchValue, pageInfo);
+		
+		close(con);
+		
+		return reportList;
+		
+	}
+
 }
 
 
