@@ -36,54 +36,25 @@
                   모든 종류의 운동
                </div>
                <div class="typetext2">
-                  유산소 운동과 근력 운동에서 요가에 이르기까지 가족 모두를 위한 완벽한 운동을 제공합니다. 매주 새로운 라이브 수업을 즐기거나 광범위한 주문형 운동 라이버르리를 통해 언제든지 수업을 들을수있습니다, 수천개의 수업은 운동이 항상 신선함을 의미합니다.
+                  유산소 운동과 근력 운동에서 요가에 이르기까지 가족 모두를 위한 완벽한 운동을 제공합니다. 매주 새로운 라이브 수업을 즐기거나 광범위한 주문형 운동 라이버르리를 통해 언제든지 수업을 들을 수 있습니다. 수천개의 수업은 운동이 항상 신선함을 의미합니다.
                </div>
             </div>
 
             <div class="swiper-container">               
                <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                                        
+                     <img class="img_detail" src="/semi/resources/images/exkind1.PNG">                                        
                   </div>
                   <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                                         
+                     <img class="img_detail" src="/semi/resources/images/exkind2.PNG">                                         
                   </div>
                   <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                                      
+                     <img class="img_detail" src="/semi/resources/images/exkind3.PNG">                                      
                   </div>
                   <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                                        
+                     <img class="img_detail" src="/semi/resources/images/exkind4.PNG">                                        
                   </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                      
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                       
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                       
-                  </div>
-                  <div class="swiper-slide">
-                    <img class="img_detail" src="/semi/resources/images/testimg.JPG">                    
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                       
-                  </div>
-                  <div class="swiper-slide">
-                    <img class="img_detail" src="/semi/resources/images/testimg.JPG">                       
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                       
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                      
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                    
-                  </div>
-                  <div class="swiper-slide">
-                     <img class="img_detail" src="/semi/resources/images/testimg.JPG">                      
-                  </div>
+                  
 
                   
                </div>
@@ -102,8 +73,8 @@
                <div class="intro_text1">
                   HELLOPT 디지털
                </div>
-               <div class="intro_text1">
-                  HELLPT 웹을 통해 HELLPT의 최강 운동을 무제한으로 액세스하세요, 휴대폰, 태블릿 및 스마트 TV 장치에서 전체 HELLPT 운동 라이브러리를 액세스 하고 연중 무휴로 수천개의 수업을 즐기십시오. HELLPT 소유자는 구매 즉시 액세스 할수 있습니다.
+               <div class="intro_text2">
+                  HELLOPT 웹을 통해 HELLOPT의 최강 운동을 무제한으로 액세스하세요, 휴대폰, 태블릿 및 스마트 TV 장치에서 전체 HELLOPT 운동 라이브러리를 액세스 하고 연중 무휴로 수천개의 수업을 즐기십시오. HELLPT 소유자는 구매 즉시 액세스 할수 있습니다.
                </div>
             </div>
             <div class="intro_imgarea">
@@ -118,10 +89,10 @@
                   <div class="CEO_text">
                      HELLOPT 이야기
                   </div>
-                  <div class="CEO_text">
-                     임완규,김민기,정민서,최희상 HELLOPT의 설립자이자 공동CEO입니다.
-                     그들은 THE JOEUN ACADEMY에서 전문 PROGRAMMER로 경력을 시작했고,
-                     유명한 HELLPT를 설립했으며, 이제는 집에서 부티크 스튜디오 경험을 제공함으로써 사람들이 운동하는 방식을 혁신하고 있습니다.
+                  <div class="CEO_text1">
+                    임완규,김민기,정민서,최희상 HELLOPT의 설립자이자 공동CEO입니다.
+          THE JOEUN ACADEMY에서 PROGRAMMER로 인연되어 사업파트너로서 성장하고 있고,
+                    운동산업의 혁신적인 HELLOPT 플랫폼을 만들었으며, 집에서 뷰티크 스튜디오 경험을 제공함으로써 사람들이 편안하고 좀 더 개별적인 운동하는 방식을 할수있도록 돕고 있습니다.
                   </div>
                </div>
                <div class="CEO_img_area">
