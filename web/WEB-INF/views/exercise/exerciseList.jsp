@@ -61,41 +61,53 @@
 		<div class="day">월요일 MON</div>
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
+					
 					<a>
-						<div class="mask rgba-white-slight"></div>
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+						<p>
+						
+						</div>
+						
+						
+						
+					
+					</div>
 					</a>
-				</div>
+				
 
 				<!-- Card content -->
 				<div class="card-body">
 
 					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					<h4 class="card-title"><c:out value="${ thumbnail.name }"/></h4>
 					<hr>
 					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					<p class="card-text"><c:out value="${ thumbnail.introduce }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
+			</c:forEach>
 			</div>
 			<!-- 월요일 끝 -->
 			<!-- 화요일 시작 -->
@@ -887,6 +899,13 @@
 
 		<!-- 트레이너 끝 -->
 	</div>
+	<script>
+					$("#thumbnailArea > div").click(function() {
+						const no = $(this).find("label").text();
+						console.log(no);
+						location.href = "${ pageContext.servletContext.contextPath }/trainer/detail";
+					});
+				</script>
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp" />
 </body>

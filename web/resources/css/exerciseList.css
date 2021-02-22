@@ -112,6 +112,11 @@
  .mdb-color {
  	margin-top: 40px;
  }
+ 
+ .thumnail-area {
+	
+	display: flex;
+}
 
 
  /* 트레이너 카드 끝 */

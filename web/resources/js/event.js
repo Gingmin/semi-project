@@ -148,7 +148,13 @@ window.onload = function() {
 		}
 	}
 	
-	
+	/* 관리자 페이지 나가기 */
+	if(document.getElementById("closeAdmin")) {
+		const $closeAdmin = document.getElementById("closeAdmin");
+		$closeAdmin.onclick = function() {
+			location.href = "/semi/admin/out";
+		}
+	}
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
@@ -157,6 +163,7 @@ window.onload = function() {
 			location.href = "/semi/trainer/page";
 		}
 	}
+	
 	/* 클래스 개설하기 */
 	if(document.getElementById("insert_class")) {
 		const $logout = document.getElementById("insert_class");

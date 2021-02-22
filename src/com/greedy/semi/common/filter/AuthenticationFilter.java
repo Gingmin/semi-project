@@ -102,6 +102,7 @@ public class AuthenticationFilter implements Filter {
 		adminPermitList.add("/notice/insert");
 		adminPermitList.add("/notice/update");
 		adminPermitList.add("/notice/delete");
+		adminPermitList.add("/admin/out");
 		
 		memberPermitList.add("/member/mypage");
 		memberPermitList.add("/member/update");
@@ -131,6 +132,7 @@ public class AuthenticationFilter implements Filter {
 		trainerPermitList.add("/trainer/page");
 		trainerPermitList.add("/class/detail");
 		trainerPermitList.add("/trainer/sales_details");
+		trainerPermitList.add("/trainer/detail");
 		
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");

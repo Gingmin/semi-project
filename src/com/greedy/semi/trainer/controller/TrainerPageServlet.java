@@ -34,6 +34,7 @@ public class TrainerPageServlet extends HttpServlet {
 		if(thumbnailList != null) {
 			path = "/WEB-INF/views/exercise/mypagetrainer.jsp";
 			request.setAttribute("thumbnailList", thumbnailList);
+			
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
 			request.setAttribute("message", "썸네일 등록 실패!");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +34,7 @@
 <link rel="stylesheet" href="/semi/resources/admin/css/style.min.css">
 <link rel="stylesheet" href="/semi/resources/admin/css/style.css">
 <link rel="stylesheet" href="/semi/resources/admin/css/admin.css">
+<script src="/semi/resources/js/event.js"></script>
 </head>
 <body>
 	<!-- ============================================================== -->
@@ -104,9 +106,9 @@
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-						<li class="temp"><a class="profile-pic" href=""> <img
+						<li class="temp"><div class="profile-pic" href=""> <img
 								src="/semi/resources/admin/plugins/images/close.png"
-								alt="close-img" width="36" class="close"></a></li>
+								alt="closeAdmin" width="36" class="close" id="closeAdmin"></div></li>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
@@ -162,28 +164,28 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="white-box">
-							<form action="" method="post">
+							<form action="${ pageContext.servletContext.contextPath }/adimn/member" method="post">
 								<div class="search_box">
 									<table>
 										<tr>
 											<td class="box-title">회원명</td>
-											<td><input type="text" class="search" name="name">
+											<td><input type="text" class="search" name="name" id="name" value="${ requestScope.searchMember.name }">
 											</td>
 											<!-- <td></td> -->
 											<td class="box-title">회원번호</td>
-											<td><input type="text" class="search" name="member_no">
+											<td><input type="text" class="search" name="memberNo" id="memberNo" value="${ requestScope.searchMember.no }">
 											</td>
 											<td class="box-title">전화번호</td>
-											<td><input type="tel" class="search" name="phone">
+											<td><input type="tel" class="search" name="phone" id="phone" value="${ requestScope.searchMember.phone }">
 											<td>
 											<td class="box-title">PT여부</td>
-											<td><select class="search selec" name="pt_yn">
+											<td><select class="search selec" name="ptYn" id="ptYn">
 													<option>전체</option>
-													<option>Y</option>
-													<option>N</option>
+													<option value="Y" <c:if test="${ requestScope.ptYn eq 'Y'}">selected</c:if>>Y</option>
+													<option value="N" <c:if test="${ requestScope.ptYn eq 'N'}">selected</c:if>>N</option>
 											</select></td>
 											<td>
-												<button type="submit"
+												<button type="submit" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>		
 										</tr>
@@ -203,87 +205,172 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th class="border-top-0">#</th>
+										<th class="border-top-0">회원번호</th>
+										<th class="border-top-0">이메일</th>
 										<th class="border-top-0">이름</th>
 										<th class="border-top-0">전화번호</th>
-										<th class="border-top-0">성별</th>
-										<th class="border-top-0">이메일</th>
-										<th class="border-top-0">멤버쉽</th>
-										<th class="border-top-0">PT</th>
-										<th class="border-top-0">회원번호</th>
+										<th class="border-top-0">가입일자</th>
+										<th class="border-top-0">수정일자</th>
+										<th class="border-top-0">블랙여부</th>
+										<th class="border-top-0">회원구분</th>
+										<th class="border-top-0">회원상태</th>
+										<th class="border-top-0">pt남은횟수</th>
+										<th class="border-top-0">멤버쉽만료일자</th>
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach var="member" items="${ requestScope.memberList }">
 									<tr>
-										<td>1</td>
-										<td>
-											<!-- <div class="popup" onclick="myFunction()">
-		                                            <input type="button" class="memberPopup" value="김민기">
-		                                            <span class="popup_info" id="myPopup">팝업</span>
-                                          		</div> --> <a
-											class="nameDetails" target="_blank" href="memberDetails.html">김민기</a>
-										</td>
-										<td>01071832721</td>
-										<td>남</td>
-										<td>mk@greedy.com</td>
-										<td>28</td>
-										<td>Y</td>
-										<td>H1234</td>
+										<td><c:out value="${ member.no }"/></td>
+										<td><c:out value="${ member.email }"/></td>
+										<td><c:out value="${ member.name }"/></td>
+										<td><c:out value="${ member.phone }"/></td>
+										<td><c:out value="${ member.enrollDate }"/></td>
+										<td><c:out value="${ member.modifiedDate }"/></td>
+										<td><c:out value="${ member.blackStatus }"/></td>
+										<td><c:out value="${ member.role }"/></td>
+										<td><c:out value="${ member.status }"/></td>
+										<td><c:out value="${ member.ptAmount }"/></td>
+										<td><c:out value="${ member.expDate }"/></td>
 									</tr>
-									<tr>
-										<td>2</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">임완규</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>kku@greedy.com</td>
-										<td>15</td>
-										<td>Y</td>
-										<td>H1235</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">정민서</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>ms@greedy.com</td>
-										<td>5</td>
-										<td>Y</td>
-										<td>H1236</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">최희상</a></td>
-										<td>01012345678</td>
-										<td>남</td>
-										<td>hee@greedy.com</td>
-										<td>20</td>
-										<td>Y</td>
-										<td>H1237</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td><a class="nameDetails" target="_blank"
-											href="memberDetails.html">Nigam</a></td>
-										<td>01012344321</td>
-										<td>여</td>
-										<td>ng@greedy.com</td>
-										<td>32</td>
-										<td>Y</td>
-										<td>H1238</td>
-									</tr>
-
+									</c:forEach>
 								</tbody>
 							</table>
-							<!-- 팝업만들기  -->
-							<!-- <script>
-                                    function myFunction() {
-                                        var popup = document.getElementById('myPopup');
-                                        popup.classList.toggle('show');
-                                    }
-                                </script> -->
+							
+							<div class="pagingArea" align="center">
+								<c:choose>
+									<c:when test="${ empty requestScope.searchMember.no && empty requestScope.searchMember.phone && empty requestScope.searchMember.name } ">
+										<button id="startPage"><<</button>
+									<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+										<button disabled><</button>
+									</c:if>
+									<c:if test="${ requestScope.pageInfo.pageNo > 1}">
+										<button id="prevPage"><</button>
+									</c:if>
+									
+									<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+										<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+											<button disabled><c:out value="${ p }"/></button>
+										</c:if>
+										<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+											<button onclick="pageButtonAction(this.innerText)"><c:out value="${ p }"/></button>
+										</c:if>
+									</c:forEach>
+									
+									<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+										<button disabled></button>
+									</c:if>
+									<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+										<button id="nextPage">></button>
+									</c:if>
+									
+									<button id="maxPage">>></button>
+									</c:when>
+									
+									<%-- 검색(조회)했을 때 --%>
+									<c:otherwise>
+										<button id="searchStartPage"><<</button>
+										
+										<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+											<button disabled><</button>
+										</c:if>
+										<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+											<button id="searchPrevPage"><</button>
+										</c:if>
+										
+										<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.maxPage }" step="1">
+											<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+												<button disabled><c:out value="${ p }"/></button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo ne p}">
+												<button onclick="searchPageButtonAction(this.innerText);"></button>
+											</c:if>
+										</c:forEach>
+										
+										<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+											<button disabled>></button>
+										</c:if>
+										<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+											<button id="searchNextPage">></button>
+										</c:if>
+										<button id="searchMaxPage">>></button>
+									</c:otherwise>
+								</c:choose>
+								<script>
+									const link = "${ pageContext.servletContext.contextPath }/admin/member";
+									const searchLink = "${ pageContext.servletContext.contextPath }/admin/member/search"
+								
+									if(document.getElementById("startPage")) {
+										const $startPage = document.getElementById("startPage");
+										$startPage.onclick = function() {
+											location.href = link + "currentPage=1";
+										}
+									}
+									if(document.getElementById("prevPage")) {
+									    const $prevPage = document.getElementById("prevPage");
+									    $prevPage.onclick = function() {
+									        location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1}";
+									    }
+								    }
+									    
+								    if(document.getElementById("nextPage")) {
+									    const $nextPage = document.getElementById("nextPage");
+								        $nextPage.onclick = function() {
+								            location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1}";
+								        }
+								    }
+									    
+								    if(document.getElementById("maxPage")) {
+									      const $maxPage = document.getElementById("maxPage");
+									      $maxPage.onclick = function() {
+									          location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+									      }
+								    }
+									    
+									function pageButtonAction(text) {
+										  location.href = link + "?currentPage=" + text;
+							        }
+									    
+									if(document.getElementById("searchStartPage")){
+									      const $searchStartPage = document.getElementById("searchStartPage");
+								          $searchStartPage.onclick = function() {
+								              location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+									      }
+								    }
+									     
+								    if(document.getElementById("searchPrevPage")){
+									      const $searchPrevPage = document.getElementById("searchPrevPage");
+									      $searchPrevPage.onclick = function() {
+								              location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           
+								        }
+								        
+								    }
+									     
+									     
+								    if(document.getElementById("searchNextPage")){
+								          const $searchNextPage = document.getElementById("searchNextPage");
+								          $searchNextPage.onclick = function() {
+									          location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								          }
+									        
+								    }
+									     
+							       if(document.getElementById("searchMaxPage")){
+									      const $searchMaxPage = document.getElementById("searchMaxPage");
+									      $searchMaxPage.onclick = function() {
+									         location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								         }
+									        
+							       }
+									     
+							       function searchPageButtonAction(text) {
+									      location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+							       }
+								
+								</script>
+							</div>
+							
 						</div>
 					</div>
 				</div>

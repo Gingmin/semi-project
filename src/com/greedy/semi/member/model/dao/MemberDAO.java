@@ -509,8 +509,8 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, licenseDTO.getCode());
 			pstmt.setString(2, licenseDTO.getName());
-			pstmt.setString(3, licenseDTO.getGrade());
-			pstmt.setString(4, licenseDTO.getInstitution());
+			pstmt.setString(3, licenseDTO.getInstitution());
+			pstmt.setString(4, licenseDTO.getGrade());
 			pstmt.setDate(5, licenseDTO.getIssueDate());
 			pstmt.setDate(6, licenseDTO.getExpDate());
 			
@@ -607,6 +607,31 @@ public class MemberDAO {
 		}
 		
 		return trainer;
+	}
+
+	public int updateTrainerInfo(Connection con, TrainerInfoDTO trainer) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateTrainerInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, trainer.getAccountNumber());
+			pstmt.setString(2, trainer.getAccountHolder());
+			pstmt.setString(3, trainer.getBankName());
+			pstmt.setInt(4, trainer.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 

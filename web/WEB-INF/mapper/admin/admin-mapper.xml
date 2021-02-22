@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectTotalCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTotalCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_STATUS = 'Y'
+	</entry>    
+	<entry key="selectMemberList">
+          SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+</properties>
