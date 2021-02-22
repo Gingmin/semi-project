@@ -35,7 +35,7 @@ public class Pagenation {
 		System.out.println("buttonAmount : " + buttonAmount);
 		System.out.println("maxPage : " + maxPage);
 		System.out.println("startPage : " + startPage);
-		System.out.println("endOage : " + endPage);
+		System.out.println("endPage : " + endPage);
 		System.out.println("startRow : " + startRow);
 		System.out.println("endRow : " + endRow);
 		
