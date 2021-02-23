@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -22,6 +23,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.ProfileEditDTO;
+import com.greedy.semi.trainer.service.ClassService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -118,19 +121,60 @@ public class TrainerProfileImgEditServlet extends HttpServlet {
 				System.out.println("parameter : " + parameter);
 				System.out.println("fileList : " + fileList);
 				
-				ClassDTO thumbnail = new ClassDTO();
-				thumbnail.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
+				ProfileEditDTO profile = null;
+				for(int i = 0; i < fileList.size(); i++) {
+					Map<String, String> file = fileList.get(i);
+					
+					profile = new ProfileEditDTO();
+					profile.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
+					profile.setOriginalName(file.get("originFileName"));
+					profile.setSavedName(file.get("savedFileName"));
+					profile.setSavePath(file.get("savePath"));
+					profile.setFileType(file.get("fileType"));
+					profile.setThumbnailPath(file.get("thumbnailPath"));
+					
+					
+				}
 				
-				thumbnail.setAttachmentList(new ArrayList<AttachmentDTO>());
+				int result = new ClassService().editProfile(profile);
+			
 				
-			} catch (FileUploadException e) {
-				e.printStackTrace();
+				String path = "";
+				if(result > 0) {
+					path = "/WEB-INF/views/common/success.jsp";
+					request.setAttribute("successCode", "editProfile");
+				} else {
+					path = "/WEB-INF/views/common/failed.jsp";
+					request.setAttribute("message", "프로필 수정 실패!");
+				}
+				
+				request.getRequestDispatcher(path).forward(request, response);
+				
+			
 			} catch (Exception e) {
 				e.printStackTrace();
+				
+				int cnt = 0;
+				for(int i = 0; i < fileList.size(); i++) {
+					Map<String, String> file = fileList.get(i);
+					
+					File deletedFile = new File(fileUploadDirectory + file.get("savedFileName"));
+					boolean isDeleted = deletedFile.delete();
+					
+					if(isDeleted) {
+						cnt++;
+					}
+				}
+				
+				if(cnt == fileList.size()) {
+					System.out.println("업로드에 실패한 사진 모두 삭제 완료!");
+				} else {
+					System.out.println("사진 삭제 실패!");
+				}
 			}
 		}
 		
-		doGet(request, response);
+		
 	}
 
 }

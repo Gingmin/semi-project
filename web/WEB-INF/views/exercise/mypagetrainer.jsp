@@ -35,9 +35,20 @@
 				<div class="row">
 				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
 					<div class="profile_img_area">
-						<div class="profile_img">
-							<img class="img_detail" id="trainerImg">
+					
+						<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150">
+							</div>
+							<p>
+							<label><c:out value="${ thumbnail.no }"/></label>&nbsp;&nbsp;&nbsp;
+							<c:out value="${ thumbnail.name }"/>&nbsp;&nbsp;&nbsp;
+							<c:out value="${ thumbnail.count }"/>
 						</div>
+					</c:forEach>
+					
 						<div class="profile_btn_area">
 						<label for="profileEdit" class="edit_btn">프로필 편집</label>
 							<input type="file" class="edit_btn" id="profileEdit" name="profileEdit" onchange="loadImg(this, 1)">

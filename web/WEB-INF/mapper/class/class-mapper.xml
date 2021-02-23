@@ -122,4 +122,39 @@
          WHERE A.CLASS_STATUS = 'N'
            AND A.TRAINER_NO = ?
     </entry>
+    <entry key="editProfile">
+        INSERT
+          INTO TBL_TRAINER_PROFILEIMG_EDIT A
+        (
+          A.PROFILE_NO
+        , A.TRAINER_NO
+        , A.ORIGINAL_NAME
+        , A.SAVED_NAME
+        , A.SAVE_PATH
+        , A.THUMBNAIL_PATH
+        , A.FILE_TYPE  
+        )
+        VALUES
+        (
+          SEQ_PROFILE_NO.NEXTVAL
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?
+        , ?  
+        )
+    </entry>
+    <entry key="profileImgSelect">
+        SELECT
+               A.PROFILE_NO
+             , A.TRAINER_NO  
+             , A.ORIGINAL_NAME
+             , A.SAVED_NAME
+             , A.SAVE_PATH
+             , A.THUMBNAIL_PATH
+             , A.FILE_TYPE
+          FROM TBL_TRAINER_PROFILEIMG_EDIT A
+         WHERE A.TRAINER_NO = ?
+    </entry>
 </properties>
