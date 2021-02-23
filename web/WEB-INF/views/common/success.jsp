@@ -58,10 +58,14 @@
 				case "insertReport" :
 					movePath = "${ pageContext.servletContext.contextPath }/notice/report";
 					message = "신고가 접수 되었습니다!";
-          break;
+         			break;
 				case "updateTrainer" :
 					movePath = "${ pageContext.servletContext.contextPath }/member/trainerInfo";
 					message = "트레이너 추가 정보 수정에 성공했습니다!";
+					break;
+				case "editProfile" :
+					movePath = "${ pageContext.servletContext.contextPath }/trainer/page";
+					message = "트레이너 프로필 편집 수정에 성공했습니다!";
 					break;
 			}
 			

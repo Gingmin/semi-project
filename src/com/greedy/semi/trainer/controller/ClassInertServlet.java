@@ -139,6 +139,7 @@ public class ClassInertServlet extends HttpServlet {
 				thumbnail.setCreatedDate(parameter.get("classDate"));
 				thumbnail.setTrainerNo(((MemberDTO) request.getSession().getAttribute("loginMember")).getNo());
 				
+				
 				thumbnail.setAttachmentList(new ArrayList<AttachmentDTO>());
 				List<AttachmentDTO> list = thumbnail.getAttachmentList();
 				for(int i = 0; i < fileList.size(); i++) {
