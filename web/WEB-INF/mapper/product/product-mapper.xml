@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectProductPrice">
+		SELECT
+               A.PRODUCT_PRICE
+          FROM TBL_MEMBERSHIP_PRODUCT A
+         WHERE A.PRODUCT_CODE = ?
+	</entry>
+</properties>

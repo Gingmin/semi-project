@@ -337,8 +337,49 @@ window.onload = function() {
 	
 	//완규 영역 끝
 	
-	
-	
+	/* 맴버쉽 구매 */
+	if(document.getElementById("ticketBtn1")){
+		const $ticketBtn1 = document.getElementById("ticketBtn1");
+		$ticketBtn1.onclick = function() {
+			console.log($ticketBtn1);
+			location.href = "/semi/member/buy";
+		}
+	}
+	if(document.getElementById("ticketBtn2")){
+		const $ticketBtn2 = document.getElementById("ticketBtn2");
+		$ticketBtn2.onclick = function() {
+			console.log($ticketBtn2);
+			location.href = "/semi/member/buy";
+		}
+	}
+	if(document.getElementById("ticketBtn3")){
+		const $ticketBtn3 = document.getElementById("ticketBtn3");
+		$ticketBtn3.onclick = function() {
+			console.log($ticketBtn3);
+			location.href = "/semi/member/buy";
+		}
+	}
+	if(document.getElementById("ticketBtn4")){
+		const $ticketBtn4 = document.getElementById("ticketBtn4");
+		$ticketBtn4.onclick = function() {
+			console.log($ticketBtn4);
+			location.href = "/semi/member/buy";
+		}
+	}
+	if(document.getElementById("ticketBtn5")){
+		const $ticketBtn5 = document.getElementById("ticketBtn5");
+		$ticketBtn5.onclick = function() {
+			console.log($ticketBtn5);
+			location.href = "/semi/member/buy";
+		}
+	}
+	if(document.getElementById("ticketBtn6")){
+		const $ticketBtn6 = document.getElementById("ticketBtn6");
+		$ticketBtn6.onclick = function() {
+			console.log($ticketBtn6);
+			location.href = "/semi/member/buy";
+		}
+	}
 	
 	
 	
