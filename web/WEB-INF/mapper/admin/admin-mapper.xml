@@ -51,14 +51,197 @@
 		       ) B
 		WHERE B.RNUM BETWEEN ? AND ?
 	</entry>
-	<entry key="">
-	
+	<entry key="searchNameCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
 	</entry>
-	
-	
-	
-	
-	SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberList() */
+	<entry key="searchNoCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchPhoneCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhoneCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+	</entry>
+	<entry key="searchNotPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+	</entry>
+	<entry key="searchNameNoCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePhoneCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhoneCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPhoneCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhoneCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPhoneCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhoneCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT > 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchAllPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchAllPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+	</entry>
+	<entry key="searchName">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
 		       B.RNUM
 		     , B.MEMBER_NO
 		     , B.EMAIL
@@ -96,17 +279,1073 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO LIKE '%%'
-                            OR D.EMAIL = 'hellllopt@gmail.com'
-                            OR D.PHONE = '01012345678'
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
-		WHERE B.RNUM BETWEEN 1 AND 10;
-        
-        
-        
-        
-        
-        
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNo">
+     	SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchPhone">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.PHONE LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchAllpt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNo">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNamePhone">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+                           AND D.PHONE LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNoPhone">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+                           AND D.PHONE LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNoPhone">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
+                           AND D.PHONE LIKE '%' || ? || '%'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNamePt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNoPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchPhonePt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.PHONE LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNoPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.MEMBER_NO '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNamePhonePt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNoPhonePt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNoPhonePt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.MEMBER_NO '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT > 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNoNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchPhoneNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.PHONE LIKE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNoNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.MEMBER_NO '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNamePhoneNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNoPhoneNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NO '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchNameNoPhoneNotPt">
+	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.PT_AMOUNT
+		     , B.MEMBERSHIP_EXP_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.PT_AMOUNT
+		             , C.MEMBERSHIP_EXP_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.PT_AMOUNT
+		                     , E.MEMBERSHIP_EXP_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+                         WHERE D.MEMBER_NAME '%' || ? || '%'
+                           AND D.MEMBER_NO '%' || ? || '%'
+                           AND D.PHONE '%' || ? || '%'
+                           AND E.PT_AMOUNT = 0
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

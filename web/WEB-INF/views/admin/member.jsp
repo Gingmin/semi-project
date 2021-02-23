@@ -167,7 +167,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="white-box">
-							<form action="${ pageContext.servletContext.contextPath }/adimn/member" method="post">
+							<form action="" method="get" id="searchForm">
 								<div class="search_box">
 									<table>
 										<tr>
@@ -183,12 +183,12 @@
 											<td>
 											<td class="box-title">PT여부</td>
 											<td><select class="search selec" name="ptYn" id="ptYn">
-													<option>전체</option>
+													<option value="전체" <c:if test="${ requestScope.ptYn eq '전체'}">selected</c:if>>전체</option>
 													<option value="Y" <c:if test="${ requestScope.ptYn eq 'Y'}">selected</c:if>>Y</option>
 													<option value="N" <c:if test="${ requestScope.ptYn eq 'N'}">selected</c:if>>N</option>
 											</select></td>
 											<td>
-												<button type="submit" 
+												<button type="button" id="searchButton" onclick="searchBtn();"
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>		
 										</tr>
@@ -201,6 +201,22 @@
 							</form>
 							<br>
 						</div>
+						<script>
+							function searchBtn() {
+								
+								const $searchForm = document.getElementById("searchForm");
+								
+								const $memberNo = document.getElementById('memberNo');
+								const memberNo = document.getElementById('memberNo').value;
+								
+								if(memberNo === "") {
+									$memberNo.disabled = 'disabled';
+								}
+								
+								$searchForm.action = "${ pageContext.servletContext.contextPath }/admin/member/search";
+								$searchForm.submit();
+							}
+						</script>
 						<!-- form 태그 끝 -->
 						<!-- ============================================================== -->
 						<!-- <p class="text-muted">Add class <code>.table</code></p> -->
@@ -223,7 +239,7 @@
 								</thead>
 								<tbody>
 									<c:forEach var="member" items="${ requestScope.memberList }">
-									<tr>
+									<tr class="detail">
 										<td><c:out value="${ member.no }"/></td>
 										<td><c:out value="${ member.email }"/></td>
 										<td><c:out value="${ member.name }"/></td>
@@ -338,18 +354,17 @@
 							        }
 									
 									/* 검색 */
-									
 									if(document.getElementById("searchStartPage")){
 								        const $searchStartPage = document.getElementById("searchStartPage");
 								        $searchStartPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								           location.href = searchLink + "?currentPage=1&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
 								        }
 								     }
 								     
 								    if(document.getElementById("searchPrevPage")){
 								        const $searchPrevPage = document.getElementById("searchPrevPage");
 								        $searchPrevPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
 								           
 								        }
 								        
@@ -358,7 +373,7 @@
 								    if(document.getElementById("searchNextPage")){
 								        const $searchNextPage = document.getElementById("searchNextPage");
 								        $searchNextPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
 								        }
 								        
 								    }
@@ -366,13 +381,13 @@
 								    if(document.getElementById("searchMaxPage")){
 								        const $searchMaxPage = document.getElementById("searchMaxPage");
 								        $searchMaxPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
 								        }
 								        
 								    }
 								     
 								    function searchPageButtonAction(text) {
-								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								        location.href = searchLink + "?currentPage=" + text + "&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
 								    }
 								    
 								    /*효과*/
@@ -391,14 +406,18 @@
 								 				this.parentNode.style.background = "white";
 								 			}
 								 			
-								 			$tds[i].onclick = function() {
-								 				const no = this.parentNode.children[0].innerText;
-								 				
-								 				location.href = "${ pageContext.servletContext.contextPath }/admin/member/detail?no=" + no;
-								 			}
 								 			
 								 		}
 								 	}
+								    
+								    if(document.getElementBy)
+								    
+								 		    $tds[i].onclick = function() {
+								 				const no = this.parentNode.children[0].innerText;
+								 				
+								 				location.href = "${ pageContext.servletContext.contextPath }/admin/member/detail?no=" + no;
+								 			} 
+								    
 								</script>
 							</div>
 							

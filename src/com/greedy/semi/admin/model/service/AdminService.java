@@ -40,9 +40,17 @@ public class AdminService {
 		return memberList;
 	}
 
-	public int searchMemberCount(String name, int no, String phone, int ptAmount) {
+	public int searchMemberCount(MemberDTO searchMember, int ptAmount) {
 		
 		Connection con = getConnection();
+		
+		String name = searchMember.getName();
+		int no = searchMember.getNo();
+		String phone = searchMember.getPhone();
+		
+		System.out.println("searchMemberCount name : " + name);
+		System.out.println("searchMemberCount no : " + no);
+		System.out.println("searchMemberCount phone : " + phone);
 		
 		int totalCount = adminDAO.searchMemberCount(con, name, no, phone, ptAmount);
 		
@@ -51,11 +59,19 @@ public class AdminService {
 		return totalCount;
 	}
 
-	public List<MemberDTO> searchMemberList(String name, int no, String phone, int ptAmount, PageInfoDTO pageInfo) {
+	public List<MemberDTO> searchMemberList(MemberDTO searchMember, int ptAmount, PageInfoDTO pageInfo) {
 
 		Connection con = getConnection();
 		
-		List<MemberDTO> boardList = adminDAO.searchMemberList(con, no, phone, ptAmount, pageInfo);
+		String name = searchMember.getName();
+		int no = searchMember.getNo();
+		String phone = searchMember.getPhone();
+		
+		System.out.println("searchMemberList name : " + name);
+		System.out.println("searchMemberList no : " + no);
+		System.out.println("searchMemberList phone : " + phone);
+		
+		List<MemberDTO> boardList = adminDAO.searchMemberList(con, name, no, phone, ptAmount, pageInfo);
 		
 		close(con);
 		
