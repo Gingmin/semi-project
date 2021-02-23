@@ -7,6 +7,7 @@ import com.greedy.semi.member.model.dto.MemberDTO;
 public class BlackListDTO {
 	
 	private int no;
+	private int reportNoticeNo;
 	private int memberNo;
 	private int reportedMemberNo;
 	private MemberDTO writer;
@@ -16,10 +17,11 @@ public class BlackListDTO {
 	
 	public BlackListDTO() {}
 
-	public BlackListDTO(int no, int memberNo, int reportedMemberNo, MemberDTO writer, String reportCode,
-			Date reportDate, String reason) {
+	public BlackListDTO(int no, int reportNoticeNo, int memberNo, int reportedMemberNo, MemberDTO writer,
+			String reportCode, Date reportDate, String reason) {
 		super();
 		this.no = no;
+		this.reportNoticeNo = reportNoticeNo;
 		this.memberNo = memberNo;
 		this.reportedMemberNo = reportedMemberNo;
 		this.writer = writer;
@@ -34,6 +36,14 @@ public class BlackListDTO {
 
 	public void setNo(int no) {
 		this.no = no;
+	}
+
+	public int getReportNoticeNo() {
+		return reportNoticeNo;
+	}
+
+	public void setReportNoticeNo(int reportNoticeNo) {
+		this.reportNoticeNo = reportNoticeNo;
 	}
 
 	public int getMemberNo() {
@@ -86,11 +96,12 @@ public class BlackListDTO {
 
 	@Override
 	public String toString() {
-		return "BlackListDTO [no=" + no + ", memberNo=" + memberNo + ", reportedMemberNo=" + reportedMemberNo
-				+ ", writer=" + writer + ", reportCode=" + reportCode + ", reportDate=" + reportDate + ", reason="
-				+ reason + "]";
+		return "BlackListDTO [no=" + no + ", reportNoticeNo=" + reportNoticeNo + ", memberNo=" + memberNo
+				+ ", reportedMemberNo=" + reportedMemberNo + ", writer=" + writer + ", reportCode=" + reportCode
+				+ ", reportDate=" + reportDate + ", reason=" + reason + "]";
 	}
 
+	
 	
 	
 }

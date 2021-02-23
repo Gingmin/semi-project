@@ -2,8 +2,11 @@
 
 .notice_detail_area{}
 .notice_detail_area .row{margin: 0;  box-shadow: 0 5px 10px 0 gray;  padding: 0 15px;}
-.notice_detail_area .row .notice_title{float: left; height: 60px; line-height: 60px; font-size: 19px; font-weight: bold; width: 90%; }
-.notice_detail_area .row .notice_writer{float:left; height: 60px; line-height: 60px; font-weight: bold; width: 10%;}
+.notice_detail_area .row .notice_title{float: left; height: 60px; line-height: 60px; font-size: 19px; font-weight: bold; width: 85%; }
+.notice_detail_area .row .notice_title.type1{width:70%; }
+.notice_detail_area .row .report_kind{float:left; height: 60px; line-height: 60px; font-weight: bold; width: 15%;}
+.notice_detail_area .row .notice_writer{float:left; height: 60px; line-height: 60px; font-weight: bold; width: 15%;}
+.notice_detail_area .row .notice_writer.type1{width: 15%;}
 
 .notice_detail_area .content_area{}
 .notice_detail_area .content_area .writing_date{float: right; padding: 10px; font-size: 16px; }
@@ -18,3 +21,13 @@
 .notice_detail_area .row .notice_title .no_title_detail{ border:0; height: 60px; width: 450px;}
 
 .notice_detail_area .row .notice_writer .no_writer_detail{ border:0;  height: 60px; width: 55px;}
+
+
+
+
+
+
+
+
+
+

@@ -38,7 +38,7 @@ public class ReportSearchServlet extends HttpServlet {
 		}
 		
 		NoticeService noticeService = new NoticeService();
-		int totalCount = noticeService.searchNoticeCount(searchCondition, searchValue);
+		int totalCount = noticeService.searchReportCount(searchCondition, searchValue);
 		
 		System.out.println("totalCount : " + totalCount);
 		

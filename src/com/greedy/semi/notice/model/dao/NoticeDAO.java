@@ -19,6 +19,7 @@ import com.greedy.semi.notice.model.dto.BlackListDTO;
 import com.greedy.semi.notice.model.dto.CategoryDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
+import com.greedy.semi.notice.model.dto.ReportCategoryDTO;
 
 public class NoticeDAO {
 
@@ -377,7 +378,7 @@ public class NoticeDAO {
 		return result;
 	}
 
-	public int insertBlack(Connection con, BlackListDTO reportBlack) {
+	public int insertBlack(Connection con, BlackListDTO reportBlack, int no) {
 		
 		PreparedStatement pstmt = null;
 		int blackList = 0;
@@ -386,8 +387,9 @@ public class NoticeDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, reportBlack.getMemberNo());
-			pstmt.setString(2, reportBlack.getReportCode());
+			pstmt.setInt(1, no);
+			pstmt.setInt(2, reportBlack.getMemberNo());
+			pstmt.setString(3, reportBlack.getReportCode());
 			
 			
 			blackList = pstmt.executeUpdate();
@@ -412,9 +414,9 @@ public class NoticeDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pageInfo.getStartPage());
+			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, pageInfo.getEndRow());
-			
+			System.out.println(pstmt);
 			rset = pstmt.executeQuery();
 			
 			reportList = new ArrayList<>();
@@ -501,6 +503,148 @@ public class NoticeDAO {
 				
 				
 		return reportList;
+	}
+
+	public int selectReportCount(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int reportTotalCount = 0;
+		
+		String query = prop.getProperty("selectReportCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				reportTotalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return reportTotalCount;
+		
+	}
+
+	public int searchReportConunt(Connection con, String searchCondition, String searchValue) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int reportCount = 0;
+		
+		String query = null;
+		
+		if("writer".equals(searchCondition)) {
+			query = prop.getProperty("reportWriterCount");
+		} else if("title".contentEquals(searchCondition)) {
+			query = prop.getProperty("reportTitleCount");
+		} else if("content".equals(searchCondition)) {
+			query = prop.getProperty("reportContentCount");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				reportCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return reportCount;
+	}
+
+	public NoticeDTO selectReportDetail(Connection con, int no) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		NoticeDTO reportDetail = null;
+		
+		String query = prop.getProperty("selectReportDetail");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+					System.out.println("ㅇ재댜ㅓㄹㅈ대ㅑ러");
+			if(rset.next()) {
+				reportDetail = new NoticeDTO();
+				reportDetail.setCategory(new CategoryDTO());
+				reportDetail.setWriter(new MemberDTO());
+				reportDetail.setReportCode(new BlackListDTO());
+				reportDetail.setReportType(new ReportCategoryDTO());
+				
+				reportDetail.setNo(rset.getInt("NOTICE_NO"));
+				reportDetail.setCategoryCode(rset.getString("NOTICE_CATEGORY_CODE"));
+				reportDetail.setTitle(rset.getString("NOTICE_SUBJECT"));
+				reportDetail.setBody(rset.getString("NOTICE_BODY"));
+				reportDetail.setWriterMemberNo(rset.getInt("MEMBER_NO"));
+				reportDetail.getWriter().setName(rset.getString("MEMBER_NAME"));
+				reportDetail.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
+				reportDetail.getReportCode().setReportCode(rset.getString("REPORT_CODE"));
+				reportDetail.getReportType().setReportType(rset.getString("REPORT_TYPE"));
+				reportDetail.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
+				
+				System.out.println("ㅁㄴㅇㄹㅈㄷㄹ" + reportDetail);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+		
+		return reportDetail;
+	}
+
+	public int selectNumber(Connection con, BlackListDTO reportBlack) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("selectNumber");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, reportBlack.getMemberNo());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("NOTICE_NO");
+			}
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return result;
 	}
 
 	
