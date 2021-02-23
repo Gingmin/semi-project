@@ -36,7 +36,7 @@ public class NoticeReportServlet extends HttpServlet {
 		System.out.println("페이지넘버 : " + pageNo);
 		
 		NoticeService noticeService = new NoticeService();
-		int totalCount = noticeService.selectTotalCount();
+		int totalCount = noticeService.selectReportCount();
 		
 		System.out.println("토탈카운트 :" + totalCount);
 		

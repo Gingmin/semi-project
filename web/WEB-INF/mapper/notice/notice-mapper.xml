@@ -78,6 +78,7 @@
 	<entry key="selectAllNoticeDetail">
 		SELECT
 	            A.NOTICE_NO
+	          , A.NOTICE_CATEGORY_CODE   
 	          , A.NOTICE_SUBJECT
 	          , A.NOTICE_BODY
 	          , A.MEMBER_NO
@@ -111,7 +112,8 @@
 		SELECT
 		       COUNT(*)
 		  FROM TBL_NOTICE A
-		 WHERE A.NOTICE_STATUS = 'Y'      
+		 WHERE A.NOTICE_STATUS = 'Y'  
+		   AND A.NOTICE_CATEGORY_CODE = 'NT'    
 	</entry>
 	
 	<entry key="searchWriterCount">
@@ -120,6 +122,7 @@
           FROM TBL_NOTICE A
           JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
          WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'NT' 
            AND B.MEMBER_NAME LIKE '%' || ? || '%'
 	</entry>
 	
@@ -128,6 +131,7 @@
                COUNT(*)
           FROM TBL_NOTICE A
          WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'NT' 
            AND A.NOTICE_SUBJECT LIKE '%' || ? || '%'
 	</entry>
 	
@@ -136,6 +140,7 @@
                COUNT(*)
           FROM TBL_NOTICE A          
          WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'NT' 
            AND A.NOTICE_BODY LIKE '%' || ? || '%'
 	</entry>
 	
@@ -295,6 +300,7 @@
           INTO TBL_REPORT B
        (
          B.REPORT_NO
+       , B.REPORT_NOTICE_NO 
        , B.REPORT_MEMBER_NO
        , B.REPORT_CODE 
        , B.REPORT_DATE
@@ -303,6 +309,7 @@
        VALUES
        ( 
          SEQ_REPORT_NO.NEXTVAL
+       , ? 
        , ? 
        , ?
        , SYSDATE
@@ -388,7 +395,7 @@
                             JOIN TBL_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                            WHERE C.NOTICE_STATUS = 'Y' 
                              AND C.NOTICE_CATEGORY_CODE = 'RPR'
-                             AND C.MEMBER_NAME LIKE '%' || ? || '%'
+                             AND E.MEMBER_NAME LIKE '%' || ? || '%'
                            ORDER BY C.NOTICE_NO DESC
                         ) B
                  ) A
@@ -479,6 +486,78 @@
                         ) B
                  ) A
              WHERE A.RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="selectReportCount">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_NOTICE A
+		 WHERE A.NOTICE_STATUS = 'Y'  
+		   AND A.NOTICE_CATEGORY_CODE = 'RPR'    
+	</entry>
+	
+	<entry key="reportWriterCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A
+          JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'RPR' 
+           AND B.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="reportTitleCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'RPR' 
+           AND A.NOTICE_SUBJECT LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="reportContentCount">
+		SELECT
+               COUNT(*)
+          FROM TBL_NOTICE A          
+         WHERE A.NOTICE_STATUS = 'Y'
+           AND A.NOTICE_CATEGORY_CODE = 'RPR' 
+           AND A.NOTICE_BODY LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="selectReportDetail">
+		SELECT
+	            A.NOTICE_NO
+	          , A.NOTICE_CATEGORY_CODE   
+	          , A.NOTICE_SUBJECT
+	          , A.NOTICE_BODY
+	          , A.MEMBER_NO
+	          , B.MEMBER_NAME
+	          , A.NOTICE_VIEW_COUNT
+              , C.REPORT_CODE
+              , D.REPORT_TYPE
+	          , A.NOTICE_REGIST_DATE
+	      FROM TBL_NOTICE A
+	      JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
+          JOIN TBL_REPORT C ON (A.MEMBER_NO = C.REPORT_MEMBER_NO)
+          JOIN TBL_REPORT_CATEGORY D ON(C.REPORT_CODE = D.REPORT_CODE)
+	     WHERE A.NOTICE_STATUS = 'Y'
+           AND NOTICE_CATEGORY_CODE = 'RPR'
+	       AND A.NOTICE_NO = ?
+	</entry>
+	
+	<entry key="selectNumber">
+		 SELECT
+                A.RNUM
+              , A.NOTICE_NO                
+           FROM (SELECT ROWNUM RNUM
+                      , B.NOTICE_NO                          
+                   FROM (SELECT C.NOTICE_NO                              
+                           FROM TBL_NOTICE C                            
+                          WHERE MEMBER_NO = ?                             
+                          ORDER BY C.NOTICE_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN 1 AND 1 
 	</entry>
 	
 </properties>

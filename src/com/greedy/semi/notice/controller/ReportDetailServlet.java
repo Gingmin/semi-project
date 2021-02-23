@@ -12,29 +12,33 @@ import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.service.NoticeService;
 
 
-@WebServlet("/notice/detail")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/report/detail")
+public class ReportDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		NoticeDTO noticeDetail = new NoticeService().selectNoticeDetail(no);
+		NoticeDTO reportDetail = new NoticeService().selectReportDetail(no);
 		
-		System.out.println("서비스 :" + noticeDetail);
-		String path = "";
-		if(noticeDetail != null) {
-			path = "/WEB-INF/views/notice/notice_detail.jsp";
-			request.setAttribute("notice", noticeDetail);
-			
+		System.out.println("서블릿리포트 : " + reportDetail);
+		
+		String path= "";
+		if(reportDetail != null) {
+			path = "/WEB-INF/views/notice/report_detail.jsp";
+			request.setAttribute("report", reportDetail);
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "공지사항 상세 보기 조회에 실패하셨습니다.");
+			request.setAttribute("message", "신고내역 상세 보기조회에 실패하셨습니다.");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
 }

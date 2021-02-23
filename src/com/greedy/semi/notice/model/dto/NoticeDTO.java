@@ -12,6 +12,8 @@ public class NoticeDTO implements java.io.Serializable {
 	private String body;
 	private String categoryCode;
 	private CategoryDTO category;
+	private BlackListDTO reportCode;
+	private ReportCategoryDTO reportType;
 	private int writerMemberNo;
 	private MemberDTO writer;
 	private int count;
@@ -20,14 +22,17 @@ public class NoticeDTO implements java.io.Serializable {
 	
 	public NoticeDTO() {}
 
-	public NoticeDTO(int no, String title, String body, String categoryCode, CategoryDTO category, int writerMemberNo,
-			MemberDTO writer, int count, Date createdDate, String status) {
+	public NoticeDTO(int no, String title, String body, String categoryCode, CategoryDTO category,
+			BlackListDTO reportCode, ReportCategoryDTO reportType, int writerMemberNo, MemberDTO writer, int count,
+			Date createdDate, String status) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.body = body;
 		this.categoryCode = categoryCode;
 		this.category = category;
+		this.reportCode = reportCode;
+		this.reportType = reportType;
 		this.writerMemberNo = writerMemberNo;
 		this.writer = writer;
 		this.count = count;
@@ -75,6 +80,22 @@ public class NoticeDTO implements java.io.Serializable {
 		this.category = category;
 	}
 
+	public BlackListDTO getReportCode() {
+		return reportCode;
+	}
+
+	public void setReportCode(BlackListDTO reportCode) {
+		this.reportCode = reportCode;
+	}
+
+	public ReportCategoryDTO getReportType() {
+		return reportType;
+	}
+
+	public void setReportType(ReportCategoryDTO reportType) {
+		this.reportType = reportType;
+	}
+
 	public int getWriterMemberNo() {
 		return writerMemberNo;
 	}
@@ -118,10 +139,13 @@ public class NoticeDTO implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "NoticeDTO [no=" + no + ", title=" + title + ", body=" + body + ", categoryCode=" + categoryCode
-				+ ", category=" + category + ", writerMemberNo=" + writerMemberNo + ", writer=" + writer + ", count="
-				+ count + ", createdDate=" + createdDate + ", status=" + status + "]";
+				+ ", category=" + category + ", reportCode=" + reportCode + ", reportType=" + reportType
+				+ ", writerMemberNo=" + writerMemberNo + ", writer=" + writer + ", count=" + count + ", createdDate="
+				+ createdDate + ", status=" + status + "]";
 	}
 
+	
+	
 	
 	
 }

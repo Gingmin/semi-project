@@ -28,7 +28,7 @@ public class NoticeService {
 		Connection con = getConnection();
 
 		List<NoticeDTO> noticeList = noticeDAO.selectAllNoticeList(con, pageInfo);
-		System.out.println("셀렉트올노티스리스트");
+		
 		close(con);
 
 		return noticeList;
@@ -150,8 +150,11 @@ public class NoticeService {
 		
 		int result = noticeDAO.insertReport(con, reportNotice);
 		
+		int no = noticeDAO.selectNumber(con, reportBlack);
+		
+		System.out.println("노노노노노노" + no);
 		if(result > 0) {
-			int blackList = noticeDAO.insertBlack(con, reportBlack);
+			int blackList = noticeDAO.insertBlack(con, reportBlack, no);
 			
 			if(blackList > 0) {
 				commit(con);
@@ -185,6 +188,53 @@ public class NoticeService {
 		
 		return reportList;
 		
+	}
+
+	public int selectReportCount() {
+		
+		Connection con = getConnection();
+		
+		int reportTotalCount = noticeDAO.selectReportCount(con);
+		
+		close(con);
+		
+				
+		return reportTotalCount;
+	}
+
+	public int searchReportCount(String searchCondition, String searchValue) {
+
+		Connection con = getConnection();
+		
+		int reportCount = noticeDAO.searchReportConunt(con, searchCondition, searchValue);
+		
+		close(con);
+		
+		return reportCount;
+	}
+
+	public NoticeDTO selectReportDetail(int no) {
+	
+		Connection con = getConnection();
+		
+		NoticeDTO reportDetail = null;
+		
+		int result = noticeDAO.incrementNoticeCount(con, no);
+		
+		System.out.println("서비스 디테일" + result);
+		
+		if(result > 0) {
+			reportDetail = noticeDAO.selectReportDetail(con, no);
+			System.out.println("리포트디텔" + reportDetail );
+			if(reportDetail != null) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		} else {
+			close(con);
+		}
+		return reportDetail;
 	}
 
 }
