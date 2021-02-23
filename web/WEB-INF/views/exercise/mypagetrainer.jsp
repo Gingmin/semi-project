@@ -33,15 +33,20 @@
 					나의 프로필
 				</div>
 				<div class="row">
+				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
 					<div class="profile_img_area">
 						<div class="profile_img">
-							<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+							<img class="img_detail" id="trainerImg">
 						</div>
 						<div class="profile_btn_area">
-							<input class="edit_btn" id="profileEdit" type="file" value="프로필 편집" />	
+						<label for="profileEdit" class="edit_btn">프로필 편집</label>
+							<input type="file" class="edit_btn" id="profileEdit" name="profileEdit" onchange="loadImg(this, 1)">
 							  
+							  <label for="edit" class="edit_btn">수정하기</label>
+							  <button type="submit" id="edit"></button>
 						</div>						
 					</div>
+					</form>
 					<div class="profile_info_area">
 						<div class="info_item">
 							밍키
@@ -227,7 +232,60 @@
 		})
 	})
 </script>
+<script>
+	const $contentImgArea1 = document.getElementById("profile_img");
+	
+	$profileImg.onclick = function() {
+		document.getElementById("profileEdit").click();
+	}
+	function loadImg(value, num) {
+		if(value.files && value.files[0]) {
+			const reader = new FileReader();
+			
+			reader.onload = function(e) {
+				switch(num) {
+				case 1 :
+					document.getElementById("trainerImg").src = e.target.result;
+				}
+			}
+			
+			reader.readAsDataURL(value.files[0]);
+		}
+	}
+</script>
 
 		
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

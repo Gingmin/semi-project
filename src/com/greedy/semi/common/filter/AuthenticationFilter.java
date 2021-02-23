@@ -135,6 +135,7 @@ public class AuthenticationFilter implements Filter {
 		trainerPermitList.add("/class/detail");
 		trainerPermitList.add("/trainer/sales_details");
 		trainerPermitList.add("/trainer/detail");
+		trainerPermitList.add("/trainer/profileEdit");
 		
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");

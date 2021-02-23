@@ -9,7 +9,7 @@
 .container .profile_area .row .profile_img_area .profile_img{width: 300px; height: 300px; border-radius: 150px; box-shadow: 0 0 20px 0 black; margin: 0 auto;}
 .container .profile_area .row .profile_img_area .profile_img .img_detail{ width: 100%;  height: 100%; border-radius: 150px; }
 
-.container .profile_area .row .profile_img_area .profile_btn_area{text-align: center; padding: 30px;}
+.container .profile_area .row .profile_img_area .profile_btn_area{text-align: center; padding: 30px; display: flex;}
 .container .profile_area .row .profile_img_area .profile_btn_area .edit_btn{  font-size: 18px; border: 1px solid black; display: block; width: 150px; margin: 0 auto;
     line-height: 30px; color: white; background-color: black; }
 
@@ -83,6 +83,42 @@
 	display: flex;
 }
 
+.profile_btn_area label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #fff;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #5cb85c;
+  cursor: pointer;
+  border: 1px solid #4cae4c;
+  border-radius: .25em;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.profile_btn_area input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.profile_btn_area button[type="submit"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 
 .switch {
