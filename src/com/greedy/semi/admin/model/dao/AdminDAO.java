@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.admin.model.dto.AmountDTO;
+import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
@@ -1132,6 +1133,57 @@ public class AdminDAO {
 
 		return memberList;
 
+	}
+
+	public MemberDTO selectMemberDetail(Connection con, int no) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectMemberDetail");
+				
+		MemberDTO memberDetail = null;
+		System.out.println("dao");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				System.out.println("if문");
+				memberDetail = new MemberDTO();
+				memberDetail.setAmountDTO(new AmountDTO());
+				memberDetail.setPurchaseProductDTO(new PurchaseProductDTO());
+				
+				memberDetail.setNo(rset.getInt("MEMBER_NO"));
+				memberDetail.setEmail(rset.getString("EMAIL"));
+				memberDetail.setName(rset.getString("MEMBER_NAME"));
+				memberDetail.setPhone(rset.getString("PHONE"));
+				memberDetail.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				memberDetail.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				memberDetail.setBlackStatus(rset.getString("BLACK_STATUS"));
+				memberDetail.setRole(rset.getString("MEMBER_ROLE"));
+				memberDetail.setStatus(rset.getString("MEMBER_STATUS"));
+				memberDetail.getAmountDTO().setAmount(rset.getInt("PT_AMOUNT"));
+				memberDetail.getAmountDTO().setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
+				memberDetail.getPurchaseProductDTO().setPurCode(rset.getString("PURCHASE_CODE"));
+				memberDetail.getPurchaseProductDTO().setProCode(rset.getString("PRODUCT_CODE"));
+				memberDetail.getPurchaseProductDTO().setPrice(rset.getInt("PURCHASE_PRICE"));
+				memberDetail.getPurchaseProductDTO().setPurDate(rset.getDate("PURCHASE_DATE"));
+				memberDetail.getPurchaseProductDTO().setPermitNo(rset.getInt("PURCHASE_PERMIT_NO"));
+				memberDetail.getPurchaseProductDTO().setPurStatus(rset.getString("PURCHASE_STATUS"));
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("dao의 memberDetail : " + memberDetail);
+		return memberDetail;
 	}
 
 
