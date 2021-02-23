@@ -63,9 +63,13 @@
 									★ 무제한으로 이용 가능
 								</div>
 							</div>
-							<div class="ticket_btn_area">
-								<input type="button" class="ticket_btn_detail" value="30,000원" id="ticketBtn">
-							</div>
+							<form action="${ pageContext.servletContext.contextPath }/member/paymentResult" method="get">
+								<input value="MEM_1" name="productValue">
+								<div class="ticket_btn_area">
+									<input type="submit" class="ticket_btn_detail" value="30,000원" id="ticketBtn">
+									<input value="${ requestScope.productPrice }">
+								</div>
+							</form>
 						</div>
 						<div class="ticket_area">
 							<div class=ticket_textarea>
