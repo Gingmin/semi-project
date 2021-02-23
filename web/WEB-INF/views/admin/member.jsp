@@ -357,14 +357,14 @@
 									if(document.getElementById("searchStartPage")){
 								        const $searchStartPage = document.getElementById("searchStartPage");
 								        $searchStartPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=1&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
+								           location.href = searchLink + "?currentPage=1&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
 								        }
 								     }
 								     
 								    if(document.getElementById("searchPrevPage")){
 								        const $searchPrevPage = document.getElementById("searchPrevPage");
 								        $searchPrevPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
 								           
 								        }
 								        
@@ -373,7 +373,7 @@
 								    if(document.getElementById("searchNextPage")){
 								        const $searchNextPage = document.getElementById("searchNextPage");
 								        $searchNextPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
 								        }
 								        
 								    }
@@ -381,13 +381,14 @@
 								    if(document.getElementById("searchMaxPage")){
 								        const $searchMaxPage = document.getElementById("searchMaxPage");
 								        $searchMaxPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
 								        }
 								        
 								    }
 								     
 								    function searchPageButtonAction(text) {
-								        location.href = searchLink + "?currentPage=" + text + "&name=${ request.searchMember.name }&memberNo=${ request.searchMember.no }&phone=${ request.searchMember.phone }&ptYn=${ request.ptYn }";
+								     console.log(text);
+								    	location.href = searchLink + "?currentPage=" + text + "&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
 								    }
 								    
 								    /*효과*/
