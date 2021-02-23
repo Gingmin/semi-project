@@ -71,11 +71,22 @@ public class AdminService {
 		System.out.println("searchMemberList no : " + no);
 		System.out.println("searchMemberList phone : " + phone);
 		
-		List<MemberDTO> boardList = adminDAO.searchMemberList(con, name, no, phone, ptAmount, pageInfo);
+		List<MemberDTO> memberList = adminDAO.searchMemberList(con, name, no, phone, ptAmount, pageInfo);
 		
 		close(con);
 		
-		return boardList;
+		return memberList;
+	}
+
+	public MemberDTO selectMemberDetail(int no) {
+
+		Connection con = getConnection();
+		
+		MemberDTO memberDetail = adminDAO.selectMemberDetail(con, no);
+		
+		close(con);
+		
+		return memberDetail;
 	}
 
 }

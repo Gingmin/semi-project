@@ -237,9 +237,9 @@
 										<th class="border-top-0">멤버쉽만료일자</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="detailMember">
 									<c:forEach var="member" items="${ requestScope.memberList }">
-									<tr class="detail">
+									<tr>
 										<td><c:out value="${ member.no }"/></td>
 										<td><c:out value="${ member.email }"/></td>
 										<td><c:out value="${ member.name }"/></td>
@@ -392,7 +392,7 @@
 								    }
 								    
 								    /*효과*/
-								    
+								    /*
 								    if(document.getElementsByTagName("td")) {
 								 		const $tds = document.getElementsByTagName("td");
 								 		
@@ -410,14 +410,29 @@
 								 			
 								 		}
 								 	}
-								    
-								    if(document.getElementBy)
-								    
-								 		    $tds[i].onclick = function() {
-								 				const no = this.parentNode.children[0].innerText;
+								    */
+								    if(document.getElementById("detailMember")) {
+								    	const $detailMember = document.getElementById("detailMember");
+								    	const $tdds = $detailMember.childNodes;
+								    	
+								    	for(let i = 0; i <$tdds.length; i++) {
+								    		
+								    		$tdds[i].onmouseenter = function() {
+								 				this.style.background = "#e9ecef";
+								 				this.style.cursor = "pointer";
+								 			}
+								 			
+								 			$tdds[i].onmouseout = function() {
+								 				this.style.background = "white";
+								 			}
+								    		
+								 		    $tdds[i].onclick = function() {
+								 				const no = this.children[0].innerText;
 								 				
 								 				location.href = "${ pageContext.servletContext.contextPath }/admin/member/detail?no=" + no;
 								 			} 
+								    	}
+								    }
 								    
 								</script>
 							</div>

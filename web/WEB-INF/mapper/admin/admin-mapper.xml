@@ -1348,4 +1348,28 @@
 		       ) B
 		WHERE B.RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectMemberDetail">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberDetail() */
+               F.MEMBER_NO
+             , F.EMAIL
+             , F.MEMBER_NAME
+             , F.PHONE
+             , F.ENROLL_DATE
+             , F.MODIFIED_DATE
+             , F.BLACK_STATUS
+             , F.MEMBER_ROLE
+             , F.MEMBER_STATUS
+             , G.PT_AMOUNT
+             , G.MEMBERSHIP_EXP_DATE
+             , H.PURCHASE_CODE
+             , H.PRODUCT_CODE
+             , H.PURCHASE_PRICE
+             , H.PURCHASE_DATE
+             , H.PURCHASE_PERMIT_NO
+             , H.PURCHASE_STATUS
+          FROM TBL_MEMBER F
+          JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+          JOIN TBL_PURCHASE_PRODUCT H ON (F.MEMBER_NO = H.MEMBER_NO)
+         WHERE F.MEMBER_NO = ?
+	</entry>
 </properties>
