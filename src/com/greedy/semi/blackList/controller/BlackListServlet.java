@@ -1,5 +1,6 @@
 package com.greedy.semi.blackList.controller;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ import com.greedy.semi.notice.model.service.NoticeService;
 import net.coobird.thumbnailator.Thumbnails;
 
 
+
+
 @WebServlet("/black/list")
 public class BlackListServlet extends HttpServlet {
 	
@@ -40,37 +43,39 @@ public class BlackListServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		if(ServletFileUpload.isMultipartContent(request)) {
+			
 			String rootLocation = getServletContext().getRealPath("/");
-			int MaxFileSize = 1024 * 1024 * 10;
+			int maxFileSize = 1024 * 1024 * 10;
 			String encodingType = "UTF-8";
 			
 			String fileUploadDirectory = rootLocation + "/resources/attachment/report/original/";
-			String thumbnailDirectory = rootLocation + "/resources/attachment/report/thumbnail";
+			String thumbnailDirectory = rootLocation + "/resources/attachment/report/thumbnail/";
 			
 			File directory1 = new File(fileUploadDirectory);
 			File directory2 = new File(thumbnailDirectory);
 			
 			if(!directory1.exists() || !directory2.exists()) {
-				System.out.println("원본 폴더 생성 : " + directory1.mkdir());
-				System.out.println("썸네일 폴더 생성 : " + directory2.mkdir());
+				System.out.println("원본 저장 폴더 생성 : " + directory1.mkdirs());
+				System.out.println("썸네일 저장 폴더 생성 : " + directory2.mkdirs());
 			}
-			
-			
+		
 			Map<String, String> parameter = new HashMap<>();
 			List<Map<String, String>> fileList = new ArrayList<>();
 			
-			DiskFileItemFactory fileFactory = new DiskFileItemFactory();
-			fileFactory.setRepository(new File(fileUploadDirectory));
-			fileFactory.setSizeThreshold(MaxFileSize);
+			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+			fileItemFactory.setRepository(new File(fileUploadDirectory));
+			fileItemFactory.setSizeThreshold(maxFileSize);
 			
-			ServletFileUpload fileUpload = new ServletFileUpload(fileFactory);
-			
+			ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
+		
+		
 			try {
 				List<FileItem> fileItems = fileUpload.parseRequest(request);
 				
 				for(FileItem item : fileItems) {
-					System.out.println(item);
+					System.out.println("블랙리스트 서블릿 아이템 : " + item);
 				}
 				
 				for(int i = 0; i < fileItems.size(); i++) {
@@ -78,6 +83,7 @@ public class BlackListServlet extends HttpServlet {
 					FileItem item = fileItems.get(i);
 					
 					if(!item.isFormField()) {
+						
 						if(item.getSize() > 0) {
 							String fieldName = item.getFieldName();
 							String originFileName = item.getName();
@@ -85,32 +91,38 @@ public class BlackListServlet extends HttpServlet {
 							int dot = originFileName.lastIndexOf(".");
 							String ext = originFileName.substring(dot);
 							
+							
 							String randomFileName = UUID.randomUUID().toString().replace("-","") + ext;
 							
 							File storeFile = new File(fileUploadDirectory + randomFileName);
 							
 							item.write(storeFile);
 							
-							Map<String, String>fileMap = new HashMap<>();
+							Map<String, String> fileMap = new HashMap<>();
 							fileMap.put("fieldName", fieldName);
 							fileMap.put("originFileName", originFileName);
 							fileMap.put("savedFileName", randomFileName);
 							fileMap.put("savePath", fileUploadDirectory);
 							
-							Thumbnails.of(fileUploadDirectory + randomFileName).toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
+							int width = 150;
+							int height = 120;
 							
-							fileMap.put("thumbnailPath", "/resources/attachment/report/thumbnail_" + randomFileName);
+							Thumbnails.of(fileUploadDirectory + randomFileName).size(width, height).toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
+							
+							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
 						}
+						
 					} else {
+						
 						parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"),"UTF-8"));
 					}
-					
 				}
 				
-				System.out.println("파라미터 : " + parameter);
-				System.out.println("파일리스트 : " + fileList);
+				System.out.println("parameter : " + parameter);
+				System.out.println("fileList : " + fileList);
+				
 				
 				String title = request.getParameter("title");
 				String body = request.getParameter("body");
@@ -119,25 +131,18 @@ public class BlackListServlet extends HttpServlet {
 				String searchCode = request.getParameter("searchCode");
 				
 				
-				System.out.println(writer);
-				System.out.println(writerMemberNo);
-				System.out.println(title);
-				System.out.println(body);
-				System.out.println(searchCode);
+				System.out.println("블랙리스트 서블릿 글쓴이 : " + writer);
+				System.out.println("블랙리스트 서블릿 글쓴이 번호 : " + writerMemberNo);
+				System.out.println("블랙리스트 서블릿 제목: " + title);
+				System.out.println("블랙리스트 서블릿 바디 : " + body);
+				System.out.println("블랙리스트 서블릿 써치 코드 : " + searchCode);
 				
 				NoticeDTO reportNotice = new NoticeDTO();
 				BlackListDTO reportBlack = new BlackListDTO();
 				
-				
-				reportBlack.setMemberNo(writerMemberNo);
-				reportBlack.setReportCode(searchCode);
-				reportNotice.setTitle(title);
-				reportNotice.setBody(body);
-				reportNotice.setWriterMemberNo(writerMemberNo);
-				
 				reportNotice.setAttachmentDTO(new ArrayList<NTAttachmentDTO>());
 				List<NTAttachmentDTO> list = reportNotice.getAttachmentDTO();
-				for(int i = 0; i < fileList.size(); i ++) {
+				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String>file = fileList.get(i);
 					
 					NTAttachmentDTO tempFileInfo = new NTAttachmentDTO();
@@ -148,9 +153,13 @@ public class BlackListServlet extends HttpServlet {
 					
 					list.add(tempFileInfo);
 					
-																				
 				}
 				
+				reportBlack.setMemberNo(writerMemberNo);
+				reportBlack.setReportCode(searchCode);
+				reportNotice.setTitle(title);
+				reportNotice.setBody(body);
+				reportNotice.setWriterMemberNo(writerMemberNo);
 				
 				
 				int result = new NoticeService().insertReport(reportNotice, reportBlack);
@@ -165,6 +174,11 @@ public class BlackListServlet extends HttpServlet {
 				}
 				
 				request.getRequestDispatcher(path).forward(request, response);
+				
+				
+				
+				
+				
 				
 			
 			} catch (Exception e) {
@@ -187,10 +201,8 @@ public class BlackListServlet extends HttpServlet {
 					System.out.println("사진 삭제 실페!");
 				}
 			}
-			
-		}
-				
 		
+		}
 	}
 
 }

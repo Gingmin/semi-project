@@ -19,6 +19,7 @@ public class NoticeDTO implements java.io.Serializable {
 	private int count;
 	private java.sql.Date createdDate;
 	private String status;
+	
 	private List<NTAttachmentDTO> attachmentDTO;
 	
 	public NoticeDTO() {}
