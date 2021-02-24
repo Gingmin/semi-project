@@ -17,6 +17,7 @@ import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.BlackListDTO;
 import com.greedy.semi.notice.model.dto.CategoryDTO;
+import com.greedy.semi.notice.model.dto.NTAttachmentDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 import com.greedy.semi.notice.model.dto.ReportCategoryDTO;
@@ -586,11 +587,10 @@ public class NoticeDAO {
 			rset = pstmt.executeQuery();
 					System.out.println("ㅇ재댜ㅓㄹㅈ대ㅑ러");
 			if(rset.next()) {
-				reportDetail = new NoticeDTO();
-				reportDetail.setCategory(new CategoryDTO());
+				reportDetail = new NoticeDTO();				
 				reportDetail.setWriter(new MemberDTO());
-				reportDetail.setReportCode(new BlackListDTO());
-				reportDetail.setReportType(new ReportCategoryDTO());
+				reportDetail.setBlackListDTO(new BlackListDTO());
+				reportDetail.setReportCategoryDTO(new ReportCategoryDTO());
 				
 				reportDetail.setNo(rset.getInt("NOTICE_NO"));
 				reportDetail.setCategoryCode(rset.getString("NOTICE_CATEGORY_CODE"));
@@ -599,9 +599,10 @@ public class NoticeDAO {
 				reportDetail.setWriterMemberNo(rset.getInt("MEMBER_NO"));
 				reportDetail.getWriter().setName(rset.getString("MEMBER_NAME"));
 				reportDetail.setCount(rset.getInt("NOTICE_VIEW_COUNT"));
-				reportDetail.getReportCode().setReportCode(rset.getString("REPORT_CODE"));
-				reportDetail.getReportType().setReportType(rset.getString("REPORT_TYPE"));
+				reportDetail.getBlackListDTO().setReportNoticeNo(rset.getInt("REPORT_NOTICE_NO"));
+				reportDetail.getReportCategoryDTO().setReportType(rset.getString("REPORT_TYPE"));
 				reportDetail.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
+				
 				
 				System.out.println("ㅁㄴㅇㄹㅈㄷㄹ" + reportDetail);
 			}
@@ -642,6 +643,32 @@ public class NoticeDAO {
 		} finally {
 			close(pstmt);
 			close(rset);
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection con, NTAttachmentDTO ntAttachmentDTO) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, ntAttachmentDTO.getNoticeNo());
+			pstmt.setString(2, ntAttachmentDTO.getOriginalName());
+			pstmt.setString(3, ntAttachmentDTO.getFileName());
+			pstmt.setString(4, ntAttachmentDTO.getFilePath());
+			pstmt.setString(5, ntAttachmentDTO.getThumbnailPath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
 		
 		return result;

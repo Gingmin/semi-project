@@ -41,21 +41,14 @@
 		<div class="container">
 			<div class="notice_menu_area">
 				<div class="row">
-					<div class="menu_list col-sm-3">
-						<input type="button" class="list_detail " value="공지사항"
-							id="noticeNotice">
+					<div class="menu_list col-sm-4">
+						<input type="button" class="list_detail " value="공지사항"	id="noticeNotice">
 					</div>
-					<div class="menu_list col-sm-3">
-						<input type="button" class="list_detail" value="리뷰"
-							id="noticeReview">
+					<div class="menu_list col-sm-4">
+						<input type="button" class="list_detail" value="신고 내역"	id="noticeReport">
 					</div>
-					<div class="menu_list col-sm-3">
-						<input type="button" class="list_detail" value="신고 내역"
-							id="noticeReport">
-					</div>
-					<div class="menu_list col-sm-3">
-						<input type="button" class="list_detail on" value="자주 묻는 질문"
-							id="noticeQuestion">
+					<div class="menu_list col-sm-4">
+						<input type="button" class="list_detail on" value="자주 묻는 질문"id="noticeQuestion">
 					</div>
 				</div>
 			</div>

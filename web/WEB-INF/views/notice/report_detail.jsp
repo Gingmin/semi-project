@@ -66,7 +66,7 @@
 						</div>	
 						<div class="report_kind">
 							사유 : 
-							<c:out value="${ requestScope.report.reportType.reportType }"></c:out>
+							<c:out value="${ requestScope.report.reportCategoryDTO.reportType }"></c:out>
 						</div>
 						<div class="notice_writer type1">작성자 : <c:out value="${ requestScope.report.writer.name }"/></div>
 					</div>	
@@ -74,8 +74,23 @@
 						<div class="writing_date"><c:out value="${ requestScope.report.createdDate }"/></div>
 						<textarea class="textarea_detail" readonly ><c:out value="${ requestScope.report.body }"/></textarea>
 					</div>
-	
-	
+					<div class="report_imgdetail_area">
+						<div class="row">
+							<div class="imgdetail_area">
+		                        <img class="report_imgdetail">
+		                     </div>
+		                     <div class="imgdetail_area" >
+		                        <img class="report_imgdetail">
+		                     </div>
+		                     <div class="imgdetail_area">
+		                        <img class="report_imgdetail">
+		                     </div>
+		                     <div class="imgdetail_area">
+		                        <img class="report_imgdetail">
+		                     </div>
+						</div>
+					</div>
+                     
 				</div>	
 				<div class="btn_area">
 					<div class="row">

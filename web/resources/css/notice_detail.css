@@ -19,8 +19,12 @@
 
 
 .notice_detail_area .row .notice_title .no_title_detail{ border:0; height: 60px; width: 450px;}
-
 .notice_detail_area .row .notice_writer .no_writer_detail{ border:0;  height: 60px; width: 55px;}
+
+.notice_detail_area .report_imgdetail_area{margin: 15px 0;}
+.notice_detail_area .report_imgdetail_area .row{margin: 0; padding: 15px;}
+.notice_detail_area .report_imgdetail_area .row .imgdetail_area{float:left; border:1px solid gray; margin-right:20px;}
+.notice_detail_area .report_imgdetail_area .row .imgdetail_area .report_imgdetail{width: 150px; height:120px;}
 
 
 
