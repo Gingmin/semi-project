@@ -85,8 +85,7 @@
 		</div>
 
 		<div class="report_area">
-			<form action="${ pageContext.servletContext.contextPath }/black/list"
-				method="post">
+			<form action="${ pageContext.servletContext.contextPath }/black/list" method="post" encType="multipart/form-data">
 				<table class="table_detail" border="1px">
 					<tr>
 						<th></th>
@@ -163,7 +162,7 @@
 		}
 		
 		function reportImg(value, num){
-			if(value,files && value.files[0]){
+			if(value.files && value.files[0]){
 				const reader = new FileReader();
 				
 				reader.onload = function(e) {
@@ -183,7 +182,7 @@
 					}
 				}
 				
-				reader.readAsEataURL(value.files[0]);
+				reader.readAsDataURL(value.files[0]);
 			}
 			
 		}
