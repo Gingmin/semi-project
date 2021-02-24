@@ -1,11 +1,14 @@
 package com.greedy.semi.admin.model.service;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
+import static com.greedy.semi.common.jdbc.JDBCTemplate.commit;
+import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.greedy.semi.admin.model.dao.AdminDAO;
+import com.greedy.semi.admin.model.dto.AmountDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
@@ -82,11 +85,71 @@ public class AdminService {
 
 		Connection con = getConnection();
 		
-		MemberDTO memberDetail = adminDAO.selectMemberDetail(con, no);
+		/* 결제한 적 있는 회원인지부터 조회 */
+		AmountDTO purchaseYN = adminDAO.selectPuchaseYN(con, no);
+		int amount = purchaseYN.getAmount();
+		java.sql.Date expDate = purchaseYN.getExpDate();
+		
+		System.out.println("amount : " + amount);
+		System.out.println("expDate : " + expDate);
+		
+		MemberDTO memberDetail = null;
+		int totalPrice = 0;
+		
+		/* 결제내역이 있을 때 전체 조회 */
+		if(amount > 0 && expDate != null) {
+			memberDetail = adminDAO.selectMemberDetail(con, no);
+			/* 총 구매 금액 검색(SUM) */
+			totalPrice = adminDAO.selectTotalPrice(con, no);
+		} else {
+			/* 결제 정보가 없으면 회원가입 내역만 조회 */
+			memberDetail = adminDAO.selectMemberNoPurchase(con, no);
+		}
+		/* 구매했으면 구매 총액 OR 없으면 0*/
+		memberDetail.getPurchaseProductDTO().setPrice(totalPrice);
 		
 		close(con);
 		
 		return memberDetail;
+	}
+
+	public List<MemberDTO> selectTrainerList(PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> trainerList = adminDAO.selectTrainerList(con, pageInfo);
+
+		close(con);
+		
+		return trainerList;
+	}
+
+	public int selectTotalTrainerCount() {
+
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.selectTotalTrainerCount(con);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public int updateTrainerApproval(int updateTrainer) {
+
+		Connection con = getConnection();
+		
+		int result = adminDAO.updateTrainerApproval(con, updateTrainer);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
 	}
 
 }

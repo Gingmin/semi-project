@@ -17,6 +17,7 @@ import com.greedy.semi.admin.model.dto.AmountDTO;
 import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.member.model.dto.TrainerInfoDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
 public class AdminDAO {
@@ -1151,7 +1152,6 @@ public class AdminDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				System.out.println("if문");
 				memberDetail = new MemberDTO();
 				memberDetail.setAmountDTO(new AmountDTO());
 				memberDetail.setPurchaseProductDTO(new PurchaseProductDTO());
@@ -1169,7 +1169,6 @@ public class AdminDAO {
 				memberDetail.getAmountDTO().setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
 				memberDetail.getPurchaseProductDTO().setPurCode(rset.getString("PURCHASE_CODE"));
 				memberDetail.getPurchaseProductDTO().setProCode(rset.getString("PRODUCT_CODE"));
-				memberDetail.getPurchaseProductDTO().setPrice(rset.getInt("PURCHASE_PRICE"));
 				memberDetail.getPurchaseProductDTO().setPurDate(rset.getDate("PURCHASE_DATE"));
 				memberDetail.getPurchaseProductDTO().setPermitNo(rset.getInt("PURCHASE_PERMIT_NO"));
 				memberDetail.getPurchaseProductDTO().setPurStatus(rset.getString("PURCHASE_STATUS"));
@@ -1186,6 +1185,206 @@ public class AdminDAO {
 		return memberDetail;
 	}
 
+	public int selectTotalPrice(Connection con, int no) {
 
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectTotalPrice");
+				
+		int totalPrice = 0;
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				totalPrice = rset.getInt("SUM(I.PURCHASE_PRICE)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return totalPrice;
+	}
+
+	public AmountDTO selectPuchaseYN(Connection con, int no) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectPuchaseYN");
+				
+		AmountDTO amountDTO = null;
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				amountDTO = new AmountDTO();
+				amountDTO.setAmount(rset.getInt("PT_AMOUNT"));
+				amountDTO.setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return amountDTO;
+	}
+
+	public MemberDTO selectMemberNoPurchase(Connection con, int no) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectMemberNoPurchase");
+				
+		MemberDTO memberDetail = null;
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memberDetail = new MemberDTO();
+				memberDetail.setAmountDTO(new AmountDTO());
+				memberDetail.setPurchaseProductDTO(new PurchaseProductDTO());
+				
+				memberDetail.setNo(rset.getInt("MEMBER_NO"));
+				memberDetail.setEmail(rset.getString("EMAIL"));
+				memberDetail.setName(rset.getString("MEMBER_NAME"));
+				memberDetail.setPhone(rset.getString("PHONE"));
+				memberDetail.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				memberDetail.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				memberDetail.setBlackStatus(rset.getString("BLACK_STATUS"));
+				memberDetail.setRole(rset.getString("MEMBER_ROLE"));
+				memberDetail.setStatus(rset.getString("MEMBER_STATUS"));
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return memberDetail;
+		
+	}
+
+	public List<MemberDTO> selectTrainerList(Connection con, PageInfoDTO pageInfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<MemberDTO> trainerList = null;
+
+		String query = prop.getProperty("selectTrainerList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			trainerList = new ArrayList<>();
+
+			while(rset.next()) {
+				MemberDTO trainer = new MemberDTO();
+				trainer.setTrainerInfoDTO(new TrainerInfoDTO());
+				
+				trainer.setNo(rset.getInt("MEMBER_NO"));
+				trainer.setEmail(rset.getString("EMAIL"));
+				trainer.setName(rset.getString("MEMBER_NAME"));
+				trainer.setPhone(rset.getString("PHONE"));
+				trainer.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				trainer.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				trainer.setBlackStatus(rset.getString("BLACK_STATUS"));
+				trainer.setRole(rset.getString("MEMBER_ROLE"));
+				trainer.setStatus(rset.getString("MEMBER_STATUS"));
+				trainer.getTrainerInfoDTO().setApprovalStatus(rset.getString("APPROVAL_STATUS"));
+
+				trainerList.add(trainer);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return trainerList;
+	}
+
+	public int selectTotalTrainerCount(Connection con) {
+
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		int totalCount = 0;
+
+		String query = prop.getProperty("selectTotalTrainerCount");
+
+		try {
+			stmt = con.createStatement();
+
+			rset = stmt.executeQuery(query);
+
+			while(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		return totalCount;
+		
+	}
+
+	public int updateTrainerApproval(Connection con, int updateTrainer) {
+
+		PreparedStatement pstmt = null;
+
+		int result = 0;
+
+		String query = prop.getProperty("updateTrainerApproval");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, updateTrainer);
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
 
 }
