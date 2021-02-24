@@ -12,7 +12,8 @@ import java.util.List;
 import com.greedy.semi.trainer.dao.ClassDAO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
-import com.greedy.semi.trainer.dto.ProfileEditDTO;
+
+import com.greedy.semi.trainer.dto.TrainerPtPermitDTO;
 
 
 public class ClassService {
@@ -108,27 +109,36 @@ public class ClassService {
 		return result;
 	}
 
-	public int editProfile(ProfileEditDTO profile) {
+	public int insertPtApplication(TrainerPtPermitDTO memberNo) {
 		
 		Connection con = getConnection();
 		
-		int insertProfile = classDAO.editProfile(con, profile);
+		int result = classDAO.insertPtApplication(con, memberNo);
 		
-		if(insertProfile > 0) {
-			ProfileEditDTO selectProfile = classDAO.profileImgSelect(con);
-			
-			if(selectProfile != null) {
-				commit(con);
-			} else {
-				rollback(con);
-			} 
+		if(result > 0) {
+			commit(con);
 		} else {
 			rollback(con);
 		}
 		
 		close(con);
 		
-		return insertProfile;
-
+		return result;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
