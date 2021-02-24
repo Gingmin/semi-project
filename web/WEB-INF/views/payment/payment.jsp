@@ -1,123 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	
-	<link rel="stylesheet" href="/semi/resources/css/index.css">
-	<link rel="stylesheet" href="/semi/resources/css/payment.css">
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
-	<!-- Rock Salt font -->
-	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
-
-	<!-- 폰트어썸 -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-
-	<title>멤버쉽 구매</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
+
 <body>
-
-	<div id="wrap">
-		<!-- 헤더 -->
-		<jsp:include page="../common/header.jsp"/>
-		<!-- 헤더 끝 -->
-		<div class="container">
-			<div class="card_info_area">
-				<div class="card_text">
-					카드 정보 입력
-				</div>
-				<form>
-					<div class="card_info">
-						<div class="card_text1">
-							카드 번호 <span class="icon_detail">*</span>	
-						</div>
-						<div class="input_area">
-							<input class="input_detail" type="text" name="카드앞자리">
-							<span>-</span>
-							<input class="input_detail" type="text" name="카드두번쨰">
-							<span>-</span>
-							<input class="input_detail" type="password" name="카드세번쨰">
-							<span>-</span>
-							<input class="input_detail" type="password" name="카드네번쨰">
-						</div>
-
-					</div>
-					<div class="card_info">
-						<div class="card_text1">
-							유효 기간(월/년) <span class="icon_detail">*</span>	
-						</div>
-						<div class="input_area">
-							<input class="input_detail type" type="text" name="">
-							
-						</div>
-
-					</div>
-					<div class="card_info">
-						<div class="card_text1">
-							생년월일 <span class="icon_detail">*</span>	
-						</div>
-						<div class="input_area">
-							<input class="input_detail type" type="text" name="">
-							
-						</div>
-
-					</div>
-					<div class="card_info">
-						<div class="card_text1">
-							비밀번호 앞 두자리 <span class="icon_detail">*</span>	
-						</div>
-						<div class="input_area">
-							<input class="input_detail type" type="text" name="">
-							
-						</div>
-					</div>
-					<div class="buybtn_area">
-						<button class="btn_detail" type="submit" data-toggle="modal" data-target="#myModal">멤버쉽 등록</button>
-					</div>						
-				</form>				
-			</div>
-
-
-			<!-- 팝업 부분 -->
-
-			<div class="modal fade" id="myModal" role="dialog">
-			    <div class="modal-dialog">
-			    	<div class="modal-content">
-				        <div class="modal-header">
-				       		<i class="fas fa-dumbbell"></i>			        	
-				        </div>
-				        <div class="modal-body">
-				        	<div class="modal_text">결제가 완료 되었습니다.</div>
-				        </div>
-				        <div class="modal-footer">
-				        	<button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
-				        </div>
-			    	</div>			      
-			    </div>
-			</div>
-			<!-- 팝업 끝 -->	  
-		</div>
-
-
-
-
-
-
-		</div>
-		<!-- 푸터 -->
-		<jsp:include page="../common/footer.jsp"/>
-		<!-- 푸터끝 -->
+	<p>
+		<p>아임 서포트 결제 모듈 테스트 해보기</p>
+		<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
+		<input value="${ requestScope.productPrice }" type="text" style="display:none;">
+	</p> 
+	<script>
 	
-
-
-
-		
+		$("#check_module").click(function() {
+			var IMP = window.IMP; // 생략가능0
+			IMP.init('imp69531077');
+			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+			IMP.request_pay({
+				pg : 'inicis', // version 1.1.0부터 지원.
+				/*
+				'kakao':카카오페이,
+				html5_inicis':이니시스(웹표준결제)
+				'nice':나이스페이
+				'jtnet':제이티넷
+				'uplus':LG유플러스
+				'danal':다날
+				'payco':페이코
+				'syrup':시럽페이
+				'paypal':페이팔
+				 */
+				pay_method : 'card',
+				/*
+				'samsung':삼성페이,
+				'card':신용카드,
+				'trans':실시간계좌이체,
+				'vbank':가상계좌,
+				'phone':휴대폰소액결제
+				 */
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				/*
+				merchant_uid에 경우
+				https://docs.iamport.kr/implementation/payment
+				위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+				참고하세요.
+				나중에 포스팅 해볼게요.
+				 */
+				name : '주문명:결제테스트',
+				//결제창에서 보여질 이름
+				amount : "${ requestScope.productPrice }",
+				//가격
+				buyer_email : 'iamport@siot.do',
+				buyer_name : '구매자이름',
+				buyer_tel : '010-1234-5678',
+				buyer_addr : '서울특별시 강남구 삼성동',
+				buyer_postcode : '123-456',
+				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			/*
+			모바일 결제시,
+			결제가 끝나고 랜딩되는 URL을 지정
+			(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+			 */
+			}, function(rsp) {
+				console.log(rsp);
+				if (rsp.success) {
+					var msg = '결제가 완료되었습니다.';
+					msg += ' 고유ID : ' + rsp.imp_uid;
+					msg += ' 상점 거래ID : ' + rsp.merchant_uid;
+					msg += ' 결제 금액 : ' + rsp.paid_amount;
+					msg += ' 카드 승인번호 : ' + rsp.apply_num;
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		});
+	</script>
 </body>
+
 </html>

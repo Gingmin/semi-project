@@ -112,6 +112,7 @@ public class AuthenticationFilter implements Filter {
 		memberPermitList.add("/member/update");
 		memberPermitList.add("/member/delete");
 		memberPermitList.add("/member/passwordChange");
+		memberPermitList.add("/member/list");
 		memberPermitList.add("/member/buy");
 		memberPermitList.add("/notice/notice");
 		memberPermitList.add("/notice/review");
