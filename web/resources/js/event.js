@@ -155,6 +155,14 @@ window.onload = function() {
 			location.href = "/semi/admin/out";
 		}
 	}
+	
+	/*관리자 페이지 블랙리스트*/
+	if(document.getElementById("blackMember")) {
+		const $blackMember = document.getElementById("blackMember");
+		$blackMember.onclick = function() {
+			location.href = "/semi/admin/black";
+		}
+	}
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {

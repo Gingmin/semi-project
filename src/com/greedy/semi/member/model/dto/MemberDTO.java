@@ -3,6 +3,7 @@ package com.greedy.semi.member.model.dto;
 import java.sql.Date;
 
 import com.greedy.semi.admin.model.dto.AmountDTO;
+import com.greedy.semi.admin.model.dto.BlackHistoryDTO;
 import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
 
 public class MemberDTO implements java.io.Serializable {
@@ -21,12 +22,13 @@ public class MemberDTO implements java.io.Serializable {
 	private AmountDTO amountDTO;
 	private PurchaseProductDTO purchaseProductDTO;
 	private TrainerInfoDTO trainerInfoDTO;
+	private BlackHistoryDTO blackHistoryDTO;
 	
 	public MemberDTO() {}
 
 	public MemberDTO(int no, String email, String pwd, String name, String phone, Date enrollDate, Date modifiedDate,
 			String blackStatus, String role, String status, AmountDTO amountDTO, PurchaseProductDTO purchaseProductDTO,
-			TrainerInfoDTO trainerInfoDTO) {
+			TrainerInfoDTO trainerInfoDTO, BlackHistoryDTO blackHistoryDTO) {
 		super();
 		this.no = no;
 		this.email = email;
@@ -41,6 +43,7 @@ public class MemberDTO implements java.io.Serializable {
 		this.amountDTO = amountDTO;
 		this.purchaseProductDTO = purchaseProductDTO;
 		this.trainerInfoDTO = trainerInfoDTO;
+		this.blackHistoryDTO = blackHistoryDTO;
 	}
 
 	public int getNo() {
@@ -147,14 +150,24 @@ public class MemberDTO implements java.io.Serializable {
 		this.trainerInfoDTO = trainerInfoDTO;
 	}
 
+	public BlackHistoryDTO getBlackHistoryDTO() {
+		return blackHistoryDTO;
+	}
+
+	public void setBlackHistoryDTO(BlackHistoryDTO blackHistoryDTO) {
+		this.blackHistoryDTO = blackHistoryDTO;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [no=" + no + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone
 				+ ", enrollDate=" + enrollDate + ", modifiedDate=" + modifiedDate + ", blackStatus=" + blackStatus
 				+ ", role=" + role + ", status=" + status + ", amountDTO=" + amountDTO + ", purchaseProductDTO="
-				+ purchaseProductDTO + ", trainerInfoDTO=" + trainerInfoDTO + "]";
+				+ purchaseProductDTO + ", trainerInfoDTO=" + trainerInfoDTO + ", blackHistoryDTO=" + blackHistoryDTO
+				+ "]";
 	}
 
+	
 	
 	
 	

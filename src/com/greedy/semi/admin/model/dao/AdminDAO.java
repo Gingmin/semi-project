@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.admin.model.dto.AmountDTO;
+import com.greedy.semi.admin.model.dto.BlackHistoryDTO;
 import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
@@ -1384,6 +1385,84 @@ public class AdminDAO {
 		}
 
 		return result;
+	}
+
+	public int selectTotalBlackCount(Connection con) {
+
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		int totalCount = 0;
+
+		String query = prop.getProperty("selectTotalBlackCount");
+
+		try {
+			stmt = con.createStatement();
+
+			rset = stmt.executeQuery(query);
+
+			while(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		return totalCount;
+		
+	}
+
+	public List<MemberDTO> selectBlackList(Connection con, PageInfoDTO pageInfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<MemberDTO> blackList = null;
+
+		String query = prop.getProperty("selectBlackList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			blackList = new ArrayList<>();
+
+			while(rset.next()) {
+				MemberDTO black = new MemberDTO();
+				black.setBlackHistoryDTO(new BlackHistoryDTO());
+				
+				black.setNo(rset.getInt("MEMBER_NO"));
+				black.setEmail(rset.getString("EMAIL"));
+				black.setName(rset.getString("MEMBER_NAME"));
+				black.setPhone(rset.getString("PHONE"));
+				black.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				black.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				black.setBlackStatus(rset.getString("BLACK_STATUS"));
+				black.setRole(rset.getString("MEMBER_ROLE"));
+				black.setStatus(rset.getString("MEMBER_STATUS"));
+				black.getBlackHistoryDTO().setConstraintNo(rset.getInt("CONSTRAINT_NO"));
+				black.getBlackHistoryDTO().setStartDate(rset.getDate("CONSTRAINT_START_DATE"));
+				black.getBlackHistoryDTO().setEndDate(rset.getDate("CONSTRAINT_END_DATE"));
+
+				blackList.add(black);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return blackList;
+		
 	}
 	
 
