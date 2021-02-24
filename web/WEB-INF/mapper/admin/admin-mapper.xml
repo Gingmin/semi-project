@@ -5,7 +5,8 @@
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTotalCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER A
-		 WHERE A.MEMBER_STATUS = 'Y'
+		 WHERE A.MEMBER_ROLE = 'MEMBER'
+		   AND A.MEMBER_STATUS = 'Y'
 	</entry>    
 	<entry key="selectMemberList">
           SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberList() */
@@ -46,6 +47,7 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+		                 WHERE D.MEMBER_ROLE = 'MEMBER' 
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -55,120 +57,68 @@
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNoCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NO LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchPhoneCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhoneCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.PHONE LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchPtCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPtCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 	</entry>
 	<entry key="searchNotPtCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPtCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
 	</entry>
 	<entry key="searchNameNoCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNamePhoneCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhoneCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNoPhoneCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhoneCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NO LIKE '%' || ? || '%'
+		 WHERE F.MEMBER_ROLE = 'MEMBER' 
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNameNoPhoneCount">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhoneCount() */
 		       COUNT(*)
 		  FROM TBL_MEMBER F
-		 WHERE F.MEMBER_NAME LIKE '%' || ? || '%'
-		   AND F.MEMBER_NO LIKE '%' || ? || '%'
-		   AND F.PHONE LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNamePtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNoPtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.MEMBER_NO LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchPhonePtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhonePtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.PHONE LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNameNoPtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
-		   AND F.MEMBER_NO LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNamePhonePtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhonePtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
-		   AND F.PHONE LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNoPhonePtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhonePtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
-		   AND F.MEMBER_NO LIKE '%' || ? || '%'
-		   AND F.PHONE LIKE '%' || ? || '%'
-	</entry>
-	<entry key="searchNameNoPhonePtCount">
-		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhonePtCount() */
-		       COUNT(*)
-		  FROM TBL_MEMBER F
-		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT > 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
 		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
@@ -178,7 +128,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNoPtCount">
@@ -186,7 +137,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchPhonePtCount">
@@ -194,7 +146,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
 	<entry key="searchNameNoPtCount">
@@ -202,7 +155,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 	</entry>
@@ -211,7 +165,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
@@ -220,7 +175,8 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
 	</entry>
@@ -229,7 +185,76 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
-		 WHERE G.PT_AMOUNT = 0
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT > 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNamePhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNamePhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
+		   AND F.MEMBER_NO LIKE '%' || ? || '%'
+		   AND F.PHONE LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNameNoPhonePtCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameNoPhonePtCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER F
+		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
+		   AND G.PT_AMOUNT = 0
 		   AND F.MEMBER_NAME LIKE '%' || ? || '%'
 		   AND F.MEMBER_NO LIKE '%' || ? || '%'
 		   AND F.PHONE LIKE '%' || ? || '%'
@@ -239,6 +264,7 @@
 		       COUNT(*)
 		  FROM TBL_MEMBER F
 		  JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
+		 WHERE F.MEMBER_ROLE = 'MEMBER'
 	</entry>
 	<entry key="searchName">
 	    SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchMemberList() */
@@ -279,7 +305,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -324,7 +351,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -369,7 +397,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.PHONE LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.PHONE LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -414,7 +443,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE E.PT_AMOUNT > 0
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -459,7 +489,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE E.PT_AMOUNT = 0
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -504,6 +535,7 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
 		       ) B
@@ -548,7 +580,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
                            AND D.MEMBER_NO LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -594,7 +627,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
                            AND D.PHONE LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -640,7 +674,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
                            AND D.PHONE LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -686,7 +721,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
                            AND D.MEMBER_NO LIKE '%' || ? || '%'
                            AND D.PHONE LIKE '%' || ? || '%'
 		                 ORDER BY D.MEMBER_NO DESC
@@ -733,7 +769,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -779,7 +816,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -825,7 +863,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.PHONE LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.PHONE LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -871,7 +910,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.MEMBER_NO '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -918,7 +958,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -965,7 +1006,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -1012,7 +1054,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.MEMBER_NO '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT > 0
@@ -1060,7 +1103,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -1106,7 +1150,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -1152,7 +1197,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.PHONE LIKE '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.PHONE LIKE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
 		          ) C
@@ -1198,7 +1244,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.MEMBER_NO '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -1245,7 +1292,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -1292,7 +1340,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NO '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NO '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
 		                 ORDER BY D.MEMBER_NO DESC
@@ -1339,7 +1388,8 @@
 		                     , E.MEMBERSHIP_EXP_DATE
 		                  FROM TBL_MEMBER D
 		                  JOIN TBL_PT_AMOUNT E ON (D.MEMBER_NO = E.MEMBER_NO)
-                         WHERE D.MEMBER_NAME '%' || ? || '%'
+		                 WHERE D.MEMBER_ROLE = 'MEMBER'
+                           AND D.MEMBER_NAME '%' || ? || '%'
                            AND D.MEMBER_NO '%' || ? || '%'
                            AND D.PHONE '%' || ? || '%'
                            AND E.PT_AMOUNT = 0
@@ -1363,13 +1413,97 @@
              , G.MEMBERSHIP_EXP_DATE
              , H.PURCHASE_CODE
              , H.PRODUCT_CODE
-             , H.PURCHASE_PRICE
              , H.PURCHASE_DATE
              , H.PURCHASE_PERMIT_NO
              , H.PURCHASE_STATUS
           FROM TBL_MEMBER F
           JOIN TBL_PT_AMOUNT G ON (F.MEMBER_NO = G.MEMBER_NO)
           JOIN TBL_PURCHASE_PRODUCT H ON (F.MEMBER_NO = H.MEMBER_NO)
-         WHERE F.MEMBER_NO = ?
+         WHERE F.MEMBER_ROLE = 'MEMBER' 
+           AND F.MEMBER_NO = ?
+	</entry>
+	<entry key="selectTotalPrice">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberDetail() */
+               SUM(I.PURCHASE_PRICE)
+          FROM TBL_PURCHASE_PRODUCT I
+         WHERE I.PURCHASE_STATUS = '완료'
+           AND I.MEMBER_NO = ?
+	</entry>
+	<entry key="selectPuchaseYN">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectPuchaseYN() */
+               J.PT_AMOUNT
+             , J.MEMBERSHIP_EXP_DATE
+          FROM TBL_PT_AMOUNT J
+         WHERE J.MEMBER_NO = ?
+	</entry>
+	<entry key="selectMemberNoPurchase">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectMemberNoPurchase() */
+               K.MEMBER_NO
+             , K.EMAIL
+             , K.MEMBER_NAME
+             , K.PHONE
+             , K.ENROLL_DATE
+             , K.MODIFIED_DATE
+             , K.BLACK_STATUS
+             , K.MEMBER_ROLE
+             , K.MEMBER_STATUS
+          FROM TBL_MEMBER K
+         WHERE F.MEMBER_ROLE = 'MEMBER' 
+           AND K.MEMBER_NO = ?
+	</entry>
+	<entry key="selectTrainerList">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTrainerList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.APPROVAL_STATUS
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.APPROVAL_STATUS
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.APPROVAL_STATUS
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_TRAINER_INFO E ON (D.MEMBER_NO = E.MEMBER_NO)
+		                 WHERE D.MEMBER_ROLE = 'TRAINER' 
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="selectTotalTrainerCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTotalTrainerCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ROLE = 'TRAINER'
+		   AND A.MEMBER_STATUS = 'Y'
+	</entry>
+	<entry key="updateTrainerApproval">
+		UPDATE /* com.greedy.semi.admin.model.dao.AdminDAO#updateTrainerApproval() */
+		       TBL_TRAINER_INFO L
+		   SET L.APPROVAL_STATUS = 'Y'
+		 WHERE L.MEMBER_NO = ?
 	</entry>
 </properties>

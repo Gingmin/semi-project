@@ -67,6 +67,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/trainer/page";
 					message = "트레이너 프로필 편집 수정에 성공했습니다!";
 					break;
+				case "adminTraunerUpdateApproval" :
+					movePath = "${ pageContext.servletContext.contextPath }/admin/trainer";
+					message = "트레이너 승인 성공";
+					break;
 			}
 			
 			alert(message);

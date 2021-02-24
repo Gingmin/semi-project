@@ -20,11 +20,13 @@ public class MemberDTO implements java.io.Serializable {
 	
 	private AmountDTO amountDTO;
 	private PurchaseProductDTO purchaseProductDTO;
+	private TrainerInfoDTO trainerInfoDTO;
 	
 	public MemberDTO() {}
 
 	public MemberDTO(int no, String email, String pwd, String name, String phone, Date enrollDate, Date modifiedDate,
-			String blackStatus, String role, String status, AmountDTO amountDTO, PurchaseProductDTO purchaseProductDTO) {
+			String blackStatus, String role, String status, AmountDTO amountDTO, PurchaseProductDTO purchaseProductDTO,
+			TrainerInfoDTO trainerInfoDTO) {
 		super();
 		this.no = no;
 		this.email = email;
@@ -38,6 +40,7 @@ public class MemberDTO implements java.io.Serializable {
 		this.status = status;
 		this.amountDTO = amountDTO;
 		this.purchaseProductDTO = purchaseProductDTO;
+		this.trainerInfoDTO = trainerInfoDTO;
 	}
 
 	public int getNo() {
@@ -136,14 +139,23 @@ public class MemberDTO implements java.io.Serializable {
 		this.purchaseProductDTO = purchaseProductDTO;
 	}
 
+	public TrainerInfoDTO getTrainerInfoDTO() {
+		return trainerInfoDTO;
+	}
+
+	public void setTrainerInfoDTO(TrainerInfoDTO trainerInfoDTO) {
+		this.trainerInfoDTO = trainerInfoDTO;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [no=" + no + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone
 				+ ", enrollDate=" + enrollDate + ", modifiedDate=" + modifiedDate + ", blackStatus=" + blackStatus
 				+ ", role=" + role + ", status=" + status + ", amountDTO=" + amountDTO + ", purchaseProductDTO="
-				+ purchaseProductDTO + "]";
+				+ purchaseProductDTO + ", trainerInfoDTO=" + trainerInfoDTO + "]";
 	}
 
+	
 	
 	
 	
