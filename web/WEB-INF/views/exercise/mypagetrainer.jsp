@@ -39,13 +39,10 @@
 						<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="200" height="150">
+							
 							</div>
-							<p>
-							<label><c:out value="${ thumbnail.no }"/></label>&nbsp;&nbsp;&nbsp;
-							<c:out value="${ thumbnail.name }"/>&nbsp;&nbsp;&nbsp;
-							<c:out value="${ thumbnail.count }"/>
+							
+				
 						</div>
 					</c:forEach>
 					
@@ -161,9 +158,11 @@
 								</div>
 							</div>
 							<div class="cm_btn_list">
+								<%-- <c:if test="${ thumbnailList.kind eq '클'}">
+								<c:out value="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"></c:out>
+								</c:if> --%>
 								<div class="cm_btn">
 									1:1클래스
-									
 								</div>
 							</div>
 							<div class="cm_btn_list">
@@ -174,16 +173,13 @@
 						</div>
 					</div>
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
 						<div class="thumb-list">
 							<div>
 								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="200" height="150">
 							</div>
 							<p>
-							<label><c:out value="${ thumbnail.no }"/></label>&nbsp;&nbsp;&nbsp;
-							<c:out value="${ thumbnail.name }"/>&nbsp;&nbsp;&nbsp;
-							<c:out value="${ thumbnail.count }"/>
 						</div>
 					</c:forEach>
 				</div>
