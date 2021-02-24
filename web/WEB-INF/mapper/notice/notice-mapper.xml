@@ -533,12 +533,12 @@
 	          , A.MEMBER_NO
 	          , B.MEMBER_NAME
 	          , A.NOTICE_VIEW_COUNT
-              , C.REPORT_CODE
+              , C.REPORT_NOTICE_NO
               , D.REPORT_TYPE
 	          , A.NOTICE_REGIST_DATE
 	      FROM TBL_NOTICE A
 	      JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
-          JOIN TBL_REPORT C ON (A.MEMBER_NO = C.REPORT_MEMBER_NO)
+          JOIN TBL_REPORT C ON (A.NOTICE_NO = C.REPORT_NOTICE_NO)     
           JOIN TBL_REPORT_CATEGORY D ON(C.REPORT_CODE = D.REPORT_CODE)
 	     WHERE A.NOTICE_STATUS = 'Y'
            AND NOTICE_CATEGORY_CODE = 'RPR'
@@ -558,6 +558,28 @@
                         ) B
                  ) A
              WHERE A.RNUM BETWEEN 1 AND 1 
+	</entry>
+	
+	<entry key="insertAttachment">
+		INSERT
+		  INTO TBL_NOTICE_ATTACHMENT T
+		(
+		  A.NOTICE_ATTACHMENT_NO
+		, A.REF_NOTICE_NO
+		, A.ORIGINAL_NAME
+		, A.FILE_NAME
+		, A.FILE_PATH
+		, A.THUMBNAIL_PATH		
+		) 
+		VALUES
+		(
+		  SEQ_REPORT_ATTACHMENT_NO.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, ?
+		, ? 
+		)
 	</entry>
 	
 </properties>

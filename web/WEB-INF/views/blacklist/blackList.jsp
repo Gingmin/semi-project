@@ -109,10 +109,28 @@
 					</tr>
 					<tr>
 						<td class="td_detail2" colspan="4">
-							<label for="inputFile">파일 첨부 : </label>
-							<input type="file" id="inputFile" name=""></td>
-						</tr>
+							<div class="file_upload">파일 첨부</div>
+		                     <div class="content-img-area1" id="contentImgArea1">
+		                        <img class="content_img_detail" id="contentImg1">
+		                     </div>
+		                     <div class="content-img-area1" id="contentImgArea2">
+		                        <img class="content_img_detail" id="contentImg2">
+		                     </div>
+		                     <div class="content-img-area1" id="contentImgArea3">
+		                        <img class="content_img_detail" id="contentImg3">
+		                     </div>
+		                     <div class="content-img-area1" id="contentImgArea4">
+		                        <img class="content_img_detail" id="contentImg4">
+		                     </div>
+						</td>
+					</tr>						
 				</table>
+				<div class="report_file_area">
+					<input type="file" id="reportFile1" name="reportFile1" onchange="reportImg(this, 1)">
+					<input type="file" id="reportFile2" name="reportFile2" onchange="reportImg(this, 2)">
+					<input type="file" id="reportFile3" name="reportFile3" onchange="reportImg(this, 3)">
+					<input type="file" id="reportFile4" name="reportFile4" onchange="reportImg(this, 4)">
+				</div>
 				<div class="reportbtn_area">
 					<button type="submit" class="btn_detail">등록하기</button>
 					<button type="reset" class="btn_detail">취소</button>
@@ -121,10 +139,58 @@
 		</div>
 	</div>
 
-
-
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp" />
 	<!-- footer -->
+	
+	<script type="text/javascript">
+		const $reportImg1 = document.getElementById("contentImgArea1");
+		const $reportImg2 = document.getElementById("contentImgArea2");
+		const $reportImg3 = document.getElementById("contentImgArea3");
+		const $reportImg4 = document.getElementById("contentImgArea4");
+	
+		$reportImg1.onclick = function() {
+			document.getElementById("reportFile1").click();
+		}
+		$reportImg2.onclick = function() {
+			document.getElementById("reportFile2").click();
+		}
+		$reportImg3.onclick = function() {
+			document.getElementById("reportFile3").click();
+		}
+		$reportImg4.onclick = function() {
+			document.getElementById("reportFile4").click();
+		}
+		
+		function reportImg(value, num){
+			if(value,files && value.files[0]){
+				const reader = new FileReader();
+				
+				reader.onload = function(e) {
+					switch(num){
+						case 1 :
+							document.getElementById("contentImg1").src = e.target.result;
+							break;
+						case 2 :
+							document.getElementById("contentImg2").src = e.target.result;
+							break;
+						case 3 :
+							document.getElementById("contentImg3").src = e.target.result;
+							break;
+						case 4 :
+							document.getElementById("contentImg4").src = e.target.result;
+							break;
+					}
+				}
+				
+				reader.readAsEataURL(value.files[0]);
+			}
+			
+		}
+		
+	</script>
+	
+	
+	
 </body>
 </html>
