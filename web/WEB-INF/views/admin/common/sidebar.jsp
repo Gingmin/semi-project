@@ -63,7 +63,7 @@
                                 <i class="fa fa-bullhorn" aria-hidden="true"></i><span class="hide-menu">신고관리</span></div>
                         </li>
                         <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false">
+                                id="blackMember" aria-expanded="false">
                                 <i class="fa fa-ban" aria-hidden="true"></i><span class="hide-menu">블랙리스트</span></div>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"

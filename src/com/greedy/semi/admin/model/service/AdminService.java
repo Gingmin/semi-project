@@ -152,4 +152,27 @@ public class AdminService {
 		return result;
 	}
 
+	public int selectTotalBlackCount() {
+
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.selectTotalBlackCount(con);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> selectBlackList(PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> blackList = adminDAO.selectBlackList(con, pageInfo);
+
+		close(con);
+		
+		return blackList;
+		
+	}
+
 }

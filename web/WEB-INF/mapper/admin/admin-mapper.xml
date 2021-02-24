@@ -1506,4 +1506,60 @@
 		   SET L.APPROVAL_STATUS = 'Y'
 		 WHERE L.MEMBER_NO = ?
 	</entry>
+	<entry key="selectTotalBlackCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTotalBlackCount() */
+		       COUNT(*)
+		  FROM TBL_MEMBER A
+		 WHERE A.BLACK_STATUS = 'Y'
+		   AND A.MEMBER_STATUS = 'N'
+	</entry>
+	<entry key="selectBlackList">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectBlackList() */
+		       B.RNUM
+		     , B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+		     , B.CONSTRAINT_NO
+		     , B.CONSTRAINT_START_DATE
+		     , B.CONSTRAINT_END_DATE
+		  FROM (SELECT ROWNUM RNUM
+		             , C.MEMBER_NO
+		             , C.EMAIL
+		             , C.MEMBER_NAME
+		             , C.PHONE
+		             , C.ENROLL_DATE
+		             , C.MODIFIED_DATE
+		             , C.BLACK_STATUS
+		             , C.MEMBER_ROLE
+		             , C.MEMBER_STATUS
+		             , C.CONSTRAINT_NO
+		             , C.CONSTRAINT_START_DATE
+		             , C.CONSTRAINT_END_DATE
+		          FROM (SELECT D.MEMBER_NO
+		                     , D.EMAIL
+		                     , D.MEMBER_NAME
+		                     , D.PHONE
+		                     , D.ENROLL_DATE
+		                     , D.MODIFIED_DATE
+		                     , D.BLACK_STATUS
+		                     , D.MEMBER_ROLE
+		                     , D.MEMBER_STATUS
+		                     , E.CONSTRAINT_NO
+		                     , E.CONSTRAINT_START_DATE
+		                     , E.CONSTRAINT_END_DATE
+		                  FROM TBL_MEMBER D
+		                  JOIN TBL_REPORT_HISTORY E ON (D.MEMBER_NO = E.CONSTRAINT_MEMBER_NO)
+		                 WHERE D.BLACK_STATUS = 'Y'
+		                   AND D.MEMBER_STATUS = 'N'
+		                 ORDER BY D.MEMBER_NO DESC
+		          ) C
+		       ) B
+		WHERE B.RNUM BETWEEN ? AND ?
+	</entry>
 </properties>
