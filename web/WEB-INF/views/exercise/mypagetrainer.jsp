@@ -170,6 +170,8 @@
 									width="200" height="150">
 							</div>
 							<p>
+							No. <label><c:out value="${ thumbnail.no }"/></label> <c:out value="${ thumbnail.name }"/><br>
+                     조회수 : <c:out value="${ thumbnail.count }"/><br>
 						</div>
 					</c:forEach>
 				</div>
