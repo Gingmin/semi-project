@@ -38,16 +38,13 @@
 		<div class="container">
 			<div class="notice_menu_area">
 				<div class="row">
-					<div class="menu_list col-sm-3">
+					<div class="menu_list col-sm-4">
 						<input type="button" class="list_detail " value="공지사항" id="noticeNotice">
 					</div>
-					<div class="menu_list col-sm-3">
-						<input type="button" class="list_detail" value="리뷰" id="noticeReview">
-					</div>
-					<div class="menu_list col-sm-3">
+					<div class="menu_list col-sm-4">
 						<input type="button" class="list_detail on" value="신고 내역" id="noticeReport">
 					</div>
-					<div class="menu_list col-sm-3">
+					<div class="menu_list col-sm-4">
 						<input type="button" class="list_detail" value="자주 묻는 질문" id="noticeQuestion">
 					</div>
 				</div>
@@ -77,16 +74,16 @@
 					<div class="report_imgdetail_area">
 						<div class="row">
 							<div class="imgdetail_area">
-		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[1].thumbnailPath }">
+		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[0].thumbnailPath }">
 		                     </div>
 		                     <div class="imgdetail_area" >
+		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[1].thumbnailPath }">
+		                     </div>
+		                     <div class="imgdetail_area">
 		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[2].thumbnailPath }">
 		                     </div>
 		                     <div class="imgdetail_area">
 		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[3].thumbnailPath }">
-		                     </div>
-		                     <div class="imgdetail_area">
-		                        <img class="report_imgdetail" src="${ pageContext.servletContext.contextPath }${ requestScope.report.attachmentDTO[4].thumbnailPath }">
 		                     </div>
 						</div>
 					</div>
@@ -95,10 +92,6 @@
 				<div class="btn_area">
 					<div class="row">
 						<input type="button" value="목록으로" class="btn_detail" onclick="location.href='${ pageContext.servletContext.contextPath}/notice/report'">
-						<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
-							<input type="button" class="btn_detail" value="수정하기" onclick="location.href='${ pageContext.servletContext.contextPath}/notice/update?no=${ requestScope.notice.no }'">
-							<input type="button" id="btn_delete" class="btn_detail" value="삭제하기" onclick="return movePath('deleteNotice')">
-						</c:if>
 					</div>
 				</div>
 			</form>
@@ -108,28 +101,6 @@
 		<jsp:include page="../common/footer.jsp"/>
 	</div>
 
-	<script type="text/javascript">
-		function movePath(intent){
-			
-			const $deleted_no = document.getElementById("deleted_no")
-			const $btn_delete = document.getElementById("btn_delete");
-			
-			let requestPath = "${ pageContext.servletContext.contextPath }";
-			switch(intent) {
-				case "deleteNotice" :
-					requestPath += "/notice/delete";
-					break;
-			
-			}
-			console.log(intent);
-			console.log($btn_delete);
-			console.log(requestPath);
-			$deleted_no.action = requestPath;
-			$deleted_no.submit();
-			
-		}
-	
-	</script>
 
 		
 </body>

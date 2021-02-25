@@ -303,8 +303,7 @@
        , B.REPORT_NOTICE_NO 
        , B.REPORT_MEMBER_NO
        , B.REPORT_CODE 
-       , B.REPORT_DATE
-       , B.REASON
+       , B.REPORT_DATE     
        )
        VALUES
        ( 
@@ -313,7 +312,6 @@
        , ? 
        , ?
        , SYSDATE
-       , 'NULL'
        )
 	</entry>
 	
@@ -525,7 +523,7 @@
 	</entry>
 	
 	<entry key="selectReportDetail">
-		SELECT
+		 SELECT
 	            A.NOTICE_NO
 	          , A.NOTICE_CATEGORY_CODE   
 	          , A.NOTICE_SUBJECT
@@ -536,7 +534,7 @@
               , C.REPORT_NOTICE_NO
               , D.REPORT_TYPE
 	          , A.NOTICE_REGIST_DATE
-              , T.NOTICE_ATTACHMENT_NO
+              , T.REPORT_ATTACHMENT_NO
               , T.ORIGINAL_NAME
               , T.FILE_NAME
               , T.FILE_PATH
@@ -545,7 +543,7 @@
 	      JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
           JOIN TBL_REPORT C ON (A.NOTICE_NO = C.REPORT_NOTICE_NO)     
           JOIN TBL_REPORT_CATEGORY D ON(C.REPORT_CODE = D.REPORT_CODE)
-          JOIN TBL_NOTICE_ATTACHMENT T ON(T.REF_NOTICE_NO = A.NOTICE_NO)
+          JOIN TBL_REPORT_ATTACHMENT T ON(C.REPORT_NO = T.REF_REPORT_NO)
 	     WHERE A.NOTICE_STATUS = 'Y'
            AND NOTICE_CATEGORY_CODE = 'RPR'
 	       AND A.NOTICE_NO = ?
@@ -568,13 +566,13 @@
 	
 	<entry key="insertAttachment">
 		INSERT
-		  INTO TBL_NOTICE_ATTACHMENT T
+		  INTO TBL_REPORT_ATTACHMENT T
 		(
-		  T.NOTICE_ATTACHMENT_NO
-		, T.REF_NOTICE_NO
+		  T.REPORT_ATTACHMENT_NO
+		, T.REF_REPORT_NO
+		, T.FILE_PATH
 		, T.ORIGINAL_NAME
 		, T.FILE_NAME
-		, T.FILE_PATH
 		, T.THUMBNAIL_PATH	
 		, T.UPLOAD_DATE	
 		) 
@@ -588,6 +586,21 @@
 		, ?
 		, SYSDATE 
 		)
+	</entry>
+	
+	<entry key="insertReNo">
+		SELECT
+                A.RNUM
+              , A.REPORT_NO                
+           FROM (SELECT ROWNUM RNUM
+                      , B.REPORT_NO                          
+                   FROM (SELECT C.REPORT_NO                              
+                           FROM TBL_REPORT C                            
+                          WHERE C.REPORT_MEMBER_NO = ?                             
+                          ORDER BY C.REPORT_NO DESC
+                        ) B
+                 ) A
+             WHERE A.RNUM BETWEEN 1 AND 1 
 	</entry>
 	
 </properties>

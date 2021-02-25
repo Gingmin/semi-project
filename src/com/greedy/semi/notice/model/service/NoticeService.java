@@ -10,9 +10,9 @@ import java.util.List;
 
 import com.greedy.semi.notice.model.dao.NoticeDAO;
 import com.greedy.semi.notice.model.dto.BlackListDTO;
-import com.greedy.semi.notice.model.dto.NTAttachmentDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
+import com.greedy.semi.notice.model.dto.RPAttachmentDTO;
 
 
 
@@ -157,14 +157,18 @@ public class NoticeService {
 		if(result > 0) {
 			int blackList = noticeDAO.insertBlack(con, reportBlack, no);
 			
-			List<NTAttachmentDTO> fileList = reportNotice.getAttachmentDTO();
+			int reNo = noticeDAO.insertReNo(con, reportBlack);
+			
+			System.out.println("reno" + reNo);
+			
+			List<RPAttachmentDTO> fileList = reportNotice.getAttachmentDTO();
 			for(int i = 0; i < fileList.size(); i++) {
-				fileList.get(i).setNoticeNo(no);
+				fileList.get(i).setReportNo(no);
 			}
 			
 			int attachmetResult = 0;
 			for(int i = 0; i < fileList.size(); i++) {
-				attachmetResult += noticeDAO.insertAttachment(con, fileList.get(i));
+				attachmetResult += noticeDAO.insertAttachment(con, fileList.get(i) ,reNo);
 			}
 			
 			if(blackList > 0) {

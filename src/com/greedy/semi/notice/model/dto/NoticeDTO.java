@@ -20,26 +20,26 @@ public class NoticeDTO implements java.io.Serializable {
 	private CategoryDTO category;
 	private BlackListDTO blackListDTO;
 	private ReportCategoryDTO reportCategoryDTO;
-	private List<NTAttachmentDTO> attachmentDTO;
+	private List<RPAttachmentDTO> attachmentDTO;
 	
 	public NoticeDTO() {}
 
-	public NoticeDTO(int no, String title, String body, String categoryCode, CategoryDTO category,
-			BlackListDTO blackListDTO, ReportCategoryDTO reportCategoryDTO, int writerMemberNo, MemberDTO writer,
-			int count, Date createdDate, String status, List<NTAttachmentDTO> attachmentDTO) {
+	public NoticeDTO(int no, String title, String body, String categoryCode, int writerMemberNo, MemberDTO writer,
+			int count, Date createdDate, String status, CategoryDTO category, BlackListDTO blackListDTO,
+			ReportCategoryDTO reportCategoryDTO, List<RPAttachmentDTO> attachmentDTO) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.body = body;
 		this.categoryCode = categoryCode;
-		this.category = category;
-		this.blackListDTO = blackListDTO;
-		this.reportCategoryDTO = reportCategoryDTO;
 		this.writerMemberNo = writerMemberNo;
 		this.writer = writer;
 		this.count = count;
 		this.createdDate = createdDate;
 		this.status = status;
+		this.category = category;
+		this.blackListDTO = blackListDTO;
+		this.reportCategoryDTO = reportCategoryDTO;
 		this.attachmentDTO = attachmentDTO;
 	}
 
@@ -73,30 +73,6 @@ public class NoticeDTO implements java.io.Serializable {
 
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;
-	}
-
-	public CategoryDTO getCategory() {
-		return category;
-	}
-
-	public void setCategory(CategoryDTO category) {
-		this.category = category;
-	}
-
-	public BlackListDTO getBlackListDTO() {
-		return blackListDTO;
-	}
-
-	public void setBlackListDTO(BlackListDTO blackListDTO) {
-		this.blackListDTO = blackListDTO;
-	}
-
-	public ReportCategoryDTO getReportCategoryDTO() {
-		return reportCategoryDTO;
-	}
-
-	public void setReportCategoryDTO(ReportCategoryDTO reportCategoryDTO) {
-		this.reportCategoryDTO = reportCategoryDTO;
 	}
 
 	public int getWriterMemberNo() {
@@ -139,23 +115,45 @@ public class NoticeDTO implements java.io.Serializable {
 		this.status = status;
 	}
 
-	public List<NTAttachmentDTO> getAttachmentDTO() {
+	public CategoryDTO getCategory() {
+		return category;
+	}
+
+	public void setCategory(CategoryDTO category) {
+		this.category = category;
+	}
+
+	public BlackListDTO getBlackListDTO() {
+		return blackListDTO;
+	}
+
+	public void setBlackListDTO(BlackListDTO blackListDTO) {
+		this.blackListDTO = blackListDTO;
+	}
+
+	public ReportCategoryDTO getReportCategoryDTO() {
+		return reportCategoryDTO;
+	}
+
+	public void setReportCategoryDTO(ReportCategoryDTO reportCategoryDTO) {
+		this.reportCategoryDTO = reportCategoryDTO;
+	}
+
+	public List<RPAttachmentDTO> getAttachmentDTO() {
 		return attachmentDTO;
 	}
 
-	public void setAttachmentDTO(List<NTAttachmentDTO> attachmentDTO) {
+	public void setAttachmentDTO(List<RPAttachmentDTO> attachmentDTO) {
 		this.attachmentDTO = attachmentDTO;
 	}
 
 	@Override
 	public String toString() {
 		return "NoticeDTO [no=" + no + ", title=" + title + ", body=" + body + ", categoryCode=" + categoryCode
-				+ ", category=" + category + ", blackListDTO=" + blackListDTO + ", reportCategoryDTO="
-				+ reportCategoryDTO + ", writerMemberNo=" + writerMemberNo + ", writer=" + writer + ", count=" + count
-				+ ", createdDate=" + createdDate + ", status=" + status + ", attachmentDTO=" + attachmentDTO + "]";
+				+ ", writerMemberNo=" + writerMemberNo + ", writer=" + writer + ", count=" + count + ", createdDate="
+				+ createdDate + ", status=" + status + ", category=" + category + ", blackListDTO=" + blackListDTO
+				+ ", reportCategoryDTO=" + reportCategoryDTO + ", attachmentDTO=" + attachmentDTO + "]";
 	}
-
-	
 
 	
 	
