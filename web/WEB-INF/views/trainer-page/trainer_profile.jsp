@@ -1,5 +1,8 @@
+<%@page import="com.greedy.semi.member.model.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +52,7 @@
                </div>
             </div>
             <div class="classbtn_area">
-               <button class="classbtn_detail on">
+               <button class="classbtn_detail on" id="application">
                   1:1 신청하기
                </button>
                <button class="classbtn_detail">
@@ -145,5 +148,26 @@
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp"/>
 	<!-- 푸터끝 -->
+	<script>
+		$("#application").click(function() {
+			
+			let memberNo = <%= session.getAttribute("no") %>;
+			console.log(memberNo);
+			
+			$.ajax({
+				url: "semi/pt/applicaion",
+				type: "post",
+				data: { memberNo: memberNo },
+				success: function(data, textStatus, xhr) {
+					alert(data);
+				},
+				error: function(xhr, status, error) {
+					console.log(error);
+				}
+			});
+			
+		});
+	</script>
+	
 </body>
 </html>

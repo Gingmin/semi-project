@@ -16,7 +16,8 @@ import java.util.Properties;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
-import com.greedy.semi.trainer.dto.ProfileEditDTO;
+
+import com.greedy.semi.trainer.dto.TrainerPtPermitDTO;
 
 public class ClassDAO {
 	
@@ -288,54 +289,31 @@ public class ClassDAO {
 		return result;
 	}
 
-	public int editProfile(Connection con, ProfileEditDTO profile) {
+
+
+	public int insertPtApplication(Connection con, TrainerPtPermitDTO memberNo) {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = prop.getProperty("editProfile");
+		String query = prop.getProperty("insertPtApplication");
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			TrainerPtPermitDTO pt = new TrainerPtPermitDTO();
+			pt.setTrainerNo(new ClassDTO());
+			pstmt.setInt(1, memberNo.getPermitNo());
+//			pstmt.setInt(2, memberNo.getTrainerNo());
 			
-			pstmt.setInt(1, profile.getTrainerNo());
-			pstmt.setString(2, profile.getOriginalName());
-			pstmt.setString(3, profile.getSavedName());
-			pstmt.setString(4, profile.getSavePath());
-			pstmt.setString(5, profile.getThumbnailPath());
-			pstmt.setString(6, profile.getFileType());
 			
-			result = pstmt.executeUpdate();
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			close(pstmt);
 		}
 		
-		return result;
-	}
-
-	public ProfileEditDTO profileImgSelect(Connection con) {
-		
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String query = null;
-		
-		try {
-			stmt = con.createStatement();
-			
-			rset = stmt.executeQuery(query);
-			
-			if(rset.next()) {
-				
-			}
-		} catch (SQLException e) {		
-			e.printStackTrace();
-		}
-		
-		return null;
+		return 0;
 	}
 
 

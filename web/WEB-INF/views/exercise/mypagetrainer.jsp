@@ -33,18 +33,8 @@
 					나의 프로필
 				</div>
 				<div class="row">
-				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
-					<div class="profile_img_area">
-					
-						<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
-						<div class="thumb-list">
-							<div>
-							
-							</div>
-							
 				
-						</div>
-					</c:forEach>
+					<div class="profile_img_area">
 					
 						<div class="profile_btn_area">
 						<label for="profileEdit" class="edit_btn">프로필 편집</label>
@@ -54,7 +44,7 @@
 							  <button type="submit" id="edit"></button>
 						</div>						
 					</div>
-					</form>
+					
 					<div class="profile_info_area">
 						<div class="info_item">
 							밍키
