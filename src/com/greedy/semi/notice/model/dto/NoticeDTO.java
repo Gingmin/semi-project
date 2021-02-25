@@ -11,15 +11,15 @@ public class NoticeDTO implements java.io.Serializable {
 	private String title;
 	private String body;
 	private String categoryCode;
-	private CategoryDTO category;
-	private BlackListDTO blackListDTO;
-	private ReportCategoryDTO reportCategoryDTO;
 	private int writerMemberNo;
 	private MemberDTO writer;
 	private int count;
 	private java.sql.Date createdDate;
 	private String status;
 	
+	private CategoryDTO category;
+	private BlackListDTO blackListDTO;
+	private ReportCategoryDTO reportCategoryDTO;
 	private List<NTAttachmentDTO> attachmentDTO;
 	
 	public NoticeDTO() {}
