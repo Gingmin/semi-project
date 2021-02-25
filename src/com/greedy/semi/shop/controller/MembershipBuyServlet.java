@@ -33,7 +33,9 @@ public class MembershipBuyServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+	String success = request.getParameter("imp_uid");
+	System.out.println("success : " + success);
+			
 		
 	}
 
