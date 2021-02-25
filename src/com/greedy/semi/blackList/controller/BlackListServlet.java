@@ -16,14 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.BlackListDTO;
-import com.greedy.semi.notice.model.dto.NTAttachmentDTO;
 import com.greedy.semi.notice.model.dto.NoticeDTO;
+import com.greedy.semi.notice.model.dto.RPAttachmentDTO;
 import com.greedy.semi.notice.model.service.NoticeService;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -109,7 +108,7 @@ public class BlackListServlet extends HttpServlet {
 							
 							Thumbnails.of(fileUploadDirectory + randomFileName).size(width, height).toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 							
-							fileMap.put("thumbnailPath", "/resources/attachment/report/thumbnail_" + randomFileName);
+							fileMap.put("thumbnailPath", "/resources/attachment/report/thumbnail/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
 						}
@@ -143,12 +142,12 @@ public class BlackListServlet extends HttpServlet {
 				reportNotice.setBody(parameter.get("body"));
 				reportBlack.setReportCode(parameter.get("searchCode"));
 				
-				reportNotice.setAttachmentDTO(new ArrayList<NTAttachmentDTO>());
-				List<NTAttachmentDTO> list = reportNotice.getAttachmentDTO();
+				reportNotice.setAttachmentDTO(new ArrayList<RPAttachmentDTO>());
+				List<RPAttachmentDTO> list = reportNotice.getAttachmentDTO();
 				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String>file = fileList.get(i);
 					
-					NTAttachmentDTO tempFileInfo = new NTAttachmentDTO();
+					RPAttachmentDTO tempFileInfo = new RPAttachmentDTO();
 					tempFileInfo.setOriginalName(file.get("originFileName"));
 					tempFileInfo.setFileName(file.get("savedFileName"));
 					tempFileInfo.setFilePath(file.get("savePath"));

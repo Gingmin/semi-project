@@ -2,10 +2,10 @@ package com.greedy.semi.notice.model.dto;
 
 import java.sql.Date;
 
-public class NTAttachmentDTO implements java.io.Serializable{
+public class RPAttachmentDTO implements java.io.Serializable{
 	
 	private int attachmentNo;
-	private int noticeNo;
+	private int reportNo;
 	private String filePath;
 	private String originalName;
 	private String fileName;
@@ -13,13 +13,13 @@ public class NTAttachmentDTO implements java.io.Serializable{
 	private java.sql.Date uploadDate;
 	private String attachmentStatus;
 	
-	public NTAttachmentDTO() {}
+	public RPAttachmentDTO() {}
 
-	public NTAttachmentDTO(int attachmentNo, int noticeNo, String filePath, String originalName, String fileName,
+	public RPAttachmentDTO(int attachmentNo, int reportNo, String filePath, String originalName, String fileName,
 			String thumbnailPath, Date uploadDate, String attachmentStatus) {
 		super();
 		this.attachmentNo = attachmentNo;
-		this.noticeNo = noticeNo;
+		this.reportNo = reportNo;
 		this.filePath = filePath;
 		this.originalName = originalName;
 		this.fileName = fileName;
@@ -36,12 +36,12 @@ public class NTAttachmentDTO implements java.io.Serializable{
 		this.attachmentNo = attachmentNo;
 	}
 
-	public int getNoticeNo() {
-		return noticeNo;
+	public int getReportNo() {
+		return reportNo;
 	}
 
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public void setReportNo(int reportNo) {
+		this.reportNo = reportNo;
 	}
 
 	public String getFilePath() {
@@ -94,10 +94,11 @@ public class NTAttachmentDTO implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "NTAttachmentDTO [attachmentNo=" + attachmentNo + ", noticeNo=" + noticeNo + ", filePath=" + filePath
+		return "RPAttachmentDTO [attachmentNo=" + attachmentNo + ", reportNo=" + reportNo + ", filePath=" + filePath
 				+ ", originalName=" + originalName + ", fileName=" + fileName + ", thumbnailPath=" + thumbnailPath
 				+ ", uploadDate=" + uploadDate + ", attachmentStatus=" + attachmentStatus + "]";
 	}
+
 	
 	
 }
