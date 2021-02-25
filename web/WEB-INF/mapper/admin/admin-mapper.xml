@@ -1562,4 +1562,41 @@
 		       ) B
 		WHERE B.RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectPurchaseMemberList">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectPurchaseMemberList() */
+		       D.RNUM
+		     , D.PURCHASE_CODE
+		     , D.MEMBER_NO
+		     , D.MEMBER_NAME
+		     , D.PRODUCT_CODE
+		     , D.PURCHASE_PRICE
+		     , D.PURCHASE_DATE
+		     , D.PURCHASE_PERMIT_NO
+		     , D.PURCHASE_STATUS
+		  FROM (SELECT ROWNUM RNUM
+		             , C.PURCHASE_CODE
+		             , C.MEMBER_NO
+		             , C.MEMBER_NAME
+		             , C.PRODUCT_CODE
+		             , C.PURCHASE_PRICE
+		             , C.PURCHASE_DATE
+		             , C.PURCHASE_PERMIT_NO
+		             , C.PURCHASE_STATUS
+		          FROM (SELECT
+                               A.PURCHASE_CODE 
+                             , A.MEMBER_NO
+                             , B.MEMBER_NAME
+                             , A.PRODUCT_CODE
+                             , A.PURCHASE_PRICE
+                             , A.PURCHASE_DATE 
+                             , A.PURCHASE_PERMIT_NO
+                             , A.PURCHASE_STATUS
+                          FROM TBL_PURCHASE_PRODUCT A
+                          JOIN TBL_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
+		                 WHERE B.MEMBER_ROLE = 'MEMBER' 
+		                 ORDER BY B.MEMBER_NO DESC
+		          ) C
+		       ) D
+		WHERE D.RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

@@ -61,7 +61,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="${ pageContext.servletContext.contextPath }/admin/dashboard">
                         <span class="logo-text">
                             <img src="/semi/resources/admin/plugins/images/logo.png" alt="homepage" />
                         </span>

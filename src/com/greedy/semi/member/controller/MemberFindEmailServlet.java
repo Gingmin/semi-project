@@ -26,6 +26,9 @@ public class MemberFindEmailServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone").replace("-", "");
 		
+		System.out.println("name : " + name);
+		System.out.println("phone : " + phone);
+		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setName(name);
 		requestMember.setPhone(phone);
@@ -40,8 +43,8 @@ public class MemberFindEmailServlet extends HttpServlet {
 			path = "/WEB-INF/views/common/failed.jsp";
 			request.setAttribute("message", "이메일 찾기 실패!");
 		}
-		System.out.println("email : " + responseMember.getEmail());
-		System.out.println("date : " + responseMember.getEnrollDate());
+		System.out.println("검색후 email : " + responseMember.getEmail());
+		System.out.println("검색후 date : " + responseMember.getEnrollDate());
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

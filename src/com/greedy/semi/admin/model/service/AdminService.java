@@ -175,4 +175,15 @@ public class AdminService {
 		
 	}
 
+	public List<MemberDTO> selectPurchaseMemberList(PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> memberList = adminDAO.selectPurchaseMemberList(con, pageInfo);
+
+		close(con);
+		
+		return memberList;
+	}
+
 }
