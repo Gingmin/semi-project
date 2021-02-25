@@ -157,7 +157,15 @@ public class NoticeService {
 		if(result > 0) {
 			int blackList = noticeDAO.insertBlack(con, reportBlack, no);
 			
+			List<NTAttachmentDTO> fileList = reportNotice.getAttachmentDTO();
+			for(int i = 0; i < fileList.size(); i++) {
+				fileList.get(i).setNoticeNo(no);
+			}
 			
+			int attachmetResult = 0;
+			for(int i = 0; i < fileList.size(); i++) {
+				attachmetResult += noticeDAO.insertAttachment(con, fileList.get(i));
+			}
 			
 			if(blackList > 0) {
 				commit(con);

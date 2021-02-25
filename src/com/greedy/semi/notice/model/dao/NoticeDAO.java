@@ -393,6 +393,7 @@ public class NoticeDAO {
 			pstmt.setString(3, reportBlack.getReportCode());
 			
 			
+			
 			blackList = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -585,12 +586,13 @@ public class NoticeDAO {
 			pstmt.setInt(1, no);
 			
 			rset = pstmt.executeQuery();
-					System.out.println("ㅇ재댜ㅓㄹㅈ대ㅑ러");
+					
 			if(rset.next()) {
 				reportDetail = new NoticeDTO();				
 				reportDetail.setWriter(new MemberDTO());
 				reportDetail.setBlackListDTO(new BlackListDTO());
 				reportDetail.setReportCategoryDTO(new ReportCategoryDTO());
+				NTAttachmentDTO attachment = new NTAttachmentDTO();
 				
 				reportDetail.setNo(rset.getInt("NOTICE_NO"));
 				reportDetail.setCategoryCode(rset.getString("NOTICE_CATEGORY_CODE"));
@@ -602,6 +604,11 @@ public class NoticeDAO {
 				reportDetail.getBlackListDTO().setReportNoticeNo(rset.getInt("REPORT_NOTICE_NO"));
 				reportDetail.getReportCategoryDTO().setReportType(rset.getString("REPORT_TYPE"));
 				reportDetail.setCreatedDate(rset.getDate("NOTICE_REGIST_DATE"));
+				attachment.setAttachmentNo(rset.getInt("NOTICE_ATTACHMENT_NO"));
+				attachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
+				attachment.setFileName(rset.getString("FILE_NAME"));
+				attachment.setFilePath(rset.getString("FILE_PATH"));
+				attachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
 				
 				
 				System.out.println("ㅁㄴㅇㄹㅈㄷㄹ" + reportDetail);
