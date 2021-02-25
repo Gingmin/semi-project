@@ -230,6 +230,7 @@
 			if("${ requestScope.productPrice }")	{
 			var IMP = window.IMP; // 생략가능0
 			IMP.init('imp69531077');
+			 let movePath = "";
 			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
 			IMP.request_pay({
@@ -261,7 +262,7 @@
 				참고하세요.
 				나중에 포스팅 해볼게요.
 				 */
-				name : '주문명:결제테스트',
+				name : '주문명:HELLOPT결제',
 				//결제창에서 보여질 이름
 				amount : "${ requestScope.productPrice }",
 				//가격
@@ -277,22 +278,35 @@
 			(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
 			 */
 			}, function(rsp) {
-				console.log(rsp);
-				if (rsp.success) {
-					var msg = '결제가 완료되었습니다.';
-					msg += ' 고유ID : ' + rsp.imp_uid;
-					msg += ' 상점 거래ID : ' + rsp.merchant_uid;
-					msg += ' 결제 금액 : ' + rsp.paid_amount;
-					msg += ' 카드 승인번호 : ' + rsp.apply_num;
-				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-				}
-				alert(msg);
-			});
-		};
-	</script>
+	            if (rsp.success) {
+	                jQuery.ajax({
+	                       url: "http://2d1e62a1d414.ngrok.io/mg/proceed/payment", // 가맹점 서버
+	                       method: "POST",
+	                       headers: { "Content-Type": "application/json" },
+	                       data: {
+	                           imp_uid: rsp.imp_uid,
+	                           merchant_uid: rsp.merchant_uid
+	                       }
 
-
-</body>
-</html>
+	                   }).done(function (data) {
+	                     // 가맹점 서버 결제 API 성공시 로직
+	                   })
+	                var msg = '결제가 완료되었습니다.';
+	                msg += '고유ID : ' + rsp.imp_uid;
+	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+	                msg += '결제 금액 : ' + rsp.paid_amount;
+	                msg += '카드 승인번호 : ' + rsp.apply_num;
+	                console.log(rsp.success);
+	                movePath = "${ pageContext.servletContext.contextPath }/member/buy";
+	             } else {
+	                var msg = '결제에 실패하였습니다.';
+	                msg += '에러내용 : ' + rsp.error_msg;
+	                movePath = "${ pageContext.servletContext.contextPath }";
+	             }
+	             alert(msg);
+	             location.href = movePath;
+	          });
+	          
+	       </script>
+	    </body>
+	 </html>
