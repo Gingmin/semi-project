@@ -10,10 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
@@ -205,29 +203,31 @@ public class MemberDAO {
 		return result;
 	}
 
-	public List<MemberDTO> selectMemberByName(Connection con, MemberDTO requestMember) {
+	public MemberDTO selectMemberByName(Connection con, MemberDTO requestMember) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		List<MemberDTO> memberListByName = null;
+		MemberDTO responseMember = null;
+		
+		System.out.println("requestMember.getPhone() : " + requestMember.getPhone());
+		System.out.println("requestMember.getName() : " + requestMember.getName());
 		
 		String query = prop.getProperty("selectMemberByName");
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, requestMember.getName());
+			pstmt.setString(1, requestMember.getPhone());
+			pstmt.setString(2, requestMember.getName());
 			
 			rset = pstmt.executeQuery();
 			
-			memberListByName = new ArrayList<>();
 			
 			while(rset.next()) {
-				MemberDTO member = new MemberDTO();
-				member.setEmail(rset.getString("EMAIL"));
-				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				responseMember = new MemberDTO();
+				responseMember.setEmail(rset.getString("EMAIL"));
+				responseMember.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				
-				memberListByName.add(member);
 			}
 			
 		} catch (SQLException e) {
@@ -237,7 +237,9 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		return memberListByName;
+		System.out.println("responseMember : " + responseMember);
+		
+		return responseMember;
 	}
 
 	public List<MemberDTO> selectMemberByPhone(Connection con, MemberDTO requestMember) {

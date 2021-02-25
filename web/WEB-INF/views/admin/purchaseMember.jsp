@@ -37,7 +37,6 @@
 <script src="/semi/resources/js/event.js"></script>
 <style>
 	.admBtn { border: 1px solid #e9ecef; color: black; background-color: white; }
-	.updateApproval1 { background-color: #F62D51; border: 1px solid #e9ecef; color: white; }
 </style>
 </head>
 <body>
@@ -140,8 +139,8 @@
 			<div class="page-breadcrumb bg-white">
 				<div class="row align-items-center">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-						<h4 class="page-title text-uppercase font-medium font-14">트레이너
-							정보</h4><br>
+						<h4 class="page-title text-uppercase font-medium font-14">
+							결제 정보</h4><br>
 					</div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 						<div class="d-md-flex">
@@ -214,7 +213,7 @@
 									$memberNo.disabled = 'disabled';
 								}
 								
-								$searchForm.action = "${ pageContext.servletContext.contextPath }/admin/trainer/search";
+								$searchForm.action = "${ pageContext.servletContext.contextPath }/admin/member/search";
 								$searchForm.submit();
 							}
 						</script>
@@ -234,37 +233,24 @@
 										<th class="border-top-0">블랙여부</th>
 										<th class="border-top-0">회원구분</th>
 										<th class="border-top-0">회원상태</th>
-										<th class="border-top-0">승인여부</th>
-										<th class="border-top-0">승인버튼</th>
+										<th class="border-top-0">pt남은횟수</th>
+										<th class="border-top-0">멤버쉽만료일자</th>
 									</tr>
 								</thead>
 								<tbody id="detailMember">
-									<c:forEach var="trainer" items="${ requestScope.trainerList }">
+									<c:forEach var="member" items="${ requestScope.memberList }">
 									<tr>
-										<td><c:out value="${ trainer.no }"/></td>
-										<td><c:out value="${ trainer.email }"/></td>
-										<td><c:out value="${ trainer.name }"/></td>
-										<td><c:out value="${ trainer.phone }"/></td>
-										<td><c:out value="${ trainer.enrollDate }"/></td>
-										<td><c:out value="${ trainer.modifiedDate }"/></td>
-										<td><c:out value="${ trainer.blackStatus }"/></td>
-										<td><c:out value="${ trainer.role }"/></td>
-										<td><c:out value="${ trainer.status }"/></td>
-										<td><c:out value="${ trainer.trainerInfoDTO.approvalStatus }"/></td>
-										<td>
-											<form id="upForm" method="post" action="${ pageContext.servletContext.contextPath }/admin/trainer/approval">
-												<input value="${ trainer.no }" name="updateTrainer" id="updateTrainer" style="display: none;">
-												<c:if test="${ trainer.trainerInfoDTO.approvalStatus eq 'N' }"><button class="updateApproval1" type="submit">승인하기</button></c:if>
-												<c:if test="${ trainer.trainerInfoDTO.approvalStatus eq 'Y' }"><button class="updateApproval2" type="submit" disabled>승인하기</button></c:if>
-											</form>
-											<script>
-												if($(".updateApproval2").attr("disabled", "true")){
-													
-													$(".updateApproval2").css("background-color", "white");
-													$(".updateApproval2").css("color", "black");
-												} 
-											</script>
-										</td>
+										<td><c:out value="${ member.no }"/></td>
+										<td><c:out value="${ member.email }"/></td>
+										<td><c:out value="${ member.name }"/></td>
+										<td><c:out value="${ member.phone }"/></td>
+										<td><c:out value="${ member.enrollDate }"/></td>
+										<td><c:out value="${ member.modifiedDate }"/></td>
+										<td><c:out value="${ member.blackStatus }"/></td>
+										<td><c:out value="${ member.role }"/></td>
+										<td><c:out value="${ member.status }"/></td>
+										<td><c:out value="${ member.amountDTO.amount }"/></td>
+										<td><c:out value="${ member.amountDTO.expDate }"/></td>
 									</tr>
 									</c:forEach>
 								</tbody>
@@ -331,10 +317,9 @@
 									</c:otherwise>
 									
 								</c:choose>
-								  
 								<script>
-									const link = "${ pageContext.servletContext.contextPath }/admin/trainer";
-									const searchLink = "${ pageContext.servletContext.contextPath }/admin/trainer/search";
+									const link = "${ pageContext.servletContext.contextPath }/admin/member";
+									const searchLink = "${ pageContext.servletContext.contextPath }/admin/member/search";
 								
 									if(document.getElementById("startPage")) {
 										const $startPage = document.getElementById("startPage");
@@ -448,8 +433,8 @@
 								 			} 
 								    	}
 								    }
+								    
 								</script>
-								
 							</div>
 							
 						</div>

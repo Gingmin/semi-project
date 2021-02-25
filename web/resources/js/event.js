@@ -163,6 +163,15 @@ window.onload = function() {
 			location.href = "/semi/admin/black";
 		}
 	}
+	
+	/*관리자 페이지 회원결제*/
+	if(document.getElementById("purchaseMember")) {
+		const $purchaseMember = document.getElementById("purchaseMember");
+		$purchaseMember.onclick = function() {
+			location.href = "/semi/admin/purchaseMember";
+		}
+	}
+	
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {

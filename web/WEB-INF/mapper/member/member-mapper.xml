@@ -73,6 +73,7 @@
 		     , E.ENROLL_DATE
 		  FROM TBL_MEMBER E
 		 WHERE E.MEMBER_STATUS = 'Y'
+		   AND E.PHONE = ?
 		   AND E.MEMBER_NAME = ?
 	</entry>
 	<entry key="selectMemberByPhone">

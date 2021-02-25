@@ -1464,6 +1464,63 @@ public class AdminDAO {
 		return blackList;
 		
 	}
+
+	public List<MemberDTO> selectPurchaseMemberList(Connection con, PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<MemberDTO> memberList = null;
+
+		String query = prop.getProperty("selectPurchaseMemberList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			memberList = new ArrayList<>();
+
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setAmountDTO(new AmountDTO());
+
+				A.PURCHASE_CODE 
+                , A.MEMBER_NO
+                , B.MEMBER_NAME
+                , A.PRODUCT_CODE
+                , A.PURCHASE_PRICE
+                , A.PURCHASE_DATE 
+                , A.PURCHASE_PERMIT_NO
+                , A.PURCHASE_STATUS
+				
+				
+				member.setNo(rset.getInt("MEMBER_NO"));
+				member.setEmail(rset.getString("EMAIL"));
+				member.setName(rset.getString("MEMBER_NAME"));
+				member.setPhone(rset.getString("PHONE"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				member.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				member.setBlackStatus(rset.getString("BLACK_STATUS"));
+				member.setRole(rset.getString("MEMBER_ROLE"));
+				member.setStatus(rset.getString("MEMBER_STATUS"));
+				member.getAmountDTO().setAmount(rset.getInt("PT_AMOUNT"));
+				member.getAmountDTO().setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
+
+				memberList.add(member);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return memberList;
+	}
 	
 
 }

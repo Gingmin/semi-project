@@ -104,12 +104,14 @@ public class AuthenticationFilter implements Filter {
 		adminPermitList.add("/admin/trainer/search");
 		adminPermitList.add("/admin/trainer/detail");
 		adminPermitList.add("/admin/trainer/approval");
+		adminPermitList.add("/admin/purchaseMember");
 		adminPermitList.add("/notice/insert");
 		adminPermitList.add("/notice/update");
 		adminPermitList.add("/notice/delete");
 		adminPermitList.add("/admin/out");
 		adminPermitList.add("/admin/black");
 		adminPermitList.add("/trainer/page");
+		adminPermitList.add("/trainer/detail");
 		
 		adminPermitList.add("/member/paymentResult");
 		

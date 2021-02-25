@@ -71,7 +71,7 @@
                                 <span class="hide-menu">---------- 결제관리 ----------</span></a>
                         </li>
                         <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="fa fa-won-sign"
+                                 id="purchaseMember" aria-expanded="false"><i class="fa fa-won-sign"
                                     aria-hidden="true"></i><span class="hide-menu">회원 결제관리</span></div></li>
                         <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="fa fa-hands-helping"

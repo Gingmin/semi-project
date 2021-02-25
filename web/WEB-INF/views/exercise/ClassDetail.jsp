@@ -90,7 +90,7 @@
 			<br>
 			
 			<div class="btn_area">
-				<c:if test="${ sessionScope.loginMember.role eq 'TRAINER' }">
+				<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
 					<button class="btn btn-default" id="classdelete" onclick="location.href='${ pageContext.servletContext.contextPath }/class/detail?no=${ requestScope.thumbnail.no }'">수정하기</button><br>
 					<button class="btn btn-default" id="classupdate" onclick="location.href='${ pageContext.servletContext.contextPath }/class/detail?no=${ requestScope.thumbnail.no }'">삭제하기</button><br>
 				</c:if>

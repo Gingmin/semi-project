@@ -143,29 +143,35 @@ public class MemberService {
 		
 		Connection con = getConnection();
 		
-		List<MemberDTO> memberListByName = new ArrayList<>();
-		List<MemberDTO> memberListByPhone = new ArrayList<>();
+		MemberDTO responseMember  = memberDAO.selectMemberByName(con, requestMember);
+		/*List<MemberDTO> memberListByPhone = new ArrayList<>();*/
 		
-		memberListByName = memberDAO.selectMemberByName(con, requestMember);
-		memberListByPhone = memberDAO.selectMemberByPhone(con, requestMember);
-		
-		MemberDTO responseMember = new MemberDTO();
-		String email = "";
-		java.sql.Date enrollDate = null;
-		
+		/* label :
 		for(int i = 0; i < memberListByName.size(); i++) {
 			for(int j = 0; j < memberListByPhone.size(); j++) {
 				if(memberListByName.get(i).getEmail().equals(memberListByPhone.get(j).getEmail())) {
-					email = memberListByName.get(i).getEmail();
-					enrollDate = memberListByName.get(i).getEnrollDate();
+					System.out.println("조회 결과가 맞는다");
+					System.out.println("i : " + i);
+					System.out.println("j : " + j);
+					System.out.println("memberListByName.get(i) : " + memberListByName.get(i));
+					System.out.println("memberListByName.get(i).getEmail() : " + memberListByName.get(i).getEmail());
+					System.out.println("memberListByName.get(i).getEnrollDate() : " + memberListByName.get(i).getEnrollDate());
+					System.out.println("memberListByPhone.get(j) : " + memberListByPhone.get(j));
+					System.out.println("memberListByPhone.get(j).getEmail() : " + memberListByPhone.get(j).getEmail());
+					System.out.println("memberListByPhone.get(j).getEnrollDate() : " + memberListByPhone.get(j).getEnrollDate());
+					responseMember.setEmail(memberListByName.get(i).getEmail());
+					responseMember.setEnrollDate(memberListByName.get(i).getEnrollDate());
+					break label;
 				} else {
+					System.out.println("null 값");
 					responseMember = null;
 				}
+			
 			}
 		}
 		
-		responseMember.setEmail(email);
-		responseMember.setEnrollDate(enrollDate);
+		System.out.println("service의 responseMember : " + responseMember);
+		*/
 		
 		close(con);
 				
