@@ -109,7 +109,7 @@ public class BlackListServlet extends HttpServlet {
 							
 							Thumbnails.of(fileUploadDirectory + randomFileName).size(width, height).toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 							
-							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/thumbnail_" + randomFileName);
+							fileMap.put("thumbnailPath", "/resources/attachment/report/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
 						}
@@ -124,21 +124,24 @@ public class BlackListServlet extends HttpServlet {
 				System.out.println("fileList : " + fileList);
 				
 				
-				String title = request.getParameter("title");
-				String body = request.getParameter("body");
+				
+				
+//				String title = request.getParameter("title");
+//				String body = request.getParameter("body");
 				String writer = request.getParameter("writer");
 				int writerMemberNo = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
-				String searchCode = request.getParameter("searchCode");
+//				String searchCode = request.getParameter("searchCode");
 				
 				
-				System.out.println("블랙리스트 서블릿 글쓴이 : " + writer);
-				System.out.println("블랙리스트 서블릿 글쓴이 번호 : " + writerMemberNo);
-				System.out.println("블랙리스트 서블릿 제목: " + title);
-				System.out.println("블랙리스트 서블릿 바디 : " + body);
-				System.out.println("블랙리스트 서블릿 써치 코드 : " + searchCode);
+				
+				
+				
 				
 				NoticeDTO reportNotice = new NoticeDTO();
 				BlackListDTO reportBlack = new BlackListDTO();
+				reportNotice.setTitle(parameter.get("title"));
+				reportNotice.setBody(parameter.get("body"));
+				reportBlack.setReportCode(parameter.get("searchCode"));
 				
 				reportNotice.setAttachmentDTO(new ArrayList<NTAttachmentDTO>());
 				List<NTAttachmentDTO> list = reportNotice.getAttachmentDTO();
@@ -156,11 +159,10 @@ public class BlackListServlet extends HttpServlet {
 				}
 				
 				reportBlack.setMemberNo(writerMemberNo);
-				reportBlack.setReportCode(searchCode);
-				reportNotice.setTitle(title);
-				reportNotice.setBody(body);
 				reportNotice.setWriterMemberNo(writerMemberNo);
-				
+//				reportBlack.setReportCode(searchCode);
+//				reportNotice.setTitle(title);
+//				reportNotice.setBody(body);
 				
 				int result = new NoticeService().insertReport(reportNotice, reportBlack);
 				
