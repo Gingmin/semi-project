@@ -109,6 +109,7 @@ public class AuthenticationFilter implements Filter {
 		adminPermitList.add("/notice/delete");
 		adminPermitList.add("/admin/out");
 		adminPermitList.add("/admin/black");
+		adminPermitList.add("/trainer/page");
 		
 		adminPermitList.add("/member/paymentResult");
 		
