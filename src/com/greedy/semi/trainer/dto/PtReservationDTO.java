@@ -1,24 +1,19 @@
 package com.greedy.semi.trainer.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
 
-public class TrainerPtPermitDTO implements Serializable {
+public class PtReservationDTO implements Serializable {
 	
 	private int permitNo;
-	private ClassDTO trainerNo;
+	private int trainerNo;
 	private int memberNo;
-	private Date applyDate;
-	private String permitYn;
-	private Date permitDate;
+	private int applyDate;
+	private int permitYn;
+	private int permitDate;
 	
-	
-	public TrainerPtPermitDTO() {}
+	public PtReservationDTO() {}
 
-
-	public TrainerPtPermitDTO(int permitNo, ClassDTO trainerNo, int memberNo, Date applyDate, String permitYn,
-			Date permitDate) {
+	public PtReservationDTO(int permitNo, int trainerNo, int memberNo, int applyDate, int permitYn, int permitDate) {
 		super();
 		this.permitNo = permitNo;
 		this.trainerNo = trainerNo;
@@ -28,73 +23,61 @@ public class TrainerPtPermitDTO implements Serializable {
 		this.permitDate = permitDate;
 	}
 
-
 	public int getPermitNo() {
 		return permitNo;
 	}
 
-
-	public ClassDTO getTrainerNo() {
+	public int getTrainerNo() {
 		return trainerNo;
 	}
-
 
 	public int getMemberNo() {
 		return memberNo;
 	}
 
-
-	public Date getApplyDate() {
+	public int getApplyDate() {
 		return applyDate;
 	}
 
-
-	public String getPermitYn() {
+	public int getPermitYn() {
 		return permitYn;
 	}
 
-
-	public Date getPermitDate() {
+	public int getPermitDate() {
 		return permitDate;
 	}
-
 
 	public void setPermitNo(int permitNo) {
 		this.permitNo = permitNo;
 	}
 
-
-	public void setTrainerNo(ClassDTO trainerNo) {
+	public void setTrainerNo(int trainerNo) {
 		this.trainerNo = trainerNo;
 	}
-
 
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
 
-
-	public void setApplyDate(Date applyDate) {
+	public void setApplyDate(int applyDate) {
 		this.applyDate = applyDate;
 	}
 
-
-	public void setPermitYn(String permitYn) {
+	public void setPermitYn(int permitYn) {
 		this.permitYn = permitYn;
 	}
 
-
-	public void setPermitDate(Date permitDate) {
+	public void setPermitDate(int permitDate) {
 		this.permitDate = permitDate;
 	}
 
-
 	@Override
 	public String toString() {
-		return "TrainerPtPermitDTO [permitNo=" + permitNo + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo
+		return "PtReservationDTO [permitNo=" + permitNo + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo
 				+ ", applyDate=" + applyDate + ", permitYn=" + permitYn + ", permitDate=" + permitDate + "]";
 	}
-
+	
+	
 	
 
 }

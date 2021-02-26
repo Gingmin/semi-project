@@ -64,7 +64,7 @@
 				
 				<!-- Card image -->
 					
-					<a>
+					
 					<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
 						<div class="thumb-list">
@@ -72,25 +72,16 @@
 								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="350" height="250">
 							</div>
-						<p>
+					No. <label><c:out value="${ thumbnail.trainerNo }"/></label><br>
 						
+						
+					<c:out value="${ thumbnail.category }"/><br>
 						</div>
-						
-						
-						
-					
 					</div>
-					</a>
-				
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title"><c:out value="${ thumbnail.name }"/></h4>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text"><c:out value="${ thumbnail.introduce }"/></p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
@@ -108,7 +99,8 @@
 					</ul>
 				</div>
 			</c:forEach>
-			</div>
+			</div> 
+			
 			<!-- 월요일 끝 -->
 			<!-- 화요일 시작 -->
 
@@ -895,17 +887,18 @@
 
 			</div>
 			<!-- 밑에 div 로우 -->
-		</div>
-
-		<!-- 트레이너 끝 -->
-	</div>
-	<script>
+			<script>
 					$("#thumbnailArea > div").click(function() {
 						const no = $(this).find("label").text();
 						console.log(no);
-						location.href = "${ pageContext.servletContext.contextPath }/trainer/detail";
+						location.href = "${ pageContext.servletContext.contextPath }/trainer/detail?no=" + no;
 					});
 				</script>
+		</div>
+
+		<!-- 트레이너 끝 -->
+				
+	</div>
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp" />
 </body>

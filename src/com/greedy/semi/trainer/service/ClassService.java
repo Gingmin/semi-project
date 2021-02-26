@@ -12,8 +12,8 @@ import java.util.List;
 import com.greedy.semi.trainer.dao.ClassDAO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.PtReservationDTO;
 
-import com.greedy.semi.trainer.dto.TrainerPtPermitDTO;
 
 
 public class ClassService {
@@ -109,11 +109,36 @@ public class ClassService {
 		return result;
 	}
 
-	public int insertPtApplication(TrainerPtPermitDTO memberNo) {
+	public ClassDTO selectTrainerInfo(int no) {
 		
 		Connection con = getConnection();
 		
-		int result = classDAO.insertPtApplication(con, memberNo);
+		ClassDTO trainer = null;
+		
+		int result = classDAO.incrementTrainerCount(con, no);
+		
+		if(result > 0) {
+			trainer = classDAO.selectTrainerInfo(con, no);
+			
+			if(trainer != null) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return trainer;
+	}
+
+	public int reservationMember(PtReservationDTO reservationMember) {
+		
+		Connection con = getConnection();
+		
+		int result = classDAO.reservationMember(con, reservationMember);
 		
 		if(result > 0) {
 			commit(con);
@@ -125,20 +150,7 @@ public class ClassService {
 		
 		return result;
 	}
+
+	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -59,6 +59,7 @@
     <entry key="selectThumbnailList">
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectThumbnailList() */
                A.CLASS_NO
+             , A.TRAINER_NO  
              , A.CLASS_NAME
              , A.CLASS_KIND
              , A.CLASS_CATEGORY
@@ -68,6 +69,7 @@
              , A.CREATED_DATE
              , A.CLASS_COUNT
              , B.CLASS_ATTACHMENT_NO
+             , B.REF_TRAINER_NO
              , B.ORIGINAL_NAME
              , B.SAVED_NAME
              , B.SAVE_PATH
@@ -91,6 +93,7 @@
     <entry key="selectOneThumbnailClass">
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectOneThumbnailClass() */
                A.CLASS_NO
+             , A.TRAINER_NO  
              , A.CLASS_NAME
              , A.CLASS_KIND
              , A.CLASS_CATEGORY
@@ -99,6 +102,7 @@
              , A.CREATED_DATE
              , A.CLASS_COUNT
              , B.CLASS_ATTACHMENT_NO
+             , B.REF_TRAINER_NO
              , B.ORIGINAL_NAME
              , B.SAVED_NAME
              , B.SAVE_PATH
@@ -111,7 +115,7 @@
            AND A.CLASS_NO = ? 
     </entry>
     <entry key="updateClass">
-        UPDATE
+        UPDATE /* com.greedy.semi.trainer.dao.ClassDAO#updateClass() */
                TBL_OPENED_CLASS A
            SET A.CLASS_NAME = ?
              , A.CLASS_KIND = ?
@@ -122,39 +126,44 @@
          WHERE A.CLASS_STATUS = 'N'
            AND A.TRAINER_NO = ?
     </entry>
-    <entry key="editProfile">
-        INSERT
-          INTO TBL_TRAINER_PROFILEIMG_EDIT A
+    <entry key="incrementTrainerCount">
+        UPDATE /* com.greedy.semi.trainer.dao.ClassDAO#incrementTrainerCount() */
+               TBL_OPENED_CLASS A
+           SET A.CLASS_COUNT = (SELECT B.CLASS_COUNT
+                                  FROM TBL_OPENED_CLASS B
+                                 WHERE B.TRAINER_NO = ?
+                               ) + 1
+         WHERE A.TRAINER_NO = ?    
+    </entry>
+    <entry key="selectTrainerInfo">
+        SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectTrainerInfo() */
+               A.CLASS_NO
+             , A.TRAINER_NO
+             , A.CLASS_NAME
+             , A.CLASS_KIND
+             , A.CLASS_CATEGORY
+             , A.CLASS_INTRO
+             , A.CLASS_INTRODUCE
+             , A.CREATED_DATE
+             , A.CLASS_COUNT
+             , B.MEMBER_NAME
+          FROM TBL_OPENED_CLASS A
+          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+         WHERE A.TRAINER_NO = ? 
+    </entry>
+    <entry key="reservationMember">
+        INSERT /* com.greedy.semi.trainer.dao.ClassDAO#reservationMember() */
+          INTO TBL_TRAINER_PT_PERMIT A
         (
-          A.PROFILE_NO
+          A.PERMIT_NO
         , A.TRAINER_NO
-        , A.ORIGINAL_NAME
-        , A.SAVED_NAME
-        , A.SAVE_PATH
-        , A.THUMBNAIL_PATH
-        , A.FILE_TYPE  
+        , A.MEMBER_NO
         )
         VALUES
         (
-          SEQ_PROFILE_NO.NEXTVAL
-        , ?
-        , ?
-        , ?
-        , ?
+          SEQ_PERMIT_NO.NEXTVAL
         , ?
         , ?  
         )
-    </entry>
-    <entry key="profileImgSelect">
-        SELECT
-               A.PROFILE_NO
-             , A.TRAINER_NO  
-             , A.ORIGINAL_NAME
-             , A.SAVED_NAME
-             , A.SAVE_PATH
-             , A.THUMBNAIL_PATH
-             , A.FILE_TYPE
-          FROM TBL_TRAINER_PROFILEIMG_EDIT A
-         WHERE A.TRAINER_NO = ?
     </entry>
 </properties>
