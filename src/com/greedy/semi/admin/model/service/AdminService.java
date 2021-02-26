@@ -186,4 +186,26 @@ public class AdminService {
 		return memberList;
 	}
 
+	public int searchTrainerCount(String searchCondition, String searchValue) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchTrainerCount(con, searchCondition, searchValue);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> searchTrainerList(String searchCondition, String searchValue, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<MemberDTO> trainerList = adminDAO.searchTrainerList(con, searchCondition, searchValue, pageInfo);
+		
+		close(con);
+		
+		return trainerList;
+	}
+
 }

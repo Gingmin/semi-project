@@ -1485,29 +1485,16 @@ public class AdminDAO {
 
 			while(rset.next()) {
 				MemberDTO member = new MemberDTO();
-				member.setAmountDTO(new AmountDTO());
+				member.setPurchaseProductDTO(new PurchaseProductDTO());
 
-				A.PURCHASE_CODE 
-                , A.MEMBER_NO
-                , B.MEMBER_NAME
-                , A.PRODUCT_CODE
-                , A.PURCHASE_PRICE
-                , A.PURCHASE_DATE 
-                , A.PURCHASE_PERMIT_NO
-                , A.PURCHASE_STATUS
-				
-				
-				member.setNo(rset.getInt("MEMBER_NO"));
-				member.setEmail(rset.getString("EMAIL"));
+				member.getPurchaseProductDTO().setPurCode(rset.getString("PURCHASE_CODE"));
+				member.getPurchaseProductDTO().setNo(rset.getInt("MEMBER_NO"));
 				member.setName(rset.getString("MEMBER_NAME"));
-				member.setPhone(rset.getString("PHONE"));
-				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
-				member.setModifiedDate(rset.getDate("MODIFIED_DATE"));
-				member.setBlackStatus(rset.getString("BLACK_STATUS"));
-				member.setRole(rset.getString("MEMBER_ROLE"));
-				member.setStatus(rset.getString("MEMBER_STATUS"));
-				member.getAmountDTO().setAmount(rset.getInt("PT_AMOUNT"));
-				member.getAmountDTO().setExpDate(rset.getDate("MEMBERSHIP_EXP_DATE"));
+				member.getPurchaseProductDTO().setProCode(rset.getString("PRODUCT_CODE"));
+				member.getPurchaseProductDTO().setPrice(rset.getInt("PURCHASE_PRICE"));
+				member.getPurchaseProductDTO().setPurDate(rset.getDate("PURCHASE_DATE"));
+				member.getPurchaseProductDTO().setPermitNo(rset.getInt("PURCHASE_PERMIT_NO"));
+				member.getPurchaseProductDTO().setPurStatus(rset.getString("PURCHASE_STATUS"));
 
 				memberList.add(member);
 			}
@@ -1520,6 +1507,51 @@ public class AdminDAO {
 		}
 
 		return memberList;
+	}
+
+	public int searchTrainerCount(Connection con, String searchCondition, String searchValue) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = null;
+		if("name".equals(searchCondition)) {
+			query = prop.getProperty("searchNameTrainerCount");
+		} else if("number".equals(searchCondition)) {
+			query = prop.getProperty("searchNumberTrainerCount");
+		} else if("appStatus".equals(searchCondition)) {
+			query = prop.getProperty("searchAppStatusTrainerCount");
+		} else if("enDate".equals(searchCondition)) {
+			query = prop.getProperty("searcEnDateTrainerCount");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchValue);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return totalCount;
+		
+	}
+
+	public List<MemberDTO> searchTrainerList(Connection con, String searchCondition, String searchValue,
+			PageInfoDTO pageInfo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

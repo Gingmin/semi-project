@@ -168,28 +168,21 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="white-box">
-							<form action="" method="get" id="searchForm">
+							<form action="${ pageContext.servletContext.contextPath }/admin/trainer/search" method="get" id="searchForm">
 								<div class="search_box">
 									<table>
 										<tr>
-											<td class="box-title">회원명</td>
-											<td><input type="text" class="search" name="name" id="name" value="${ requestScope.searchMember.name }">
-											</td>
-											<!-- <td></td> -->
-											<td class="box-title">회원번호</td>
-											<td><input type="text" class="search" name="memberNo" id="memberNo" value="${ requestScope.searchMember.no }">
-											</td>
-											<td class="box-title">전화번호</td>
-											<td><input type="tel" class="search" name="phone" id="phone" value="${ requestScope.searchMember.phone }">
 											<td>
-											<td class="box-title">PT여부</td>
-											<td><select class="search selec" name="ptYn" id="ptYn">
-													<option value="전체" <c:if test="${ requestScope.ptYn eq '전체'}">selected</c:if>>전체</option>
-													<option value="Y" <c:if test="${ requestScope.ptYn eq 'Y'}">selected</c:if>>Y</option>
-													<option value="N" <c:if test="${ requestScope.ptYn eq 'N'}">selected</c:if>>N</option>
-											</select></td>
+												<select id="searchCondition" name="searchCondition">
+													<option value="name" <c:if test="${ requestScope.searchCondition eq 'name' }">selected</c:if>>트레이너명</option>
+													<option value="number" <c:if test="${ requestScope.searchCondition eq 'number' }">selected</c:if>>회원번호</option>
+													<option value="appStatus" <c:if test="${ requestScope.searchCondition eq 'appStatus' }">selected</c:if>>승인여부</option>
+													<option value="enDate" <c:if test="${ requestScope.searchCondition eq 'enDate' }">selected</c:if>>가입일자</option>
+												</select>
+												<input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
+											</td>
 											<td>
-												<button type="button" id="searchButton" onclick="searchBtn();"
+												<button type="button" id="searchButton" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>		
 										</tr>
@@ -202,22 +195,6 @@
 							</form>
 							<br>
 						</div>
-						<script>
-							function searchBtn() {
-								
-								const $searchForm = document.getElementById("searchForm");
-								
-								const $memberNo = document.getElementById('memberNo');
-								const memberNo = document.getElementById('memberNo').value;
-								
-								if(memberNo === "") {
-									$memberNo.disabled = 'disabled';
-								}
-								
-								$searchForm.action = "${ pageContext.servletContext.contextPath }/admin/trainer/search";
-								$searchForm.submit();
-							}
-						</script>
 						<!-- form 태그 끝 -->
 						<!-- ============================================================== -->
 						<!-- <p class="text-muted">Add class <code>.table</code></p> -->
@@ -358,10 +335,10 @@
 								    }
 									    
 								    if(document.getElementById("maxPage")) {
-									      const $maxPage = document.getElementById("maxPage");
-									      $maxPage.onclick = function() {
+									    const $maxPage = document.getElementById("maxPage");
+									    $maxPage.onclick = function() {
 									          location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
-									      }
+									    }
 								    }
 									    
 									function pageButtonAction(text) {
@@ -372,14 +349,14 @@
 									if(document.getElementById("searchStartPage")){
 								        const $searchStartPage = document.getElementById("searchStartPage");
 								        $searchStartPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=1&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
 								        }
-								     }
+								    }
 								     
-								    if(document.getElementById("searchPrevPage")){
+								     if(document.getElementById("searchPrevPage")){
 								        const $searchPrevPage = document.getElementById("searchPrevPage");
 								        $searchPrevPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
 								           
 								        }
 								        
@@ -388,7 +365,7 @@
 								    if(document.getElementById("searchNextPage")){
 								        const $searchNextPage = document.getElementById("searchNextPage");
 								        $searchNextPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
 								        }
 								        
 								    }
@@ -396,41 +373,21 @@
 								    if(document.getElementById("searchMaxPage")){
 								        const $searchMaxPage = document.getElementById("searchMaxPage");
 								        $searchMaxPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
 								        }
 								        
-								    }
+								   }
 								     
-								    function searchPageButtonAction(text) {
-								     console.log(text);
-								    	location.href = searchLink + "?currentPage=" + text + "&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
-								    }
+								   function searchPageButtonAction(text) {
+								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								   }
 								    
 								    /*효과*/
-								    /*
-								    if(document.getElementsByTagName("td")) {
-								 		const $tds = document.getElementsByTagName("td");
-								 		
-								 		for(let i = 0; i < $tds.length; i++ ) {
-								 			
-								 			$tds[i].onmouseenter = function() {
-								 				this.parentNode.style.background = "#e9ecef";
-								 				this.parentNode.style.cursor = "pointer";
-								 			}
-								 			
-								 			$tds[i].onmouseout = function() {
-								 				this.parentNode.style.background = "white";
-								 			}
-								 			
-								 			
-								 		}
-								 	}
-								    */
-								    if(document.getElementById("detailMember")) {
-								    	const $detailMember = document.getElementById("detailMember");
-								    	const $tdds = $detailMember.childNodes;
+								   if(document.getElementById("detailMember")) {
+								       const $detailMember = document.getElementById("detailMember");
+								       const $tdds = $detailMember.childNodes;
 								    	
-								    	for(let i = 0; i <$tdds.length; i++) {
+								       for(let i = 0; i <$tdds.length; i++) {
 								    		
 								    		$tdds[i].onmouseenter = function() {
 								 				this.style.background = "#e9ecef";
@@ -444,7 +401,7 @@
 								 		    $tdds[i].onclick = function() {
 								 				const no = this.children[0].innerText;
 								 				
-								 				location.href = "${ pageContext.servletContext.contextPath }/admin/member/detail?no=" + no;
+								 				location.href = "${ pageContext.servletContext.contextPath }/admin/trainer/detail?no=" + no;
 								 			} 
 								    	}
 								    }
