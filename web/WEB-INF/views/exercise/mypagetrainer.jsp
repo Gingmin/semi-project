@@ -33,8 +33,18 @@
 					나의 프로필
 				</div>
 				<div class="row">
-				
+				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
 					<div class="profile_img_area">
+					
+						<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
+						<div class="thumb-list">
+							<div>
+							
+							</div>
+							
+				
+						</div>
+					</c:forEach>
 					
 						<div class="profile_btn_area">
 						<label for="profileEdit" class="edit_btn">프로필 편집</label>
@@ -44,7 +54,7 @@
 							  <button type="submit" id="edit"></button>
 						</div>						
 					</div>
-					
+					</form>
 					<div class="profile_info_area">
 						<div class="info_item">
 							밍키
@@ -170,8 +180,9 @@
 									width="200" height="150">
 							</div>
 							<p>
-							No. <label><c:out value="${ thumbnail.no }"/></label> <c:out value="${ thumbnail.name }"/><br>
-                     조회수 : <c:out value="${ thumbnail.count }"/><br>
+							classNo. <label><c:out value="${ thumbnail.no }"/></label> className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
 						</div>
 					</c:forEach>
 				</div>
@@ -231,27 +242,7 @@
 		})
 	})
 </script>
-<script>
-	const $contentImgArea1 = document.getElementById("profile_img");
-	
-	$profileImg.onclick = function() {
-		document.getElementById("profileEdit").click();
-	}
-	function loadImg(value, num) {
-		if(value.files && value.files[0]) {
-			const reader = new FileReader();
-			
-			reader.onload = function(e) {
-				switch(num) {
-				case 1 :
-					document.getElementById("trainerImg").src = e.target.result;
-				}
-			}
-			
-			reader.readAsDataURL(value.files[0]);
-		}
-	}
-</script>
+
 
 		
 </body>

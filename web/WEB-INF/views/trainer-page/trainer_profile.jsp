@@ -30,16 +30,20 @@
          <div class="classimg_area">
             <img class="classimg_detail" src="/semi/resources/images/testimg.JPG">
          </div>
+					
          <div class="classinfo_area">
+          
             <div class="class_type">
-         	      피트니스
+         	     
+					<c:out value="${ trainer.category }"/>
+					
             </div>
             <div class="class_name">
-     	     	   근력 & 거북목 자세교청(초보가능)
+     	     	   <c:out value="${ trainer.intro }"/>
             </div>
             <div class="class_score">
                <i class="fas fa-star"></i>
-                5.0
+                <c:out value="${ trainer.count }"/>
             </div>
             <div class="trainerinfo">
                <div class="row">
@@ -47,7 +51,7 @@
                      <img class="trainerimg_detail" src="/semi/resources/images/testimg.JPG">
                   </div>
                   <div class="trainer_name">
-               		      정민서 코치
+               		     <c:out value="${ trainer.memberNo.name }"/>
                   </div>
                </div>
             </div>
@@ -74,16 +78,17 @@
             </div>
             <div class="trainer_intro2">
                <div class="intro_text2">
-             	     자격증~~~
+             	     자격증
                </div>
             </div>
          </div>
       </div>
       <div class="classinfomation_area2">
          <div class="intro_text3">
-         	   수업을 소개합니다.
+         	   <c:out value="${ trainer.introduce }"/>
          </div>
       </div>
+      
       <div class="review_area">
          <div class="review_text">
       	      리뷰
@@ -151,11 +156,11 @@
 	<script>
 		$("#application").click(function() {
 			
-			let memberNo = <%= session.getAttribute("no") %>;
+			let memberNo = "${ sessionScope.loginMember.no }";
 			console.log(memberNo);
 			
 			$.ajax({
-				url: "semi/pt/applicaion",
+				url: "semi/pt/reservation",
 				type: "post",
 				data: { memberNo: memberNo },
 				success: function(data, textStatus, xhr) {
@@ -167,7 +172,7 @@
 			});
 			
 		});
-	</script>
+	</script> 
 	
 </body>
 </html>

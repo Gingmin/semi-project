@@ -114,8 +114,8 @@ public class AuthenticationFilter implements Filter {
 		adminPermitList.add("/admin/black");
 		adminPermitList.add("/admin/black/search");
 		adminPermitList.add("/admin/black/detail");
-		adminPermitList.add("/trainer/page");
-		adminPermitList.add("/trainer/detail");
+//		adminPermitList.add("/trainer/page");
+//		adminPermitList.add("/trainer/detail");
 		
 		adminPermitList.add("/member/paymentResult");
 		
@@ -150,6 +150,7 @@ public class AuthenticationFilter implements Filter {
 		trainerPermitList.add("/trainer/sales_details");
 		trainerPermitList.add("/trainer/detail");
 		trainerPermitList.add("/trainer/profileEdit");
+		
 		
 		allPermitList.add("/member/regist");
 		allPermitList.add("/member/login");

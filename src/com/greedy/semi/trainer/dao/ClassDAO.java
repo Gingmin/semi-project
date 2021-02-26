@@ -14,10 +14,9 @@ import java.util.List;
 import java.util.Properties;
 
 import com.greedy.semi.common.config.ConfigLocation;
+import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
-
-import com.greedy.semi.trainer.dto.TrainerPtPermitDTO;
 
 public class ClassDAO {
 	
@@ -139,6 +138,7 @@ public class ClassDAO {
 				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
 				
 				thumbnailClass.setNo(rset.getInt("CLASS_NO"));
+				thumbnailClass.setTrainerNo(rset.getInt("TRAINER_NO"));
 				thumbnailClass.setName(rset.getString("CLASS_NAME"));
 				thumbnailClass.setKind(rset.getString("CLASS_KIND"));
 				thumbnailClass.setCategory(rset.getString("CLASS_CATEGORY"));
@@ -212,6 +212,7 @@ public class ClassDAO {
 				AttachmentDTO attachment = new AttachmentDTO();
 				
 				thumbnail.setNo(rset.getInt("CLASS_NO"));
+				thumbnail.setTrainerNo(rset.getInt("TRAINER_NO"));
 				thumbnail.setName(rset.getString("CLASS_NAME"));
 				thumbnail.setKind(rset.getString("CLASS_KIND"));
 				thumbnail.setCategory(rset.getString("CLASS_CATEGORY"));
@@ -288,34 +289,72 @@ public class ClassDAO {
 		
 		return result;
 	}
-
-
-
-	public int insertPtApplication(Connection con, TrainerPtPermitDTO memberNo) {
-		
+	
+	public int incrementTrainerCount(Connection con, int no) {
 		PreparedStatement pstmt = null;
+		
 		int result = 0;
 		
-		String query = prop.getProperty("insertPtApplication");
+		String query = prop.getProperty("incrementTrainerCount");
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			TrainerPtPermitDTO pt = new TrainerPtPermitDTO();
-			pt.setTrainerNo(new ClassDTO());
-			pstmt.setInt(1, memberNo.getPermitNo());
-//			pstmt.setInt(2, memberNo.getTrainerNo());
+			pstmt.setInt(1, no);
+			pstmt.setInt(2, no);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ClassDTO selectTrainerInfo(Connection con, int no) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ClassDTO trainer = null;
+		
+		String query = prop.getProperty("selectTrainerInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
 			
 			
-			
+			while(rset.next()) {
+				trainer = new ClassDTO();
+				trainer.setMemberNo(new MemberDTO());
+				
+				trainer.setNo(rset.getInt("CLASS_NO"));
+				trainer.setTrainerNo(rset.getInt("TRAINER_NO"));
+				trainer.setName(rset.getString("CLASS_NAME"));
+				trainer.setKind(rset.getString("CLASS_KIND"));
+				trainer.setCategory(rset.getString("CLASS_CATEGORY"));
+				trainer.setIntro(rset.getString("CLASS_INTRO"));
+				trainer.setIntroduce(rset.getString("CLASS_INTRODUCE"));
+				trainer.setCreatedDate(rset.getString("CREATED_DATE"));
+				trainer.setCount(rset.getInt("CLASS_COUNT"));
+				trainer.getMemberNo().setName(rset.getString("MEMBER_NAME"));
+				
+			}
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
-		return 0;
+		return trainer;
 	}
-
 
 }
 
