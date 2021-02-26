@@ -181,8 +181,14 @@
 												</select>
 												<input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 											</td>
+											<td width="20px"></td>
+											<td id="visibleDate" name="visibleDate" style="display: none;">
+												<label>기간</label>
+												<input type="date" id="searchDate1" name="searchDate1" value="${ requestScope.searchDate1 }">
+												<input type="date" id="searchDate2" name="searchDate2" value="${ requestScope.searchDate2 }">
+											</td>
 											<td>
-												<button type="button" id="searchButton" 
+												<button type="submit" id="searchButton" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>		
 										</tr>
@@ -192,7 +198,38 @@
 										</tr>
 
 									</table>
+									<input type="text" value="${ requestScope.searchDate1 }" id="dateFlag" name="dateFlag" style="display: none;">
 							</form>
+							<script>
+							/* 날짜 검색을 고르면 인풋태그 사라지고 , 날짜 인풋이 생길수 있게 */
+								const $searchCondition = document.getElementById("searchCondition");
+								
+								$searchCondition.addEventListener("change", function(){
+									
+									const searchCondition = $searchCondition.options[$searchCondition.selectedIndex].value;
+									const $visibleDate = document.getElementById("visibleDate");
+									const $searchValue = document.getElementById("searchValue");
+									
+									if(searchCondition === "enDate") {
+										$visibleDate.style.display = "block";
+										$searchValue.style.display = "none";
+									} else {
+										$visibleDate.style.display = "none";
+										$searchValue.style.display = "inline-block";
+									} 
+									
+								});
+								/* 날짜로 검색했을 때 인풋태그를 없애고, 날짜 value가 계속 남아있도록 */
+								const dateFlag = document.getElementById("dateFlag").value;
+								const $visibleDate = document.getElementById("visibleDate");
+								const $searchValue = document.getElementById("searchValue");
+								
+								if(dateFlag) {
+									$visibleDate.style.display = "block";
+									$searchValue.style.display = "none";
+								}
+								
+							</script>
 							<br>
 						</div>
 						<!-- form 태그 끝 -->
@@ -349,14 +386,14 @@
 									if(document.getElementById("searchStartPage")){
 								        const $searchStartPage = document.getElementById("searchStartPage");
 								        $searchStartPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
 								    }
 								     
 								     if(document.getElementById("searchPrevPage")){
 								        const $searchPrevPage = document.getElementById("searchPrevPage");
 								        $searchPrevPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								           
 								        }
 								        
@@ -365,7 +402,7 @@
 								    if(document.getElementById("searchNextPage")){
 								        const $searchNextPage = document.getElementById("searchNextPage");
 								        $searchNextPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
 								        
 								    }
@@ -373,13 +410,13 @@
 								    if(document.getElementById("searchMaxPage")){
 								        const $searchMaxPage = document.getElementById("searchMaxPage");
 								        $searchMaxPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
 								        
 								   }
 								     
 								   function searchPageButtonAction(text) {
-								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }";
+								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								   }
 								    
 								    /*효과*/

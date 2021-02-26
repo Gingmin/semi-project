@@ -140,7 +140,7 @@
 				<div class="row align-items-center">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 						<h4 class="page-title text-uppercase font-medium font-14">
-							<c:out value="${ requestScope.memberDetail.name }"/>의 상세정보</h4><br>
+							<c:out value="${ requestScope.trainerDetail.name }"/>의 상세정보</h4><br>
 					</div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 						<div class="d-md-flex">
@@ -178,10 +178,10 @@
 								<table>
 									<tr>
 										<td class="box-title">회원번호&nbsp;&nbsp;</td>
-										<td><input type="number" value="${ requestScope.memberDetail.no }" disabled></td>
+										<td><input type="number" value="${ requestScope.trainerDetail.no }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">이름&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.name }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.name }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -189,10 +189,10 @@
 									<!-- 1행끝 -->
 									<tr>
 										<td class="box-title">이메일&nbsp;&nbsp;</td>
-										<td><input type="email" value="${ requestScope.memberDetail.email }" disabled></td>
+										<td><input type="email" value="${ requestScope.trainerDetail.email }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">전화번호&nbsp;&nbsp;</td>
-										<td><input type="tel" value="${ requestScope.memberDetail.phone }" disabled></td>
+										<td><input type="tel" value="${ requestScope.trainerDetail.phone }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -200,10 +200,10 @@
 									<!-- 1행끝 -->
 									<tr>
 										<td class="box-title">가입일자&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.enrollDate }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.enrollDate }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">수정일자&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.modifiedDate }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.modifiedDate }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -211,10 +211,10 @@
 									<!-- 1행끝 -->
 									<tr>
 										<td class="box-title">블랙여부&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.blackStatus }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.blackStatus }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">회원구분&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.role }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.role }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -222,10 +222,10 @@
 									<!-- 1행끝 -->
 									<tr>
 										<td class="box-title">상태&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.status }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.status }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">남은 PT횟수&nbsp;&nbsp;</td>
-										<td><input type="number" value="${ requestScope.memberDetail.amountDTO.amount }" disabled></td>
+										<td><input type="number" value="${ requestScope.trainerDetail.amountDTO.amount }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -233,10 +233,10 @@
 									<!-- 1행끝 -->
 									<tr>
 										<td class="box-title">멤버쉽 만료일&nbsp;&nbsp;</td>
-										<td><input type="text" value="${ requestScope.memberDetail.amountDTO.expDate }" disabled></td>
+										<td><input type="text" value="${ requestScope.trainerDetail.amountDTO.expDate }" disabled></td>
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="box-title">총구매금액&nbsp;&nbsp;</td>
-										<td><input type="number" value="${ requestScope.memberDetail.purchaseProductDTO.price }" disabled></td>
+										<td><input type="number" value="${ requestScope.trainerDetail.purchaseProductDTO.price }" disabled></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>

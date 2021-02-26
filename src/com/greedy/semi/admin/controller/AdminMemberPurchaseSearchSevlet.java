@@ -14,8 +14,8 @@ import com.greedy.semi.common.paging.Pagenation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
-@WebServlet("/admin/trainer/search")
-public class AdminTrainerSearchServlet extends HttpServlet {
+@WebServlet("/admin/purchaseMember/search")
+public class AdminMemberPurchaseSearchSevlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -41,7 +41,7 @@ public class AdminTrainerSearchServlet extends HttpServlet {
 	      }
 	      
 	      AdminService adminService = new AdminService();
-	      int totalCount = adminService.searchTrainerCount(searchCondition, searchValue, searchDate1, searchDate2);
+	      int totalCount = adminService.searchPurchaseTotalCount(searchCondition, searchValue, searchDate1, searchDate2);
 	      
 	      System.out.println("tatalCount : " + totalCount);
 	   
@@ -52,16 +52,16 @@ public class AdminTrainerSearchServlet extends HttpServlet {
 	      
 	      System.out.println(pageInfo);
 	      
-	      List<MemberDTO> trainerList = adminService.searchTrainerList(searchCondition, searchValue, pageInfo, searchDate1, searchDate2);
+	      List<MemberDTO> memberList = adminService.searchPurchaseMemberList(searchCondition, searchValue, pageInfo, searchDate1, searchDate2);
 	      
-	      for(MemberDTO trainer : trainerList) {
+	      for(MemberDTO trainer : memberList) {
 	    	  System.out.println(trainer);
 	      }
 	      
 	      String path = "";
-	      if(trainerList != null) {
-	    	  path = "/WEB-INF/views/admin/trainer.jsp";
-	    	  request.setAttribute("trainerList", trainerList);
+	      if(memberList != null) {
+	    	  path = "/WEB-INF/views/admin/purchaseMember.jsp";
+	    	  request.setAttribute("memberList", memberList);
 	    	  request.setAttribute("pageInfo", pageInfo);
 	    	  request.setAttribute("searchCondition", searchCondition);
 	    	  request.setAttribute("searchValue", searchValue);
@@ -69,7 +69,7 @@ public class AdminTrainerSearchServlet extends HttpServlet {
 	    	  request.setAttribute("searchDate2", searchDate2);
 	      } else {
 	    	  path = "/WEB-INF/views/common/failed.jsp";
-	    	  request.setAttribute("message", "트레이너 검색 실패");
+	    	  request.setAttribute("message", "결제정보 검색 실패");
 	      }
 	      
 	      request.getRequestDispatcher(path).forward(request, response);
