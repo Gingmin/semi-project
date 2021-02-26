@@ -17,6 +17,7 @@ import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.PtReservationDTO;
 
 public class ClassDAO {
 	
@@ -354,6 +355,29 @@ public class ClassDAO {
 		}
 		
 		return trainer;
+	}
+
+	public int reservationMember(Connection con, PtReservationDTO reservationMember) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("reservationMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, reservationMember.getMemberNo());
+			pstmt.setInt(2, reservationMember.getTrainerNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

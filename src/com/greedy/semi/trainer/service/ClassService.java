@@ -12,6 +12,7 @@ import java.util.List;
 import com.greedy.semi.trainer.dao.ClassDAO;
 import com.greedy.semi.trainer.dto.AttachmentDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.PtReservationDTO;
 
 
 
@@ -133,5 +134,23 @@ public class ClassService {
 		return trainer;
 	}
 
+	public int reservationMember(PtReservationDTO reservationMember) {
+		
+		Connection con = getConnection();
+		
+		int result = classDAO.reservationMember(con, reservationMember);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	
 
 }

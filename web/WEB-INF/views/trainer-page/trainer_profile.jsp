@@ -157,14 +157,15 @@
 		$("#application").click(function() {
 			
 			let memberNo = "${ sessionScope.loginMember.no }";
+			let trainerNo = "${ requestScope.trainer.trainerNo }"
 			console.log(memberNo);
 			
 			$.ajax({
-				url: "semi/pt/reservation",
+				url: "/semi/pt/reservation",
 				type: "post",
-				data: { memberNo: memberNo },
+				data: { memberNo: memberNo, trainerNo: trainerNo },
 				success: function(data, textStatus, xhr) {
-					alert(data);
+					alert("1:1PT 예약이 완료되었습니다!");
 				},
 				error: function(xhr, status, error) {
 					console.log(error);

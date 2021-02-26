@@ -151,4 +151,19 @@
           JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
          WHERE A.TRAINER_NO = ? 
     </entry>
+    <entry key="reservationMember">
+        INSERT /* com.greedy.semi.trainer.dao.ClassDAO#reservationMember() */
+          INTO TBL_TRAINER_PT_PERMIT A
+        (
+          A.PERMIT_NO
+        , A.TRAINER_NO
+        , A.MEMBER_NO
+        )
+        VALUES
+        (
+          SEQ_PERMIT_NO.NEXTVAL
+        , ?
+        , ?  
+        )
+    </entry>
 </properties>

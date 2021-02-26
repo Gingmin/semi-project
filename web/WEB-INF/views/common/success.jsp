@@ -71,6 +71,10 @@
 					movePath = "${ pageContext.servletContext.contextPath }/admin/trainer";
 					message = "트레이너 승인 성공";
 					break;
+				case "reservationMember" :
+					movePath = "${ pageContext.servletContext.contextPath }/trainer/detail?no=";
+					message = "1:1PT 예약이 완료되었습니다!";
+					break;
 			}
 			
 			alert(message);
