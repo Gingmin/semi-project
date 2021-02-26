@@ -139,8 +139,8 @@
 			<div class="page-breadcrumb bg-white">
 				<div class="row align-items-center">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-						<h4 class="page-title text-uppercase font-medium font-14">회원
-							정보</h4><br>
+						<h4 class="page-title text-uppercase font-medium font-14">
+							블랙리스트</h4><br>
 					</div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 						<div class="d-md-flex">
@@ -167,28 +167,26 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="white-box">
-							<form action="" method="get" id="searchForm">
+							<form action="${ pageContext.servletContext.contextPath }/admin/black/search" method="get" id="searchForm">
 								<div class="search_box">
 									<table>
 										<tr>
-											<td class="box-title">회원명</td>
-											<td><input type="text" class="search" name="name" id="name" value="${ requestScope.searchMember.name }">
-											</td>
-											<!-- <td></td> -->
-											<td class="box-title">회원번호</td>
-											<td><input type="text" class="search" name="memberNo" id="memberNo" value="${ requestScope.searchMember.no }">
-											</td>
-											<td class="box-title">전화번호</td>
-											<td><input type="tel" class="search" name="phone" id="phone" value="${ requestScope.searchMember.phone }">
 											<td>
-											<td class="box-title">PT여부</td>
-											<td><select class="search selec" name="ptYn" id="ptYn">
-													<option value="전체" <c:if test="${ requestScope.ptYn eq '전체'}">selected</c:if>>전체</option>
-													<option value="Y" <c:if test="${ requestScope.ptYn eq 'Y'}">selected</c:if>>Y</option>
-													<option value="N" <c:if test="${ requestScope.ptYn eq 'N'}">selected</c:if>>N</option>
-											</select></td>
+												<select id="searchCondition" name="searchCondition">
+													<option value="name" <c:if test="${ requestScope.searchCondition eq 'name' }">selected</c:if>>회원명</option>
+													<option value="number" <c:if test="${ requestScope.searchCondition eq 'number' }">selected</c:if>>회원번호</option>
+													<option value="enDate" <c:if test="${ requestScope.searchCondition eq 'enDate' }">selected</c:if>>가입일자</option>
+												</select>
+												<input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
+											</td>
+											<td width="20px"></td>
+											<td id="visibleDate" name="visibleDate" style="display: none;">
+												<label>기간</label>
+												<input type="date" id="searchDate1" name="searchDate1" value="${ requestScope.searchDate1 }">
+												<input type="date" id="searchDate2" name="searchDate2" value="${ requestScope.searchDate2 }">
+											</td>
 											<td>
-												<button type="button" id="searchButton" onclick="searchBtn();"
+												<button type="submit" id="searchButton" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>		
 										</tr>
@@ -198,25 +196,40 @@
 										</tr>
 
 									</table>
+									<input type="text" value="${ requestScope.searchDate1 }" id="dateFlag" name="dateFlag" style="display: none;">
 							</form>
-							<br>
-						</div>
-						<script>
-							function searchBtn() {
+							<script>
+							/* 날짜 검색을 고르면 인풋태그 사라지고 , 날짜 인풋이 생길수 있게 */
+								const $searchCondition = document.getElementById("searchCondition");
 								
-								const $searchForm = document.getElementById("searchForm");
+								$searchCondition.addEventListener("change", function(){
+									
+									const searchCondition = $searchCondition.options[$searchCondition.selectedIndex].value;
+									const $visibleDate = document.getElementById("visibleDate");
+									const $searchValue = document.getElementById("searchValue");
+									
+									if(searchCondition === "enDate") {
+										$visibleDate.style.display = "block";
+										$searchValue.style.display = "none";
+									} else {
+										$visibleDate.style.display = "none";
+										$searchValue.style.display = "inline-block";
+									} 
+									
+								});
+								/* 날짜로 검색했을 때 인풋태그를 없애고, 날짜 value가 계속 남아있도록 */
+								const dateFlag = document.getElementById("dateFlag").value;
+								const $visibleDate = document.getElementById("visibleDate");
+								const $searchValue = document.getElementById("searchValue");
 								
-								const $memberNo = document.getElementById('memberNo');
-								const memberNo = document.getElementById('memberNo').value;
-								
-								if(memberNo === "") {
-									$memberNo.disabled = 'disabled';
+								if(dateFlag) {
+									$visibleDate.style.display = "block";
+									$searchValue.style.display = "none";
 								}
 								
-								$searchForm.action = "${ pageContext.servletContext.contextPath }/admin/member/search";
-								$searchForm.submit();
-							}
-						</script>
+							</script>
+							<br>
+						</div>
 						<!-- form 태그 끝 -->
 						<!-- ============================================================== -->
 						<!-- <p class="text-muted">Add class <code>.table</code></p> -->
@@ -359,14 +372,14 @@
 									if(document.getElementById("searchStartPage")){
 								        const $searchStartPage = document.getElementById("searchStartPage");
 								        $searchStartPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=1&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
-								     }
+								    }
 								     
-								    if(document.getElementById("searchPrevPage")){
+								     if(document.getElementById("searchPrevPage")){
 								        const $searchPrevPage = document.getElementById("searchPrevPage");
 								        $searchPrevPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								           
 								        }
 								        
@@ -375,7 +388,7 @@
 								    if(document.getElementById("searchNextPage")){
 								        const $searchNextPage = document.getElementById("searchNextPage");
 								        $searchNextPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1}&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
 								        
 								    }
@@ -383,16 +396,14 @@
 								    if(document.getElementById("searchMaxPage")){
 								        const $searchMaxPage = document.getElementById("searchMaxPage");
 								        $searchMaxPage.onclick = function() {
-								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
+								           location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue}&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
 								        }
 								        
-								    }
+								   }
 								     
-								    function searchPageButtonAction(text) {
-								     console.log(text);
-								    	location.href = searchLink + "?currentPage=" + text + "&name=${ requestScope.searchMember.name }&memberNo=${ requestScope.searchMember.no }&phone=${ requestScope.searchMember.phone }&ptYn=${ requestScope.ptYn }";
-								    }
-								    
+								   function searchPageButtonAction(text) {
+								        location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition }&searchValue=${ requestScope.searchValue }&searchDate1=${ requestScope.searchDate1 }&searchDate2=${ requestScope.searchDate2 }";
+								   }
 								    /*효과*/
 								    /*
 								    if(document.getElementsByTagName("td")) {

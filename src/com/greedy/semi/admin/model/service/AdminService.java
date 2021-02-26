@@ -87,8 +87,15 @@ public class AdminService {
 		
 		/* 결제한 적 있는 회원인지부터 조회 */
 		AmountDTO purchaseYN = adminDAO.selectPuchaseYN(con, no);
-		int amount = purchaseYN.getAmount();
-		java.sql.Date expDate = purchaseYN.getExpDate();
+
+		int amount = 0;
+		java.sql.Date expDate = null;
+		if(purchaseYN != null) {
+			
+			amount = purchaseYN.getAmount();
+			expDate = purchaseYN.getExpDate();
+		}
+		
 		
 		System.out.println("amount : " + amount);
 		System.out.println("expDate : " + expDate);
@@ -97,13 +104,17 @@ public class AdminService {
 		int totalPrice = 0;
 		
 		/* 결제내역이 있을 때 전체 조회 */
-		if(amount > 0 && expDate != null) {
+		if(amount > 0 || expDate != null) {
 			memberDetail = adminDAO.selectMemberDetail(con, no);
 			/* 총 구매 금액 검색(SUM) */
 			totalPrice = adminDAO.selectTotalPrice(con, no);
+			System.out.println("memberDetail : " + memberDetail);
+			System.out.println("totalPrice : " + totalPrice);
+			System.out.println("결제내역조회 성공");
 		} else {
 			/* 결제 정보가 없으면 회원가입 내역만 조회 */
 			memberDetail = adminDAO.selectMemberNoPurchase(con, no);
+			System.out.println("회원가입 내역 조회 성공");
 		}
 		/* 구매했으면 구매 총액 OR 없으면 0*/
 		memberDetail.getPurchaseProductDTO().setPrice(totalPrice);
@@ -186,26 +197,103 @@ public class AdminService {
 		return memberList;
 	}
 
-	public int searchTrainerCount(String searchCondition, String searchValue) {
+	public int searchTrainerCount(String searchCondition, String searchValue, String searchDate1, String searchDate2) {
 		
 		Connection con = getConnection();
 		
-		int totalCount = adminDAO.searchTrainerCount(con, searchCondition, searchValue);
+		int totalCount = adminDAO.searchTrainerCount(con, searchCondition, searchValue, searchDate1, searchDate2);
 		
 		close(con);
 		
 		return totalCount;
 	}
 
-	public List<MemberDTO> searchTrainerList(String searchCondition, String searchValue, PageInfoDTO pageInfo) {
+	public List<MemberDTO> searchTrainerList(String searchCondition, String searchValue, PageInfoDTO pageInfo, String searchDate1, String searchDate2) {
 		
 		Connection con = getConnection();
 		
-		List<MemberDTO> trainerList = adminDAO.searchTrainerList(con, searchCondition, searchValue, pageInfo);
+		List<MemberDTO> trainerList = adminDAO.searchTrainerList(con, searchCondition, searchValue, pageInfo, searchDate1, searchDate2);
 		
 		close(con);
 		
 		return trainerList;
+	}
+
+	public MemberDTO selectTrainerDetail(int no) {
+		
+		Connection con = getConnection();
+		
+		/* 트레이너 상세는 경력, 자격증, 자격증코드, 썸네일 사진, 지금까지 정산받은 금액을 다 입력해야 하므로 정산 완료 후 작성 */
+		
+		MemberDTO trainerDetail = null;
+		
+		close(con);
+		
+		return trainerDetail;
+	}
+
+	public int searchBlackCount(String searchCondition, String searchValue, String searchDate1, String searchDate2) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchBlackCount(con, searchCondition, searchValue, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> searchBlackList(String searchCondition, String searchValue, PageInfoDTO pageInfo,
+			String searchDate1, String searchDate2) {
+		
+		Connection con = getConnection();
+		
+		List<MemberDTO> blackList = adminDAO.searchBlackList(con, searchCondition, searchValue, pageInfo, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return blackList;
+	}
+
+	public MemberDTO selectBlackDetail(int no) {
+
+		/* 관리자페이지에서는 신고한 회원이랑 같이 조회가 되야 하므로 다음에 작성 */
+		return null;
+	}
+
+	public int selectTotalPurchaseCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.selectTotalPurchaseCount(con);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public int searchPurchaseTotalCount(String searchCondition, String searchValue, String searchDate1,
+			String searchDate2) {
+
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchPurchaseTotalCount(con, searchCondition, searchValue, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<MemberDTO> searchPurchaseMemberList(String searchCondition, String searchValue, PageInfoDTO pageInfo,
+			String searchDate1, String searchDate2) {
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> memberList = adminDAO.searchPurchaseMemberList(con, searchCondition, searchValue, pageInfo, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return memberList;
 	}
 
 }

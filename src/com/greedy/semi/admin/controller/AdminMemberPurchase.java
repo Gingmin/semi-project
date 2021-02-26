@@ -32,7 +32,7 @@ public class AdminMemberPurchase extends HttpServlet {
 		}
 
 		AdminService adminService = new AdminService();
-		int totalCount = adminService.selectTotalCount();
+		int totalCount = adminService.selectTotalPurchaseCount();
 		System.out.println("totalCount : " + totalCount);
 
 		int limit = 10;

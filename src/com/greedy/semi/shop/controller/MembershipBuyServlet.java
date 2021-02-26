@@ -25,7 +25,7 @@ public class MembershipBuyServlet extends HttpServlet {
 		System.out.println("productPrice : " + productPrice);
 		
 		request.setAttribute("productPrice", productPrice);
-		String path = "/WEB-INF/views/payment/membership.jsp";
+		String path = "/WEB-INF/views/payment/import.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
@@ -33,8 +33,8 @@ public class MembershipBuyServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	String success = request.getParameter("imp_uid");
-	System.out.println("success : " + success);
+		String success = request.getParameter("imp_uid");
+		System.out.println("success : " + success);
 			
 		
 	}
