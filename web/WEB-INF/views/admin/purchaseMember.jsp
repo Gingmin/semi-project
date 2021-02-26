@@ -224,33 +224,27 @@
 							<table class="table">
 								<thead>
 									<tr>
+										<th class="border-top-0">결제코드</th>
 										<th class="border-top-0">회원번호</th>
-										<th class="border-top-0">이메일</th>
 										<th class="border-top-0">이름</th>
-										<th class="border-top-0">전화번호</th>
-										<th class="border-top-0">가입일자</th>
-										<th class="border-top-0">수정일자</th>
-										<th class="border-top-0">블랙여부</th>
-										<th class="border-top-0">회원구분</th>
-										<th class="border-top-0">회원상태</th>
-										<th class="border-top-0">pt남은횟수</th>
-										<th class="border-top-0">멤버쉽만료일자</th>
+										<th class="border-top-0">상품코드</th>
+										<th class="border-top-0">결제금액</th>
+										<th class="border-top-0">결제일자</th>
+										<th class="border-top-0">결제승인번호</th>
+										<th class="border-top-0">결제상태</th>
 									</tr>
 								</thead>
 								<tbody id="detailMember">
 									<c:forEach var="member" items="${ requestScope.memberList }">
 									<tr>
-										<td><c:out value="${ member.no }"/></td>
-										<td><c:out value="${ member.email }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.purCode }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.no }"/></td>
 										<td><c:out value="${ member.name }"/></td>
-										<td><c:out value="${ member.phone }"/></td>
-										<td><c:out value="${ member.enrollDate }"/></td>
-										<td><c:out value="${ member.modifiedDate }"/></td>
-										<td><c:out value="${ member.blackStatus }"/></td>
-										<td><c:out value="${ member.role }"/></td>
-										<td><c:out value="${ member.status }"/></td>
-										<td><c:out value="${ member.amountDTO.amount }"/></td>
-										<td><c:out value="${ member.amountDTO.expDate }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.proCode }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.price }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.purDate }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.permitNo }"/></td>
+										<td><c:out value="${ member.purchaseProductDTO.purStatus }"/></td>
 									</tr>
 									</c:forEach>
 								</tbody>

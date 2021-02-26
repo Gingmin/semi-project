@@ -1599,4 +1599,32 @@
 		       ) D
 		WHERE D.RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="searchNameTrainerCount">
+        SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNameTrainerCount() */
+               COUNT(*)
+          FROM TBL_MEMBER A
+          JOIN TBL_TRAINER_INFO B ON(A.MEMBER_NO = B.MEMBER_NO)
+         WHERE A.MEMBER_NAME LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchNumberTrainerCount">
+        SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchNumberTrainerCount() */
+               COUNT(*)
+          FROM TBL_MEMBER A
+          JOIN TBL_TRAINER_INFO B ON(A.MEMBER_NO = B.MEMBER_NO)
+         WHERE A.MEMBER_NO LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searchAppStatusTrainerCount">
+        SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchAppStatusTrainerCount() */
+               COUNT(*)
+          FROM TBL_MEMBER A
+          JOIN TBL_TRAINER_INFO B ON(A.MEMBER_NO = B.MEMBER_NO)
+         WHERE B.APPROVAL_STATUS LIKE '%' || ? || '%'
+	</entry>
+	<entry key="searcEnDateTrainerCount">
+        SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searcEnDateTrainerCount() */
+               COUNT(*)
+          FROM TBL_MEMBER A
+          JOIN TBL_TRAINER_INFO B ON(A.MEMBER_NO = B.MEMBER_NO)
+         WHERE A.ENROLL_DATE LIKE '%' || ? || '%'	
+	</entry>
 </properties>
