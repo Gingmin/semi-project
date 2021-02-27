@@ -7,7 +7,7 @@ import com.greedy.semi.member.model.dto.MemberDTO;
 
 public class ClassDTO implements Serializable {
 	
-	private int No;
+	private int no;
 	private int trainerNo;
 	private MemberDTO memberNo;
 	private int attachmentNo;
@@ -29,7 +29,7 @@ public class ClassDTO implements Serializable {
 			String category, String intro, String introduce, String createdDate, String status, String approval,
 			int count, List<AttachmentDTO> attachmentList) {
 		super();
-		No = no;
+		this.no = no;
 		this.trainerNo = trainerNo;
 		this.memberNo = memberNo;
 		this.attachmentNo = attachmentNo;
@@ -46,7 +46,7 @@ public class ClassDTO implements Serializable {
 	}
 
 	public int getNo() {
-		return No;
+		return no;
 	}
 
 	public int getTrainerNo() {
@@ -102,7 +102,7 @@ public class ClassDTO implements Serializable {
 	}
 
 	public void setNo(int no) {
-		No = no;
+		this.no = no;
 	}
 
 	public void setTrainerNo(int trainerNo) {
@@ -159,7 +159,7 @@ public class ClassDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ClassDTO [No=" + No + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo + ", attachmentNo="
+		return "ClassDTO [no=" + no + ", trainerNo=" + trainerNo + ", memberNo=" + memberNo + ", attachmentNo="
 				+ attachmentNo + ", name=" + name + ", kind=" + kind + ", category=" + category + ", intro=" + intro
 				+ ", introduce=" + introduce + ", createdDate=" + createdDate + ", status=" + status + ", approval="
 				+ approval + ", count=" + count + ", attachmentList=" + attachmentList + "]";
