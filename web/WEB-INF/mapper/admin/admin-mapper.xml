@@ -2124,5 +2124,100 @@
 		       ) D
 		WHERE D.RNUM BETWEEN ? AND ?
 	</entry>
-	
+	<entry key="selectTotalCalCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTotalCalCount() */
+               COUNT(*)
+          FROM TBL_RECEIPT A
+          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+         WHERE B.MEMBER_ROLE = 'TRAINER'
+           AND A.CC_STATUS = 'N'
+	</entry>
+	<entry key="selectCalList">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectCalList() */
+		       D.RNUM
+		     , D.RECEIPT_NO
+		     , D.TRAINER_NO
+		     , D.MEMBER_NAME
+		     , D.RECEIPT_DATE
+		     , D.REC_NAME
+		     , D.TOTAL_PRICE
+		     , D.CC_STATUS
+		  FROM (SELECT ROWNUM RNUM
+		             , E.RECEIPT_NO
+		             , E.TRAINER_NO
+		             , E.MEMBER_NAME
+		             , E.RECEIPT_DATE
+		             , E.REC_NAME
+		             , E.TOTAL_PRICE
+		             , E.CC_STATUS
+		          FROM (SELECT
+                               A.RECEIPT_NO 
+                             , A.TRAINER_NO
+                             , B.MEMBER_NAME
+                             , A.RECEIPT_DATE
+                             , C.REC_NAME
+                             , A.TOTAL_PRICE
+                             , A.CC_STATUS
+                          FROM TBL_RECEIPT A
+                          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+                          JOIN TBL_RECEIPT_CATEGORY C ON (C.REC_CODE = A.REC_CODE)
+		                 WHERE B.MEMBER_ROLE = 'TRAINER'
+		                   AND A.CC_STATUS = 'N'
+		                 ORDER BY A.RECEIPT_DATE DESC
+		          ) E
+		       ) D
+		WHERE D.RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchCalculateSearchCount">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchCalculateSearchCount() */
+               COUNT(*)
+          FROM TBL_RECEIPT A
+          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+         WHERE B.MEMBER_ROLE = 'TRAINER'
+           AND A.RECEIPT_DATE >= ?
+           AND A.RECEIPT_DATE &lt; ?
+           AND B.MEMBER_NAME LIKE '%' || ? || '%' 
+           AND A.TRAINER_NO = ?
+           AND A.CC_STATUS = 'N'
+	</entry>
+	<entry key="searchCalculateSearchList">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchCalculateSearchList() */
+		       D.RNUM
+		     , D.RECEIPT_NO
+		     , D.TRAINER_NO
+		     , D.MEMBER_NAME
+		     , D.RECEIPT_DATE
+		     , D.REC_NAME
+		     , D.TOTAL_PRICE
+		     , D.CC_STATUS
+		  FROM (SELECT ROWNUM RNUM
+		             , E.RECEIPT_NO
+		             , E.TRAINER_NO
+		             , E.MEMBER_NAME
+		             , E.RECEIPT_DATE
+		             , E.REC_NAME
+		             , E.TOTAL_PRICE
+		             , E.CC_STATUS
+		          FROM (SELECT
+                               A.RECEIPT_NO 
+                             , A.TRAINER_NO
+                             , B.MEMBER_NAME
+                             , A.RECEIPT_DATE
+                             , C.REC_NAME
+                             , A.TOTAL_PRICE
+                             , A.CC_STATUS
+                          FROM TBL_RECEIPT A
+                          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+                          JOIN TBL_RECEIPT_CATEGORY C ON (C.REC_CODE = A.REC_CODE)
+		                 WHERE B.MEMBER_ROLE = 'TRAINER'
+		                   AND A.RECEIPT_DATE >= ?
+                           AND A.RECEIPT_DATE &lt; ?
+                           AND B.MEMBER_NAME LIKE '%' || ? || '%' 
+                           AND A.TRAINER_NO = ?
+                           AND A.CC_STATUS = 'N'
+		                 ORDER BY A.RECEIPT_DATE DESC
+		          ) E
+		       ) D
+		WHERE D.RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

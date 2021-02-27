@@ -19,7 +19,7 @@ public class AdminBlackSearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String searchCondition = request.getParameter("searchCondition");
+		  String searchCondition = request.getParameter("searchCondition");
 	      String searchValue = request.getParameter("searchValue");
 	      String searchDate1 = request.getParameter("searchDate1");
 	      String searchDate2 = request.getParameter("searchDate2");

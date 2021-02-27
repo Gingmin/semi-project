@@ -171,7 +171,14 @@ window.onload = function() {
 			location.href = "/semi/admin/purchaseMember";
 		}
 	}
-	
+
+	/*관리자 페이지 회원결제*/
+	if(document.getElementById("calculatorMoney")) {
+		const $calculatorMoney = document.getElementById("calculatorMoney");
+		$calculatorMoney.onclick = function() {
+			location.href = "/semi/admin/calculatorMoney";
+		}
+	}
 
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
