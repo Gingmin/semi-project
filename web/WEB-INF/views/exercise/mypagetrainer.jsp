@@ -180,9 +180,11 @@
 									width="200" height="150">
 							</div>
 							<p>
-							classNo. <label><c:out value="${ thumbnail.no }"/></label> className: <c:out value="${ thumbnail.name }"/><br>
+							수업번호: <label><c:out value="${ thumbnail.no }"/></label>번
+							<%-- className: <c:out value="${ thumbnail.name }"/><br>
 							조회수 : <c:out value="${ thumbnail.count }"/><br>
-							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
+							</p>
 						</div>
 					</c:forEach>
 				</div>
