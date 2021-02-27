@@ -59,7 +59,7 @@ $(function () {
             barWidth: '4',
             resize: true,
             barSpacing: '5',
-            barColor: '#11a0f8'
+            barColor: '#11a098'
         });
         $('#sparklinedash4').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
             type: 'bar',
@@ -68,6 +68,78 @@ $(function () {
             resize: true,
             barSpacing: '5',
             barColor: '#f33155'
+        });
+        $('#sparklinedash4').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#11A0E6'
+        });
+        $('#sparklinedash5').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#11A01B'
+        });
+        $('#sparklinedash6').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#81A02A5'
+        });
+        $('#sparklinedash7').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#d1A02A'
+        });
+        $('#sparklinedash8').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#AAA083'
+        });
+        $('#sparklinedash9').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#456757'
+        });
+        $('#sparklinedash10').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#4567'
+        });
+        $('#sparklinedash11').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#eAA083'
+        });
+        $('#sparklinedash12').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+            type: 'bar',
+            height: '30',
+            barWidth: '4',
+            resize: true,
+            barSpacing: '5',
+            barColor: '#BAA083'
         });
     }
     var sparkResize;
