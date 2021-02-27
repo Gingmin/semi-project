@@ -148,45 +148,61 @@
 
 				<div class="class_management_area">
 					<div class="class_text">
-						나의 클래스 관리
+						나의 수업 관리
 					</div>
 					<div class="class_btn_list">
 						<div class="row">
 							<div class="cm_btn_list">
-								<div class="cm_btn">
-									모든클래스
-								</div>
+								<button class="cm_btn" id="allButton" style="width: 160px">
+									모든수업
+								</button>
 							</div>
 							<div class="cm_btn_list">
 								<%-- <c:if test="${ thumbnailList.kind eq '클'}">
 								<c:out value="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"></c:out>
 								</c:if> --%>
-								<div class="cm_btn">
-									1:1클래스
-								</div>
+								<button class="cm_btn" id="ptButton" style="width: 160px">
+									PT수업
+								</button>
 							</div>
 							<div class="cm_btn_list">
-								<div class="cm_btn">
-									그룹클래스
-								</div>
+								<button class="cm_btn" id="groupButton" style="width: 160px">
+									Group수업
+								</button>
 							</div>
 						</div>
 					</div>
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="0">
+					<c:if test="${ sessionScope.loginMember.no eq thumbnail.trainerNo }">
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="200" height="150">
 							</div>
 							<p>
-							수업번호: <label><c:out value="${ thumbnail.no }"/></label>번
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
 							<%-- className: <c:out value="${ thumbnail.name }"/><br>
 							조회수 : <c:out value="${ thumbnail.count }"/><br>
 							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
 							</p>
 						</div>
+					</c:if>
 					</c:forEach>
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
+							className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
+							</p>
+						</div>
+					</c:forEach> --%>
 				</div>
 				</div>
 				<br>
@@ -244,9 +260,18 @@
 		})
 	})
 </script>
-
-
-		
+<script>
+	$('#ptButton').click(function() {
+		$('#img').hide();
+		$('#label').hide();
+	});
+</script>
+<script>
+	$('#groupButton').click(function() {
+		$('#img').show();
+		$('#label').show();
+});
+</script>
 </body>
 </html>
 

@@ -72,14 +72,16 @@
 								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="350" height="250">
 							</div>
-					수업번호: <label><c:out value="${ thumbnail.trainerNo }"/></label>번<br>
+					No. <label><c:out value="${ thumbnail.trainerNo }"/></label><br>
+						
+						
 					<c:out value="${ thumbnail.category }"/><br>
 						</div>
 					</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
 					
-					<c:out value="${ thumbnail.name }"/>
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
