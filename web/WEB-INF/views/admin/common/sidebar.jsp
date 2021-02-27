@@ -80,7 +80,7 @@
                                  aria-expanded="false"><i class="fa fa-th-list"
                                     aria-hidden="true"></i><span class="hide-menu">멤버쉽 관리</span></div></li>
                         <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="fa fa-hourglass"
+                                 id="calculatorMoney" aria-expanded="false"><i class="fa fa-hourglass"
                                     aria-hidden="true"></i><span class="hide-menu">기간 정산 관리</span></div></li>
                         <li class="sidebar-item"> <div class="sidebar-link waves-effect waves-dark sidebar-link"
                                  id="adminPage" aria-expanded="false"><i class="fa fa-chart-bar"

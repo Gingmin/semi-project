@@ -1,14 +1,15 @@
 package com.greedy.semi.admin.model.service;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.close;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.commit;
-import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 import static com.greedy.semi.common.jdbc.JDBCTemplate.getConnection;
+import static com.greedy.semi.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.greedy.semi.admin.model.dao.AdminDAO;
 import com.greedy.semi.admin.model.dto.AmountDTO;
+import com.greedy.semi.admin.model.dto.ReceiptDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
@@ -294,6 +295,54 @@ public class AdminService {
 		close(con);
 		
 		return memberList;
+	}
+
+	public int selectTotalCalCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.selectTotalCalCount(con);
+		
+		close(con);
+		
+		return totalCount;
+	
+	}
+
+	public List<ReceiptDTO> selectCalList(PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<ReceiptDTO> payList = adminDAO.selectCalList(con, pageInfo);
+
+		
+		
+		close(con);
+		
+		return payList;
+	}
+
+	public int searchCalculateSearchCount(String memberNo, String name, String searchDate1, String searchDate2) {
+	
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchCalculateSearchCount(con, memberNo, name, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+	public List<ReceiptDTO> searchCalculateSearchList(String memberNo, String name, PageInfoDTO pageInfo,
+			String searchDate1, String searchDate2) {
+
+		Connection con = getConnection();
+		
+		List<ReceiptDTO> receiptList = adminDAO.searchCalculateSearchList(con, memberNo, name, pageInfo, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return receiptList;
 	}
 
 }

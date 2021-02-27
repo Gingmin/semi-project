@@ -16,6 +16,8 @@ import java.util.Properties;
 import com.greedy.semi.admin.model.dto.AmountDTO;
 import com.greedy.semi.admin.model.dto.BlackHistoryDTO;
 import com.greedy.semi.admin.model.dto.PurchaseProductDTO;
+import com.greedy.semi.admin.model.dto.ReceiptCategoryDTO;
+import com.greedy.semi.admin.model.dto.ReceiptDTO;
 import com.greedy.semi.common.config.ConfigLocation;
 import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.member.model.dto.TrainerInfoDTO;
@@ -1965,6 +1967,158 @@ public class AdminDAO {
 		}
 
 		return memberList;
+	}
+
+	public int selectTotalCalCount(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		int totalCount = 0;
+
+		String query = prop.getProperty("selectTotalCalCount");
+
+		try {
+			stmt = con.createStatement();
+
+			rset = stmt.executeQuery(query);
+
+			while(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		return totalCount;
+	}
+
+	public List<ReceiptDTO> selectCalList(Connection con, PageInfoDTO pageInfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<ReceiptDTO> payList = null;
+
+		String query = prop.getProperty("selectCalList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			payList = new ArrayList<>();
+
+			while(rset.next()) {
+				ReceiptDTO receipt = new ReceiptDTO();
+				receipt.setMemberDTO(new MemberDTO());
+				receipt.setReceiptCategoryDTO(new ReceiptCategoryDTO());
+				
+				receipt.setReNo(rset.getInt("RECEIPT_NO"));
+				receipt.setNo(rset.getInt("TRAINER_NO"));
+				receipt.getMemberDTO().setName(rset.getString("MEMBER_NAME"));
+				receipt.setReDate(rset.getDate("RECEIPT_DATE"));
+				receipt.getReceiptCategoryDTO().setRecName(rset.getString("REC_NAME"));
+				receipt.setTotalPrice(rset.getInt("TOTAL_PRICE"));
+				receipt.setCcStatus(rset.getString("CC_STATUS"));
+				
+				payList.add(receipt);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return payList;
+	}
+
+	public int searchCalculateSearchCount(Connection con, String memberNo, String name, String searchDate1, String searchDate2) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		int totalCount = 0;
+
+		String query = prop.getProperty("searchCalculateSearchCount");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchDate1);
+			pstmt.setString(2, searchDate2);
+			pstmt.setString(3, name);
+			pstmt.setString(4, memberNo);
+			
+			rset = pstmt.executeQuery();
+
+			while(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return totalCount;
+	}
+
+	public List<ReceiptDTO> searchCalculateSearchList(Connection con, String memberNo, String name, PageInfoDTO pageInfo, String searchDate1, String searchDate2) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<ReceiptDTO> payList = null;
+
+		String query = prop.getProperty("searchCalculateSearchList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchDate1);
+			pstmt.setString(2, searchDate2);
+			pstmt.setString(3, name);
+			pstmt.setString(4, memberNo);
+			pstmt.setInt(5, pageInfo.getStartRow());
+			pstmt.setInt(6, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			payList = new ArrayList<>();
+
+			while(rset.next()) {
+				ReceiptDTO receipt = new ReceiptDTO();
+				receipt.setMemberDTO(new MemberDTO());
+				receipt.setReceiptCategoryDTO(new ReceiptCategoryDTO());
+				
+				receipt.setReNo(rset.getInt("RECEIPT_NO"));
+				receipt.setNo(rset.getInt("TRAINER_NO"));
+				receipt.getMemberDTO().setName(rset.getString("MEMBER_NAME"));
+				receipt.setReDate(rset.getDate("RECEIPT_DATE"));
+				receipt.getReceiptCategoryDTO().setRecName(rset.getString("REC_NAME"));
+				receipt.setTotalPrice(rset.getInt("TOTAL_PRICE"));
+				receipt.setCcStatus(rset.getString("CC_STATUS"));
+				
+				payList.add(receipt);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return payList;
 	}
 
 
