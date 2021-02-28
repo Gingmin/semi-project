@@ -2121,5 +2121,197 @@ public class AdminDAO {
 		return payList;
 	}
 
+	public int selectMembers(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int members = 0;
+		
+		String query = prop.getProperty("selectMembers");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				members = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+				
+			
+		return members;
+	}
+
+	public int selectTrainers(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int trainers = 0;
+		
+		String query = prop.getProperty("selectTrainers");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			if(rset.next()) {
+				trainers = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return trainers;
+	}
+
+	public int selectBlackLists(Connection con) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int blackLists = 0;
+		
+		String query = prop.getProperty("selectBlackLists");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				blackLists = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return blackLists;
+	}
+
+	public int selectGroupPT(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int groupPT = 0;
+		
+		String query = prop.getProperty("selectGroupPT");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				groupPT = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return groupPT;
+	}
+
+	public int selectoneToOnePT(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int oneToOnePT = 0;
+		
+		String query = prop.getProperty("selectoneToOnePT");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				oneToOnePT = rset.getInt("COUNT(*)");
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return oneToOnePT;
+	}
+
+	public int selectMembershipGroup(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("selectMembershipGroup");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				result = rset.getInt("SUM(PURCHASE_PRICE)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return result;
+	}
+
+	public int selectmembershiponeToOne(Connection con) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("selectmembershiponeToOne");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				result = rset.getInt("SUM(PURCHASE_PRICE)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return result;
+	}
+
 
 }
