@@ -2220,6 +2220,52 @@
 		       ) D
 		WHERE D.RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectMembers">
+		SELECT
+               COUNT(*)
+          FROM TBL_MEMBER A
+         WHERE MEMBER_ROLE = 'MEMBER' 
+           AND MEMBER_STATUS ='Y'
+	</entry>
+	<entry key="selectTrainers">
+		SELECT
+               COUNT(*) 
+          FROM TBL_MEMBER A
+         WHERE MEMBER_ROLE = 'TRAINER'
+           AND MEMBER_STATUS ='Y'
+	</entry>
+	<entry key="selectBlackLists">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_MEMBER A
+		 WHERE BLACK_STATUS = 'Y'      
+	</entry>
+	<entry key="selectGroupPT">
+		SELECT
+               COUNT(*) 
+          FROM TBL_OPENED_CLASS C
+         WHERE CLASS_KIND = '그룹'
+	</entry>
+	<entry key="selectoneToOnePT">
+		SELECT
+               COUNT(*) 
+          FROM TBL_OPENED_CLASS C
+         WHERE CLASS_KIND = '1대1PT'
+	</entry>
+	<entry key="selectMembershipGroup">
+		SELECT
+               SUM(PURCHASE_PRICE) 
+          FROM TBL_PURCHASE_PRODUCT P
+         WHERE PRODUCT_CODE LIKE '%M%'
+           AND PURCHASE_STATUS = '완료'
+	</entry>
+	<entry key="selectmembershiponeToOne">
+		SELECT
+               SUM(PURCHASE_PRICE) 
+          FROM TBL_PURCHASE_PRODUCT P
+         WHERE PRODUCT_CODE LIKE '%P%'
+           AND PURCHASE_STATUS = '완료'
+  </entry>
 	<entry key="searchExcelList">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#searchExcelList() */
 		       D.RNUM

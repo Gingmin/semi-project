@@ -345,6 +345,83 @@ public class AdminService {
 		return receiptList;
 	}
 
+
+	public int selectMembers() {
+		
+		Connection con = getConnection();
+		
+		int members = adminDAO.selectMembers(con);
+		
+		close(con);
+		
+		return members;
+	}
+
+	public int selectTrainers() {
+		
+		Connection con = getConnection();
+		
+		int trainers = adminDAO.selectTrainers(con);
+		
+		close(con);
+		
+		return trainers;
+	}
+
+	public int selectBlackLists() {
+
+		Connection con = getConnection();
+		
+		int blackLists = adminDAO.selectBlackLists(con);
+		
+		close(con);
+		
+		return blackLists;
+	}
+
+	public int selectGroupPT() {
+
+		Connection con = getConnection();
+		
+		int groupPT = adminDAO.selectGroupPT(con);
+		
+		close(con);
+		
+		return groupPT;
+	}
+
+	public int selectoneToOnePT() {
+
+		Connection con = getConnection();
+		
+		int oneToOnePT = adminDAO.selectoneToOnePT(con);
+		
+		close(con);
+		
+		return oneToOnePT;
+	}
+
+	public int selectMembershipGroup() {
+
+		Connection con = getConnection();
+		
+		int result = adminDAO.selectMembershipGroup(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int selectmembershiponeToOne() {
+
+		Connection con = getConnection();
+		
+		int result = adminDAO.selectmembershiponeToOne(con);
+		
+		close(con);
+		
+		return result;
+
 	public List<ReceiptDTO> searchExcelList(String memberNo, String name, String searchDate1, String searchDate2) {
 
 		Connection con = getConnection();
@@ -355,6 +432,7 @@ public class AdminService {
 		
 		return payList2;
 		
+
 	}
 
 }

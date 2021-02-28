@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- jstl -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,10 +145,8 @@
                             </ol>
                             <!-- ============================================================== -->
                             <!-- 검색 폼 시작 -->
-                            <form action="" method=""></form>
-                            <button type="submit"
-                                class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                            	조회</button>
+                           
+                            
                         </div>
                     </div>
                 </div>
@@ -162,175 +162,189 @@
                 <!-- ============================================================== -->
                 <!-- Three charts -->
                 <!-- ============================================================== -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">회원</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-success">17 명</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">트레이너</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-purple">5 명</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">블랙 리스트</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-info">2 명</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">그룹 PT</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash4"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-success">22 개</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">1:1 PT</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash5"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-purple">30 개</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">총 수업</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash6"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-info">52 개</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">월이용권 구매 금액</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash7"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-success">3,000,000 원</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">1:1 PT권 구매 금액</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash8"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-purple">1,500,000 원</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">맴버십 총 결제 금액</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash9"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-info">4,500,000 원</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">환불</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash10"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-success">300,000 원</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">지출</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash11"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-purple">1,000,000 원</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">순 이익</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash12"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ml-auto"><span class="counter text-info">3,200,000 원</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
+                 <form action="" method="">
+	                <div class="row">
+	                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	                        <div class="white-box">
+	                            <!-- <h3 class="box-title"></h3> -->
+	                            <button type="submit"
+	                                class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light type">
+	                            	조회</button>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                
+	                
+	                <div class="row justify-content-center">
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">회원</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-success" ><c:out value="${ requestScope.members }"/>명</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">트레이너</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash2"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-purple"><c:out value="${ requestScope.trainers }"/> 명</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">블랙 리스트</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash3"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-info"><c:out value="${ requestScope.blackLists }"/> 명</span>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row justify-content-center">
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">그룹 PT</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash4"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-success"><c:out value="${ requestScope.groupPT }"/> 개</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">1:1 PT</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash5"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-purple"><c:out value="${ requestScope.oneToOnePT }"/> 개</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">총 수업</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash6"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-info"><c:out value="${ requestScope.groupPT + requestScope.oneToOnePT }"/> 개</span>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row justify-content-center">
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">월이용권 구매 금액</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash7"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-success"><c:out value="${ requestScope.membershipGroup }"/> 원</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">1:1 PT권 구매 금액</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash8"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-purple"><c:out value="${ requestScope.membershipOneToOne }"/> 원</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">맴버십 총 결제 금액</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash9"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-info"><c:out value="${ requestScope.membershipGroup + requestScope.membershipOneToOne }"/> 원</span>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row justify-content-center">
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">환불</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash10"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-success"> 원</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">지출</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash11"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-purple"> 원</span></li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-6 col-xs-12">
+	                        <div class="white-box analytics-info">
+	                            <h3 class="box-title">순 이익</h3>
+	                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+	                                <li>
+	                                    <div id="sparklinedash12"><canvas width="67" height="30"
+	                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+	                                    </div>
+	                                </li>
+	                                <li class="ml-auto"><span class="counter text-info"> 원</span>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- PRODUCTS YEARLY SALES -->
                 <!-- ============================================================== -->
