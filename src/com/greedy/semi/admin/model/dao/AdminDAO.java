@@ -2121,6 +2121,7 @@ public class AdminDAO {
 		return payList;
 	}
 
+
 	public int selectMembers(Connection con) {
 
 		PreparedStatement pstmt = null;
@@ -2311,6 +2312,53 @@ public class AdminDAO {
 		
 		
 		return result;
+
+	public List<ReceiptDTO> searchExcelList(Connection con, String memberNo, String name, String searchDate1,
+			String searchDate2) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<ReceiptDTO> payList = null;
+
+		String query = prop.getProperty("searchExcelList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchDate1);
+			pstmt.setString(2, searchDate2);
+			pstmt.setString(3, name);
+			pstmt.setString(4, memberNo);
+
+			rset = pstmt.executeQuery();
+
+			payList = new ArrayList<>();
+
+			while(rset.next()) {
+				ReceiptDTO receipt = new ReceiptDTO();
+				receipt.setMemberDTO(new MemberDTO());
+				receipt.setReceiptCategoryDTO(new ReceiptCategoryDTO());
+				
+				receipt.setReNo(rset.getInt("RECEIPT_NO"));
+				receipt.setNo(rset.getInt("TRAINER_NO"));
+				receipt.getMemberDTO().setName(rset.getString("MEMBER_NAME"));
+				receipt.setReDate(rset.getDate("RECEIPT_DATE"));
+				receipt.getReceiptCategoryDTO().setRecName(rset.getString("REC_NAME"));
+				receipt.setTotalPrice(rset.getInt("TOTAL_PRICE"));
+				receipt.setCcStatus(rset.getString("CC_STATUS"));
+				
+				payList.add(receipt);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return payList;
+
 	}
 
 
