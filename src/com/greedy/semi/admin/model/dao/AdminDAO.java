@@ -2312,7 +2312,7 @@ public class AdminDAO {
 		
 		
 		return result;
-
+	}
 	public List<ReceiptDTO> searchExcelList(Connection con, String memberNo, String name, String searchDate1,
 			String searchDate2) {
 		
