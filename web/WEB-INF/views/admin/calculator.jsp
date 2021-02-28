@@ -191,17 +191,50 @@
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>	
 											<td>
-												<button type="submit" id="searchButton" 
-													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">정산하기</button>
+												<button type="button" id="excel" 
+													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">엑셀 다운받기</button>
 											</td>	
 										</tr>
 										<!-- <tr><td></td></tr> -->
 										<tr>
-
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td align="center">
+												<button type="button" id="mkPdf" 
+													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">정산서</button>
+											</td>
 										</tr>
-
 									</table>
 							</form>
+							<script>
+							    /* 엑셀 */
+								if(document.getElementById('excel')) {
+									
+									const $excel = document.getElementById('excel');
+									const $searchForm = document.getElementById('searchForm');
+									
+									$excel.onclick = function() {
+										alert("엑셀 파일을 저장했습니다.");
+										$searchForm.action = "/semi/admin/calculatorMoney/excel";
+										$searchForm.submit();
+									}
+								}
+								/* pdf */
+								if(document.getElementById('mkPdf')) {
+									
+									const $mkPdf = document.getElementById('mkPdf');
+									const $searchForm = document.getElementById('searchForm');
+									
+									$mkPdf.onclick = function() {
+										$searchForm.action = "/semi/admin/calculatorMoney/mkPdf";
+										$searchForm.submit();
+									}
+								}
+							</script>
 							<br>
 						</div>
 						<!-- form 태그 끝 -->
@@ -388,7 +421,7 @@
 								 		}
 								 	}
 								    */
-								    /* if(document.getElementById("detailMember")) {
+								     if(document.getElementById("detailMember")) {
 								    	const $detailMember = document.getElementById("detailMember");
 								    	const $tdds = $detailMember.childNodes;
 								    	
@@ -403,13 +436,13 @@
 								 				this.style.background = "white";
 								 			}
 								    		
-								 		    $tdds[i].onclick = function() {
+								 		    /* $tdds[i].onclick = function() {
 								 				const no = this.children[0].innerText;
 								 				
 								 				location.href = "${ pageContext.servletContext.contextPath }/admin/purchaseMember/detail?no=" + no;
-								 			} 
+								 			}  */
 								    	}
-								    } */
+								    } 
 								    
 								</script>
 							</div>

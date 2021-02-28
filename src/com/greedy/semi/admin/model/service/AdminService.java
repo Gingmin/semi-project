@@ -345,4 +345,16 @@ public class AdminService {
 		return receiptList;
 	}
 
+	public List<ReceiptDTO> searchExcelList(String memberNo, String name, String searchDate1, String searchDate2) {
+
+		Connection con = getConnection();
+		
+		List<ReceiptDTO> payList2 = adminDAO.searchExcelList(con, memberNo, name, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return payList2;
+		
+	}
+
 }
