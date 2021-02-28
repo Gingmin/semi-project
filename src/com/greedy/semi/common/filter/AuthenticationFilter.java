@@ -119,6 +119,8 @@ public class AuthenticationFilter implements Filter {
 		adminPermitList.add("/admin/calculatorMoney");
 		adminPermitList.add("/admin/calculatorMoney/search");
 		adminPermitList.add("/admin/calculatorMoney/payment");
+		adminPermitList.add("/admin/calculatorMoney/excel");
+		adminPermitList.add("/admin/calculatorMoney/mkPdf");
 		
 		adminPermitList.add("/member/paymentResult");
 		
