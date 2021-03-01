@@ -22,7 +22,7 @@ public class TrainerDetailServlet extends HttpServlet {
 //		request.getRequestDispatcher(path).forward(request, response);
 		
 		int no = Integer.parseInt(request.getParameter("no"));
-
+		
 
 		ClassDTO trainer = new ClassService().selectTrainerInfo(no);
 
@@ -40,8 +40,6 @@ public class TrainerDetailServlet extends HttpServlet {
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	}
 
 }

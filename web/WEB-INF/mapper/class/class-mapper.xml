@@ -89,7 +89,7 @@
                                  WHERE B.CLASS_NO = ?
                                ) + 1
          WHERE A.CLASS_NO = ?                          
-    </entry>
+    </entry> 
     <entry key="selectOneThumbnailClass">
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectOneThumbnailClass() */
                A.CLASS_NO
@@ -131,9 +131,9 @@
                TBL_OPENED_CLASS A
            SET A.CLASS_COUNT = (SELECT B.CLASS_COUNT
                                   FROM TBL_OPENED_CLASS B
-                                 WHERE B.TRAINER_NO = ?
+                                 WHERE B.CLASS_NO = ?
                                ) + 1
-         WHERE A.TRAINER_NO = ?    
+         WHERE A.CLASS_NO = ?    
     </entry>
     <entry key="selectTrainerInfo">
         SELECT /* com.greedy.semi.trainer.dao.ClassDAO#selectTrainerInfo() */
@@ -149,7 +149,7 @@
              , B.MEMBER_NAME
           FROM TBL_OPENED_CLASS A
           JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
-         WHERE A.TRAINER_NO = ? 
+         WHERE A.CLASS_NO = ? 
     </entry>
     <entry key="reservationMember">
         INSERT /* com.greedy.semi.trainer.dao.ClassDAO#reservationMember() */
