@@ -2133,9 +2133,10 @@ public class AdminDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
+			while(rset.next()) {
 				members = rset.getInt("COUNT(*)");
 			}
 			

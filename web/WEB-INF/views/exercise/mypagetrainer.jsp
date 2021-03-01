@@ -173,12 +173,12 @@
 						</div>
 					</div>
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="0">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
 					<c:if test="${ sessionScope.loginMember.no eq thumbnail.trainerNo }">
 						<div class="thumb-list">
 							<div>
 								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="200" height="150">
+									width="200" height="150" style="margin: 5px">
 							</div>
 							<p>
 							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>

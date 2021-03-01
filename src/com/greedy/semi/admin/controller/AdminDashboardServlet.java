@@ -18,6 +18,18 @@ public class AdminDashboardServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String searchDate1 = request.getParameter("searchDate1");
+		String searchDate2 = request.getParameter("searchDate2");
+		
+		System.out.println("데이트1" + searchDate1);
+		System.out.println("데이트2" + searchDate2);
+		
+		if(searchDate1 == null || searchDate2 == null) {
+			System.out.println("입력 안했는데?");
+			/*request.getRequestDispatcher("admin/dashborad.jsp").forward(request, response);*/
+		}
+		
+		
 		int members = new AdminService().selectMembers();
 		int trainers = new AdminService().selectTrainers();
 		int blackLists = new AdminService().selectBlackLists();
@@ -44,6 +56,7 @@ public class AdminDashboardServlet extends HttpServlet {
 		request.setAttribute("membershipGroup", membershipGroup);
 		request.setAttribute("membershipOneToOne", membershipOneToOne);
 		ControlMethod.moveForward(path, request, response);
+		/* request.getRequestDispatcher(path).forward(request, response); */
 		
 	}
 
