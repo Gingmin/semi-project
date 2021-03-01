@@ -232,8 +232,11 @@
 									$mkPdf.onclick = function() {
 										$searchForm.action = "/semi/admin/calculatorMoney/mkPdf";
 										$searchForm.submit();
+										
 									}
+									window.open("/semi/resources/pdf/정산서.pdf", "width=800, height=700, toolbar=no, menubar=no, scrollbars=yes, resizable=yes");
 								}
+								/* pdf open */
 							</script>
 							<br>
 						</div>
@@ -329,6 +332,8 @@
 									</c:otherwise>
 									
 								</c:choose>
+								<!-- pdf flag -->
+								<input type="text" id="pdf" name=pdf style="display: none;" value="${ requestScope.pdf }">
 								<script>
 									const link = "${ pageContext.servletContext.contextPath }/admin/calculatorMoney";
 									const searchLink = "${ pageContext.servletContext.contextPath }/admin/calculatorMoney/search";
@@ -498,5 +503,23 @@
 	<script src="/semi/resources/admin/js/sidebarmenu.js"></script>
 	<!--Custom JavaScript -->
 	<script src="/semi/resources/admin/js/custom.js"></script>
+	<script>
+		/* 엑셀버튼, pdf버튼 - (검색)값이 없으면 안눌리게 */
+		const $excel = document.getElementById('excel');
+		const $mkPdf = document.getElementById('mkPdf');
+		const memberNo = document.getElementById("memberNo").value;
+		const name = document.getElementById("name").value;
+		const searchDate1 = document.getElementById("searchDate1").value;
+		const searchDate2 = document.getElementById("searchDate2").value;
+		
+		if((!memberNo || memberNo === "") || (!name || name === "") || (!searchDate1 || searchDate === "") || (!searchDate2 || searchDate2 === "")) {
+			
+			$excel.disabled = "disabled";
+			$mkPdf.disabled = "disabled";
+		} else {
+			$excel.disabled = false;
+			$mkPdf.disabled = false;
+		}
+	</script>
 </body>
 </html>

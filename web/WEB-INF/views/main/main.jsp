@@ -256,7 +256,8 @@
 			    						location.href = "/semi/chat";
 			    					}
 			    					function video() {
-			    						location.href = "http://127.0.0.1:1337/";
+			    						//window.open("https://192.168.0.5:3000");
+			    						window.open("https://127.0.0.1:3000");
 			    					}
 			    				</script>
 			    			</div>

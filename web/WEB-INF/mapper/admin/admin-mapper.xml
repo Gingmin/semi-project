@@ -2306,4 +2306,40 @@
 		          ) E
 		       ) D
 	</entry>
+	<entry key="selectCalInfo">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectCalInfo() */
+		       D.RNUM
+		     , D.RECEIPT_DATE
+		     , D.REC_NAME
+		     , D.TOTAL_PRICE
+		  FROM (SELECT ROWNUM RNUM
+		             , E.RECEIPT_DATE
+		             , E.REC_NAME
+		             , E.TOTAL_PRICE
+		          FROM (SELECT
+                               A.RECEIPT_DATE
+                             , C.REC_NAME
+                             , A.TOTAL_PRICE
+                          FROM TBL_RECEIPT A
+                          JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
+                          JOIN TBL_RECEIPT_CATEGORY C ON (C.REC_CODE = A.REC_CODE)
+		                 WHERE B.MEMBER_ROLE = 'TRAINER'
+		                   AND A.RECEIPT_DATE >= ?
+                           AND A.RECEIPT_DATE &lt; ?
+                           AND B.MEMBER_NAME LIKE '%' || ? || '%' 
+                           AND A.TRAINER_NO = ?
+                           AND A.CC_STATUS = 'N'
+		                 ORDER BY A.RECEIPT_DATE DESC
+		          ) E
+		       ) D
+	</entry>
+	<entry key="selectTrainerInfo">
+		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTrainerInfo() */
+               A.ACCOUNT_NUMBER
+             , A.BANK_NAME
+             , A.ACCOUNT_HOLDER
+             , A.APPROVAL_STATUS
+          FROM TBL_TRAINER_INFO A
+         WHERE A.MEMBER_NO = ?
+	</entry>
 </properties>

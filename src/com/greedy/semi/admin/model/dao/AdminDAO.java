@@ -2363,5 +2363,82 @@ public class AdminDAO {
 
 	}
 
+	public List<ReceiptDTO> selectCalInfo(Connection con, String memberNo, String name, String searchDate1,
+			String searchDate2) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<ReceiptDTO> calInfo = null;
+
+		String query = prop.getProperty("selectCalInfo");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchDate1);
+			pstmt.setString(2, searchDate2);
+			pstmt.setString(3, name);
+			pstmt.setString(4, memberNo);
+
+			rset = pstmt.executeQuery();
+
+			calInfo = new ArrayList<>();
+
+			while(rset.next()) {
+				ReceiptDTO receipt = new ReceiptDTO();
+				receipt.setMemberDTO(new MemberDTO());
+				receipt.setReceiptCategoryDTO(new ReceiptCategoryDTO());
+				
+				receipt.setReDate(rset.getDate("RECEIPT_DATE"));
+				receipt.getReceiptCategoryDTO().setRecName(rset.getString("REC_NAME"));
+				receipt.setTotalPrice(rset.getInt("TOTAL_PRICE"));
+				
+				calInfo.add(receipt);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return calInfo;
+	}
+
+	public TrainerInfoDTO selectTrainerInfo(Connection con, String memberNo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		TrainerInfoDTO trainerInfo = null;
+		
+		String query = prop.getProperty("selectTrainerInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, memberNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				trainerInfo = new TrainerInfoDTO();
+
+				trainerInfo.setAccountNumber(rset.getString("ACCOUNT_NUMBER"));
+				trainerInfo.setBankName(rset.getString("BANK_NAME"));
+				trainerInfo.setAccountHolder(rset.getString("ACCOUNT_HOLDER"));
+				trainerInfo.setApprovalStatus(rset.getString("APPROVAL_STATUS"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return trainerInfo;
+	}
+
 
 }
