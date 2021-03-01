@@ -180,23 +180,6 @@ window.onload = function() {
 		}
 	}
 	
-	/* 엑셀버튼, pdf버튼 - (검색)값이 없으면 안눌리게 */
-	const $excel = document.getElementById('excel');
-	const $mkPdf = document.getElementById('mkPdf');
-	const memberNo = document.getElementById("memberNo").value;
-	const name = document.getElementById("name").value;
-	const searchDate1 = document.getElementById("searchDate1").value;
-	const searchDate2 = document.getElementById("searchDate2").value;
-	
-	if((!memberNo || memberNo === "") || (!name || name === "") || (!searchDate1 || searchDate === "") || (!searchDate2 || searchDate2 === "")) {
-		
-		$excel.disabled = "disabled";
-		$mkPdf.disabled = "disabled";
-	} else {
-		$excel.disabled = false;
-		$mkPdf.disabled = false;
-	}
-	
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {
 		const $logout = document.getElementById("trainer");

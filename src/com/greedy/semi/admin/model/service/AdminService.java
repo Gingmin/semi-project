@@ -11,6 +11,7 @@ import com.greedy.semi.admin.model.dao.AdminDAO;
 import com.greedy.semi.admin.model.dto.AmountDTO;
 import com.greedy.semi.admin.model.dto.ReceiptDTO;
 import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.member.model.dto.TrainerInfoDTO;
 import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
 public class AdminService {
@@ -434,6 +435,28 @@ public class AdminService {
 		return payList2;
 		
 
+	}
+
+	public List<ReceiptDTO> selectCalInfo(String memberNo, String name, String searchDate1, String searchDate2) {
+
+		Connection con = getConnection();
+		
+		List<ReceiptDTO> calInfo = adminDAO.selectCalInfo(con, memberNo, name, searchDate1, searchDate2);
+		
+		close(con);
+		
+		return calInfo;
+	}
+
+	public TrainerInfoDTO selectTrainerInfo(String memberNo) {
+
+		Connection con = getConnection();
+		
+		TrainerInfoDTO trainerInfo = adminDAO.selectTrainerInfo(con, memberNo);
+		
+		close(con);
+		
+		return trainerInfo;
 	}
 
 }

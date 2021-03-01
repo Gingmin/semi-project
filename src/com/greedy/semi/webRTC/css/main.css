@@ -2,7 +2,55 @@ body {
   font-family: sans-serif;
 }
 
-video {
-  max-width: 100%;
-  width: 320px;
+#videos {
+  width: 100%;
+  max-width: 500px;
 }
+
+#localVideo {
+  max-width: 100%;
+  height: 500px;
+  width: 100%;
+  float:left;
+  border: 1px solid;
+}
+
+#remoteVideo {
+  max-width: 100%;
+  height: 500px;
+  width: 100%;
+  float:left;
+  border: 1px solid;
+  display: none;
+}
+
+.localVideoInChatting {
+  width: 200px !important;
+  position: absolute;
+}
+.remoteVideoInChatting {
+  display: inline-block !important;
+}
+
+.video_area{ width: 100%; height: 550px;  padding: 20px;}
+.video_area .row{margin: 0; }
+.video_area .row .video_outgoing{background-color: white; width:80%; height:550px; float: left; box-shadow: 0 0 20px gray;}
+.video_area .row .video_outgoing .testimg{width: 100%; height: 100%;}
+.video_area .row .video_outgoing .video_icon{height: 50px;  padding:13px;}
+.video_area .row .video_outgoing .video_icon .fa-volume-mute{ font-size: 25px; padding-right: 15px;}
+.video_area .row .video_outgoing .video_icon .fa-volume-up{ font-size: 25px; padding-right: 15px; }
+.video_area .row .video_outgoing .video_icon .fa-camera{ font-size: 25px; padding-right: 15px;}
+.video_area .row .video_outgoing .video_icon .fa-ban{ font-size: 25px; padding-right: 15px; } 
+.video_area .row .video_outgoing .video_icon .fa-cog{ font-size: 25px; float: right;}
+
+
+.video_area .row .chatting_area{float: left; box-shadow: 0 0 20px gray; width: 20%; height: 400px;}
+.video_area .row .chatting_area .chatting_view{width: 100%; height: 400px;  outline: none;  border: 0;}
+
+.video_area .row .chatting_area .chatting_input{width: 100%; height:150px;  box-shadow: 0 0 20px gray; padding: 10px; position: relative;}
+.video_area .row .chatting_area .chatting_input .input_detail{width: 70%; height: 130px; box-shadow: 0 0 10px 5px darkgrey;  border: 0; outline: none;}
+
+.video_area .row .chatting_area .chatting_input .chatting_btndetail{background-color: black; color: white; width: 28%; height: 50px;} 
+.video_area .row .chatting_area .chatting_input .fa-smile{ position: absolute;  top: 15%;  right: 15%;  font-size: 25px;}
+
+
