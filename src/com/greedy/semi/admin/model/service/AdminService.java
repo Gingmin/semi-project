@@ -421,7 +421,7 @@ public class AdminService {
 		close(con);
 		
 		return result;
-
+	}
 	public List<ReceiptDTO> searchExcelList(String memberNo, String name, String searchDate1, String searchDate2) {
 
 		Connection con = getConnection();
