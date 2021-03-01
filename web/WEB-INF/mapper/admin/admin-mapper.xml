@@ -2226,6 +2226,7 @@
           FROM TBL_MEMBER A
          WHERE MEMBER_ROLE = 'MEMBER' 
            AND MEMBER_STATUS ='Y'
+          
 	</entry>
 	<entry key="selectTrainers">
 		SELECT

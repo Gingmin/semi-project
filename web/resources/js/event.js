@@ -181,7 +181,7 @@ window.onload = function() {
 	}
 	
 	/* 엑셀버튼, pdf버튼 - (검색)값이 없으면 안눌리게 */
-	const $excel = document.getElementById('excel');
+	/*const $excel = document.getElementById('excel');
 	const $mkPdf = document.getElementById('mkPdf');
 	const memberNo = document.getElementById("memberNo").value;
 	const name = document.getElementById("name").value;
@@ -195,7 +195,7 @@ window.onload = function() {
 	} else {
 		$excel.disabled = false;
 		$mkPdf.disabled = false;
-	}
+	}*/
 	
 	/* 트레이너 마이 페이지*/
 	if(document.getElementById("trainer")) {

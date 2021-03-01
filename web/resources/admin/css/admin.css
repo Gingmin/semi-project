@@ -5,6 +5,12 @@
 .container-fluid .row .col-sm-12 .white-box .search_box .search{float:left; width: 173px;}
 .btn.btn-danger.d-none.d-md-block.pull-right.m-l-20.hidden-xs.hidden-sm.waves-effect.waves-light{margin: 0px 20px;}
 .btn.btn-danger.d-none.d-md-block.pull-right.m-l-20.hidden-xs.hidden-sm.waves-effect.waves-light.type{margin-left: auto;}
+
+.box_detail1{ width: 590px; margin: 0 auto;}
+.col-xs-12 .white-box .box-title1{float:left; font-size:16px;}
+.col-xs-12 .white-box .box-title1 .input_detail{padding: 0 10px; margin:0 15px;}
+
+
 /* .col-md-12.col-lg-12.col-sm-12.col-xs-12{ text-align: right;} */
 	.close {
 		width: 80px;
