@@ -147,9 +147,18 @@
              , A.CREATED_DATE
              , A.CLASS_COUNT
              , B.MEMBER_NAME
+             , C.CLASS_ATTACHMENT_NO
+             , C.REF_TRAINER_NO
+             , C.ORIGINAL_NAME
+             , C.SAVED_NAME
+             , C.SAVE_PATH
+             , C.THUMBNAIL_PATH
           FROM TBL_OPENED_CLASS A
           JOIN TBL_MEMBER B ON (A.TRAINER_NO = B.MEMBER_NO)
-         WHERE A.CLASS_NO = ? 
+          JOIN TBL_CLASS_ATTACHMENT C ON (A.CLASS_NO = C.REF_CLASS_NO)
+         WHERE A.CLASS_NO = ?
+           AND C.ATTACHMENT_STATUS = 'Y'
+           AND C.FILE_TYPE = 'INTRODUCE'
     </entry>
     <entry key="reservationMember">
         INSERT /* com.greedy.semi.trainer.dao.ClassDAO#reservationMember() */
