@@ -66,13 +66,13 @@
 					
 					
 					<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="0" >
 						<div class="thumb-list">
 							<div>
 								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.trainerNo }"/></label><br>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
 						
 						
 					<c:out value="${ thumbnail.category }"/><br>
@@ -105,80 +105,86 @@
 			<!-- 화요일 시작 -->
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="1" end="1" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="2" end="2" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 		<!-- 카드 2번 -->
@@ -186,234 +192,252 @@
 		<!-- Card 화요일 -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="3" end="3" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="4" end="4" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="5" end="5" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 		<div class="day">수요일 WEN</div>
 		<!-- Card 수요일 -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="6" end="6" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="7" end="7" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="8" end="8" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 
@@ -421,117 +445,126 @@
 		<!-- Card 목요일 -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="9" end="9" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="10" end="10" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="11" end="11" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 
@@ -539,117 +572,126 @@
 		<!-- Card 금요일 -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="12" end="12" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="13" end="13" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="14" end="14" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 
@@ -657,117 +699,126 @@
 		<!-- Card 토요일 -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="15" end="15" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="16" end="16" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="17" end="17" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
 
@@ -775,117 +826,126 @@
 		<!-- Card  -->
 		<div class="row">
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="18" end="18" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="19" end="19" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 
 			<div class="card col-4">
-
+				
 				<!-- Card image -->
-				<div class="view overlay">
-					<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
-						alt="Card image cap">
-					<a>
-						<div class="mask rgba-white-slight"></div>
-					</a>
-				</div>
-
-				<!-- Card content -->
-				<div class="card-body">
-
-					<!-- Title -->
-					<h4 class="card-title">완뀨 헬스</h4>
+					
+					
+					<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="20" end="20" >
+						<div class="thumb-list">
+							<div>
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="350" height="250">
+							</div>
+					No. <label><c:out value="${ thumbnail.no }"/></label><br>
+						
+						
+					<c:out value="${ thumbnail.category }"/><br>
+						</div>
+					</div>
+				<div class="card-body" id="thumbnailArea">
 					<hr>
-					<!-- Text -->
-					<p class="card-text">하루의 마무리. 골반과 어깨를 개운하게!꿀잠예약</p>
+					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
 
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
-						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
+						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="far fa-comments pr-1"></i>12</a></li>
 						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
 									class="fab fa-facebook-f pr-1">
-								</i>21</a></li>
+								</i></a></li>
 						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i>5</a></li>
+								</i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-
-			</div>
+			</c:forEach>
+			</div> 
 			<!-- 밑에 div 로우 -->
 			<script>
 					$("#thumbnailArea > div").click(function() {
