@@ -21,13 +21,18 @@ const options = {
 		cert: fs.readFileSync('./public.pem') 
 }; 
 
+/* 채팅 */
+//const express = require('express');
+//const app = express();
+/* 채팅 */
+
 var fileServer = new(nodeStatic.Server)(); 
 let app = https.createServer(options, (req,res)=>{ 
 	fileServer.serve(req, res); 
 }).listen(3000); 
 
 console.log('Started chating server...');
-/* ssl */
+/* ssl 끝*/
 
 var io = socketIO.listen(app);
 io.sockets.on('connection', function(socket) {
@@ -98,5 +103,33 @@ io.sockets.on('connection', function(socket) {
   socket.on('bye', function(){
     console.log('received bye');
   });
-
+  
+  /*채팅 시작*/
+ socket.on('newUserConnect', function(name){
+		socket.name = name;
+		
+		var chatMessage = name + '님이 접속했습니다';
+		
+		io.sockets.emit('updateMessage', {
+			name : 'SERVER',
+			chatMessage : chatMessage
+		});
+	});
+	
+	socket.on('disconnect', function(){
+		var chatMessage = socket.name + '님이 퇴장했습니다.';
+		socket.broadcast.emit('updateMessage', {
+			name : 'SERVER',
+			chatMessage : chatMessage
+		});
+	});
+	
+	socket.on('sendChatMessage', function(data){
+		data.name = socket.name;
+	    io.sockets.emit('updateMessage', data);
+	});
+  /*채팅 끝*/
+  
 });
+
+	

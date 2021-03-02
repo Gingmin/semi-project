@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Realtime communication with WebRTC</title>
   <link rel="stylesheet" href="/css/main.css" />
-
+  <!-- 채팅 -->
+  <link rel="stylesheet" href="./css/index.css">
 <!-- 폰트어썸 -->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -44,18 +45,31 @@
          <div class="chatting_area">
             <textarea class="chatting_view" readonly></textarea>
             <div class="chatting_input">
-               <input type="text" name="inputtext" class="input_detail">
-               <i class="far fa-smile"></i>
-               <button class="chatting_btndetail">보내기</button>
+            	<form>
+	               <input type="text" name="inputtext" class="input_detail">
+	               <i class="far fa-smile"></i>
+	               <button class="chatting_btndetail">보내기</button>
+               </form>
             </div>
          </div>
       </div>     
    </div>
-
+   <!-- 채팅 -->
+   	 <div class="app__wrap">
+		<div id="info" class="app__info"></div>
+		<div id="chatWindow" class="app__window"></div>
+		<div class="app__input__wrap">
+			<input id="chatInput" type="text" class="app__input" autofocus placeholder="대화를 입력해주세요">
+			<button id="chatMessageSendBtn" class="app__button">전송</button>
+		</div>
+	</div>
+	
   <!-- This file is automatically added/served when running "node index.js". -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <script src="js/main.js"></script>
-
+  <script src="/js/main.js"></script>
+  
+  <!-- 채팅 -->
+ <!-- <script src="/js/chat.js"></script> -->
 </body>
 </html>
