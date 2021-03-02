@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
@@ -30,6 +30,9 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	
+	<!-- book -->
+
+
 	
 </head>
 <body>
@@ -45,73 +48,81 @@
 		<!-- 메인 배너 끝 -->
 
 		<!-- 이용방법 -->
-		<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
-					
-						<div class="thumb-list">
-							<div>
-								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="200" height="150" style="margin: 5px">
-							</div>
-							<p>
-							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
-							<%-- className: <c:out value="${ thumbnail.name }"/><br>
-							조회수 : <c:out value="${ thumbnail.count }"/><br>
-							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
-							</p>
-						</div>
-					
-					</c:forEach>
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
-						<div class="thumb-list">
-							<div>
-								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="200" height="150">
-							</div>
-							<p>
-							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
-							className: <c:out value="${ thumbnail.name }"/><br>
-							조회수 : <c:out value="${ thumbnail.count }"/><br>
-							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
-							</p>
-						</div>
-					</c:forEach>
-				</div>
+	
 		
 		<div class="container">
 		
-				
+
+		
+
+	
 			<div class="howuse_area">
 				<div class="row">
 					<div class="howuse_img_area">				
 					    <div id="myCarousel" class="carousel slide">
 					    	<div class="row">	
 					   
-					    	
+					    		<div class="maintext">HelloPT 이용 방법</div>	
 					    			
 				    			<div class="carousel-inner" role="listbox">
 									<div class="item active ">
-										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
-										
+										<img class="img_detail" src="/semi/resources/images/registerimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">1.</span>
+											홈페이지 접속시 회원가입을 하세요.
+										</div>
+									</div>
+
+									<div class="item">
+										<img class="img_detail" src="/semi/resources/images/loginimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">2.</span>
+											회원가입이 완료되었다면 로그인을 해주세요
+										</div>
+									</div>
+
+									<div class="item">
+										<img class="img_detail" src="/semi/resources/images/membershipimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">3.</span>
+											로그인후 상단에 맴버십 페이지에서 원하는 이용권을 구매하세요
+										</div>
 									</div>
 
 									<div class="item">
 										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">4.</span>
+											이용권을 구매했으면 클래스 페이지에서 원하는 수업을 선택하세요.
+										</div>
 									</div>
-
 									<div class="item">
 										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">5.</span>
+											마음에 드는 수업을 고르셨다면 클릭후 예약 버튼을 눌러주세요
+										</div>
 									</div>
-
 									<div class="item">
 										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">6.</span>
+											예약을 하셨다면 시간에 맞춰 수업에 들어가시면됩니다.
+										</div>
+									</div>
+									<div class="item">
+										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<div class="ex_text1">
+											<span class="ex_number">7.</span>
+											수업이 끝났다면 리뷰를 남겨주세요
+										</div>
 									</div>
 								</div>	 	
 				    		 		
 					    	</div>		    	
 
 
-						    <!-- Left and right controls -->
+						   <!--  Left and right controls -->
 							<a class="left carousel-control" href="#myCarousel" role="button">
 								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>							
 							</a>
@@ -121,7 +132,7 @@
 					    </div>
 						
 					</div>
-					<div class="howuse_text_area">
+					<!-- <div class="howuse_text_area">
 						<div class="howuse_text">
 							HelloPT 이렇게 이용하세요!
 						</div>
@@ -148,11 +159,10 @@
 						</div>
 						
 
-					</div>
+					</div> -->
 				</div>
 
-			</div>
-
+			</div> 
 		<!-- 이용방법 끝 -->
 		<!-- 트레이너 영역 -->
 			
@@ -239,57 +249,57 @@
 				<div class="contant_name">TARGET</div>
 			    <div class="swiper-wrapper">
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
-			    		<div class="trainer_text">
-			    			<div class="trainer_name">
-			    				슬림핏
-			    			</div>
-			    			<div class="trainer_info">
-			    				롤쟁이 
-			    			</div>
-			    		</div>			    		
-			    	</div>
-					<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
-			    		<div class="trainer_text">
-			    			<div class="trainer_name">
-			    				좋은체격
-			    			</div>
-			    			<div class="trainer_info">
-			    				운동인 
-			    			</div>
-			    		</div>			    		
-			    	</div>
-			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_1.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				근육질
 			    			</div>
 			    			<div class="trainer_info">
-			    				어디감?...계신가용
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+					<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_2.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				슬림핏
+			    			</div>
+			    			<div class="trainer_info">
+			    				 
 			    			</div>
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_3.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				라인
+			    			</div>
+			    			<div class="trainer_info">
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_4.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				등신
+			    			</div>
+			    			<div class="trainer_info">
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_5.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
 			    				볼륨감
 			    			</div>
 			    			<div class="trainer_info">
-			    				사업인
-			    			</div>
-			    		</div>			    		
-			    	</div>
-			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
-			    		<div class="trainer_text">
-			    			<div class="trainer_name">
-			    				S라인
-			    			</div>
-			    			<div class="trainer_info">
-			    				귀찮다.. <button id="chat" type="button" onclick="chat();">chat</button>
+			    				<button id="chat" type="button" onclick="chat();">chat</button>
 			    				<button id="video" type="button" onclick="video();">video</button>
 			    				<script>
 			    					function chat() {
@@ -300,6 +310,39 @@
 			    						window.open("https://127.0.0.1:3000");
 			    					}
 			    				</script>
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_6.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				슬림
+			    			</div>
+			    			<div class="trainer_info">
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_7.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				탄탄
+			    			</div>
+			    			<div class="trainer_info">
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_8.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				좋은 체격
+			    			</div>
+			    			<div class="trainer_info">
+			    				
 			    			</div>
 			    		</div>			    		
 			    	</div>

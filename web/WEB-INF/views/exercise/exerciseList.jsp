@@ -60,130 +60,96 @@
 		<!-- Card 월요일 -->
 		<div class="day">월요일 MON</div>
 		<div class="row">
-			<div class="card col-4">
-				
-				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+			<div class="card col-4">				
+				<!-- Card image -->					
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="0" >
-						<div class="thumb-list">
-							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
-							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+					<div class="thumb-list">
+						<div>
+							<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 						</div>
+						No. 
+						<label><c:out value="${ thumbnail.no }"/></label><br>					
+						<c:out value="${ thumbnail.category }"/><br>
 					</div>
-				<div class="card-body" id="thumbnailArea">
-					<hr>
-					
-					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
+					</c:forEach>
 				</div>
-
+				<div class="card-body" id="thumbnailArea">
+					<hr>					
+					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
+				</div>
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			
 			<!-- 월요일 끝 -->
 			<!-- 화요일 시작 -->
 
-			<div class="card col-4">
-				
+			<div class="card col-4">			
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="1" end="1" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No.
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
-				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<!-- Card image -->		
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="2" end="2" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
@@ -192,125 +158,90 @@
 		<!-- Card 화요일 -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="3" end="3" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="4" end="4" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="5" end="5" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No.
+							<label><c:out value="${ thumbnail.no }"/></label><br>					
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
@@ -318,125 +249,90 @@
 		<!-- Card 수요일 -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="6" end="6" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No.
+							<label><c:out value="${ thumbnail.no }"/></label><br>						
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="7" end="7" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="8" end="8" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No.
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
@@ -445,104 +341,76 @@
 		<!-- Card 목요일 -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="9" end="9" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							<label>No.<c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="10" end="10" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="11" end="11" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
 					
@@ -554,208 +422,150 @@
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
-
 		<div class="day">금요일 FRI</div>
 		<!-- Card 금요일 -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="12" end="12" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="13" end="13" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
-
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="14" end="14" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
-
 		<div class="day">토요일 SAT</div>
 		<!-- Card 토요일 -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="15" end="15" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No.
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="16" end="16" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
 					
@@ -767,57 +577,41 @@
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="17" end="17" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 		</div>
@@ -826,125 +620,91 @@
 		<!-- Card  -->
 		<div class="row">
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="18" end="18" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
 
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
-					<div class="thumnail-area" id="thumbnailArea">
+				<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="19" end="19" >
 						<div class="thumb-list">
 							<div>
 								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
 									width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 
 			<div class="card col-4">
-				
 				<!-- Card image -->
-					
-					
 					<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="20" end="20" >
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
-									width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
 							</div>
-					No. <label><c:out value="${ thumbnail.no }"/></label><br>
-						
-						
-					<c:out value="${ thumbnail.category }"/><br>
+							No. 
+							<label><c:out value="${ thumbnail.no }"/></label><br>
+							<c:out value="${ thumbnail.category }"/><br>
 						</div>
-					</div>
+					</c:forEach>
+				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
-					
 					<p class="card-text"><c:out value="${ thumbnail.name }"/></p>
-
 				</div>
-
 				<!-- Card footer -->
 				<div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
 					<ul class="list-unstyled list-inline font-small">
 						<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><c:out value="${ thumbnail.createdDate }"/></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="far fa-comments pr-1"></i>12</a></li>
-						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-									class="fab fa-facebook-f pr-1">
-								</i></a></li>
-						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1">
-								</i><c:out value="${ thumbnail.count }"/></a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="far fa-comments pr-1"></i>12</a></li>
+						<li class="list-inline-item pr-2"><a href="#" class="white-text"><i	class="fab fa-facebook-f pr-1"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"></i><c:out value="${ thumbnail.count }"/></a></li>
 					</ul>
 				</div>
-			</c:forEach>
 			</div> 
 			<!-- 밑에 div 로우 -->
 			<script>
@@ -953,7 +713,7 @@
 						console.log(no);
 						location.href = "${ pageContext.servletContext.contextPath }/trainer/detail?no=" + no;
 					});
-				</script>
+			</script>
 		</div>
 
 		<!-- 트레이너 끝 -->

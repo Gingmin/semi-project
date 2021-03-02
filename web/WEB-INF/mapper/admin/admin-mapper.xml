@@ -2245,13 +2245,13 @@
 		SELECT
                COUNT(*) 
           FROM TBL_OPENED_CLASS C
-         WHERE CLASS_KIND = '그룹'
+         WHERE CLASS_KIND = '그룹클래스'
 	</entry>
 	<entry key="selectoneToOnePT">
 		SELECT
                COUNT(*) 
           FROM TBL_OPENED_CLASS C
-         WHERE CLASS_KIND = '1대1PT'
+         WHERE CLASS_KIND = 'PT클래스'
 	</entry>
 	<entry key="selectMembershipGroup">
 		SELECT
