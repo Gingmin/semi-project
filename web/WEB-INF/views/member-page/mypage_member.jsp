@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,30 +35,33 @@
 						마이 페이지
 					</div>
 					<div class="row">
-						<div class="member_info">
-							<div class="member_img_area">
-								<img class="img_detail" src="/semi/resources/images/testimg.JPG">
-							</div>
-							<div class="member_name">
-								정민서
-							</div>
-							<div class="infobtn_area">
-								<div class="row">
-									<div class="membership_btn">
-										<i class="far fa-star"></i>
-										<a href="#" class="member_text1">
-											나의 멤버쉽
-										</a>
-									</div>
-									<div class="membership_btn">
-										<i class="fas fa-credit-card"></i>
-										<a href="#" class="member_text1">
-											결제 관리
-										</a>
+						<form action="${ pageContext.servletContext.contextPath }/member/mypage" method="post">
+							<div class="member_info">
+								<div class="member_img_area" id="profilearea">
+									<img class="img_detail" id="memberProfile">
+								</div>
+								<div class="member_name">
+									<c:out value="${ sessionScope.loginMember.name }"/>
+								</div>
+								<div class="infobtn_area">
+									<div class="row">
+										<div class="membership_btn">
+											<i class="far fa-star"></i>
+											<label class="member_text1">
+												프로필사진
+												<input type="file" id="profilePhoto" class="member_text1" onchange="loadProfile(this, 1)" style="display:none;">
+											</label>										
+										</div>
+										<div class="membership_btn">
+											<i class="fas fa-credit-card"></i>
+											<a href="#payment1" class="member_text1">
+												결제 관리
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 
 						<div class="exercise_regi_area">
 							<div class="row">
@@ -179,7 +183,7 @@
 										<button class="btnlist_detail">완료</button>
 									</div>											
 									<div class="calendar_text">
-										아직 일정이 없습니다.
+										
 									</div>
 								</div>
 								<div class="btnlist_kinds col-4" >
@@ -187,7 +191,7 @@
 										<button class="btnlist_detail">취소</button>
 									</div>											
 									<div class="calendar_text">
-										아직 일정이 없습니다.
+										
 									</div>
 								</div>
 							</div>	
@@ -197,7 +201,7 @@
 				</div>
 			</div>
 
-			<div class="payment_history_area">
+			<div id="payment1" class="payment_history_area">
 				<div class="ph_text">
 					결제 내역
 				</div>
@@ -233,8 +237,8 @@
 
 <script type="text/javascript">
 	$(function(){ 
-		$(".btnlist_detail").click(function(e){
-			e.preventDefault();
+		$(".btnlist_detail").click(function(){
+			
 
 			var $t = $(this);
 			var $s = $(".calendar_text")
@@ -243,6 +247,23 @@
 			$s.toggleClass("on");
 		})
 	})
+	
+	
+	function loadProfile(value, num) {
+		if(value.files){
+			const reader = new FileReader();
+			
+			reader.onload = function(e) {
+				switch(num){
+					case 1 :
+						document.getElementById("memberProfile").src = e.target.result;
+						break;
+				}
+			}
+			reader.readAsDataURL(value.files[0]);
+		}
+	}
+	
 </script>
 
 
