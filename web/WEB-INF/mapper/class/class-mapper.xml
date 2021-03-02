@@ -46,7 +46,7 @@
         )
         VALUES
         (
-          SEQ_ATTACHMENT_NO.NEXTVAL
+          SEQ_CLASS_ATTACHMENT_NO.NEXTVAL
         , ?
         , ?
         , ?
@@ -174,5 +174,50 @@
         , ?
         , ?  
         )
+    </entry>
+    <entry key="insertComment">
+        INSERT /* com.greedy.semi.trainer.dao.CommentDAO#insertComment() */
+          INTO TBL_COMMENT A
+        (
+          A.COMMENT_NO
+        , A.COMMNET_WRITER
+        , A.COMMENT_CONTENT  
+        )
+        VALUES
+        (
+          SEQ_COMMENT_NO.NEXTVAL
+        , ?
+        , ?  
+        )
+    </entry>
+    <entry key="updateComment">
+        UPDATE /* com.greedy.semi.trainer.dao.CommentDAO#updateComment() */
+               TBL_COMMENT A
+           SET A.COMMNET_WRITER = ?
+             , A.COMMENT_CONTENT = ?
+         WHERE A.COMMENT_NO = ?    
+    </entry>
+    <entry key="deleteComment">
+        DELETE
+          FROM TBL_COMMNET A
+         WHERE A.COMMENT_NO = ? 
+    </entry>
+    <entry key="selectComment">
+        SELECT
+               A.COMMENT_NO
+             , A.COMMENT_WRITER
+             , A.COMMENT_CONTENT
+             , A.COMMENT_DATE
+          FROM TBL_COMMENT A
+         WHERE A.COMMENT_NO = ?      
+    </entry>
+    <entry key="selectCommentList">
+        SELECT
+               A.COMMENT_NO
+             , A.COMMENT_WRITER
+             , A.COMMENT_CONTENT
+             , A.COMMENT_DATE
+          FROM TBL_COMMENT A
+         ORDER BY NO DESC;
     </entry>
 </properties>

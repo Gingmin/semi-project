@@ -117,7 +117,57 @@
          </div>
       </div>
       
-      <div class="review_area">
+      
+      <h1>댓글</h1>
+      
+      <div id="comment_add">
+      	<table class="comment_table">
+      		<tr>
+      			<td class="title">작성자</td>
+      			<td class="input"><input type="text" id="writer"></td>
+      		</tr>
+      		<tr>
+      			<td class="title">댓글내용</td>
+      			<td class="input"><textarea rows="3" cols="50" id="content"></textarea></td>
+      		</tr>
+      		<tr>
+      			<td colspan="2" class="btn"><button type="button" id="add_btn">댓글등록</button></td>
+      		</tr>
+      	</table>
+      	<div id="add_message">&nbsp;</div>
+      </div>
+      
+      <div id="comment_list"></div>
+      
+      <div id="comment_modify">
+      	<table class="comment_table">
+      		<tr>
+      			<td class="title">작성자</td>
+      			<td class="input"><input type="text" id="modify_writer"></td>
+      		</tr>
+      		<tr>
+      			<td class="title">댓글내용</td>
+      			<td class="input"><textarea rows="3" cols="50" id="modify_content"></textarea></td>
+      		</tr>
+      		<tr>
+      			<td colspan="2" class="btn"><button type="button" id="modify_btn">댓글수정</button>&nbsp;
+      			<button type="button" id="modify_cancel_btn">수정취소</button>
+      			</td>
+      		</tr>
+      	</table>
+      	<div id="modify_message">&nbsp;</div>
+      </div>
+      
+      <div id="comment_remove">
+      	<div id="remove_message">
+      		<b>정말로 삭제 하시겠습니까?</b>
+      		<button type="button" id="remove_btn">댓글삭제</button>
+      		<button type="button" id="remove_cancel_btn">삭제취소</button>
+      	</div>
+      	<div id="remove_message">&nbsp;</div>
+      </div>
+      
+      <!-- <div class="review_area">
          <div class="review_text">
       	      리뷰
             <i class="fas fa-star"></i>
@@ -176,7 +226,7 @@
             </table>
          </div>
          
-      </div>
+      </div> -->
    </div>
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp"/>
@@ -203,6 +253,70 @@
 		});
 	</script> 
 	
+	<script>
+		loadComment();
+		
+		function loadComment() {
+			$.ajax({
+				type: "GET",
+				url: "comment_list.jsp",
+				dateType: "xml",
+				success: function(xmlDoc) {
+					let code = $(xmlDoc).find("code").text();
+					if(code == "success") {
+						let commentArray = JSON.parse($(xmlDoc).find("data").text());
+						
+						$("#comment_list").children().remove();
+						
+						$(commentArray).each(function() {
+							$("#comment_list").append("<div id='comment_"+this.no+"' class='comment' no='"+this.no+"'><b>["+this.writer+"]</b><br>"+this.content.replace(/\n/g, "<br>")+"<br>("+this.writeDate+")<br><button>수정</button>&nbsp;<button>삭제</button></div>");
+						});
+					} else {
+						let message = $(xmlDoc).find("message").text();
+						$("#comment_list").html("<div class='no_comment'>"+message+"</div>");
+					}
+				},
+				error: function(xhr) {
+					alert("ERROR CODE : " + xhr.status);
+				}
+			});
+		}
+		
+		$("#add_btn").click(function() {
+			let writer = $("#writer").val();
+			if(writer == "") {
+				$("#add_message").html("작성자를 입력하세요!");
+				$("#writer").focus();
+				return;
+			}
+			let content = $("#content").val();
+			if(content == "") {
+				$("#add_message").html("내용을 입력하세요!");
+				$("#content").focus();
+				return;
+			}
+			
+			$("#writer").val("");
+			$("#content").val("");
+			$("#add_message").html("");
+			
+			$.ajax({
+				type: "POST",
+				url: "comment_add.jsp",
+				data: "writer="+writer+"&content="+content,
+				dataType: "xml",
+				success: function(xmlDoc) {
+					let code = $(xmlDoc).find("code").text();
+					if(code == "success") {
+						loadComment();
+					}
+				},
+				error: function(xhr) {
+					alert("ERROR CODE : " + xhr.status);
+				}
+			});
+		});
+	</script>
 	
 </body>
 </html>
