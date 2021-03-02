@@ -189,7 +189,7 @@
 	                
 	                
 	                <div id="Line_Controls_Chart">
-				      <!-- 라인 차트 생성할 영역 -->
+	                  <!-- 라인 차트 생성할 영역 -->
 				      <div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
 				      <!-- 컨트롤바를 생성할 영역 -->
 				      <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
@@ -718,9 +718,9 @@
           var data = new google.visualization.DataTable();
           //그래프에 표시할 컬럼 추가
           data.addColumn('datetime' , '날짜');
-          data.addColumn('number'   , '블랙리스트');
-          data.addColumn('number'   , '회원');
-          data.addColumn('number'   , '트레이너');
+          data.addColumn('number'   , '남자');
+          data.addColumn('number'   , '여자');
+          data.addColumn('number'   , '전체');
 
           //그래프에 표시할 데이터
           var dataRow = [];
