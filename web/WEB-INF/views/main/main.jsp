@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +29,8 @@
 
 	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	
+	
 </head>
 <body>
 	
@@ -41,18 +45,54 @@
 		<!-- 메인 배너 끝 -->
 
 		<!-- 이용방법 -->
-
+		<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
+					
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150" style="margin: 5px">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
+							<%-- className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
+							</p>
+						</div>
+					
+					</c:forEach>
+					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
+							className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
+							</p>
+						</div>
+					</c:forEach>
+				</div>
+		
 		<div class="container">
-			
+		
+				
 			<div class="howuse_area">
 				<div class="row">
 					<div class="howuse_img_area">				
 					    <div id="myCarousel" class="carousel slide">
-					    	<div class="row">	    		 
+					    	<div class="row">	
+					   
+					    	
 					    			
 				    			<div class="carousel-inner" role="listbox">
 									<div class="item active ">
 										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										
 									</div>
 
 									<div class="item">
@@ -312,6 +352,24 @@
 
 
 </script>
+
+<script>
+		
+			
+			$.ajax({
+				url: "/semi/main/img",
+				type: "get",
+				
+				success: function(data, textStatus, xhr) {
+					
+				},
+				error: function(xhr, status, error) {
+					console.log(error);
+				}
+			});
+			
+		
+	</script> 
 
 	
 </body>

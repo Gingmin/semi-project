@@ -332,6 +332,8 @@ public class ClassDAO {
 			while(rset.next()) {
 				trainer = new ClassDTO();
 				trainer.setMemberNo(new MemberDTO());
+				List<AttachmentDTO> attachmentList = new ArrayList<>();
+				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
 				
 				trainer.setNo(rset.getInt("CLASS_NO"));
 				trainer.setTrainerNo(rset.getInt("TRAINER_NO"));
@@ -343,6 +345,16 @@ public class ClassDAO {
 				trainer.setCreatedDate(rset.getString("CREATED_DATE"));
 				trainer.setCount(rset.getInt("CLASS_COUNT"));
 				trainer.getMemberNo().setName(rset.getString("MEMBER_NAME"));
+				thumbnailAttachment.setNo(rset.getInt("CLASS_ATTACHMENT_NO"));
+				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
+				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
+				thumbnailAttachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
+				
+				attachmentList.add(thumbnailAttachment);
+				
+				trainer.setAttachmentList(attachmentList);
+				
+				
 				
 			}
 			

@@ -28,7 +28,16 @@
 	<div class="headerimg_area">
       <div class="row">
          <div class="classimg_area">
-            <img class="classimg_detail" src="/semi/resources/images/testimg.JPG">
+            <div class="thumnail-area" id="thumbnailArea">
+					
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+									width="900" height="400">
+							</div>
+							
+						</div>
+				</div>
          </div>
 					
          <div class="classinfo_area">
@@ -48,7 +57,17 @@
             <div class="trainerinfo">
                <div class="row">
                   <div class="trainerimg">
-                     <img class="trainerimg_detail" src="/semi/resources/images/testimg.JPG">
+       
+                     <div class="thumnail-area" id="thumbnailArea">
+					
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+								width="120px" style="border-radius: 20px">
+							</div>
+							
+						</div>
+				</div>
                   </div>
                   <div class="trainer_name">
                		     <c:out value="${ trainer.memberNo.name }"/>
@@ -56,10 +75,10 @@
                </div>
             </div>
             <div class="classbtn_area">
-               <button class="classbtn_detail on" id="application">
+               <button class="classbtn_detail on" id="ptapplication">
                   1:1 신청하기
                </button>
-               <button class="classbtn_detail">
+               <button class="classbtn_detail" id="groupapplication">
                	   그룹 예약하기
                </button>
             </div>
@@ -73,7 +92,16 @@
             <div class="trainer_intro">
                <p class="intro_text">코치 프로필</p>
                <div class="intro_img">
-                  <img class="intro_img_detail" src="./img/testimg.JPG">
+                   <div class="thumnail-area" id="thumbnailArea">
+					
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+								width="460px" height="500px">
+							</div>
+							
+						</div>
+				</div>
                </div>
             </div>
             <div class="trainer_intro2">
@@ -154,7 +182,7 @@
 	<jsp:include page="../common/footer.jsp"/>
 	<!-- 푸터끝 -->
 	<script>
-		$("#application").click(function() {
+		$("#ptapplication").click(function() {
 			
 			let memberNo = "${ sessionScope.loginMember.no }";
 			let trainerNo = "${ requestScope.trainer.trainerNo }"
@@ -174,6 +202,7 @@
 			
 		});
 	</script> 
+	
 	
 </body>
 </html>
