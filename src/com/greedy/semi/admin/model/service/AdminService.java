@@ -448,11 +448,11 @@ public class AdminService {
 		return calInfo;
 	}
 
-	public TrainerInfoDTO selectTrainerInfo(String memberNo) {
+	public MemberDTO selectTrainerInfo(String memberNo) {
 
 		Connection con = getConnection();
 		
-		TrainerInfoDTO trainerInfo = adminDAO.selectTrainerInfo(con, memberNo);
+		MemberDTO trainerInfo = adminDAO.selectTrainerInfo(con, memberNo);
 		
 		close(con);
 		

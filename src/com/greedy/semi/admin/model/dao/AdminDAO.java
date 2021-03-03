@@ -2406,12 +2406,12 @@ public class AdminDAO {
 		return calInfo;
 	}
 
-	public TrainerInfoDTO selectTrainerInfo(Connection con, String memberNo) {
+	public MemberDTO selectTrainerInfo(Connection con, String memberNo) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		TrainerInfoDTO trainerInfo = null;
+		MemberDTO trainerInfo = null;
 		
 		String query = prop.getProperty("selectTrainerInfo");
 		
@@ -2422,12 +2422,22 @@ public class AdminDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				trainerInfo = new TrainerInfoDTO();
-
-				trainerInfo.setAccountNumber(rset.getString("ACCOUNT_NUMBER"));
-				trainerInfo.setBankName(rset.getString("BANK_NAME"));
-				trainerInfo.setAccountHolder(rset.getString("ACCOUNT_HOLDER"));
-				trainerInfo.setApprovalStatus(rset.getString("APPROVAL_STATUS"));
+				trainerInfo = new MemberDTO();
+				trainerInfo.setTrainerInfoDTO(new TrainerInfoDTO());
+				
+			    trainerInfo.setNo(rset.getInt("MEMBER_NO"));
+				trainerInfo.setEmail(rset.getString("EMAIL")); 
+				trainerInfo.setName(rset.getString("MEMBER_NAME"));
+				trainerInfo.setPhone(rset.getString("PHONE"));
+				trainerInfo.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				trainerInfo.setModifiedDate(rset.getDate("MODIFIED_DATE"));
+				trainerInfo.setBlackStatus(rset.getString("BLACK_STATUS"));
+				trainerInfo.setRole(rset.getString("MEMBER_ROLE"));
+				trainerInfo.setStatus(rset.getString("MEMBER_STATUS"));
+				trainerInfo.getTrainerInfoDTO().setAccountNumber(rset.getString("ACCOUNT_NUMBER"));
+				trainerInfo.getTrainerInfoDTO().setBankName(rset.getString("BANK_NAME"));
+				trainerInfo.getTrainerInfoDTO().setAccountHolder(rset.getString("ACCOUNT_HOLDER"));
+				trainerInfo.getTrainerInfoDTO().setApprovalStatus(rset.getString("APPROVAL_STATUS"));
 			}
 			
 		} catch (SQLException e) {

@@ -1,20 +1,16 @@
 package com.greedy.semi.admin.itext;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.greedy.semi.admin.model.dto.ReceiptDTO;
+import com.greedy.semi.admin.model.service.AdminService;
+import com.greedy.semi.common.paging.Pagenation;
+import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.notice.model.dto.PageInfoDTO;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
@@ -37,18 +38,6 @@ import com.itextpdf.tool.xml.pipeline.css.CssResolverPipeline;
 import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.greedy.semi.admin.model.dto.ReceiptDTO;
-import com.greedy.semi.admin.model.service.AdminService;
-import com.greedy.semi.common.paging.Pagenation;
-import com.greedy.semi.member.model.dto.TrainerInfoDTO;
-import com.greedy.semi.notice.model.dto.PageInfoDTO;
 
 @WebServlet("/admin/calculatorMoney/mkPdf")
 public class MakePdfServlet extends HttpServlet {
@@ -96,7 +85,7 @@ public class MakePdfServlet extends HttpServlet {
 		calInfo = adminService.selectCalInfo(memberNo, name, searchDate1, searchDate2);
 		
 		/* 트레이너 계좌 정보 */
-		TrainerInfoDTO trainerInfo = adminService.selectTrainerInfo(memberNo);
+		MemberDTO trainerInfo = adminService.selectTrainerInfo(memberNo);
 		
 		/* 합계 */
 		int allPrice = 0;
@@ -154,6 +143,44 @@ public class MakePdfServlet extends HttpServlet {
 				    + "</html>";
 		*/
 		
+		/* 현재시간 */
+		Date nowDate = new Date(System.currentTimeMillis());
+		SimpleDateFormat eightFormat = new SimpleDateFormat("yyyyMMdd");
+		
+		html += "<div class=\"table_area\">"
+			  + "<table class=\"table_type1\">"
+			  + "<tr>"
+			  + "<td rowspan=\"3\" class=\"td_detail1\">"
+			  + "<div class=\"text_detail1\">" + eightFormat.format(nowDate) + "</div>"
+			  + "<div></div>"
+			  + "<div class=\"text_detail2\">(주)HELLOPT    貴中</div>"
+			  + "</td>"
+			  + "<td class=\"td_detail2\">이메일</td>"
+			  + "<td colspan=\"3\" class=\"td_detail1\">" + trainerInfo.getEmail() + "</td>"
+			  + "</tr>"
+			  + "<tr>"
+			  + "<td class=\"td_detail2\">회원번호</td>"
+			  + "<td class=\"td_detail3\">" + trainerInfo.getNo() + "</td>"
+			  + "<td>성명</td>"
+	          + "<td class=\"td_detail3\">" + trainerInfo.getName() + "</td>"
+	          + "</tr><tr>"
+	          + "<td class=\"td_detail2\">가입일</td>"
+	          + "<td colspan=\"3\">" + trainerInfo.getEnrollDate() + "</td>"
+	          + "</tr><tr><td rowspan=\"2\" class=\"td_detail1\">"
+	          + "<div>下記와 같이 계산합니다</div>"
+	          + "</td>"
+	          + "<td class=\"td_detail2\">업태</td>"
+	          + "<td class=\"td_detail3\">도소매</td>"
+	          + "<td>종목</td><td class=\"td_detail3\">전자상거래</td>"
+	          + "</tr>"
+	          + "<tr>"
+	          + "<td class=\"td_detail2\">전화</td>"
+	          + "<td class=\"td_detail3\">" + trainerInfo.getPhone() + "</td>"
+	          + "<td>팩스</td>"
+	          + "<td class=\"td_detail3\">02-123-123</td>"
+	          + "</tr>"
+	          + "</table>";
+		
 		html += "<div class=\"checkbox_area\">청구내역</div>"
 			  + "<table class=\"table_type2\"><tr><th class=\"th_detail1\">합계금액</th><th class=\"th_detail2\">"
               + "<span class=\"th_text1\">일금</span><span class=\"th_text2\">"
@@ -194,20 +221,16 @@ public class MakePdfServlet extends HttpServlet {
 			  + "<td class=\"td_detail1\">"
 			  + allPrice + "</td></tr></table>";
 		
-		/* 현재시간 */
-		Date nowDate = new Date(System.currentTimeMillis());
-		SimpleDateFormat eightFormat = new SimpleDateFormat("yyyyMMdd");
-		
 		html += "<table class=\"table_type4\">"
 			  + "<tr class=\"table_tr_detail\">"
 			  + "<td class=\"td_detail1\">거래은행</td>"
-			  + "<td class=\"td_detail2\">" + trainerInfo.getBankName() + "</td>"
+			  + "<td class=\"td_detail2\">" + trainerInfo.getTrainerInfoDTO().getBankName() + "</td>"
 			  + "<td class=\"td_detail1\">예금주</td>"
-			  + "<td class=\"td_detail2\">" + trainerInfo.getAccountHolder() + "</td>"
+			  + "<td class=\"td_detail2\">" + trainerInfo.getTrainerInfoDTO().getAccountHolder() + "</td>"
 			  + "</tr>"
 			  + "<tr class=\"table_tr_detail\">"
 			  + "<td class=\"td_detail1\">계좌번호</td>"
-			  + "<td class=\"td_detail2\">" + trainerInfo.getAccountNumber() + "</td>"
+			  + "<td class=\"td_detail2\">" + trainerInfo.getTrainerInfoDTO().getAccountNumber() + "</td>"
 		      + "<td class=\"td_detail1\">청구일시</td>"
 		      + "<td class=\"td_detail2\">" + eightFormat.format(nowDate) + "</td>"
 		      + "</tr>"
@@ -220,7 +243,8 @@ public class MakePdfServlet extends HttpServlet {
 		
 		/* io */
 		//String path = System.getProperty("user.home") + "/desktop/정산서.pdf";
-		String path = request.getServletContext().getRealPath("/") + "/" + "/resources/pdf/정산서.pdf";
+		String path = request.getServletContext().getRealPath("/") + "/" + /*"/resources/pdf/statementOfAccounts.pdf"*/
+	     System.getProperty("user.home") + "/desktop/statementOfAccounts.pdf";
 		
 		try {
 			FileOutputStream os = new FileOutputStream(path);
@@ -231,7 +255,7 @@ public class MakePdfServlet extends HttpServlet {
 			PdfWriter writer = PdfWriter.getInstance(document, os);
 			/* 파일 다운도르 설정 */
 			response.setContentType("application/pdf");
-			String fileName = URLEncoder.encode("정산서", "UTF-8"); //파일명이 한글일 땐 인코딩 필요 -- 중요함.. 안하면 파일을 열 수 없다.
+			String fileName = URLEncoder.encode("statementOfAccounts", "UTF-8"); //파일명이 한글일 땐 인코딩 필요 -- 중요함.. 안하면 파일을 열 수 없다.
 			/* document open */
 			document.open();
 			/* css 설정할 resolver 인스턴스 생성 */

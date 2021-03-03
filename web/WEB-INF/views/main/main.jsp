@@ -20,7 +20,7 @@
 
 
 	<!-- Rock Salt font -->
-	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+	<!-- <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet"> -->
 
 
 	<!-- 스와이퍼 -->
