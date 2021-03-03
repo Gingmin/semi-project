@@ -15,7 +15,7 @@
 
 
 	<!-- Rock Salt font -->
-	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+	<!-- <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet"> -->
 
 	<!-- 폰트어썸 -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
 						<form action="${ pageContext.servletContext.contextPath }/member/mypage" method="post">
 							<div class="member_info">
 								<div class="member_img_area" id="profilearea">
-									<img class="img_detail" id="memberProfile">
+									<img class="img_detail" id="memberProfile" src="/semi/resources/images/mainimg_2.JPG">
 								</div>
 								<div class="member_name">
 									<c:out value="${ sessionScope.loginMember.name }"/>
