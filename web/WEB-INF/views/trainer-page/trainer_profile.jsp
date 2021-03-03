@@ -8,12 +8,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+	
 	<link rel="stylesheet" type="text/css" href="/semi/resources/css/trainer_profile.css">
 	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	
 
 	<title>Insert title here</title>
 
@@ -251,16 +256,19 @@
 			});
 			
 		});
-	</script> 
+	</script>
 	
 	<script>
-		loadComment();
+		/* loadComment(); */
 		
 		function loadComment() {
+
+			
 			$.ajax({
 				type: "GET",
-				url: "comment_list.jsp",
+				url: "/semi/trainer/comment_list.jsp",
 				dateType: "xml",
+				
 				success: function(xmlDoc) {
 					let code = $(xmlDoc).find("code").text();
 					if(code == "success") {
@@ -302,9 +310,10 @@
 			
 			$.ajax({
 				type: "POST",
-				url: "comment_add.jsp",
+				url: "/semi/trainer/comment_add.jsp",
 				data: "writer="+writer+"&content="+content,
 				dataType: "xml",
+				
 				success: function(xmlDoc) {
 					let code = $(xmlDoc).find("code").text();
 					if(code == "success") {
@@ -317,6 +326,8 @@
 			});
 		});
 	</script>
+	
+	
 	
 </body>
 </html>
