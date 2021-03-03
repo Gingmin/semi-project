@@ -175,7 +175,38 @@
 										<button class="btnlist_detail">예약</button>
 									</div>											
 									<div class="calendar_text">
-										아직 일정이 없습니다.
+										<div class="thumnail-area" id="thumbnailArea">
+					<c:forEach var="thumbnail" items="${ requestScope.reservationList }" begin="0" end="1">
+					<c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }">
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150" style="margin: 5px">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.permitNo }"/></label>번</div>
+							<%-- className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
+							</p>
+						</div>
+					</c:if>
+					</c:forEach>
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.no }"/></label>번</div>
+							className: <c:out value="${ thumbnail.name }"/><br>
+							조회수 : <c:out value="${ thumbnail.count }"/><br>
+							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/>
+							</p>
+						</div>
+					</c:forEach> --%>
+				</div>
 									</div>
 								</div>
 								<div class="btnlist_kinds col-4" >
@@ -265,6 +296,10 @@
 	}
 	
 </script>
+
+
+
+
 
 
 		

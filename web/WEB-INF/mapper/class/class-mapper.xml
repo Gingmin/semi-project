@@ -167,13 +167,37 @@
           A.PERMIT_NO
         , A.TRAINER_NO
         , A.MEMBER_NO
+        , A.CLASS_NO
         )
         VALUES
         (
           SEQ_PERMIT_NO.NEXTVAL
         , ?
-        , ?  
+        , ?
+        , ?
         )
+    </entry>
+    <entry key="selectReservationMember">
+        SELECT
+               A.PERMIT_NO
+             , A.TRAINER_NO
+             , A.MEMBER_NO
+             , A.APPLY_DATE
+             , A.PERMIT_YN
+             , A.PERMIT_DATE
+             , A.CLASS_NO
+             , B.CLASS_ATTACHMENT_NO
+             , B.REF_CLASS_NO
+             , B.ORIGINAL_NAME
+             , B.SAVED_NAME
+             , B.SAVE_PATH
+             , B.THUMBNAIL_PATH
+          FROM TBL_TRAINER_PT_PERMIT A
+          JOIN TBL_CLASS_ATTACHMENT B ON (A.TRAINER_NO = B.REF_TRAINER_NO)
+         WHERE A.MEMBER_NO = ?
+           AND B.ATTACHMENT_STATUS = 'Y'
+           AND B.FILE_TYPE = 'CLASSNAME'
+         ORDER BY A.CLASS_NO ASC
     </entry>
     <entry key="insertComment">
         INSERT /* com.greedy.semi.trainer.dao.CommentDAO#insertComment() */

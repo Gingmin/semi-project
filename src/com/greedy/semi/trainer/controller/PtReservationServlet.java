@@ -26,10 +26,12 @@ public class PtReservationServlet extends HttpServlet {
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		int trainerNo = Integer.parseInt(request.getParameter("trainerNo"));
+		int classNo = Integer.parseInt(request.getParameter("classNo"));
 		
 		PtReservationDTO reservationMember = new PtReservationDTO();
 		reservationMember.setMemberNo(memberNo);
 		reservationMember.setTrainerNo(trainerNo);
+		reservationMember.setClassNo(classNo);
 		
 		ClassService classService = new ClassService();
 		int result = classService.reservationMember(reservationMember);

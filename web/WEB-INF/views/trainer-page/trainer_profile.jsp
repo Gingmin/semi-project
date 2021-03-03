@@ -241,12 +241,13 @@
 			
 			let memberNo = "${ sessionScope.loginMember.no }";
 			let trainerNo = "${ requestScope.trainer.trainerNo }"
+			let classNo = "${ requestScope.trainer.no}"
 			console.log(memberNo);
 			
 			$.ajax({
 				url: "/semi/pt/reservation",
 				type: "post",
-				data: { memberNo: memberNo, trainerNo: trainerNo },
+				data: { memberNo: memberNo, trainerNo: trainerNo, classNo: classNo },
 				success: function(data, textStatus, xhr) {
 					alert("1:1PT 예약이 완료되었습니다!");
 				},
