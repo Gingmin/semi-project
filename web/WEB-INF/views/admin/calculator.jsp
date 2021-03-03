@@ -186,11 +186,11 @@
 												<input type="date" id="searchDate1" name="searchDate1" value="${ requestScope.searchDate1 }">
 												<input type="date" id="searchDate2" name="searchDate2" value="${ requestScope.searchDate2 }">
 											</td>
-											<td>
+											<td align="center">
 												<button type="submit" id="searchButton" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">조회</button>
 											</td>	
-											<td>
+											<td align="center">
 												<button type="button" id="excel" 
 													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">엑셀 다운받기</button>
 											</td>	
@@ -205,8 +205,12 @@
 											<td></td>
 											<td align="center">
 												<button type="button" id="mkPdf" 
-													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">정산서</button>
+													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">정산서 다운</button>
 											</td>
+											<!-- <td align="center">
+												<button type="button" id="ptPdf"  
+													class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">정산서 출력</button>
+											</td> -->
 										</tr>
 									</table>
 							</form>
@@ -226,14 +230,14 @@
 								/* pdf */
 								if(document.getElementById('mkPdf')) {
 									
-									const $mkPdf = document.getElementById('mkPdf');
 									const $searchForm = document.getElementById('searchForm');
+									const $mkPdf = document.getElementById('mkPdf');
 									
 									$mkPdf.onclick = function() {
+										
 										$searchForm.action = "/semi/admin/calculatorMoney/mkPdf";
 										$searchForm.submit();
 									}
-									/*window.open("/semi/resources/pdf/정산서.pdf", "width=800, height=700, toolbar=no, menubar=no, scrollbars=yes, resizable=yes");*/
 								}
 							</script>
 							<br>
@@ -481,7 +485,9 @@
 	<!-- ============================================================== -->
 	<!-- End Page wrapper  -->
 	<!-- ============================================================== -->
-		<iframe id="iFramePdf" src="" frameborder="1" style="display: none;" ></iframe>
+		<form action="" ></form>
+		<iframe id="iFramePdf" src="/semi/resources/pdf/statementOfAccounts.pdf" frameborder="1" style="display: none;" ></iframe>
+		<!-- <iframe id="iFramePdf" src="C:\Users/MK/desktop/statementOfAccounts.pdf" frameborder="1" style="display: none;" ></iframe> -->
 		<!-- <embed src="/semi/resources/pdf/statementOfAccounts.pdf" type="application/pdf" width="700px" height="700px"  id="iFramePdf"> -->
 		<input type="text" value="${ requestScope.pdf }"  id="pdfFlag" name="pdfFlag" style="display: none;">
 	</div>
@@ -513,7 +519,7 @@
 		const searchDate1 = document.getElementById("searchDate1").value;
 		const searchDate2 = document.getElementById("searchDate2").value;
 		
-		if((!memberNo || memberNo === "") || (!name || name === "") || (!searchDate1 || searchDate === "") || (!searchDate2 || searchDate2 === "")) {
+		if((!memberNo || memberNo === "") || (!name || name === "") || (!searchDate1 || searchDate1 === "") || (!searchDate2 || searchDate2 === "")) {
 			
 			$excel.disabled = "disabled";
 			$mkPdf.disabled = "disabled";
@@ -521,17 +527,96 @@
 			$excel.disabled = false;
 			$mkPdf.disabled = false;
 		}
-	</script>
-	<script>
+		
+	/* 	$mkPdf.addEventListener("click", function() {
+			$ptPdf.disabled = false;
+		}); */
+		
+		/* const $ptPdf = document.getElementById("ptPdf"); */
+		
+		/* let pFlag = null;
+		$.get("/semi/resources/pdf/statementOfAccounts.pdf")
+			.done(function() {
+				pFlag = "isExist";
+			}).fail(function() {
+				pFlag = "isNotExist";
+			});
+		
+		if($mkPdf.disabled == false && pFlag === "isExist") {
+			console.log('pd t');
+			$ptPdf.disabled = false;
+		} else {
+			console.log('pd f');
+			$ptPdf.disabled = "disabled";
+		} */
+		/* pdf open */
+		/* $('#pdfFlag').on('propertyChange change keyup paste input', function() {
+			
+			let pFlag = null;
+			$.get("/semi/resources/pdf/statementOfAccounts.pdf")
+				.done(function() {
+					pFlag = "isExist";
+				}).fail(function() {
+					pFlag = "isNotExist";
+				});
+			
+			if($mkPdf.disabled == false && pFlag === "isExist") {
+				console.log('pd t');
+				$ptPdf.disabled = false;
+			} else {
+				console.log('pd f');
+				$ptPdf.disabled = "disabled";
+			}
+		} */
+		</script>
+		<script>
 		/* pdf open */
 		/*$('#pdfFlag').on('propertyChange change keyup paste input', function() {*/
 		if("${ requestScope.pdf }") {
 			
 			const $getMyFrame = document.getElementById('iFramePdf');
 		
-			$getMyFrame.src = "/semi/resources/pdf/statementOfAccounts.pdf";
+			/* 콜백함수 사용 */
+			showPdf = function($getMyFrame, callback) {
+				callback($getMyFrame.contentWindow.print());
+			}
+				
+			showPdf($getMyFrame, function(res){});
+		   /*  var form = document.form;
+		    var winObj = null;
+		    
+		    var theUrl = " ";
+		    var winName = "iFramePdf";
+		    
+		    winObj = window.open(theUrl, winName); */
+		}
+		
+		/* function showPdf($getMyFrame) {
+			console.log("돼");
+			$getMyFrame.focus();
+			$getMyFrame.contentWindow.print(); 
+		} */
+		</script>
+		<%-- if("${ requestScope.pdf }") {
 			
-			showPdf($getMyFrame);
+			const $getMyFrame = document.getElementById('iFramePdf');
+			const $ptPdf = document.getElementById("ptPdf");
+			/* $getMyFrame.src = ""; */
+			
+			/* 새로고침 방법도 실패 */
+			/* if(self.name != 'reload') {
+				self.name = 'reload';
+				self.location.reload(true);
+			} else {
+				self.name = '';
+			} */
+					
+			/* 콜백함수 사용 */
+			showPdf = function($getMyFrame, callback) {
+				callback($getMyFrame.contentWindow.print());
+			}
+				
+			showPdf($getMyFrame, function(res){});
 				
 		   /*  var form = document.form;
 		    var winObj = null;
@@ -542,11 +627,11 @@
 		    winObj = window.open(theUrl, winName); */
 		}
 		
-		function showPdf($getMyFrame) {
-			console.log("돼");
+		/* function showPdf($getMyFrame) {
+		
 			$getMyFrame.focus();
 			$getMyFrame.contentWindow.print(); 
-		}
-	</script>
+		} */
+	</script> --%>
 </body>
 </html>

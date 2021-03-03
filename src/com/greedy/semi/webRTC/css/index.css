@@ -2,14 +2,18 @@
 .app__wrap{ 
 	margin: 0 auto; 
 	padding: 50px 0 0; 
-	position: relative; 
-	width: 100%; 
-	max-width: 350px; 
+	/* position: relative;  */
+	/* width: 100%;  */
+	max-width: 20%; 
 	min-width: 200px; 
 	font-size: 14px; 
-	border-top: 20px solid #5c007a; 
+	border-top: 20px solid orangered; 
 	box-sizing: border-box; 
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.1); 
+	
+	position: absolute;
+    top: 20px;
+    right: 0;
 } 
 .app__info{ 
 	position: absolute; 
@@ -19,7 +23,7 @@
 	text-align: center; 
 	line-height: 50px; 
 	color: #fff; 
-	background: #8e24aa; 
+	background: orangered; 
 } 
 .app__window{ 
 	overflow-y: auto; 

@@ -1,3 +1,4 @@
+
 body {
   font-family: sans-serif;
 }
@@ -10,7 +11,7 @@ body {
 #localVideo {
  /*  max-width: 100%; */
   height: 500px;
-  width: 40%;
+  width: 50%;
   float:left;
   border: 1px solid;
 }
@@ -18,7 +19,7 @@ body {
 #remoteVideo {
   /* max-width: 100%; */
   height: 500px;
-  width: 40%;
+  width: 50%;
   float:right;
   border: 1px solid;
   display: none;
@@ -30,15 +31,15 @@ body {
 }
 /* 채팅 */
 .remoteVideoInChatting {
-	
-   display: inline-block !important;
+  
+ display: inline-block !important;
 }
 
-.video_area{ width: 100%; height: 550px;  padding: 20px;}
-.video_area .row{margin: 0; }
-.video_area .row .video_outgoing{background-color: white; width:80%; height:550px; float: left; box-shadow: 0 0 20px gray;}
+.video_area{ width: 80%; height: 550px;  padding: 20px;}
+.video_area .row{margin: 0; position:relative;}
+.video_area .row .video_outgoing{background-color: white; width:100%; height:550px; float: left; box-shadow: 0 0 20px gray;}
 .video_area .row .video_outgoing .testimg{width: 100%; height: 100%;}
-.video_area .row .video_outgoing .video_icon{height: 50px;  padding:13px;}
+.video_area .row .video_outgoing .video_icon{height: 50px;  padding:13px; position:absolute; bottom:0;}
 .video_area .row .video_outgoing .video_icon .fa-volume-mute{ font-size: 25px; padding-right: 15px;}
 .video_area .row .video_outgoing .video_icon .fa-volume-up{ font-size: 25px; padding-right: 15px; }
 .video_area .row .video_outgoing .video_icon .fa-camera{ font-size: 25px; padding-right: 15px;}
