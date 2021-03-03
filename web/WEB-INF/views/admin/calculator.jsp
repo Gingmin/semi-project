@@ -232,11 +232,9 @@
 									$mkPdf.onclick = function() {
 										$searchForm.action = "/semi/admin/calculatorMoney/mkPdf";
 										$searchForm.submit();
-										
 									}
-									window.open("/semi/resources/pdf/정산서.pdf", "width=800, height=700, toolbar=no, menubar=no, scrollbars=yes, resizable=yes");
+									/*window.open("/semi/resources/pdf/정산서.pdf", "width=800, height=700, toolbar=no, menubar=no, scrollbars=yes, resizable=yes");*/
 								}
-								/* pdf open */
 							</script>
 							<br>
 						</div>
@@ -483,6 +481,9 @@
 	<!-- ============================================================== -->
 	<!-- End Page wrapper  -->
 	<!-- ============================================================== -->
+		<iframe id="iFramePdf" src="" frameborder="1" style="display: none;" ></iframe>
+		<!-- <embed src="/semi/resources/pdf/statementOfAccounts.pdf" type="application/pdf" width="700px" height="700px"  id="iFramePdf"> -->
+		<input type="text" value="${ requestScope.pdf }"  id="pdfFlag" name="pdfFlag" style="display: none;">
 	</div>
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->
@@ -519,6 +520,32 @@
 		} else {
 			$excel.disabled = false;
 			$mkPdf.disabled = false;
+		}
+	</script>
+	<script>
+		/* pdf open */
+		/*$('#pdfFlag').on('propertyChange change keyup paste input', function() {*/
+		if("${ requestScope.pdf }") {
+			
+			const $getMyFrame = document.getElementById('iFramePdf');
+		
+			$getMyFrame.src = "/semi/resources/pdf/statementOfAccounts.pdf";
+			
+			showPdf($getMyFrame);
+				
+		   /*  var form = document.form;
+		    var winObj = null;
+		    
+		    var theUrl = " ";
+		    var winName = "iFramePdf";
+		    
+		    winObj = window.open(theUrl, winName); */
+		}
+		
+		function showPdf($getMyFrame) {
+			console.log("돼");
+			$getMyFrame.focus();
+			$getMyFrame.contentWindow.print(); 
 		}
 	</script>
 </body>

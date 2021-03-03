@@ -19,7 +19,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- 폰트 -->
-<link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt">
+<!-- <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt"> -->
 <!-- js -->
 <script src="/semi/resources/js/event.js"></script>
 <!-- css -->

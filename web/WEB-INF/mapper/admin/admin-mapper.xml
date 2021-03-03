@@ -2335,11 +2335,21 @@
 	</entry>
 	<entry key="selectTrainerInfo">
 		SELECT /* com.greedy.semi.admin.model.dao.AdminDAO#selectTrainerInfo() */
-               A.ACCOUNT_NUMBER
+		       B.MEMBER_NO
+		     , B.EMAIL
+		     , B.MEMBER_NAME
+		     , B.PHONE
+		     , B.ENROLL_DATE
+		     , B.MODIFIED_DATE
+		     , B.BLACK_STATUS
+		     , B.MEMBER_ROLE
+		     , B.MEMBER_STATUS
+             , A.ACCOUNT_NUMBER
              , A.BANK_NAME
              , A.ACCOUNT_HOLDER
              , A.APPROVAL_STATUS
-          FROM TBL_TRAINER_INFO A
+          FROM TBL_MEMBER B
+          JOIN TBL_TRAINER_INFO A ON (B.MEMBER_NO = A.MEMBER_NO)
          WHERE A.MEMBER_NO = ?
 	</entry>
 </properties>
