@@ -83,9 +83,18 @@
                <button class="classbtn_detail on" id="ptapplication">
                   1:1 신청하기
                </button>
-               <button class="classbtn_detail" id="groupapplication">
-               	   그룹 예약하기
+               <button type="button" class="classbtn_detail" id="participateClass">
+               	   수업참가
                </button>
+               <script>
+               if(document.getElementById("participateClass")) {
+            	   /* 환경에 맞춰 https:// (ip)주소 써줘야 */
+               		const $participateClass = document.getElementById("participateClass");
+               		$participateClass.onclick = function() {
+               			location.href = "https://";
+               		}
+               }
+               </script>
             </div>
          </div>
       </div>
