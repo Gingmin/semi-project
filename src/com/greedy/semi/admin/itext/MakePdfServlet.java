@@ -243,8 +243,8 @@ public class MakePdfServlet extends HttpServlet {
 		
 		/* io */
 		//String path = System.getProperty("user.home") + "/desktop/정산서.pdf";
-		String path = request.getServletContext().getRealPath("/") + "/" + /*"/resources/pdf/statementOfAccounts.pdf"*/
-	     System.getProperty("user.home") + "/desktop/statementOfAccounts.pdf";
+		String path = request.getServletContext().getRealPath("/") + "/" + "/resources/pdf/statementOfAccounts.pdf"
+		/* System.getProperty("user.home") + "/desktop/statementOfAccounts.pdf" */ ;
 		
 		try {
 			FileOutputStream os = new FileOutputStream(path);
