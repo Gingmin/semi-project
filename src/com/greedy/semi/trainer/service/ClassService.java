@@ -151,15 +151,25 @@ public class ClassService {
 		return result;
 	}
 
-	public List<PtReservationDTO> selectReservationList(int no) {
-		
+//	public List<PtReservationDTO> selectReservationList(int no) {
+//		
+//		Connection con = getConnection();
+//		
+//		List<PtReservationDTO> reservationList = classDAO.selectReservationMember(con, no);
+//		
+//		close(con);
+//		
+//		return reservationList;
+//	}
+
+	public List<PtReservationDTO> selectReservationList(PtReservationDTO reservationMember) {
 		Connection con = getConnection();
 		
-		List<PtReservationDTO> reservationMember = classDAO.selectReservationMember(con, no);
+		List<PtReservationDTO> reservationList = classDAO.selectReservationMember(con, reservationMember);
 		
 		close(con);
 		
-		return reservationMember;
+		return reservationList;
 	}
 
 
