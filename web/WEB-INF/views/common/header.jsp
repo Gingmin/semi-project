@@ -32,22 +32,27 @@
 	      </div>
 	      <div class="header_meun ">
 	      <!-- 로그인이 안 되어 있는 경우  -->          
-	      <c:if test="${ empty sessionScope.loginMember }">
-	         <input type="button" class="menu_list loginPage" value="로그인" id="loginPage">
-	      </c:if>
+			<c:if test="${ empty sessionScope.loginMember }">
+				<input type="button" class="menu_list loginPage" value="로그인" id="loginPage">
+			</c:if>
 	      <!-- 로그인이 되어 있는 경우 -->
-	      <c:if test="${ ! empty sessionScope.loginMember }">
-	      	<span class="menu_list"><c:out value="${ sessionScope.loginMember.name }"/>님 환영합니다.</span>
-	      	<input type="button" class="menu_list logout" value="로그아웃" id="logout">
-	      	<!-- 관리자페이지 -->
-	      	<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
-	      	<input type="button" class="menu_list adminPage" value="관리자 페이지" id="adminPage">
+			<c:if test="${ ! empty sessionScope.loginMember }">
+				<span class="menu_list"><c:out value="${ sessionScope.loginMember.name }"/>님 환영합니다.</span>
+				<input type="button" class="menu_list logout" value="로그아웃" id="logout">
+				<!-- 관리자페이지 -->
+				<c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }">
+					<input type="button" class="menu_list adminPage" value="관리자 페이지" id="adminPage">
+				</c:if>
+			</c:if>
+	      	<c:if test="${ sessionScope.loginMember.role eq 'TRAINER' }">
+		         <input type="button" class="menu_list" value="마이페이지" id=trainer>
 	      	</c:if>
-	      </c:if>
-	         <input type="button" class="menu_list" value="마이페이지" id="mypage">
+	      	<c:if test="${ sessionScope.loginMember.role eq 'MEMBER' }">
+		      	 <input type="button" class="menu_list" value="마이페이지" id="mypage">
+	      	</c:if>
 	       	 <input type="button" class="menu_list" value="게시판" id="noticePage">
 	         <input type="button" class="menu_list" value="멤버십" id="membership">
-	         <input type="button" class="menu_list" value="클래스" id="trainer">
+	         <input type="button" class="menu_list" value="클래스" id="classList">
 	         <input type="button" class="menu_list" value="소개" id="introduce">
 	      </div>
 	   </div>

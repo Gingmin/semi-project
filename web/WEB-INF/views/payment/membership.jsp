@@ -17,7 +17,7 @@
    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
    <!-- Rock Salt font -->
-   <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+ <!--   <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet"> -->
 
 
    

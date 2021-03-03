@@ -188,6 +188,16 @@ window.onload = function() {
 		}
 	}
 	
+	/* 클레스 리스트 페이지*/
+	if(document.getElementById("classList")) {
+		const $classList = document.getElementById("classList");
+		$classList.onclick = function() {
+			location.href = "/semi/class/list";
+		}
+	}
+	
+	
+	
 	/* 클래스 개설하기 */
 	if(document.getElementById("insert_class")) {
 		const $logout = document.getElementById("insert_class");
