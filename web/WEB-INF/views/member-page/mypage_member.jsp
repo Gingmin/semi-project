@@ -67,7 +67,7 @@
 							<div class="row">
 								<div class="regi_area">
 									<div class="member_text2">
-										정민서 님의 운동기록
+										<c:out value="${ sessionScope.loginMember.name }"/> 님의 운동기록
 									</div>
 									<div class="row">
 										<div class="exercise_count">
