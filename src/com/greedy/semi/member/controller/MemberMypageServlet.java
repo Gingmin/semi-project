@@ -19,6 +19,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.greedy.semi.member.model.dto.MemberDTO;
+import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.PtReservationDTO;
+import com.greedy.semi.trainer.service.ClassService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -27,7 +30,31 @@ public class MemberMypageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/views/member-page/mypage_member.jsp";
+//		String path = "/WEB-INF/views/member-page/mypage_member.jsp";
+//		request.getRequestDispatcher(path).forward(request, response);
+		
+		
+		int no = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
+//		int no = Integer.parseInt(request.getParameter("memberNo"));
+		
+		ClassService classService = new ClassService();
+		List<PtReservationDTO> reservationList = classService.selectReservationList(no);
+		
+		System.out.println(reservationList);
+		
+		for(PtReservationDTO reservation : reservationList) {
+			System.out.println(reservation);
+		}
+		
+		String path = "";
+		if(reservationList != null) {
+			path = "/WEB-INF/views/member-page/mypage_member.jsp";
+			request.setAttribute("reservationList", reservationList);
+		} else {
+			path = "/WEB-INF/views/common/failed.jsp";
+			request.setAttribute("message", "예약한 수업 조회 실패!");
+		}
+		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
