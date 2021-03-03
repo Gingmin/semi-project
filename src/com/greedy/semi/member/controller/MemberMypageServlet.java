@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.greedy.semi.member.model.dto.MemberDTO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -117,10 +118,9 @@ public class MemberMypageServlet extends HttpServlet {
 				
 				
 				
+				int memberNo = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
 				
-				
-				
-				
+				System.out.println("여기 뜨지?" + memberNo);
 				
 				
 				
