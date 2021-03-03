@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertPurchaseProduct">
+         INSERT /* com.greedy.semi.shop.model.dao.PurchaseDAO#insertPurchaseProduct() */
+		  INTO TBL_PURCHASE_PRODUCT A
+		(
+		  A.PURCHASE_CODE
+		, A.MEMBER_NO
+		, A.PRODUCT_CODE
+		, A.PURCHASE_PRICE
+		, A.PURCHASE_PERMIT_NO
+		, A.PURCHASE_STATUS
+		)
+		VALUES
+		(
+		  ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		)
+	</entry>
+</properties>

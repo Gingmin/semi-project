@@ -9,7 +9,7 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
-	<script>
+   <script>
    
       /* $(".ticket_btn_detail").click(function()  */
          if("${ requestScope.productPrice }")   {
@@ -50,14 +50,11 @@
              */
             name : '주문명:HELLOPT결제',
             //결제창에서 보여질 이름
-            amount : "${ requestScope.productPrice }",
+            amount : 10,
             //가격
-            buyer_email : 'iamport@siot.do',
-            buyer_name : '구매자이름',
-            buyer_tel : '010-1234-5678',
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456',
-          //  m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+            buyer_email : "${ sessionScope.loginMember.email }",
+            buyer_name : "${ sessionScope.loginMember.name }",
+            buyer_phone : "${ sessionScope.loginMember.phone }",
          
             
          /*
@@ -66,37 +63,44 @@
          (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
           */
          }, function(rsp) {
-				
-				if(rsp.success) {
-					
-					$.ajax({
-						url : '/semi/member/buy',
-						method : 'POST',
-						data : {
-							imp_uid : rsp.imp_uid,
-							merchant_uid: rsp.merchant_uid
-						}
-						
-					}).done(function(data) {
-						
-						var msg = '결제가 완료되었습니다.';
-						msg += ' 고유ID : ' + rsp.imp_uid;
-						msg += ' 상점 거래ID : ' + rsp.merchant_uid;
-						msg += ' 결제 금액 : ' + rsp.paid_amount;
-						msg += ' 카드 승인번호 : ' + rsp.apply_num;
-					});
-				
-				} else {
-					
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-					location.href = "/semi/member/list";
-				}
-						
-				alert(msg);
-				
-				});
-			};
+            
+            if(rsp.success) {
+               
+               $.ajax({
+                  url : "${pageContext.servletContext.contextPath}/member/buy",
+                  method : 'POST',
+                  data : {
+                     purchaseCode: rsp.imp_uid,
+                     purchasePrice:  rsp.paid_amount,
+                     purchasePermitNo: rsp.apply_num
+                  },
+                  
+                  success : function(data, textStatus, xhr){
+                     
+                  var msg = '결제가 완료되었습니다.';
+                  msg += ' 결제코드 : ' + rsp.imp_uid;
+                  msg += ' 결제금액 : ' + rsp.paid_amount;
+                  msg += ' 결제승인번호 : ' + rsp.apply_num;
+                  alert(msg);
+       			  location.href = "${pageContext.servletContext.contextPath}/member/list"; 
+               
+                  },
+                  
+                  error : function(xhr, status, error){}
+                  
+                  });
+              
+          } else {
+              
+              var msg = '결제에 실패하였습니다.';
+              msg += '에러내용 : ' + rsp.error_msg;
+              alert(msg);
+              location.href = "${pageContext.servletContext.contextPath}/member/list"; 
+          }
+          
+          
+      });
+         };
           </script>
 </body>
 </html>
