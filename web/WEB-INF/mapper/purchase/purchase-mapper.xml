@@ -11,6 +11,7 @@
 		, A.PURCHASE_PRICE
 		, A.PURCHASE_PERMIT_NO
 		, A.PURCHASE_STATUS
+		, A.PURCHASE_DATE
 		)
 		VALUES
 		(
@@ -20,6 +21,7 @@
 		, ?
 		, ?
 		, ?
+		, SYSDATE
 		)
 	</entry>
 </properties>
