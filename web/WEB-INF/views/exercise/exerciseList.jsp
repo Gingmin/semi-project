@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/semi/resources/css/exerciseList.css">
-<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,12 +37,11 @@
 	<!-- 헤더 -->
 	<jsp:include page="../common/header.jsp" />
 	<!-- 헤더끝 -->
-	<div class="container">
 		<!-- 메인베너 시작 -->
 		<div class="mainbanner">
-			<div class="mainbannerfont">꾸준함이 진리다 가입하고 바로 경험하라!<br><br>
-				내 자세를 봐주는 라이브 클래스</div>
+			<img class="banner_detail" alt="" src="/semi/resources/images/Group 41.png">	
 		</div>
+	<div class="container">
 		<!-- 메인베너 끝 -->
 		<!-- 이번 주 스케쥴 시작 -->
 		<div class="schedule">이번 주 스케쥴</div>

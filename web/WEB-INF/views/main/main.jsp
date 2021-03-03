@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="/semi/resources/css/index.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
@@ -130,38 +130,8 @@
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>							
 							</a>
 					    </div>
-						
 					</div>
-					<!-- <div class="howuse_text_area">
-						<div class="howuse_text">
-							HelloPT 이렇게 이용하세요!
-						</div>
-						<div class="howuse_text1 ">
-							<div class="text1_detail">
-								이렇게 하면 넘어가낭	
-								이렇게 하면 넘어가낭이렇게 하면 넘어가낭이렇게 하면 넘어가낭
-							</div>						 	
-						</div>
-						<div class="howuse_text2  ">
-							<div class="text1_detail">
-								음 무슨방법이있을까음 무슨방법이있을까음 무슨방법이있을까음 무슨방법이있을까음 무슨방법이있을까
-							</div>						 	
-						</div>    
-						<div class="howuse_text3">
-							<div class="text1_detail">
-								요러먼되나?요러먼되나?요러먼되나?요러먼되나?요러먼되나?
-							</div>						 	
-						</div>
-						<div class="howuse_text4">
-							<div class="text1_detail">
-								생각이 안나내 ..	생각이 안나내 ..	생각이 안나내 ..	생각이 안나내 ..	생각이 안나내 ..	생각이 안나내 ..	
-							</div>						 	
-						</div>
-						
-
-					</div> -->
 				</div>
-
 			</div> 
 		<!-- 이용방법 끝 -->
 		<!-- 트레이너 영역 -->
@@ -174,57 +144,57 @@
 				<div class="contant_name">TRAINER</div>
 			    <div class="swiper-wrapper">
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/trainerimg_1.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				김민기
+			    				양*승
 			    			</div>
 			    			<div class="trainer_info">
-			    				롤쟁이 
+			    				바디스페이스 대표
 			    			</div>
 			    		</div>			    		
 			    	</div>
 					<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/trainerimg_2.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				정민서
+			    				심*뜸
 			    			</div>
 			    			<div class="trainer_info">
-			    				운동인 
+			    				모델, 필라테스
 			    			</div>
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/trainerimg_3.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				이경철
+			    				정*우
 			    			</div>
 			    			<div class="trainer_info">
-			    				어디감?...계신가용
+			    				2015 미스터 대구 그랑프리
 			    			</div>
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/trainerimg_4.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				최희상
+			    				김*호
 			    			</div>
 			    			<div class="trainer_info">
-			    				사업인
+			    				보디빌더
 			    			</div>
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/testimg.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/trainerimg_5.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				임완규
+			    				구*희
 			    			</div>
 			    			<div class="trainer_info">
-			    				귀찮다.. 
+			    				트레이너
 			    			</div>
 			    		</div>			    		
 			    	</div>

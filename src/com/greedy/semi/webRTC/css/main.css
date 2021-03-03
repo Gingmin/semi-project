@@ -1,3 +1,4 @@
+
 body {
   font-family: sans-serif;
 }
@@ -54,4 +55,5 @@ body {
 
 .video_area .row .chatting_area .chatting_input .chatting_btndetail{background-color: black; color: white; width: 28%; height: 50px;} 
 .video_area .row .chatting_area .chatting_input .fa-smile{ position: absolute;  top: 15%;  right: 15%;  font-size: 25px;}
+
 

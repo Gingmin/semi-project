@@ -129,7 +129,7 @@
       	<table class="comment_table">
       		<tr>
       			<td class="title">작성자</td>
-      			<td class="input"><input type="text" id="writer"></td>
+      			<td class="input"><c:out value="${ sessionScope.loginMember.name }"/></td>
       		</tr>
       		<tr>
       			<td class="title">댓글내용</td>

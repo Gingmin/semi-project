@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import com.greedy.semi.member.model.dto.MemberDTO;
 
-@WebFilter(urlPatterns = {"/member/*", "/notice/*", "/trainer/*", "/admin/*"})
+@WebFilter(urlPatterns = {"/member/*", "/notice/*", "/trainer/*", "/admin/*","/class/*"})
 public class AuthenticationFilter implements Filter {
 
 	private Map<String, List<String>> permitURIList;
@@ -138,6 +138,7 @@ public class AuthenticationFilter implements Filter {
 	 	memberPermitList.add("/notice/report");
 	 	memberPermitList.add("/notice/question");
 	 	memberPermitList.add("/notice/detail");
+	 	memberPermitList.add("/class/list");
 	 	
 		trainerPermitList.add("/member/mypage");
 		trainerPermitList.add("/member/update");
@@ -159,6 +160,7 @@ public class AuthenticationFilter implements Filter {
 		trainerPermitList.add("/trainer/profileEdit");
 		trainerPermitList.add("/trainer/comment_list.jsp");
 		trainerPermitList.add("/trainer/comment_add.jsp");
+		trainerPermitList.add("/class/list");
 		
 		
 		allPermitList.add("/member/regist");
