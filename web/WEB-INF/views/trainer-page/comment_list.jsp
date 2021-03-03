@@ -3,7 +3,6 @@
 <%@page import="com.greedy.semi.trainer.dao.CommentDAO"%>
 <%@page import="com.greedy.semi.trainer.dto.CommentDTO"%>
 <%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
