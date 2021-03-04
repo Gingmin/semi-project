@@ -165,8 +165,9 @@ public class ClassService {
 	public List<PtReservationDTO> selectReservationList(PtReservationDTO reservationMember) {
 		Connection con = getConnection();
 		
+
 		List<PtReservationDTO> reservationList = classDAO.selectReservationMember(con, reservationMember);
-		
+	
 		close(con);
 		
 		return reservationList;

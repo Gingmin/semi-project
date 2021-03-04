@@ -52,10 +52,12 @@ public class MemberMypageServlet extends HttpServlet {
 		ClassService classService = new ClassService();
 		List<PtReservationDTO> reservationList = classService.selectReservationList(reservationMember);
 		
-		System.out.println(reservationList);
+		System.out.println("이거 뜨는거냐 " + reservationList);
 		
 		for(PtReservationDTO reservation : reservationList) {
+        
 			System.out.println("왜 안들어 오는거냐???? : " + reservation);
+
 		}
 		
 		String path = "";
