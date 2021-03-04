@@ -48,12 +48,14 @@
 					</div>
 					</form>
 					<div class="profile_info_area">
-						<div class="info_item">
-							${ sessionScope.loginMember.name }
+
+						<!-- <div class="info_item">
+							밍키
 						</div>
 						<div class="info_item">
-							${ sessionScope.loginMember.email }
-						</div>
+							abcdefg@abcd.com
+						</div> -->
+
 						
 						<!-- <div class="class_btn">
 							<label class="switch">
