@@ -36,7 +36,7 @@
 				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
 					<div class="profile_img_area">
 						<div class="thumb-list">
-							<img class="trainerImg" src="/semi/resources/images/mainimg_1.JPG">
+							<img class="trainerImg" src="/semi/resources/images/메인.jpg">
 						</div>
 						<div class="profile_btn_area">
 						<label for="profileEdit" class="edit_btn">프로필 편집</label>
