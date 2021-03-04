@@ -21,7 +21,6 @@ public class ReportDetailServlet extends HttpServlet {
 		
 		NoticeDTO reportDetail = new NoticeService().selectReportDetail(no);
 		
-		System.out.println("서블릿리포트 : " + reportDetail);
 		
 		String path= "";
 		if(reportDetail != null) {

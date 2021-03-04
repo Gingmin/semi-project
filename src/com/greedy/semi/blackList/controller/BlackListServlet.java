@@ -29,7 +29,6 @@ import net.coobird.thumbnailator.Thumbnails;
 
 
 
-
 @WebServlet("/black/list")
 public class BlackListServlet extends HttpServlet {
 	
@@ -119,21 +118,9 @@ public class BlackListServlet extends HttpServlet {
 					}
 				}
 				
-				System.out.println("parameter : " + parameter);
-				System.out.println("fileList : " + fileList);
 				
-				
-				
-				
-//				String title = request.getParameter("title");
-//				String body = request.getParameter("body");
 				String writer = request.getParameter("writer");
 				int writerMemberNo = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
-//				String searchCode = request.getParameter("searchCode");
-				
-				
-				
-				
 				
 				
 				NoticeDTO reportNotice = new NoticeDTO();
@@ -159,9 +146,6 @@ public class BlackListServlet extends HttpServlet {
 				
 				reportBlack.setMemberNo(writerMemberNo);
 				reportNotice.setWriterMemberNo(writerMemberNo);
-//				reportBlack.setReportCode(searchCode);
-//				reportNotice.setTitle(title);
-//				reportNotice.setBody(body);
 				
 				int result = new NoticeService().insertReport(reportNotice, reportBlack);
 				
@@ -175,11 +159,6 @@ public class BlackListServlet extends HttpServlet {
 				}
 				
 				request.getRequestDispatcher(path).forward(request, response);
-				
-				
-				
-				
-				
 				
 			
 			} catch (Exception e) {
