@@ -178,7 +178,7 @@
 										<div class="thumnail-area" id="thumbnailArea">
 
 					<c:forEach var="thumbnail" items="${ requestScope.reservationList }" begin="0" end="0">
-					<c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }">
+					<%-- <c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }"> --%>
 
 						<div class="thumb-list">
 							<div>
@@ -189,7 +189,7 @@
 							<div id="label">수업번호: <label><c:out value="${ thumbnail.permitNo }"/></label>번</div>
 							</p>
 						</div>
-					<%-- </c:if> --%>
+					 <%-- </c:if> --%>
 					</c:forEach>
 				</div>
 									</div>
