@@ -49,12 +49,12 @@
 					</form>
 					<div class="profile_info_area">
 
-						<!-- <div class="info_item">
-							밍키
+						<div class="info_item">
+							${ sessionScope.loginMember.name }
 						</div>
 						<div class="info_item">
-							abcdefg@abcd.com
-						</div> -->
+							${ sessionScope.loginMember.email }
+						</div>
 
 						
 						<!-- <div class="class_btn">
@@ -64,7 +64,7 @@
 							</label>
 							<span class="start_btn">나의클래스</span>
 							<p>OFF</p><p style="display:none;">ON</p>
-						</div> -->
+						</div>  -->
 
 						<div class="profile_etc_btn">
 							<div class="row">
