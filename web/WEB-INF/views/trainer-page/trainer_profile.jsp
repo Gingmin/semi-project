@@ -127,7 +127,7 @@
             <table class="table_detail">
                <tr>
                   <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
+                  <td class="nickname">닉네임 : 김**</td>
                   <td class="reviewdate">날짜 : 2021-02-21</td>
                </tr>
                <tr>
@@ -140,12 +140,12 @@
             <table class="table_detail">
                <tr>
                   <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
+                  <td class="nickname">닉네임 : 정**</td>
                   <td class="reviewdate">날짜 : 2021-02-21</td>
                </tr>
                <tr>
                   <td class="content">내용 : </td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
+                  <td colspan="2"><textarea class="text_detail">수업 또 언제 하시나요 !!!! 너무 재밌어요</textarea></td>
                </tr>
             </table>
          </div>
@@ -158,7 +158,7 @@
                </tr>
                <tr>
                   <td class="content">내용 : </td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
+                  <td colspan="2"><textarea class="text_detail">다음에 또 들을께요 !!</textarea></td>
                </tr>
             </table>
          </div>

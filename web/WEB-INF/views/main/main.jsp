@@ -90,28 +90,28 @@
 									</div>
 
 									<div class="item">
-										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<img class="img_detail" src="/semi/resources/images/ex_img_4.JPG">
 										<div class="ex_text1">
 											<span class="ex_number">4.</span>
 											이용권을 구매했으면 클래스 페이지에서 원하는 수업을 선택하세요.
 										</div>
 									</div>
 									<div class="item">
-										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<img class="img_detail" src="/semi/resources/images/ex_img_5.JPG">
 										<div class="ex_text1">
 											<span class="ex_number">5.</span>
 											마음에 드는 수업을 고르셨다면 클릭후 예약 버튼을 눌러주세요
 										</div>
 									</div>
 									<div class="item">
-										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<img class="img_detail" src="/semi/resources/images/ex_img_6.png">
 										<div class="ex_text1">
 											<span class="ex_number">6.</span>
 											예약을 하셨다면 시간에 맞춰 수업에 들어가시면됩니다.
 										</div>
 									</div>
 									<div class="item">
-										<img class="img_detail" src="/semi/resources/images/testimg.JPG">
+										<img class="img_detail" src="/semi/resources/images/ex_img_7.JPG">
 										<div class="ex_text1">
 											<span class="ex_number">7.</span>
 											수업이 끝났다면 리뷰를 남겨주세요

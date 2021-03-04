@@ -62,7 +62,7 @@
 						<div class="notice_writer">작성자 : <input class="no_writer_detail" type="text" value="${ sessionScope.loginMember.name}" name="writer"></div>
 					</div>	
 					<div class="content_area">
-						<div class="writing_date" >2021.02.11 23:52</div>
+						<div class="writing_date" >${ requestScope.creatDate }</div>
 						<textarea class="textarea_detail" name="body"></textarea>
 					</div>
 				</div>	
