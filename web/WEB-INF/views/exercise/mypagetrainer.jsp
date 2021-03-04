@@ -78,10 +78,7 @@
 									<a class="etc_detail" href="#" id="sales-details">매출내역</a>
 								</div>
 								<div class="etc_btn">
-									<a class="etc_detail" href="#">신고</a>
-								</div>
-								<div class="etc_btn">
-									<a class="etc_detail" href="#">회원탈퇴</a>
+									<input type="button" class="etc_detail" value="내정보" id="memberInfo">
 								</div>
 							</div>
 						</div>
