@@ -56,12 +56,12 @@
 					</div>
 					</form>
 					<div class="profile_info_area">
-						<div class="info_item">
+						<!-- <div class="info_item">
 							밍키
 						</div>
 						<div class="info_item">
 							abcdefg@abcd.com
-						</div>
+						</div> -->
 						
 						<div class="class_btn">
 							<label class="switch">
