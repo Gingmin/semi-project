@@ -35,17 +35,9 @@
 				<div class="row">
 				<form action="${ pageContext.servletContext.contextPath }/trainer/profileEdit" method="post" encType="multipart/form-data">
 					<div class="profile_img_area">
-					
-						<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }">
 						<div class="thumb-list">
-							<div>
-							
-							</div>
-							
-				
+							<img class="trainerImg" src="/semi/resources/images/mainimg_1.JPG">
 						</div>
-					</c:forEach>
-					
 						<div class="profile_btn_area">
 						<label for="profileEdit" class="edit_btn">프로필 편집</label>
 							<input type="file" class="edit_btn" id="profileEdit" name="profileEdit" onchange="loadImg(this, 1)">
@@ -56,21 +48,23 @@
 					</div>
 					</form>
 					<div class="profile_info_area">
+
 						<!-- <div class="info_item">
 							밍키
 						</div>
 						<div class="info_item">
 							abcdefg@abcd.com
 						</div> -->
+
 						
-						<div class="class_btn">
+						<!-- <div class="class_btn">
 							<label class="switch">
 								<input type="checkbox">
 								<span class="slider round"></span>
 							</label>
 							<span class="start_btn">나의클래스</span>
 							<p>OFF</p><p style="display:none;">ON</p>
-						</div>
+						</div> -->
 
 						<div class="profile_etc_btn">
 							<div class="row">
@@ -116,7 +110,23 @@
 											<button class="btnlist_detail">예약</button>
 										</div>											
 										<div class="calendar_text">
-											아직 일정이 없습니다.
+															<div class="thumnail-area" id="thumbnailArea">
+
+					<c:forEach var="thumbnail" items="${ requestScope.reservationList }" begin="0" end="0">
+					<%-- <c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }"> --%>
+
+						<div class="thumb-list">
+							<div>
+								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+									width="200" height="150" style="margin: 5px">
+							</div>
+							<p>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.classNo }"/></label>번</div>
+							</p>
+						</div>
+					 <%-- </c:if> --%>
+					</c:forEach>
+				</div>
 										</div>
 									</div>
 									<div class="btnlist_kinds col-4" >
@@ -124,7 +134,7 @@
 											<button class="btnlist_detail">완료</button>
 										</div>											
 										<div class="calendar_text">
-											아직 일정이 없습니다.
+											
 										</div>
 									</div>
 									<div class="btnlist_kinds col-4" >
@@ -132,7 +142,7 @@
 											<button class="btnlist_detail">취소</button>
 										</div>											
 										<div class="calendar_text">
-											아직 일정이 없습니다.
+											
 										</div>
 									</div>
 								</div>									

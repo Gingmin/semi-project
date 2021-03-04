@@ -162,6 +162,17 @@ public class ClassService {
 		return reservationList;
 	}
 
+	public List<PtReservationDTO> selectReservationTrainerList(int no) {
+		Connection con = getConnection();
+		
+		List<PtReservationDTO> reservationList = classDAO.selectReservationTrainerList(con, no);
+		
+		close(con);
+		
+		return reservationList;
+	}
+	
+
 //	public List<PtReservationDTO> selectReservationList(PtReservationDTO reservationMember) {
 //		Connection con = getConnection();
 //		
