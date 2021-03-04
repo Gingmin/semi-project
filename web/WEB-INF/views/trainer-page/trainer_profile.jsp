@@ -83,9 +83,18 @@
                <button class="classbtn_detail on" id="ptapplication">
                   1:1 신청하기
                </button>
-               <button class="classbtn_detail" id="groupapplication">
-               	   그룹 예약하기
+               <button type="button" class="classbtn_detail" id="participateClass">
+               	   수업참가
                </button>
+               <script>
+               if(document.getElementById("participateClass")) {
+            	   /* 환경에 맞춰 https:// (ip)주소 써줘야 */
+               		const $participateClass = document.getElementById("participateClass");
+               		$participateClass.onclick = function() {
+               			location.href = "https://";
+               		}
+               }
+               </script>
             </div>
          </div>
       </div>
@@ -240,9 +249,11 @@
 		$("#ptapplication").click(function() {
 			
 			let memberNo = "${ sessionScope.loginMember.no }";
-			let trainerNo = "${ requestScope.trainer.trainerNo }"
-			let classNo = "${ requestScope.trainer.no}"
+			let trainerNo = "${ requestScope.trainer.trainerNo }";
+			let classNo = "${ requestScope.trainer.no}";
 			console.log(memberNo);
+			console.log(trainerNo);
+			console.log(classNo);
 			
 			$.ajax({
 				url: "/semi/pt/reservation",
@@ -257,7 +268,31 @@
 			});
 			
 		});
+		
+		
 	</script>
+	
+	<script>
+	
+	
+	let classNo1 = "${ requestScope.trainer.no}";
+	
+	console.log(classNo1);
+			
+			$.ajax({
+				url: "/semi/member/mypage",
+				type: "get",
+				data: { classNo1: classNo1 },
+				success: function(data, textStatus, xhr) {
+					alert("겟 요청이 완료되었습니다!");
+				},
+				error: function(xhr, status, error) {
+					console.log(error);
+				}
+			});
+			
+		
+	</script> 
 	
 	<script>
 		/* loadComment(); */

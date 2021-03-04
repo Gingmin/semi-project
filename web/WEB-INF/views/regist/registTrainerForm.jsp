@@ -113,7 +113,7 @@
 					<select class="box_detail" name="bankname" id="bankname" disabled>
 						<option selected disabled hidden>선택하세요</option>
 						<option>KB국민은행</option>
-						<option>NH농형은행</option>
+						<option>NH농협은행</option>
 						<option>SH수협은행</option>
 						<option>우리은행</option>
 						<option>신한은행</option>

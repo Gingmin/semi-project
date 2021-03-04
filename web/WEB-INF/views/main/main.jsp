@@ -269,17 +269,6 @@
 			    				볼륨감
 			    			</div>
 			    			<div class="trainer_info">
-			    				<button id="chat" type="button" onclick="chat();">chat</button>
-			    				<button id="video" type="button" onclick="video();">video</button>
-			    				<script>
-			    					function chat() {
-			    						location.href = "/semi/chat";
-			    					}
-			    					function video() {
-			    						//window.open("https://192.168.0.5:3000");
-			    						window.open("https://127.0.0.1:3000");
-			    					}
-			    				</script>
 			    			</div>
 			    		</div>			    		
 			    	</div>
