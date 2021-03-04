@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.greedy.semi.member.model.dto.MemberDTO;
 import com.greedy.semi.trainer.dto.ClassDTO;
+import com.greedy.semi.trainer.dto.PtReservationDTO;
 import com.greedy.semi.trainer.service.ClassService;
 
 @WebServlet("/trainer/page")
@@ -19,7 +21,7 @@ public class TrainerPageServlet extends HttpServlet {
 		
 //		String path = "/WEB-INF/views/trainer-page/mypage_trainer.jsp";
 //		request.getRequestDispatcher(path).forward(request, response);
-		
+	
 		ClassService classService = new ClassService();
 		
 		List<ClassDTO> thumbnailList = classService.selectThumbnailList();
@@ -30,11 +32,16 @@ public class TrainerPageServlet extends HttpServlet {
 			System.out.println(class1);
 		}
 		
+		int no = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
+		List<PtReservationDTO> reservationList = classService.selectReservationTrainerList(no);
+		
+		System.out.println("reservationList : " + reservationList);
+		
 		String path = "";
 		if(thumbnailList != null) {
 			path = "/WEB-INF/views/exercise/mypagetrainer.jsp";
 			request.setAttribute("thumbnailList", thumbnailList);
-			
+			request.setAttribute("reservationList", reservationList);
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
 			request.setAttribute("message", "썸네일 등록 실패!");
@@ -42,8 +49,9 @@ public class TrainerPageServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
-
 }
+
+
 
 
 

@@ -39,7 +39,7 @@
 	<!-- 헤더끝 -->
 		<!-- 메인베너 시작 -->
 		<div class="mainbanner">
-			<img class="banner_detail" alt="" src="/semi/resources/images/Group 41.png">	
+			<img class="banner_detail" alt="" src="/semi/resources/images/212312.png">	
 		</div>
 	<div class="container">
 		<!-- 메인베너 끝 -->
@@ -94,16 +94,16 @@
 			<div class="card col-4">			
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="1" end="1" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="1" end="1" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample1.jpg" width="350" height="250">
 							</div>
 							No.
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="4"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -124,16 +124,16 @@
 			<div class="card col-4">
 				<!-- Card image -->		
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="2" end="2" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="2" end="2" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample5.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="5"/></label><br>
+							<c:out value="요가"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -159,16 +159,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="3" end="3" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="3" end="3" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample6.jpg" width="350" height="250" alt="운동사진">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="6"/></label><br>
+							<c:out value="요가"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -188,16 +188,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="4" end="4" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="4" end="4" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample2.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="7"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -217,16 +217,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="5" end="5" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="5" end="5" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample7.jpg"width="350" height="250">
 							</div>
 							No.
-							<label><c:out value="${ thumbnail.no }"/></label><br>					
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="8"/></label><br>					
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -250,16 +250,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="6" end="6" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="6" end="6" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample4.jpg"width="350" height="250">
 							</div>
 							No.
-							<label><c:out value="${ thumbnail.no }"/></label><br>						
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="9"/></label><br>						
+							<c:out value="요가"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -278,16 +278,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="7" end="7" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="7" end="7" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample8.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="10"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -308,16 +308,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="8" end="8" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="8" end="8" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample9.jpg"width="350" height="250">
 							</div>
 							No.
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="11"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -342,15 +342,15 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="9" end="9" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="9" end="9" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample10.jpg"width="350" height="250">
 							</div>
-							<label>No.<c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label>No.<c:out value="12"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -370,16 +370,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="10" end="10" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="10" end="10" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample11.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="13"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -399,16 +399,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="11" end="11" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="11" end="11" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample12.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="14"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -435,16 +435,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="12" end="12" >
+				<%-- 	<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="12" end="12" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample13.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="15"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -464,16 +464,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="13" end="13" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="13" end="13" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample14.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="16"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -492,16 +492,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="14" end="14" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="14" end="14" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample15.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="17"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -525,16 +525,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="15" end="15" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="15" end="15" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample16.jpg"width="350" height="250">
 							</div>
 							No.
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="18"/></label><br>
+							<c:out value="요가"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -554,16 +554,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="16" end="16" >
+				<%-- 	<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="16" end="16" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample17.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="19"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -586,16 +586,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="17" end="17" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="17" end="17" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample18.png"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="20"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -621,16 +621,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="18" end="18" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="18" end="18" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample19.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="21"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -650,17 +650,17 @@
 			<div class="card col-4">
 				<!-- Card image -->
 				<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="19" end="19" >
+					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="19" end="19" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample3.jpg"
 									width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="22"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
@@ -680,16 +680,16 @@
 			<div class="card col-4">
 				<!-- Card image -->
 					<div class="thumnail-area" id="thumbnailArea">
-					<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="20" end="20" >
+				<%-- 	<c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="20" end="20" > --%>
 						<div class="thumb-list">
 							<div>
-								<img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"width="350" height="250">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/sample20.jpg"width="350" height="250">
 							</div>
 							No. 
-							<label><c:out value="${ thumbnail.no }"/></label><br>
-							<c:out value="${ thumbnail.category }"/><br>
+							<label><c:out value="23"/></label><br>
+							<c:out value="헬스"/><br>
 						</div>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</div>
 				<div class="card-body" id="thumbnailArea">
 					<hr>
