@@ -284,7 +284,6 @@
 				type: "get",
 				data: { classNo1: classNo1 },
 				success: function(data, textStatus, xhr) {
-					alert("겟 요청이 완료되었습니다!");
 				},
 				error: function(xhr, status, error) {
 					console.log(error);
