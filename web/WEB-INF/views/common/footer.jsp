@@ -19,7 +19,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- 폰트 -->
-<!-- <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt"> -->
+<link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt">
 <!-- js -->
 <script src="/semi/resources/js/event.js"></script>
 <!-- css -->
@@ -47,13 +47,9 @@
 			<div class="terms_area">
 				<div class="terms_info">약관</div>
 				<div class="terms_text">
-					<!-- <a class="terms_text_1" id="terms">이용약관</a> -->
 					<input type="button" class="terms_text_1" id="terms" value="이용약관">
 				</div>
 				<div class="terms_text">
-					<!-- <a class="terms_text_1"
-						href="http://kordzor.cafe24.com/semiproject/privacy_policy.html">개인정보
-						처리방침</a> -->
 					<input type="button" class="terms_text_1" id="privacy" value="개인정보 처리방침">
 				</div>
 			</div>

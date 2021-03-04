@@ -73,10 +73,11 @@
  }
 
  /* 버튼 */
- .btn.btn-primary.btn-rounded {
+ .btn.btn-rounded {
  	border-radius: 30px;
  	margin-bottom: 2%;
  	margin-right: 3%;
+ 	outline: none;
  }
 
  /* 이번주 스케쥴 */

@@ -34,26 +34,17 @@
       <div class="row">
          <div class="classimg_area">
             <div class="thumnail-area" id="thumbnailArea">
-					
-						<div class="thumb-list">
-							<div>
-								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
-									width="900" height="400">
-							</div>
-							
-						</div>
+				<div class="thumb-list">
+					<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }">
 				</div>
+			</div>
          </div>
-					
          <div class="classinfo_area">
-          
             <div class="class_type">
-         	     
-					<c:out value="${ trainer.category }"/>
-					
+				<c:out value="${ trainer.category }"/>
             </div>
             <div class="class_name">
-     	     	   <c:out value="${ trainer.intro }"/>
+     	     	 <c:out value="${ trainer.intro }"/>
             </div>
             <div class="class_score">
                <i class="fas fa-star"></i>
@@ -62,20 +53,17 @@
             <div class="trainerinfo">
                <div class="row">
                   <div class="trainerimg">
-       
                      <div class="thumnail-area" id="thumbnailArea">
-					
 						<div class="thumb-list">
 							<div>
-								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+								<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
 								width="120px" style="border-radius: 20px">
 							</div>
-							
 						</div>
-				</div>
+					 </div>
                   </div>
                   <div class="trainer_name">
-               		     <c:out value="${ trainer.memberNo.name }"/>
+               		  <c:out value="${ trainer.memberNo.name }"/>
                   </div>
                </div>
             </div>
@@ -87,13 +75,13 @@
                	   수업참가
                </button>
                <script>
-               if(document.getElementById("participateClass")) {
-            	   /* 환경에 맞춰 https:// (ip)주소 써줘야 */
-               		const $participateClass = document.getElementById("participateClass");
-               		$participateClass.onclick = function() {
-               			location.href = "https://192.168.66.140:3000";
-               		}
-               }
+	               if(document.getElementById("participateClass")) {
+	            	   /* 환경에 맞춰 https:// (ip)주소 써줘야 */
+	               		const $participateClass = document.getElementById("participateClass");
+	               		$participateClass.onclick = function() {
+	               			location.href = "https://192.168.66.140:3000";
+	               		}
+	               }
                </script>
             </div>
          </div>
@@ -107,15 +95,13 @@
                <p class="intro_text">코치 프로필</p>
                <div class="intro_img">
                    <div class="thumnail-area" id="thumbnailArea">
-					
 						<div class="thumb-list">
 							<div>
 								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
 								width="460px" height="500px">
 							</div>
-							
 						</div>
-				</div>
+					</div>
                </div>
             </div>
             <div class="trainer_intro2">
@@ -131,9 +117,54 @@
          </div>
       </div>
       
-      
-      <h1>댓글</h1>
-      
+      <div class="review_area">
+         <div class="review_text">
+      	      리뷰
+            <i class="fas fa-star"></i>
+            5.0
+         </div>
+         <div class="review_table">
+            <table class="table_detail">
+               <tr>
+                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
+                  <td class="nickname">닉네임 : 관***</td>
+                  <td class="reviewdate">날짜 : 2021-02-21</td>
+               </tr>
+               <tr>
+                  <td class="content">내용 : </td>
+                  <td colspan="2"><textarea class="text_detail">수업 너무 좋았어요</textarea></td>
+               </tr>
+            </table>
+         </div>
+         <div class="review_table">
+            <table class="table_detail">
+               <tr>
+                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
+                  <td class="nickname">닉네임 : 관***</td>
+                  <td class="reviewdate">날짜 : 2021-02-21</td>
+               </tr>
+               <tr>
+                  <td class="content">내용 : </td>
+                  <td colspan="2"><textarea class="text_detail"></textarea></td>
+               </tr>
+            </table>
+         </div>
+         <div class="review_table">
+            <table class="table_detail">
+               <tr>
+                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
+                  <td class="nickname">닉네임 : 관***</td>
+                  <td class="reviewdate">날짜 : 2021-02-21</td>
+               </tr>
+               <tr>
+                  <td class="content">내용 : </td>
+                  <td colspan="2"><textarea class="text_detail"></textarea></td>
+               </tr>
+            </table>
+         </div>
+         
+         
+      </div>
       <div id="comment_add">
       	<table class="comment_table">
       		<tr>
@@ -142,12 +173,13 @@
       		</tr>
       		<tr>
       			<td class="title">댓글내용</td>
-      			<td class="input"><textarea rows="3" cols="50" id="content"></textarea></td>
+      			<td class="input"><textarea rows="3" cols="50" id="content" class="text_detail"></textarea></td>
       		</tr>
       		<tr>
-      			<td colspan="2" class="btn"><button type="button" id="add_btn">댓글등록</button></td>
+      			<td colspan="2" class="btn"></td>
       		</tr>
       	</table>
+      	<button class="btn_detail" type="button" id="add_btn">댓글등록</button>
       	<div id="add_message">&nbsp;</div>
       </div>
       
@@ -165,7 +197,7 @@
       		</tr>
       		<tr>
       			<td colspan="2" class="btn"><button type="button" id="modify_btn">댓글수정</button>&nbsp;
-      			<button type="button" id="modify_cancel_btn">수정취소</button>
+      				<button type="button" id="modify_cancel_btn">수정취소</button>
       			</td>
       		</tr>
       	</table>
@@ -181,66 +213,7 @@
       	<div id="remove_message">&nbsp;</div>
       </div>
       
-      <!-- <div class="review_area">
-         <div class="review_text">
-      	      리뷰
-            <i class="fas fa-star"></i>
-            5.0
-         </div>
-         <div class="review_table">
-            <table class="table_detail">
-               <tr>
-                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
-                  <td class="reviewdate">날짜 : 2021-02-21</td>
-               </tr>
-               <tr>
-                  <td class="content">내용</td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
-               </tr>
-            </table>
-         </div>
-         <div class="review_table">
-            <table class="table_detail">
-               <tr>
-                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
-                  <td class="reviewdate">날짜 : 2021-02-21</td>
-               </tr>
-               <tr>
-                  <td class="content">내용</td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
-               </tr>
-            </table>
-         </div>
-         <div class="review_table">
-            <table class="table_detail">
-               <tr>
-                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
-                  <td class="reviewdate">날짜 : 2021-02-21</td>
-               </tr>
-               <tr>
-                  <td class="content">내용</td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
-               </tr>
-            </table>
-         </div>
-         <div class="review_table">
-            <table class="table_detail">
-               <tr>
-                  <td class="score"><i class="fas fa-star"></i> : 5점</td> 
-                  <td class="nickname">닉네임 : 관***</td>
-                  <td class="reviewdate">날짜 : 2021-02-21</td>
-               </tr>
-               <tr>
-                  <td class="content">내용</td>
-                  <td colspan="2"><textarea class="text_detail"></textarea></td>
-               </tr>
-            </table>
-         </div>
-         
-      </div> -->
+
    </div>
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp"/>
@@ -284,7 +257,7 @@
 				type: "get",
 				data: { classNo1: classNo1 },
 				success: function(data, textStatus, xhr) {
-					alert("겟 요청이 완료되었습니다!");
+					/* alert("겟 요청이 완료되었습니다!"); */
 				},
 				error: function(xhr, status, error) {
 					console.log(error);

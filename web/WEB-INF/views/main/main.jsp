@@ -20,7 +20,7 @@
 
 
 	<!-- Rock Salt font -->
-	<!-- <link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet"> -->
+	<link href="http://fonts.cdnfonts.com/css/rock-salt" rel="stylesheet">
 
 
 	<!-- 스와이퍼 -->
@@ -198,6 +198,94 @@
 			    			</div>
 			    		</div>			    		
 			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_1.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				김*기
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_2.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				김*린
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_3.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				박*아
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_4.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				신*록
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_5.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				최*림
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_6.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				이*욱
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_7.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				최*상
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/mainimg_8.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				정*서
+			    			</div>
+			    			<div class="trainer_info">
+			    				트레이너
+			    			</div>
+			    		</div>			    		
+			    	</div>
 			      
 			    </div>
 			    <!-- Add Pagination -->
@@ -219,10 +307,10 @@
 				<div class="contant_name">TARGET</div>
 			    <div class="swiper-wrapper">
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_1.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_1.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				근육질
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				
@@ -230,10 +318,10 @@
 			    		</div>			    		
 			    	</div>
 					<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_2.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_2.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				슬림핏
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				 
@@ -241,10 +329,10 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_3.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_3.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				라인
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				
@@ -252,10 +340,10 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_4.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_4.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				등신
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				
@@ -263,31 +351,20 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_5.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_5.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				볼륨감
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    			</div>
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_6.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_6.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				슬림
-			    			</div>
-			    			<div class="trainer_info">
-			    				
-			    			</div>
-			    		</div>			    		
-			    	</div>
-			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_7.JPG">	
-			    		<div class="trainer_text">
-			    			<div class="trainer_name">
-			    				탄탄
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				
@@ -295,10 +372,21 @@
 			    		</div>			    		
 			    	</div>
 			    	<div class="swiper-slide">
-			    		<img class="img_detail" src="/semi/resources/images/mainimg_8.JPG">	
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_7.JPG">	
 			    		<div class="trainer_text">
 			    			<div class="trainer_name">
-			    				좋은 체격
+			    				회원님들 다이어트 전후
+			    			</div>
+			    			<div class="trainer_info">
+			    				
+			    			</div>
+			    		</div>			    		
+			    	</div>
+			    	<div class="swiper-slide">
+			    		<img class="img_detail" src="/semi/resources/images/befoafterimg_8.JPG">	
+			    		<div class="trainer_text">
+			    			<div class="trainer_name">
+			    				회원님들 다이어트 전후
 			    			</div>
 			    			<div class="trainer_info">
 			    				
