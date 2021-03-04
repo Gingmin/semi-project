@@ -156,7 +156,7 @@ public class ClassService {
 		Connection con = getConnection();
 		
 		List<PtReservationDTO> reservationMember = classDAO.selectReservationMember(con, no);
-		
+		System.out.println("서비스인데 여기는 ? " + reservationMember);
 		close(con);
 		
 		return reservationMember;

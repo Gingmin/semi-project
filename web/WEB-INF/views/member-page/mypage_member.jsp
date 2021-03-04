@@ -177,7 +177,7 @@
 									<div class="calendar_text">
 										<div class="thumnail-area" id="thumbnailArea">
 					<c:forEach var="thumbnail" items="${ requestScope.reservationList }" begin="0" end="1">
-					<c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }">
+					<%-- <c:if test="${ sessionScope.loginMember.no eq thumbnail.memberNo }"> --%>
 						<div class="thumb-list">
 							<div>
 								<img id="img" src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].thumbnailPath }"
@@ -190,7 +190,7 @@
 							TrainerNo. <c:out value="${ thumbnail.trainerNo }"/> --%>
 							</p>
 						</div>
-					</c:if>
+					<%-- </c:if> --%>
 					</c:forEach>
 					<%-- <c:forEach var="thumbnail" items="${ requestScope.thumbnailList }" begin="0" end="1">
 						<div class="thumb-list">

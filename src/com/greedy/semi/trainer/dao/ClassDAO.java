@@ -407,8 +407,8 @@ public class ClassDAO {
 			pstmt.setInt(1, no);
 			
 			rset = pstmt.executeQuery();
-			
 			reservationList = new ArrayList<>();
+			System.out.println("다오 1" + reservationList);
 			if(rset.next()) {
 				PtReservationDTO reservation = new PtReservationDTO();
 				List<AttachmentDTO> attachmentList = new ArrayList<>();
@@ -430,7 +430,7 @@ public class ClassDAO {
 				reservation.setAttachmentList(attachmentList);
 				
 				reservationList.add(reservation);
-				
+				System.out.println("다오 2" + reservationList);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

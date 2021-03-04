@@ -40,10 +40,10 @@ public class MemberMypageServlet extends HttpServlet {
 		ClassService classService = new ClassService();
 		List<PtReservationDTO> reservationList = classService.selectReservationList(no);
 		
-		System.out.println(reservationList);
+		System.out.println("이거 뜨는거냐 " + reservationList);
 		
 		for(PtReservationDTO reservation : reservationList) {
-			System.out.println(reservation);
+			System.out.println("이거 뜨는거냐 2" +  reservation);
 		}
 		
 		String path = "";
