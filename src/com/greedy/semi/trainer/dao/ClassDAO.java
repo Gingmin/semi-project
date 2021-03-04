@@ -393,56 +393,8 @@ public class ClassDAO {
 		return result;
 	}
 
-//	public List<PtReservationDTO> selectReservationMember(Connection con, int no) {
-//		
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		
-//		List<PtReservationDTO> reservationList = null;
-//		
-//		String query = prop.getProperty("selectReservationMember");
-//		
-//		try {
-//			pstmt = con.prepareStatement(query);
-//			pstmt.setInt(1, no);
-//			
-//			rset = pstmt.executeQuery();
-//			
-//			reservationList = new ArrayList<>();
-//			if(rset.next()) {
-//				PtReservationDTO reservation = new PtReservationDTO();
-//				List<AttachmentDTO> attachmentList = new ArrayList<>();
-//				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
-//				
-//				reservation.setPermitNo(rset.getInt("PERMIT_NO"));
-//				reservation.setTrainerNo(rset.getInt("TRAINER_NO"));
-//				reservation.setMemberNo(rset.getInt("MEMBER_NO"));
-//				reservation.setApplyDate(rset.getDate("APPLY_DATE"));
-//				reservation.setPermitYn(rset.getString("PERMIT_YN"));
-//				reservation.setClassNo(rset.getInt("CLASS_NO"));
-//				thumbnailAttachment.setNo(rset.getInt("CLASS_ATTACHMENT_NO"));
-//				thumbnailAttachment.setRefTrainerNo(rset.getInt("REF_CLASS_NO"));
-//				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
-//				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
-//				thumbnailAttachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
-//				
-//				attachmentList.add(thumbnailAttachment);
-//				reservation.setAttachmentList(attachmentList);
-//				
-//				reservationList.add(reservation);
-//				
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(rset);
-//			close(pstmt);
-//		}
-//		
-//		return reservationList;
-//	}
-
-	public List<PtReservationDTO> selectReservationMember(Connection con, PtReservationDTO reservationMember) {
+	public List<PtReservationDTO> selectReservationMember(Connection con, int no) {
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -452,11 +404,11 @@ public class ClassDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, reservationMember.getClassNo());
+			pstmt.setInt(1, no);
 			
 			rset = pstmt.executeQuery();
+			
 			reservationList = new ArrayList<>();
-			System.out.println("다오 1" + reservationList);
 			if(rset.next()) {
 				PtReservationDTO reservation = new PtReservationDTO();
 				List<AttachmentDTO> attachmentList = new ArrayList<>();
@@ -478,7 +430,7 @@ public class ClassDAO {
 				reservation.setAttachmentList(attachmentList);
 				
 				reservationList.add(reservation);
-				System.out.println("다오 2" + reservationList);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -489,6 +441,54 @@ public class ClassDAO {
 		
 		return reservationList;
 	}
+
+//	public List<PtReservationDTO> selectReservationMember(Connection con, PtReservationDTO reservationMember) {
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		
+//		List<PtReservationDTO> reservationList = null;
+//		
+//		String query = prop.getProperty("selectReservationMember");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			pstmt.setInt(1, reservationMember.getClassNo());
+//			
+//			rset = pstmt.executeQuery();
+//			reservationList = new ArrayList<>();
+//			System.out.println("다오 1" + reservationList);
+//			if(rset.next()) {
+//				PtReservationDTO reservation = new PtReservationDTO();
+//				List<AttachmentDTO> attachmentList = new ArrayList<>();
+//				AttachmentDTO thumbnailAttachment = new AttachmentDTO();
+//				
+//				reservation.setPermitNo(rset.getInt("PERMIT_NO"));
+//				reservation.setTrainerNo(rset.getInt("TRAINER_NO"));
+//				reservation.setMemberNo(rset.getInt("MEMBER_NO"));
+//				reservation.setApplyDate(rset.getDate("APPLY_DATE"));
+//				reservation.setPermitYn(rset.getString("PERMIT_YN"));
+//				reservation.setClassNo(rset.getInt("CLASS_NO"));
+//				thumbnailAttachment.setNo(rset.getInt("CLASS_ATTACHMENT_NO"));
+//				thumbnailAttachment.setRefTrainerNo(rset.getInt("REF_CLASS_NO"));
+//				thumbnailAttachment.setOriginalName(rset.getString("ORIGINAL_NAME"));
+//				thumbnailAttachment.setSavedName(rset.getString("SAVED_NAME"));
+//				thumbnailAttachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
+//				
+//				attachmentList.add(thumbnailAttachment);
+//				reservation.setAttachmentList(attachmentList);
+//				
+//				reservationList.add(reservation);
+//				System.out.println("다오 2" + reservationList);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		
+//		return reservationList;
+//	}
 
 }
 

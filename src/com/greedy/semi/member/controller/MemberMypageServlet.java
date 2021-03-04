@@ -34,23 +34,23 @@ public class MemberMypageServlet extends HttpServlet {
 //		request.getRequestDispatcher(path1).forward(request, response);
 		
 		
-//		int no = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
+		int no = ((MemberDTO) request.getSession().getAttribute("loginMember")).getNo();
 		
 //		int trainerNo = Integer.parseInt(request.getParameter("trainerNo"));
 //		response.setCharacterEncoding("UTF-8");
 		
 //		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 //		int trainerNo = Integer.parseInt(request.getParameter("trainerNo"));
-		int classNo = Integer.parseInt(request.getParameter("classNo1"));
+//		int classNo = Integer.parseInt(request.getParameter("classNo1"));
 	
 		
-		PtReservationDTO reservationMember = new PtReservationDTO();
+//		PtReservationDTO reservationMember = new PtReservationDTO();
 //		reservationMember.setMemberNo(memberNo);
 //		reservationMember.setTrainerNo(trainerNo);
-		reservationMember.setClassNo(classNo);
+//		reservationMember.setClassNo(classNo);
 
 		ClassService classService = new ClassService();
-		List<PtReservationDTO> reservationList = classService.selectReservationList(reservationMember);
+		List<PtReservationDTO> reservationList = classService.selectReservationList(no);
 		
 		System.out.println("이거 뜨는거냐 " + reservationList);
 		
