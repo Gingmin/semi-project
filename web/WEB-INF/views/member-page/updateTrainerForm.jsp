@@ -36,7 +36,7 @@
 					<select class="box_detail" name="bankname" id="bankname">
 						<option selected disabled hidden>선택하세요</option>
 						<option value="KB국민은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'KB국민은행' }">selected</c:if>>KB국민은행</option>
-						<option value="NH농협은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'NH농협은행' }">selected</c:if>>NH농형은행</option>
+						<option value="NH농협은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'NH농협은행' }">selected</c:if>>NH농협은행</option>
 						<option value="SH수협은행" <c:if test="${ requestScope.trainerInfo.bankName eq 'SH수협은행' }">selected</c:if>>SH수협은행</option>
 						<option value="우리은행" <c:if test="${ requestScope.trainerInfo.bankName eq '우리은행' }">selected</c:if>>우리은행</option>
 						<option value="신한은행" <c:if test="${ requestScope.trainerInfo.bankName eq '신한은행' }">selected</c:if>>신한은행</option>

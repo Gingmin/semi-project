@@ -35,8 +35,10 @@
          <div class="classimg_area">
             <div class="thumnail-area" id="thumbnailArea">
 				<div class="thumb-list">
+
 					<img class="thumb_detail" src="/semi/resources/images/trainertest_1.jpg">
 					<%-- <img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"> --%>
+
 				</div>
 			</div>
          </div>
@@ -57,9 +59,11 @@
                      <div class="thumnail-area" id="thumbnailArea">
 						<div class="thumb-list">
 							<div>
+
 								<img class="thumb_detail" src="/semi/resources/images/trainertest_2.jpg">
 								<%-- <img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
 								width="120px" style="border-radius: 20px"> --%>
+
 							</div>
 						</div>
 					 </div>
@@ -99,9 +103,11 @@
                    <div class="thumnail-area" id="thumbnailArea">
 						<div class="thumb-list">
 							<div>
+
 								<img class="thumb_detail" src="/semi/resources/images/trainertest_3.jpg">
 								<%-- <img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
 								width="460px" height="500px"> --%>
+
 							</div>
 						</div>
 					</div>
