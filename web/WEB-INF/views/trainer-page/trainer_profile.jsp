@@ -35,7 +35,7 @@
          <div class="classimg_area">
             <div class="thumnail-area" id="thumbnailArea">
 				<div class="thumb-list">
-					<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }">
+					<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }/resources/images/바디.jpg">
 				</div>
 			</div>
          </div>
@@ -56,7 +56,7 @@
                      <div class="thumnail-area" id="thumbnailArea">
 						<div class="thumb-list">
 							<div>
-								<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+								<img class="thumb_detail" id="img" src="${ pageContext.servletContext.contextPath }/resources/images/메인.jpg"
 								width="120px" style="border-radius: 20px">
 							</div>
 						</div>
@@ -97,7 +97,7 @@
                    <div class="thumnail-area" id="thumbnailArea">
 						<div class="thumb-list">
 							<div>
-								<img id="img" src="${ pageContext.servletContext.contextPath }${ trainer.attachmentList[0].thumbnailPath }"
+								<img id="img" src="${ pageContext.servletContext.contextPath }/resources/images/마지막사진.jpg"
 								width="460px" height="500px">
 							</div>
 						</div>

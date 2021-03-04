@@ -144,6 +144,11 @@ public class MemberService {
 		Connection con = getConnection();
 		
 		MemberDTO responseMember  = memberDAO.selectMemberByName(con, requestMember);
+		
+		close(con);
+				
+		return responseMember;
+		
 		/*List<MemberDTO> memberListByPhone = new ArrayList<>();*/
 		
 		/* label :
@@ -171,11 +176,7 @@ public class MemberService {
 		}
 		
 		System.out.println("service의 responseMember : " + responseMember);
-		*/
-		
-		close(con);
-				
-		return responseMember;
+		 */
 	}
 
 	public MemberDTO searchEmail(String email) {
