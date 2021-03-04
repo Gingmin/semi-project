@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- 폰트 -->
-<!-- <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt"> -->
+<link rel="stylesheet" href="http://fonts.cdnfonts.com/css/rock-salt">
 <!-- js -->
 <script src="/semi/resources/js/event.js"></script>
 <!-- css -->
@@ -28,7 +28,6 @@
 	   	<div class="row">
 	      <div class="header_logo ">
 	      	 <button class="logo_detail" id="moveMain">HELLOPT</button>
-	         <!-- <a class="logo_detail" href="">HELLOPT</a> -->
 	      </div>
 	      <div class="header_meun ">
 	      <!-- 로그인이 안 되어 있는 경우  -->          

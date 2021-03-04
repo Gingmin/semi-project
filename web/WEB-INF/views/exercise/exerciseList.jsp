@@ -47,13 +47,13 @@
 		<div class="schedule">이번 주 스케쥴</div>
 		<!-- 이번 주 스케쥴  끝-->
 		<!-- 요일 시작 -->
-		<button type="button" class="btn btn-primary btn-rounded">월요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">화요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">수요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">목요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">금요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">토요일</button>
-		<button type="button" class="btn btn-primary btn-rounded">일요일</button>
+		<button type="button" class="btn btn-rounded">월요일</button>
+		<button type="button" class="btn btn-rounded">화요일</button>
+		<button type="button" class="btn btn-rounded">수요일</button>
+		<button type="button" class="btn btn-rounded">목요일</button>
+		<button type="button" class="btn btn-rounded">금요일</button>
+		<button type="button" class="btn btn-rounded">토요일</button>
+		<button type="button" class="btn btn-rounded">일요일</button>
 		<!-- 요일 끝 -->
 		<!-- 트레이너 시작 -->
 		<!-- Card 월요일 -->
