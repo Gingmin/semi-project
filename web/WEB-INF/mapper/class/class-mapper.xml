@@ -193,11 +193,11 @@
              , B.SAVE_PATH
              , B.THUMBNAIL_PATH
           FROM TBL_TRAINER_PT_PERMIT A
-          JOIN TBL_CLASS_ATTACHMENT B ON (A.TRAINER_NO = B.REF_TRAINER_NO)
-         WHERE A.MEMBER_NO = ?
+          JOIN TBL_CLASS_ATTACHMENT B ON (A.CLASS_NO = B.REF_CLASS_NO)
+         WHERE A.CLASS_NO = ?
            AND B.ATTACHMENT_STATUS = 'Y'
            AND B.FILE_TYPE = 'CLASSNAME'
-         ORDER BY A.CLASS_NO ASC
+         ORDER BY A.PERMIT_NO DESC
     </entry>
     <entry key="insertComment">
         INSERT /* com.greedy.semi.trainer.dao.CommentDAO#insertComment() */

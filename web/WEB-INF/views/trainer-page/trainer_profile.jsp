@@ -249,9 +249,11 @@
 		$("#ptapplication").click(function() {
 			
 			let memberNo = "${ sessionScope.loginMember.no }";
-			let trainerNo = "${ requestScope.trainer.trainerNo }"
-			let classNo = "${ requestScope.trainer.no}"
+			let trainerNo = "${ requestScope.trainer.trainerNo }";
+			let classNo = "${ requestScope.trainer.no}";
 			console.log(memberNo);
+			console.log(trainerNo);
+			console.log(classNo);
 			
 			$.ajax({
 				url: "/semi/pt/reservation",
@@ -266,7 +268,31 @@
 			});
 			
 		});
+		
+		
 	</script>
+	
+	<script>
+	
+	
+	let classNo1 = "${ requestScope.trainer.no}";
+	
+	console.log(classNo1);
+			
+			$.ajax({
+				url: "/semi/member/mypage",
+				type: "get",
+				data: { classNo1: classNo1 },
+				success: function(data, textStatus, xhr) {
+					alert("겟 요청이 완료되었습니다!");
+				},
+				error: function(xhr, status, error) {
+					console.log(error);
+				}
+			});
+			
+		
+	</script> 
 	
 	<script>
 		/* loadComment(); */
