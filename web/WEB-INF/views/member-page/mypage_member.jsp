@@ -186,7 +186,7 @@
 									width="200" height="150" style="margin: 5px">
 							</div>
 							<p>
-							<div id="label">수업번호: <label><c:out value="${ thumbnail.permitNo }"/></label>번</div>
+							<div id="label">수업번호: <label><c:out value="${ thumbnail.classNo }"/></label>번</div>
 							</p>
 						</div>
 					 <%-- </c:if> --%>
@@ -281,6 +281,14 @@
 	}
 	
 </script>
+
+<script>
+					$("#thumbnailArea > div").click(function() {
+						const no = $(this).find("label").text();
+						console.log(no);
+						location.href = "${ pageContext.servletContext.contextPath }/trainer/detail?no=" + no;
+					});
+				</script>
 
 		
 </body>
