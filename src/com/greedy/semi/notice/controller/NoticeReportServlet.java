@@ -32,26 +32,18 @@ public class NoticeReportServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		
-		System.out.println("커런트페이지 : " + currentPage);
-		System.out.println("페이지넘버 : " + pageNo);
-		
 		NoticeService noticeService = new NoticeService();
 		int totalCount = noticeService.selectReportCount();
-		
-		System.out.println("토탈카운트 :" + totalCount);
-		
+				
 		int limit = 10;
 		
 		int buttonAmount = 5;
 		
 		PageInfoDTO pageInfo = Pagenation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
-		System.out.println("pinfo : " + pageInfo);
-		
+				
 		List<NoticeDTO> reportList = new NoticeService().selectReportList(pageInfo);
 		
-		System.out.println("리포트리스트 : " + reportList);
-		
-		
+				
 		String path = "";
 		if(reportList != null) {
 			path = "/WEB-INF/views/notice/notice_report.jsp";

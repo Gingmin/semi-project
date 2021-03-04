@@ -153,7 +153,6 @@ public class NoticeService {
 		
 		int no = noticeDAO.selectNumber(con, reportBlack);
 		
-		System.out.println("노노노노노노" + no);
 		if(result > 0) {
 			int blackList = noticeDAO.insertBlack(con, reportBlack, no);
 			
@@ -236,11 +235,10 @@ public class NoticeService {
 		
 		int result = noticeDAO.incrementNoticeCount(con, no);
 		
-		System.out.println("서비스 디테일" + result);
 		
 		if(result > 0) {
 			reportDetail = noticeDAO.selectReportDetail(con, no);
-			System.out.println("리포트디텔" + reportDetail );
+
 			if(reportDetail != null) {
 				commit(con);
 			} else {

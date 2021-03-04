@@ -361,7 +361,7 @@ public class NoticeDAO {
 		int result = 0;
 		
 		String query = prop.getProperty("insertReport");
-		System.out.println("인서트 리포트");
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, reportNotice.getTitle());
@@ -418,7 +418,7 @@ public class NoticeDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, pageInfo.getEndRow());
-			System.out.println(pstmt);
+			
 			rset = pstmt.executeQuery();
 			
 			reportList = new ArrayList<>();
@@ -588,7 +588,6 @@ public class NoticeDAO {
 			rset = pstmt.executeQuery();
 				List<RPAttachmentDTO> attachmentList = new ArrayList<>();	
 				
-				System.out.println("여기는 왔는고..");
 			while(rset.next()) {
 				reportDetail = new NoticeDTO();				
 				reportDetail.setWriter(new MemberDTO());
@@ -613,9 +612,6 @@ public class NoticeDAO {
 				attachment.setFilePath(rset.getString("FILE_PATH"));
 				attachment.setThumbnailPath(rset.getString("THUMBNAIL_PATH"));
 				
-				
-				System.out.println("ㅁㄴㅇㄹㅈㄷㄹ" + reportDetail);
-				System.out.println("어테치먼트" + attachment);
 				
 				attachmentList.add(attachment);
 				
