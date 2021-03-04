@@ -50,7 +50,7 @@
              */
             name : '주문명:HELLOPT결제',
             //결제창에서 보여질 이름
-            amount : 10,
+            amount : 15000,
             //가격
             buyer_email : "${ sessionScope.loginMember.email }",
             buyer_name : "${ sessionScope.loginMember.name }",
