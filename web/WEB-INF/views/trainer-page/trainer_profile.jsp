@@ -91,7 +91,7 @@
             	   /* 환경에 맞춰 https:// (ip)주소 써줘야 */
                		const $participateClass = document.getElementById("participateClass");
                		$participateClass.onclick = function() {
-               			location.href = "https://";
+               			location.href = "https://192.168.66.140:3000";
                		}
                }
                </script>
