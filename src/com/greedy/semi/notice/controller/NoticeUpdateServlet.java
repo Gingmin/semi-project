@@ -18,7 +18,6 @@ public class NoticeUpdateServlet extends HttpServlet {
 		
 		NoticeDTO noticeDetail = new NoticeService().selectNoticeDetail(no);
 		
-		System.out.println("서비스 :" + noticeDetail);
 		String path = "";
 		if(noticeDetail != null) {
 			path = "/WEB-INF/views/notice/notice_update.jsp";
@@ -48,7 +47,6 @@ public class NoticeUpdateServlet extends HttpServlet {
 		
 		int changeNotice = new NoticeService().updateNotice(changeContent);
 		
-		System.out.println("서블릿" + changeNotice);
 		
 		String path = "";
 		if(changeNotice > 0) {

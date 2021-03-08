@@ -59,7 +59,7 @@ public class NoticeService {
 		NoticeDTO noticeDetail = null;
 		
 		int result = noticeDAO.incrementNoticeCount(con, no);
-		System.out.println("서비스리졀트 : " + result);
+		
 		if(result > 0) {
 			noticeDetail = noticeDAO.selectAllNoticeDetail(con, no);
 			
@@ -81,7 +81,6 @@ public class NoticeService {
 		
 		int changeNotice = noticeDAO.updateNotice(con, changeContent);
 		
-		System.out.println("서비스 들렸냥 " + changeNotice);
 		
 		if( changeNotice > 0) {
 			commit(con);

@@ -32,7 +32,6 @@ public class NoticeDeleteServlet extends HttpServlet {
 		
 		int result = new NoticeService().deleteNotice(deleteNotice);
 		
-		System.out.println("서블릿 : " + result);
 		
 		String path = "";
 		if(result > 0) {
