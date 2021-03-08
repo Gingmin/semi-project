@@ -69,7 +69,6 @@ public class NoticeDAO {
 				
 				
 				noticeList.add(notice);
-				System.out.println("셀렉트올노티스 리스트 DAO");
 			}
 			
 			
